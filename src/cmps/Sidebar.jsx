@@ -3,7 +3,9 @@ export function Sidebar() {
 
     return(
         <>
-            <h2>Sidebar Sidebar Sidebar Sidebar</h2>
+            <div className="sidebar">
+                This is the sidebar
+            </div>
         </>
     )
 }

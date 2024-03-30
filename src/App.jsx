@@ -10,6 +10,7 @@ import { Genre } from './pages/Genre.jsx'
 
 // Components
 import { Sidebar } from './cmps/Sidebar.jsx'
+import { Playline } from './cmps/Playline.jsx'
 
 
 import './assets/css/style.css'
@@ -20,14 +21,17 @@ function App() {
   return (
     <>
       <Router>
-        <Sidebar/>
-        <Routes>
-          <Route path="/" element={<Homepage/>} />
-          <Route path="/search" element={<Search/>} />
-          <Route path="/artist/:id" element={<Artist/>} />
-          <Route path="/playlist/:id" element={<Station/>} />
-          <Route path="/genre/:id" element={<Genre/>} />
-        </Routes>
+        <div className='main-app'>
+          <Sidebar/>
+          <Routes>
+            <Route path="/" element={<Homepage/>} />
+            <Route path="/search" element={<Search/>} />
+            <Route path="/artist/:id" element={<Artist/>} />
+            <Route path="/playlist/:id" element={<Station/>} />
+            <Route path="/genre/:id" element={<Genre/>} />
+          </Routes>
+          <Playline/>
+        </div>
       </Router>
 
     </>
