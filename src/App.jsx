@@ -8,14 +8,21 @@ import { Homepage } from './pages/Homepage.jsx'
 import { Sidebar } from './cmps/Sidebar.jsx'
 
 
-import './App.css'
+import './assets/css/style.css'
 
 function App() {
 
 
   return (
     <>
-      <Sidebar/>
+      <Router>
+        <Sidebar/>
+        <Routes>
+          <Route path="/" element={<Homepage/>} />
+        </Routes>
+
+
+      </Router>
 
     </>
   )
