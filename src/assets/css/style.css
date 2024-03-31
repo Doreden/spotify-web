@@ -8,21 +8,21 @@
 .homepage {
   grid-column: 2/3;
   grid-row: 1/2;
-  background-color: blue;
+  background-color: rgb(186, 186, 255);
 }
 
 .sidebar {
   grid-column: 1/2;
   grid-row: 1/2;
   height: 100%;
-  background-color: red;
+  background-color: rgb(255, 180, 180);
 }
 
 .playline {
   grid-column: 1/-1;
   grid-row: 2/-1;
   height: 72px;
-  background-color: yellowgreen;
+  background-color: rgb(233, 255, 190);
 }
 
 :root {
