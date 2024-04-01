@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 
 export function Navigation(){
     return (
@@ -6,10 +6,10 @@ export function Navigation(){
             <div className="navigation">
                 <ul className="nav-buttons">
                     <li className="nav-button">
-                        <a>Home</a>
+                        <Link to="/">Home</Link>
                     </li>
                     <li className="nav-button">
-                        <a>Search</a>
+                        <Link to="/search">Search</Link>
                     </li>
                 </ul>
             </div>
