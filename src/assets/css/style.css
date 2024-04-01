@@ -73,16 +73,21 @@ ul {
 
 .main-app {
   display: grid;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 72px;
   gap: 0.5rem;
   padding: 8px;
+  overflow: hidden;
+}
+
+.page {
+  grid-column: 2/3;
+  grid-row: 1/2;
 }
 
 .homepage {
-  grid-column: 2/3;
-  grid-row: 1/2;
   background-color: rgb(186, 186, 255);
 }
 
@@ -125,6 +130,10 @@ ul {
   grid-row: 2/-1;
   height: 72px;
   background-color: rgb(233, 255, 190);
+}
+
+.search {
+  background-color: cadetblue;
 }
 
 /*# sourceMappingURL=style.css.map */
