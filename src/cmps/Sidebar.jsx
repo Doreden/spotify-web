@@ -1,10 +1,13 @@
+import { Navigation } from "./sidebar/Navigation"
+import { SidebarLibary } from "./sidebar/SidebarLibary"
 export function Sidebar() {
 
 
     return(
         <>
             <div className="sidebar">
-                This is the sidebar
+                <Navigation/>
+                <SidebarLibary/>
             </div>
         </>
     )
