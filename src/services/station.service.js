@@ -2,6 +2,10 @@ import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'stations'
 
+export const stationService = {
+    createStations
+}
+
 // Two regular Albums, one Single and one user generated Playlist (differs by CreatedBy)
 function createStations(){
     let stations = utilService.loadFromStorage(STORAGE_KEY)
