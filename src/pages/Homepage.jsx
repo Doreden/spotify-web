@@ -1,13 +1,32 @@
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { stationService } from "../services/station.service"
+
 export function Homepage(){
     
+    useEffect(() => {
+        console.log('1')
+        loadStations()
+        console.log('2')
+    }, [])
 
-    
+    const stations = useSelector((storeState) => {return storeState.stations})
+    const dispach = useDispatch()
+
+    async function loadStations(){
+        try {
+            const newStations = await stationService.query()
+            dispach({type: 'LOAD_STATIONS', newStations})
+            console.log(stations)
+        } catch {
+            console.log('Could not load stations')
+        }
+    }
 
     return (
         <>
             <section className="homepage page">
-                <h1>This is the homepage</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor adipisci enim ad perferendis voluptate odit debitis qui, facere dolores? Fugit dolore, suscipit veniam laudantium officia id quo non sed dignissimos.</p>
+                {JSON.stringify(stations)}
             </section>
             
         </>
