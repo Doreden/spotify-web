@@ -91,6 +91,17 @@ ul {
   background-color: rgb(186, 186, 255);
 }
 
+.search {
+  background-color: cadetblue;
+}
+
+.playline {
+  grid-column: 1/-1;
+  grid-row: 2/-1;
+  height: 72px;
+  background-color: rgb(233, 255, 190);
+}
+
 .sidebar {
   width: 280px;
   grid-column: 1/2;
@@ -123,17 +134,6 @@ ul {
 .sidebar .nav-button {
   font-size: 1rem;
   font-weight: 700;
-}
-
-.playline {
-  grid-column: 1/-1;
-  grid-row: 2/-1;
-  height: 72px;
-  background-color: rgb(233, 255, 190);
-}
-
-.search {
-  background-color: cadetblue;
 }
 
 /*# sourceMappingURL=style.css.map */

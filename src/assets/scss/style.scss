@@ -1,6 +1,11 @@
-@import 'base';
-@import 'layout';
-@import 'homepage';
-@import 'sidebar';
-@import 'playline';
-@import 'search';
+// Basic SCSS
+@import './base/base';
+@import './base/layout';
+
+// Pages SCSS
+@import './pages/homepage';
+@import './pages/search';
+
+// Components SCSS
+@import './cmps/playline';
+@import './cmps/sidebar';

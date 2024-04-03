@@ -4,7 +4,6 @@ import { legacy_createStore as createStore } from 'redux'
 const initialState = { stations: [] }
 
 function stationReducer(state = initialState, cmd){
-    console.log(cmd)
     switch(cmd.type){
         case 'LOAD_STATIONS':
             return {...state, stations: cmd.newStations}

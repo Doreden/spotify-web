@@ -5,13 +5,34 @@ const STORAGE_KEY = 'stations'
 
 export const stationService = {
     query,
+    getById,
+    removeById,
     createStations
 }
 
 async function query() {
-    let emails = await storageService.query(STORAGE_KEY)
-    return emails
+    let stations = await storageService.query(STORAGE_KEY)
+    return stations
 }
+
+async function getById(id) {
+    try {
+        var station = await storageService.get(STORAGE_KEY,id)
+        return station
+    } catch (err) {
+        console.log(`error: ${err}`)
+    }
+}
+
+async function removeById(id) {
+    try {
+        var idx = await storageService.remove(STORAGE_KEY, id)
+        return idx
+    } catch (err) {
+        console.log(`error: ${err}`)
+    }
+}
+
 
 
 
