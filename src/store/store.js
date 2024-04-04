@@ -1,18 +1,13 @@
-import { legacy_createStore as createStore } from 'redux'
+import { legacy_createStore as createStore, combineReducers } from 'redux'
+import { stationReducer } from './reducers/station.reducer'
+
+const rootReducer = combineReducers({
+    stationModule : stationReducer
+})
+
+export const store = createStore(rootReducer)
 
 
-const initialState = { stations: [] }
-
-function stationReducer(state = initialState, cmd){
-    switch(cmd.type){
-        case 'LOAD_STATIONS':
-            return {...state, stations: cmd.newStations}
-        default:
-            return state
-    }
-}
-
-export const store = createStore(stationReducer)
 
 store.subscribe(() => {
     console.log('current state: ', store.getState())
