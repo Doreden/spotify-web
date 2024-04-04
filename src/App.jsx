@@ -1,44 +1,43 @@
-// Libaries
-import { Route, HashRouter as Router, Routes } from 'react-router-dom'
-import { Provider } from 'react-redux'
+// Libraries
+import { Route, HashRouter as Router, Routes } from "react-router-dom";
+import { Provider } from "react-redux";
 // Pages
-import { Homepage } from './pages/Homepage.jsx'
-import { StationDetails } from './pages/StationDetails.jsx'
-import { Search } from './pages/Search.jsx'
+import { StationIndex } from "./cmps/station/StationIndex.jsx";
+import { StationDetails } from "./cmps/station/StationDetails.jsx";
+import { Search } from "./pages/Search.jsx";
 
 // Components
-import { Sidebar } from './cmps/Sidebar.jsx'
-import { Playline } from './cmps/Playline.jsx'
+import { Sidebar } from "./cmps/Sidebar.jsx";
+import { Playline } from "./cmps/Playline.jsx";
 
 // Store
-import { store } from './store/store.js'
+import { store } from "./store/store.js";
 
 // Services
-import { stationService } from './services/station.service.js'
+import { stationService } from "./services/station.service.js";
 
-import './assets/css/style.css'
+import "./assets/css/style.css";
 
 function App() {
-
-  stationService.createStations()
+  stationService.createStations();
 
   return (
     <>
       <Provider store={store}>
         <Router>
-          <section className='main-app'>
-            <Sidebar/>
+          <section className="main-app">
+            <Sidebar />
             <Routes>
-              <Route path="/" element={<Homepage/>} />
-              <Route path="/search" element={<Search/>} />
-              <Route path="/station/:id" element={<StationDetails/>} />
+              <Route path="/" element={<StationIndex />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/station/:id" element={<StationDetails />} />
             </Routes>
-            <Playline/>
+            <Playline />
           </section>
         </Router>
       </Provider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

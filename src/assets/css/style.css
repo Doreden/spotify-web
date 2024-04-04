@@ -87,10 +87,6 @@ ul {
   grid-row: 1/2;
 }
 
-.homepage {
-  background-color: rgb(186, 186, 255);
-}
-
 .search {
   background-color: cadetblue;
 }
@@ -134,6 +130,18 @@ ul {
 .sidebar .nav-button {
   font-size: 1rem;
   font-weight: 700;
+}
+
+.station-index {
+  background-color: rgb(23, 22, 22);
+}
+
+.station-index {
+  background-color: rgb(23, 22, 22);
+}
+
+.station-index {
+  background-color: rgb(23, 22, 22);
 }
 
 /*# sourceMappingURL=style.css.map */
