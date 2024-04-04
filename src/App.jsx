@@ -15,7 +15,6 @@ import { store } from './store/store.js'
 
 // Services
 import { stationService } from './services/station.service.js'
-import { utilService } from './services/util.service.js'
 
 import './assets/css/style.css'
 
@@ -32,7 +31,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Homepage/>} />
               <Route path="/search" element={<Search/>} />
-              <Route path="/playlist/:id" element={<StationDetails/>} />
+              <Route path="/station/:id" element={<StationDetails/>} />
             </Routes>
             <Playline/>
           </section>
