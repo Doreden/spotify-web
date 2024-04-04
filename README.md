@@ -1,6 +1,9 @@
-# React + Vite
+## Spotify Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Our version for the beloved music player and streaming services
+
+> [Features]
+> features list...
 
 Currently, two official plugins are available:
 
