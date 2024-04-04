@@ -6,20 +6,20 @@ import { StationIndex } from "./cmps/station/StationIndex.jsx";
 import { StationDetails } from "./cmps/station/StationDetails.jsx";
 import { Search } from "./pages/Search.jsx";
 
-// Components
+// // Components
 import { Sidebar } from "./cmps/Sidebar.jsx";
 import { Playline } from "./cmps/Playline.jsx";
 
-// Store
+// // Store
 import { store } from "./store/store.js";
 
 // Services
-import { stationService } from "./services/station.service.js";
+// import { stationService } from "../services/station.service.js";
 
 import "./assets/css/style.css";
 
 function App() {
-  stationService.createStations();
+  // stationService.createStations();
 
   return (
     <>
