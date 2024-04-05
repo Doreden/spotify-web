@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { stationService } from "../../services/station.service";
+import { loadStations } from "../../store/actions/station.action";
 
 export function StationIndex() {
   useEffect(() => {
@@ -8,18 +9,8 @@ export function StationIndex() {
   }, []);
 
   const stations = useSelector((storeState) => {
-    return storeState.stations;
+    return storeState.stationModule.stations;
   });
-  const dispatch = useDispatch();
-
-  async function loadStations() {
-    try {
-      const newStations = await stationService.query();
-      dispatch({ type: "LOAD_STATIONS", newStations });
-    } catch {
-      console.log("Could not load stations");
-    }
-  }
 
   return (
     <>
