@@ -7,4 +7,8 @@
 
 * Get latest updates from main to my branch:
                             ~ git branch
-                            ~
+                            ~ git checkout your-branch
+                            ~ git fetch origin main
+                            ~ git merge origin/main
+
+                        
