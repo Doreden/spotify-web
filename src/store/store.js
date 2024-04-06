@@ -14,6 +14,27 @@ store.subscribe(() => {
 })
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // function createStore(reducer){
 //     let state = reducer(undefined)
 //     let listeners = []

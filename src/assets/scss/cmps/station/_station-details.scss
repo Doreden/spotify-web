@@ -1,3 +1,55 @@
-.station-index {
+.station-details {
   background-color: rgb(23, 22, 22);
+  display: flex;
+  flex-direction: column;
+
+  & h1 {
+    font-size: 4.5rem;
+    margin: 0px;
+    white-space-collapse: collapse;
+    line-height: 1;
+  }
+
+  & img {
+    height: 128px;
+    width: 128px;
+    border-radius: 4px;
+    margin-right: 16px;
+  }
+
+  & .station-details-header {
+    display: flex;
+    height: 234px;
+    background-color: lighten($color: #000000, $amount: 20%);
+    padding-left: 16px;
+    padding-bottom: 16px;
+    padding-right: 16px;
+  }
+
+  & .content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  & .station-info {
+    display: flex;
+    flex-direction: column;
+    height: 234px;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+
+  & .additional-info-line {
+    display: flex;
+    margin-top: 8px;
+  }
+
+  & .devider {
+    font-size: 14px;
+    font-weight: 1000;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
 }
