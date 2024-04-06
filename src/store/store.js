@@ -8,6 +8,21 @@ const rootReducer = combineReducers({
 export const store = createStore(rootReducer)
 
 
+<<<<<<< Updated upstream
+=======
+const initialState = { stations: [] }
+
+function stationReducer(state = initialState, cmd){
+    switch(cmd.type){
+        case 'SET_STATIONS':
+            return {...state, stations: cmd.newStations}
+        default:
+            return state
+    }
+}
+
+export const store = createStore(stationReducer)
+>>>>>>> Stashed changes
 
 store.subscribe(() => {
     console.log('current state: ', store.getState())
