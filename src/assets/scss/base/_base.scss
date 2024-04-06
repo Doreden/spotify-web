@@ -2,7 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.87);
+  color: white;
   background-color: #242424;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -25,12 +25,17 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  // To Consider
+  // & * {
+  //   box-sizing: border-box;
+  // }
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+// h1 {
+//   font-size: 3.2em;
+//   line-height: 1.1;
+// }
 
 button {
   border-radius: 8px;
@@ -66,6 +71,12 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+li {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
 }
 
 ul {

@@ -44,67 +44,71 @@ function createStations(){
     if(!stations){
         stations = [
             {
-                _id: "0BFzNaeaNv4mahOzwZFGHK",
+                id: "0BFzNaeaNv4mahOzwZFGHK",
                 name: "Royal Blood",
                 albumCoverUrl: 'https://upload.wikimedia.org/wikipedia/en/b/b0/Royal_Blood_-_Royal_Blood_%28Artwork%29.jpg',
                 type: 'album',
                 createdBy: null,
                 addedAt: 162521762362,
-                Artist: 'Royal Blood',
+                artist: 'Royal Blood',
                 songs: [
                     {
                         id: "s1003",
                         title: "Out Of The Black",
+                        artist: "Royal Blood",
                         url: "youtube/song.mp4",
                         tags: ["Rock"]
                     },
                     {
                         id: "s1004",
                         title: "Little Monster",
+                        artist: "Royal Blood",
                         url: "youtube/song.mp4",
                         tags: ["Bass", "Rock"],
                     },
                     {
                         id: "s1005",
                         title: "Come On Over",
+                        artist: "Royal Blood",
                         url: "youtube/song.mp4",
                         tags: ["Bass", "Rock"],
                     }
                 ]   
             },
             {
-                _id: "03mX4WEpvZPkHmEsd2ZoV8",
+                id: "03mX4WEpvZPkHmEsd2ZoV8",
                 name: "Spring Girl",
                 albumCoverUrl: 'https://upload.wikimedia.org/wikipedia/en/1/17/AreyouexpUK.jpg',
                 type: 'single',
                 createdBy: null,
                 addedAt: 162521763928,
-                Artist: 'Adam Ten',
+                artist: 'Adam Ten',
                 songs: [
                     {
                         id: "s1007",
                         title: "Spring Girl",
+                        artist: "Adam Ten",
                         url: "youtube/song.mp4",
                         tags: ["Electronic", "House"]
                     }
                 ]   
             },
             {
-                _id: "03mX3928vZPkHmEsd2ZoV8",
+                id: "03mX3928vZPkHmEsd2ZoV8",
                 name: "Or's Finest",
                 albumCoverUrl: 'https://upload.wikimedia.org/wikipedia/en/1/17/AreyouexpUK.jpg',
                 type: 'playlist',
                 createdBy: {
-                    _id: 'ak491k',
+                    id: 'ak491k',
                     username: 'Or Doga',
                     imgUrl: 'http://some-photo/"'
                 },
                 addedAt: 162521763962,
-                Artist: 'Adam Ten',
                 songs: [
                     {
                         id: "s1007",
                         title: "Spring Girl",
+                        Artist: 'Adam Ten',
                         url: "youtube/song.mp4",
                         tags: ["Electronic", "House"]
                     }
