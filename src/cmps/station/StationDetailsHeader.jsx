@@ -16,7 +16,8 @@ export function StationDetailsHeader({station}){
                             <span className="devider">•</span>
                             <span className="year-released">{station.releaseYear}</span>
                             <span className="devider">•</span>
-                            <span className="number-of-songs">{station.songs.length} Songs</span>
+                            <span className="number-of-songs">{station.
+                                songs.length} Songs</span>
                             {/* <span className="station-length"> Create Convertion Util Function </span> */}
                         </div>
                     </div>
