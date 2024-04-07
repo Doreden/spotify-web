@@ -27,10 +27,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-@font-face {
-  font-family: "CircularSp";
-  src: "../../../../public/fonts/FlowCircular-Regular.ttf";
-}
 
 button {
   border-radius: 8px;
@@ -59,6 +55,12 @@ button:focus-visible {
     background-color: #ffffff;
   }
 }
+@font-face {
+  font-family: "CircularSpotify";
+  font-style: bold;
+  font-weight: 700;
+  src: local("../../fonts/CircularSpotifyText-Black.otf");
+}
 li {
   list-style-type: none;
   padding: 0px;
@@ -71,7 +73,13 @@ ul {
   margin: 0px;
 }
 
+svg {
+  height: 100%;
+  width: 100%;
+}
+
 .main-app {
+  display: grid;
   --vertical-nav-width: 232px;
   --now-playing-bar-height: 11vh;
   width: 100vw;
@@ -134,12 +142,21 @@ ul {
 }
 .sidebar .nav-button {
   padding: 5px 16px;
-  display: grid;
+  display: flex;
   flex-direction: row;
   align-items: center;
   font-size: 1rem;
   gap: 10px;
-  grid-template-columns: auto 1fr auto;
+}
+.sidebar .nav-button .nav-button-svg {
+  width: 36px;
+  height: 36px;
+  display: grid;
+}
+.sidebar .nav-button .nav-button-text {
+  font-family: "CircularSpotify";
+  font-size: medium;
+  font-weight: bold;
 }
 
 .station-index {

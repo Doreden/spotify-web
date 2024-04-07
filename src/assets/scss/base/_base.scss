@@ -28,14 +28,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-
-  // To Consider
-  & * {
-    @font-face {
-      font-family: 'CircularSp';
-      src: '../../../../public/fonts/FlowCircular-Regular.ttf';
-    }
-  }
 }
 
 button {
@@ -67,6 +59,13 @@ button:focus-visible {
 
 }
 
+@font-face {
+  font-family: 'CircularSpotify';
+  font-style: bold;
+  font-weight: 700;
+  src: local("../../fonts/CircularSpotifyText-Black.otf");
+}
+
 li {
   list-style-type: none;
   padding: 0px;
@@ -77,4 +76,9 @@ ul {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
+}
+
+svg {
+  height: 100%;
+  width: 100%;
 }

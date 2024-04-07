@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { stationService } from "../../services/station.service";
-import { loadStations } from "../../store/actions/station.action";
+import { stationService } from "../services/station.service";
+import { loadStations } from "../store/actions/station.action";
 
 
 export function StationIndex() {
