@@ -1,4 +1,4 @@
-
+import { utilService } from "../../services/util.service"
 
 export function StationDetailsHeader({station}){
 
@@ -14,10 +14,12 @@ export function StationDetailsHeader({station}){
                         <div className="additional-info-line">
                             <span className="artist">{station.artist}</span>
                             <span className="devider">•</span>
-                            <span className="year-released">{station.releaseYear}</span>
-                            <span className="devider">•</span>
+                            {/* TODO - on albums - release year, on playlists - how many likes */}
+                            {/* <span className="year-released">{station.releaseYear}</span> */}
+                            {/* <span className="devider">•</span> */}
                             <span className="number-of-songs">{station.songs.length} Songs</span>
-                            {/* <span className="station-length"> Create Convertion Util Function </span> */}
+                            <span className="devider">•</span>
+                            <span className="station-length">{utilService.formatStationLength(station.songs)}</span>
                         </div>
                     </div>
                 </div>

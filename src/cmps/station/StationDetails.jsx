@@ -3,9 +3,12 @@ import { useParams } from "react-router"
 
 import { StationDetailsHeader } from "./StationDetailsHeader"
 import { StationDetailsActions } from "./StationDetialsActions"
+import { PlaylistSongList } from "./PlaylistSongList"
+import { AlbumSongList } from "./AlbumSongList"
 
 import { stationService } from "../../services/station.service"
-import { SongList } from "./SongList"
+
+
 
 export function StationDetails() {
     
@@ -13,7 +16,6 @@ export function StationDetails() {
     const params = useParams()
 
     useEffect(() => {
-        console.log("Station Details")
         loadStation()
     },[])
 
@@ -31,9 +33,12 @@ export function StationDetails() {
     return (
         <>
             <section className="station-details page">
+                
                 <StationDetailsHeader station={station} />
                 <StationDetailsActions station={station} />
-                <SongList songs={station.songs} />
+                <div className="song-list-container">
+                    {station.type === 'playlist' ? <PlaylistSongList songs={station.songs} /> : <AlbumSongList songs={station.songs}/> }
+                </div>
             </section>
         </>
     )
