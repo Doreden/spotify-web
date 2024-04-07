@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { StationDetailsHeader } from "./StationDetailsHeader"
+import { StationDetailsActions } from "./StationDetialsActions"
+import { PlaylistSongList } from "./PlaylistSongList"
+import { AlbumSongList } from "./AlbumSongList"
 
-import { StationDetailsHeader } from "./StationDetailsHeader";
-import { StationDetailsActions } from "./StationDetialsActions";
-
-import { stationService } from "../../services/station.service";
-import { SongList } from "./SongList";
+import { stationService } from "../../services/station.service"
 
 export function StationDetails() {
   const [station, setStation] = useState();
   const params = useParams();
 
-  useEffect(() => {
-    console.log("Station Details");
-    loadStation();
-  }, []);
+    useEffect(() => {
+        loadStation()
+    },[])
 
   async function loadStation() {
     try {
@@ -25,14 +24,17 @@ export function StationDetails() {
     }
   }
 
-  if (!station) return <></>;
-  return (
-    <>
-      <section className="station-details page">
-        <StationDetailsHeader station={station} />
-        <StationDetailsActions station={station} />
-        <SongList songs={station.songs} />
-      </section>
-    </>
-  );
+    if(!station) return <></>
+    return (
+        <>
+            <section className="station-details page">
+                
+                <StationDetailsHeader station={station} />
+                <StationDetailsActions station={station} />
+                <div className="song-list-container">
+                    {station.type === 'playlist' ? <PlaylistSongList songs={station.songs} /> : <AlbumSongList songs={station.songs}/> }
+                </div>
+            </section>
+        </>
+    )
 }

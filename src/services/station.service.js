@@ -56,6 +56,7 @@ function createStations(){
                         id: "s1003",
                         title: "Out Of The Black",
                         artist: "Royal Blood",
+                        lengthInSeconds: 250,
                         url: "youtube/song.mp4",
                         tags: ["Rock"]
                     },
@@ -63,6 +64,7 @@ function createStations(){
                         id: "s1004",
                         title: "Little Monster",
                         artist: "Royal Blood",
+                        lengthInSeconds: 195,
                         url: "youtube/song.mp4",
                         tags: ["Bass", "Rock"],
                     },
@@ -70,6 +72,7 @@ function createStations(){
                         id: "s1005",
                         title: "Come On Over",
                         artist: "Royal Blood",
+                        lengthInSeconds: 221,
                         url: "youtube/song.mp4",
                         tags: ["Bass", "Rock"],
                     }
@@ -88,8 +91,10 @@ function createStations(){
                         id: "s1007",
                         title: "Spring Girl",
                         artist: "Adam Ten",
+                        lengthInSeconds: 394,
                         url: "youtube/song.mp4",
                         tags: ["Electronic", "House"]
+
                     }
                 ]   
             },
@@ -108,7 +113,9 @@ function createStations(){
                     {
                         id: "s1007",
                         title: "Spring Girl",
-                        Artist: 'Adam Ten',
+                        artist: 'Adam Ten',
+                        album: "Spring Girl",
+                        lengthInSeconds: 394,
                         url: "youtube/song.mp4",
                         tags: ["Electronic", "House"]
                     }
