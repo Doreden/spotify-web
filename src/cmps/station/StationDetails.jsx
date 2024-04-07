@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router"
-
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { StationDetailsHeader } from "./StationDetailsHeader"
 import { StationDetailsActions } from "./StationDetialsActions"
 import { PlaylistSongList } from "./PlaylistSongList"
@@ -8,26 +7,22 @@ import { AlbumSongList } from "./AlbumSongList"
 
 import { stationService } from "../../services/station.service"
 
-
-
 export function StationDetails() {
-    
-    const [station, setStation] = useState()
-    const params = useParams()
+  const [station, setStation] = useState();
+  const params = useParams();
 
     useEffect(() => {
         loadStation()
     },[])
 
-    async function loadStation(){
-        try{
-            const station = await stationService.getById(params.stationId)
-            setStation(station)
-        }catch (err) {
-            console.log(err);
-        }
+  async function loadStation() {
+    try {
+      const station = await stationService.getById(params.stationId);
+      setStation(station);
+    } catch (err) {
+      console.log(err);
     }
-
+  }
 
     if(!station) return <></>
     return (
@@ -42,5 +37,4 @@ export function StationDetails() {
             </section>
         </>
     )
-    
 }

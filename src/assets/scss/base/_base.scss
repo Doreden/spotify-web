@@ -10,9 +10,11 @@
   background-color: black;
 }
 
+
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #fafafa;
   text-decoration: inherit;
 }
 
@@ -28,15 +30,13 @@ body {
   min-height: 100vh;
 
   // To Consider
-  // & * {
-  //   box-sizing: border-box;
-  // }
+  & * {
+    @font-face {
+      font-family: 'CircularSp';
+      src: '../../../../public/fonts/FlowCircular-Regular.ttf';
+    }
+  }
 }
-
-// h1 {
-//   font-size: 3.2em;
-//   line-height: 1.1;
-// }
 
 button {
   border-radius: 8px;
@@ -65,13 +65,6 @@ button:focus-visible {
     background-color: #ffffff;
   }
 
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
 li {
