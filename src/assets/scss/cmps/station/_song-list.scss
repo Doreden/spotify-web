@@ -1,0 +1,112 @@
+// TODO : Do not repeat code
+// TODO : Remove padding right from songLength.
+$playlist-columns: 16px minmax(120px, 6fr) minmax(120px, 4fr) minmax(120px, 3fr) minmax(120px, 1fr);
+$album-columns: 16px minmax(120px, 4fr) minmax(120px, 1fr);
+
+@mixin flex-start-center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@mixin flex-center-cetner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-end-center {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.song-list-container {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.song-list {
+
+    & .song-index {
+        @include flex-center-cetner();
+    }
+
+    & .song-details {
+        @include flex-start-center();
+    }
+
+    & .list-header {
+        display: grid;
+        padding-left: 16px;
+        padding-right: 16px;
+        grid-template-rows: 100%;
+        height: 35.2px;
+        border-bottom: 0.8px solid rgba(255, 255, 255, 0.1);
+        gap: 16px;
+        margin-bottom: 10px;
+
+        &.playlist {
+            grid-template-columns: $playlist-columns;
+        }
+
+        &.album {
+            grid-template-columns: $album-columns;
+        }
+    }
+
+    & .song-preview {
+        display: grid;
+        height: 56px;
+        grid-template-rows: 100%;
+        column-gap: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: hsla(0, 0%, 100%, .3)
+        }
+
+        &.playlist {
+            grid-template-columns: $playlist-columns
+        }
+
+        &.album {
+            grid-template-columns: $album-columns
+        }
+
+        & .song-details {
+            @include flex-start-center();
+
+            & .title-and-artist {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+            }
+
+            & .song-title {
+                font-size: 1rem;
+            }
+
+            & .song-artist {
+                font-size: 0.875rem;
+                color: rgb(167, 167, 167);
+            }
+        }
+
+        & .date-added {
+            @include flex-start-center();
+        }
+
+        & .song-album {
+            @include flex-start-center();
+        }
+
+        & .song-length {
+            @include flex-end-center();
+
+        }
+    }
+}
