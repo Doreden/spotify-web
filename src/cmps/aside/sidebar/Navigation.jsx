@@ -1,5 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
-import homeIcon from "../../assets/imgs/home1.svg";
+import { Link } from "react-router-dom";
+import homeIcon from "../../../assets/imgs/home1.svg";
 import { ReactSVG } from "react-svg";
 export function Navigation() {
   return (

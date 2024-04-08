@@ -2,13 +2,13 @@
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 // Pages
-import { StationIndex } from "./cmps/station/StationIndex.jsx";
-import { StationDetails } from "./cmps/station/StationDetails.jsx";
+import { StationIndex } from "./pages/StationIndex.jsx";
+import { StationDetails } from "./pages/StationDetails.jsx";
 import { Search } from "./pages/Search.jsx";
 
 // Components
-import { Sidebar } from "./cmps/Sidebar.jsx";
-import { Playline } from "./cmps/Playline.jsx";
+import { Sidebar } from "./cmps/aside/Sidebar.jsx";
+import { Playline } from "./cmps//footer/playline/Playline.jsx";
 
 // Store
 import { store } from "./store/store.js";
