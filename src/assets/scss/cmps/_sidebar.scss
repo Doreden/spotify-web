@@ -8,12 +8,6 @@
   background-color: #000;
   padding-top: 24px;
   padding-bottom: var(--now-playing-bar-height);
-  // grid-column: 1 / 2;
-  // grid-row: 1 / 2;
-  // height: 853px;
-  // height: 853px;
-  // width: 365px;
-  // gap: 8px;
   border-radius: 10px;
   border-color: rgb(179, 179, 179);
 
@@ -31,22 +25,23 @@
 
   & .nav-button {
     padding: 5px 16px;
-    display: grid;
+    display: flex;
     flex-direction: row;
     align-items: center;
     // margin: 5px 0;
     font-size: 1rem;
     gap: 10px;
-    grid-template-columns: auto 1fr auto;
+    // grid-template-columns: auto 1fr auto;
 
-    // .nav-button .icon {
-    //   width: 36px;
-    //   height: 36px;
-    //   display: grid;
-    // }
-    // .nav-button .text {
-    //   font-size: medium;
-    //   font-weight: bold;
-    // }
+    & .nav-button-svg {
+      width: 36px;
+      height: 36px;
+      display: grid;
+    }
+    & .nav-button-text {
+      font-family: "CircularSpotify";
+      font-size: medium;
+      font-weight: bold;
+    }
   }
 }
