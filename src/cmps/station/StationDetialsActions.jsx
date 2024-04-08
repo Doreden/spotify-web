@@ -1,5 +1,5 @@
 import { ReactSVG } from "react-svg";
-import Play from '/imgs/play.svg'
+import Play from '../../assets/imgs/play2.svg'
 
 export function StationDetailsActions({station}){
 
@@ -10,8 +10,9 @@ export function StationDetailsActions({station}){
                 <div className="station-details-actions">
                     <div className="station-play-button-container">
                         <button className="station-play-button">
-                            <ReactSVG className='icon' src={Play} />
-                            {console.log(Play)}
+                            <div className="play-svg-container">
+                                <ReactSVG src={Play} />
+                            </div>
                         </button>
                     </div>
 
