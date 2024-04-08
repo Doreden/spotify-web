@@ -3,12 +3,12 @@ import { PlaylistSongPreview } from "./PlaylistSongPreview";
 export function PlaylistSongList({ songs }) {
   return (
     <div className="song-list">
-      <div className="playlist list-header">
+      <div className="list-header columns">
         <div className="song-index">#</div>
-        <div>Title</div>
-        <div>Album</div>
-        <div>Date Added</div>
-        <div>C</div>
+        <div className="song-details">Title</div>
+        <div className="song-album">Album</div>
+        <div className="date-added">Date Added</div>
+        <div className="song-length">Len</div>
       </div>
 
       {songs.map((song, index) => (

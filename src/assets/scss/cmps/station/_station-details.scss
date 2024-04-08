@@ -12,10 +12,12 @@
   }
 
   & img {
-    height: 210px;
-    width: 210px;
+    height: calc(20vw);
+    width: auto;
     border-radius: 4px;
     margin-right: 16px;
+    min-height: 160px;
+    max-height: 210px;
   }
 
   & .station-details-header {

@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 import { StationDetailsHeader } from "../cmps/station/stationDetails/StationDetailsHeader";
 import { StationDetailsActions } from "../cmps/station/stationDetails/StationDetialsActions";
 import { PlaylistSongList } from "../cmps/station/stationDetails/PlaylistSongList";
-import { AlbumSongList } from "../cmps/station/stationDetails/AlbumSongList";
 
 import { stationService } from "../services/station.service";
 
@@ -31,11 +30,7 @@ export function StationDetails() {
         <StationDetailsHeader station={station} />
         <StationDetailsActions station={station} />
         <div className="song-list-container">
-          {station.type === "playlist" ? (
             <PlaylistSongList songs={station.songs} />
-          ) : (
-            <AlbumSongList songs={station.songs} />
-          )}
         </div>
       </section>
     </>

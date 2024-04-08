@@ -3,7 +3,7 @@ import { utilService } from "../../../services/util.service";
 export function PlaylistSongPreview({ index, song }) {
   return (
     <>
-      <div className="playlist song-preview">
+      <div className="song-preview columns">
         <div className="song-index">{index}</div>
         <div className="song-details">
           {/* <img></img> */}
@@ -13,7 +13,7 @@ export function PlaylistSongPreview({ index, song }) {
           </div>
         </div>
         <div className="song-album">{song.album}</div>
-        <div className="date-added"></div>
+        <div className="date-added">Nov 11</div>
         <div className="song-length">
           {utilService.formatSongLength(song.lengthInSeconds)}
         </div>
