@@ -72,6 +72,7 @@ ul {
 }
 
 .main-app {
+  display: grid;
   --vertical-nav-width: 232px;
   --now-playing-bar-height: 11vh;
   width: 100vw;
