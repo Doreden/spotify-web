@@ -1,32 +1,6 @@
 .station-details {
-  background-color: rgb(23, 22, 22);
   display: flex;
   flex-direction: column;
-
-
-  & h1 {
-    font-size: 6rem;
-    margin: 0px;
-    white-space-collapse: collapse;
-    line-height: 1;
-
-    @media (max-width: 960px) {
-      font-size: 4.5rem;
-    }
-
-    @media (max-width: 800px) {
-      font-size: 3rem;
-    }
-  }
-
-  & img {
-    height: calc(20vw);
-    width: auto;
-    border-radius: 4px;
-    margin-right: 16px;
-    min-height: 160px;
-    max-height: 232px;
-  }
 
   & .station-details-header {
     display: flex;
@@ -103,7 +77,9 @@
     @include roundButton()
   }
 
-
+  & .more-actions {
+    background-color: transparent;
+  }
 
   & .more-actions-svg-container {
     width: 32px;
@@ -114,9 +90,29 @@
     width: 100%;
     height: 100%;
   }
-}
 
-.more-actions {
-  background-color: transparent;
+  & h1 {
+    font-size: 6rem;
+    margin: 0px;
+    white-space-collapse: collapse;
+    line-height: 1;
+
+    @media (max-width: 960px) {
+      font-size: 4.5rem;
+    }
+
+    @media (max-width: 800px) {
+      font-size: 3rem;
+    }
+  }
+
+  & img {
+    height: calc(20vw);
+    width: auto;
+    border-radius: 4px;
+    margin-right: 16px;
+    min-height: 160px;
+    max-height: 232px;
+  }
 
 }

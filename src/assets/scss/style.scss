@@ -1,11 +1,13 @@
 // Basic SCSS
+@import './base/variables';
+@import './base/mixins';
 @import './base/base';
 @import './base/layout';
-@import './base/mixins';
-@import './base/variables';
 
 // Pages SCSS
+@import './pages/station-index';
 @import './pages/search';
+@import './pages/station-details';
 
 // Components SCSS
 @import './cmps/playline';
@@ -13,7 +15,5 @@
 @import './cmps/nav-header';
 
 // Station related:
-@import './cmps/station/station-index';
-@import './cmps/station/station-details';
-@import './cmps/station/station-preview';
-@import './cmps/station/song-list';
+@import './cmps/stationDetails/station-preview';
+@import './cmps/stationDetails/song-list';
