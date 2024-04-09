@@ -17,6 +17,7 @@ import { store } from "./store/store.js";
 import { stationService } from "./services/station.service.js";
 
 import "./assets/css/style.css";
+import { NavHeader } from "./cmps/header/NavHeader.jsx";
 
 function App() {
   stationService.createStations();
@@ -27,6 +28,8 @@ function App() {
         <Router>
           <section className="main-app">
             <Sidebar />
+            {/* TODO Figure out how to layout NavHeader */}
+            {/* <NavHeader/> */}
             <Routes>
               <Route path="/" element={<StationIndex />} />
               <Route path="/search" element={<Search />} />

@@ -1,6 +1,7 @@
 // Basic SCSS
 @import './base/base';
 @import './base/layout';
+@import 'mixins';
 
 // Pages SCSS
 @import './pages/search';
@@ -8,6 +9,7 @@
 // Components SCSS
 @import './cmps/playline';
 @import './cmps/sidebar';
+@import './cmps/nav-header';
 
 // Station related:
 @import './cmps/station/station-index';

@@ -1,5 +1,8 @@
+
 import { ReactSVG } from "react-svg";
 import Play from '../../../assets/imgs/play2.svg'
+import { BsThreeDots } from "react-icons/bs";
+
 
 export function StationDetailsActions({station}){
 
@@ -8,15 +11,17 @@ export function StationDetailsActions({station}){
         <>
             <div className="station-details-actions-container">
                 <div className="station-details-actions">
-                    <div className="station-play-button-container">
                         <button className="station-play-button">
                             <div className="play-svg-container">
                                 <ReactSVG src={Play} />
                             </div>
                         </button>
-                    </div>
 
-                    <button className="more-actions">•••</button>
+                        <button className="more-actions">
+                            <div className="more-actions-svg-container">
+                                <BsThreeDots style={{color:'white'}} />
+                            </div>
+                        </button>
                 </div>
             </div>
         </>

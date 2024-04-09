@@ -28,6 +28,12 @@ body {
   min-height: 100vh;
 }
 
+button {
+  cursor: pointer;
+  border: none;
+  background-color: none;
+}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -143,6 +149,28 @@ svg {
   font-weight: bold;
 }
 
+.nav-header {
+  height: 32px;
+  position: sticky;
+  background-color: none;
+  padding: 16px;
+  display: flex;
+}
+.nav-header .nav-buttons {
+  height: 100%;
+  width: 72px;
+  display: flex;
+  gap: 8px;
+}
+.nav-header .nav-buttons .nav-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .station-index {
   background-color: rgb(23, 22, 22);
   color: white;
@@ -186,6 +214,13 @@ svg {
   min-height: 250px;
   height: calc((30vw + 250px) / 2);
   max-height: 400px;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.station-details .content-contaier {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 .station-details .content {
   display: flex;
@@ -195,7 +230,6 @@ svg {
 .station-details .station-info {
   display: flex;
   flex-direction: column;
-  height: 234px;
   justify-content: flex-end;
   align-items: flex-start;
 }
@@ -231,23 +265,23 @@ svg {
   height: 48px;
   width: 48px;
   background-color: rgb(30, 215, 96);
+  margin-right: 28px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.station-details .more-actions {
-  background-color: antiquewhite;
-  width: 24px;
-  height: 24px;
-}
-.station-details .icon {
-  width: 100%;
-  height: 100%;
+.station-details .more-actions-svg-container {
+  width: 32px;
+  height: 32px;
 }
 .station-details svg {
   width: 100%;
   height: 100%;
+}
+
+.more-actions {
+  background-color: transparent;
 }
 
 .station-index {

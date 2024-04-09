@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { StationDetailsHeader } from "../cmps/station/stationDetails/StationDetailsHeader";
 import { StationDetailsActions } from "../cmps/station/stationDetails/StationDetialsActions";
 import { PlaylistSongList } from "../cmps/station/stationDetails/PlaylistSongList";
-
+import { NavHeader } from "../cmps/header/NavHeader";
 import { stationService } from "../services/station.service";
 
 export function StationDetails() {
