@@ -1,5 +1,11 @@
+@font-face {
+  font-family: 'CircularSpotify';
+  font-style: bold;
+  font-weight: 700;
+  src: local("../../fonts/CircularSpotifyText-Black.otf");
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color: white;
@@ -21,11 +27,16 @@ a:hover {
 }
 
 body {
+  font-family: 'CircularSpotify', sans-serif;
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  &>* {
+    font-family: 'CircularSpotify', sans-serif;
+  }
 }
 
 button {
@@ -47,12 +58,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@font-face {
-  font-family: 'CircularSpotify';
-  font-style: bold;
-  font-weight: 700;
-  src: local("../../fonts/CircularSpotifyText-Black.otf");
-}
 
 li {
   list-style-type: none;
@@ -69,4 +74,8 @@ ul {
 svg {
   height: 100%;
   width: 100%;
+}
+
+.secondary {
+  color: $secondary-font-color;
 }

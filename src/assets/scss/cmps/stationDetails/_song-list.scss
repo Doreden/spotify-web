@@ -36,6 +36,12 @@ $no-date-and-album-columns: 16px minmax(120px, 4fr) minmax(120px, 1fr);
         @include flex-center-cetner();
     }
 
+    & .svg-container {
+        height: 20px;
+        width: 20px;
+        @include flex-center-cetner()
+    }
+
     & .song-details {
         @include flex-start-center();
 
@@ -52,7 +58,6 @@ $no-date-and-album-columns: 16px minmax(120px, 4fr) minmax(120px, 1fr);
 
         & .song-artist {
             font-size: 0.875rem;
-            color: rgb(167, 167, 167);
         }
     }
 

@@ -3,7 +3,7 @@ import { PlaylistSongPreview } from "./PlaylistSongPreview";
 export function PlaylistSongList({ songs }) {
   return (
     <div className="song-list">
-      <div className="list-header columns">
+      <div className="list-header columns secondary">
         <div className="song-index">#</div>
         <div className="song-details">Title</div>
         <div className="song-album">Album</div>

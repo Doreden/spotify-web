@@ -1,6 +1,5 @@
 .sidebar {
   grid-area: nav-bar;
-  font-family: CircularSp;
   width: var(--vertical-nav-width);
   height: 100%;
   background-color: #000;
@@ -42,7 +41,6 @@
     }
 
     & .nav-button-text {
-      font-family: "CircularSpotify";
       font-size: medium;
       font-weight: bold;
     }
