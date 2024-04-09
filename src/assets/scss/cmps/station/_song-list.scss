@@ -67,7 +67,7 @@ $no-date-and-album-columns: 16px minmax(120px, 4fr) minmax(120px, 1fr);
     & .date-added {
         @include flex-start-center();
 
-        @media (max-width: 700px) {
+        @media (max-width: 700.1px) {
             display: none;
         }
     }
@@ -88,7 +88,7 @@ $no-date-and-album-columns: 16px minmax(120px, 4fr) minmax(120px, 1fr);
             grid-template-columns: $no-date-and-album-columns;
         }
 
-        @media (min-width: 700px) and (max-width: 840px) {
+        @media (min-width: 700.1px) and (max-width: 840px) {
             grid-template-columns: $no-date-columns;
         }
     }

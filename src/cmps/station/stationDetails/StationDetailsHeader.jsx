@@ -9,10 +9,9 @@ export function StationDetailsHeader({station}){
                 <div className="content">
                     <img src={station.albumCoverUrl} ></img>
                     <div className="station-info">
-                        <span className="station-type">{station.type}</span>
                         <h1 className="station-name">{station.name}</h1>
                         <div className="additional-info-line">
-                            <span className="artist">{station.artist}</span>
+                            <span className="created-by">{station.createdBy.username}</span>
                             <span className="devider">•</span>
 
                             {/* TODO - on albums - release year, on playlists - how many likes */}

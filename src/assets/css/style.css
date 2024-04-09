@@ -154,10 +154,20 @@ svg {
   flex-direction: column;
 }
 .station-details h1 {
-  font-size: 4.5rem;
+  font-size: 6rem;
   margin: 0px;
   white-space-collapse: collapse;
   line-height: 1;
+}
+@media (max-width: 960px) {
+  .station-details h1 {
+    font-size: 4.5rem;
+  }
+}
+@media (max-width: 800px) {
+  .station-details h1 {
+    font-size: 3rem;
+  }
 }
 .station-details img {
   height: 20vw;
@@ -165,15 +175,17 @@ svg {
   border-radius: 4px;
   margin-right: 16px;
   min-height: 160px;
-  max-height: 210px;
+  max-height: 232px;
 }
 .station-details .station-details-header {
   display: flex;
-  height: 234px;
   background-color: #333333;
   padding-left: 16px;
   padding-bottom: 16px;
   padding-right: 16px;
+  min-height: 250px;
+  height: calc((30vw + 250px) / 2);
+  max-height: 400px;
 }
 .station-details .content {
   display: flex;
@@ -190,8 +202,10 @@ svg {
 .station-details .additional-info-line {
   display: flex;
   margin-top: 8px;
+  overflow: hidden;
+  white-space: nowrap;
 }
-.station-details .devider {
+.station-details .additional-info-line .devider {
   font-size: 14px;
   font-weight: 1000;
   margin-left: 4px;
@@ -283,7 +297,7 @@ svg {
   justify-content: flex-start;
   align-items: center;
 }
-@media (max-width: 700px) {
+@media (max-width: 700.1px) {
   .song-list .date-added {
     display: none;
   }
@@ -306,7 +320,7 @@ svg {
     grid-template-columns: 16px minmax(120px, 4fr) minmax(120px, 1fr);
   }
 }
-@media (min-width: 700px) and (max-width: 840px) {
+@media (min-width: 700.1px) and (max-width: 840px) {
   .song-list .columns {
     grid-template-columns: 16px minmax(120px, 4fr) minmax(120px, 2fr) minmax(120px, 1fr);
   }

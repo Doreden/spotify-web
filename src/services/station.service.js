@@ -43,13 +43,17 @@ function createStations(){
     let stations = utilService.loadFromStorage(STORAGE_KEY)
     if(!stations){
         stations = [
+            // TODO - convert to Date.Now()
             {
                 id: "0BFzNaeaNv4mahOzwZFGHK",
                 name: "Royal Blood",
                 albumCoverUrl: 'https://upload.wikimedia.org/wikipedia/en/b/b0/Royal_Blood_-_Royal_Blood_%28Artwork%29.jpg',
-                type: 'album',
-                createdBy: null,
-                addedAt: 162521762362,
+                createdBy: {
+                    id: 'ak491k',
+                    username: 'Or Doga',
+                    imgUrl: 'http://some-photo/"'
+                },                
+                createdAt: 162521762362,
                 artist: 'Royal Blood',
                 songs: [
                     {
@@ -58,7 +62,8 @@ function createStations(){
                         artist: "Royal Blood",
                         lengthInSeconds: 250,
                         url: "youtube/song.mp4",
-                        tags: ["Rock"]
+                        tags: ["Rock"],
+                        dateAdded: 'Jan 29, 2022'
                     },
                     {
                         id: "s1004",
@@ -67,6 +72,8 @@ function createStations(){
                         lengthInSeconds: 195,
                         url: "youtube/song.mp4",
                         tags: ["Bass", "Rock"],
+                        dateAdded: 'Jan 25, 2022'
+
                     },
                     {
                         id: "s1005",
@@ -75,6 +82,8 @@ function createStations(){
                         lengthInSeconds: 221,
                         url: "youtube/song.mp4",
                         tags: ["Bass", "Rock"],
+                        dateAdded: 'Jan 10, 2022'
+
                     }
                 ]   
             },
@@ -83,18 +92,23 @@ function createStations(){
                 name: "Spring Girl",
                 albumCoverUrl: 'https://upload.wikimedia.org/wikipedia/en/1/17/AreyouexpUK.jpg',
                 type: 'single',
-                createdBy: null,
-                addedAt: 162521763928,
+                createdBy: {
+                    id: 'ak491k',
+                    username: 'Or Doga',
+                    imgUrl: 'http://some-photo/"'
+                },                
+                createdAt: 162521763928,
                 artist: 'Adam Ten',
                 songs: [
                     {
                         id: "s1007",
                         title: "Spring Girl",
                         artist: "Adam Ten",
+                        album: "Spring Girl",
                         lengthInSeconds: 394,
                         url: "youtube/song.mp4",
-                        tags: ["Electronic", "House"]
-
+                        tags: ["Electronic", "House"],
+                        dateAdded: 'Jul 13, 2023'
                     }
                 ]   
             },
@@ -108,7 +122,7 @@ function createStations(){
                     username: 'Or Doga',
                     imgUrl: 'http://some-photo/"'
                 },
-                addedAt: 162521763962,
+                createdAt: 162521763962,
                 songs: [
                     {
                         id: "s1007",
@@ -117,7 +131,8 @@ function createStations(){
                         album: "Spring Girl",
                         lengthInSeconds: 394,
                         url: "youtube/song.mp4",
-                        tags: ["Electronic", "House"]
+                        tags: ["Electronic", "House"],
+                        dateAdded: 'Feb 4, 2024'
                     }
                 ]   
             },
