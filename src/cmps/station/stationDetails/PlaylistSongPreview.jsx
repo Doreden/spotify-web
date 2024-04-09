@@ -22,7 +22,7 @@ export function PlaylistSongPreview({ index, song }) {
           {/* <img></img> */}
           <div className="title-and-artist">
             <div className="song-title">{song.title}</div>
-            <div className={`song-artist  `}>{song.artist}</div>
+            <div className={`song-artist  ${isHover? '' : 'secondary'}`}>{song.artist}</div>
           </div>
         </div>
         <div className={`song-album ${isHover? '' : 'secondary'}`}>{song.album}</div>
