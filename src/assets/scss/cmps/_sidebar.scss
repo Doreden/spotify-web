@@ -1,26 +1,28 @@
 .sidebar {
-  cursor: pointer;
-  font-family: CircularSp;
   grid-area: nav-bar;
+  font-family: CircularSp;
   width: var(--vertical-nav-width);
   height: 100%;
-  min-height: 100%;
   background-color: #000;
-  padding-top: 24px;
   padding-bottom: var(--now-playing-bar-height);
-  border-radius: 10px;
   border-color: rgb(179, 179, 179);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &>* {
+    background-color: $component-bg-color;
+  }
 
   & .navigation {
-    background-color: rgba(56, 59, 59, 0.851);
     color: #c4c4c4;
     padding: 18px 12px;
+    border-radius: $layout-border-radius;
   }
 
   & .sidebar-libary {
-    background-color: rgba(202, 123, 18, 0.851);
-    height: 737px;
-    border-radius: 8px;
+    border-radius: $layout-border-radius;
+    overflow: auto;
   }
 
   & .nav-button {
@@ -38,6 +40,7 @@
       height: 36px;
       display: grid;
     }
+
     & .nav-button-text {
       font-family: "CircularSpotify";
       font-size: medium;

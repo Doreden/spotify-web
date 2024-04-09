@@ -1,6 +1,6 @@
 .playline {
-    grid-area: 'now-playing-bar';
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
+    grid-area: now-playing-bar;
     background-color: rgb(233, 255, 190);
+    height: $vertical-nav-width;
+    background-color: black;
 }

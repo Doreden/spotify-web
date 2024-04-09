@@ -1,7 +1,8 @@
 // Basic SCSS
 @import './base/base';
 @import './base/layout';
-@import 'mixins';
+@import './base/mixins';
+@import './base/variables';
 
 // Pages SCSS
 @import './pages/search';
