@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
-import homeIcon from "../../../assets/imgs/home1.svg";
 import { ReactSVG } from "react-svg";
+
+import homeIcon from "../../../assets/imgs/home1.svg";
+import Search from "../../../assets/imgs/search.svg";
+
 export function Navigation() {
   return (
     <>
@@ -16,8 +19,16 @@ export function Navigation() {
               </div>
             </Link>
           </li>
-          <li className="nav-button">
-            <Link to="/search">Search</Link>
+
+          <li>
+            <Link to="/search">
+              <div className="nav-button">
+                <div className="nav-button-svg">
+                  <ReactSVG src={Search} />
+                </div>
+                <span className="nav-button-text">Search</span>
+              </div>
+            </Link>
           </li>
         </ul>
       </div>

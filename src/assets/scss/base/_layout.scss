@@ -17,11 +17,6 @@
     background-color: black;
     gap: 8px;
 
-
-    -webkit-scrollbar {
-        display: none;
-    }
-
 }
 
 .page {
@@ -29,4 +24,6 @@
     border-radius: $layout-border-radius;
     overflow: hidden;
     background-color: $component-bg-color;
+    overflow: auto;
+    scroll-behavior: smooth;
 }

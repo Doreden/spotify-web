@@ -1,13 +1,13 @@
 .sidebar {
   grid-area: nav-bar;
-  width: var(--vertical-nav-width);
+  width: $vertical-nav-width;
   height: 100%;
   background-color: #000;
-  padding-bottom: var(--now-playing-bar-height);
   border-color: rgb(179, 179, 179);
   display: flex;
   flex-direction: column;
   gap: 8px;
+  font-weight: 100;
 
   &>* {
     background-color: $component-bg-color;
@@ -15,34 +15,78 @@
 
   & .navigation {
     color: #c4c4c4;
-    padding: 18px 12px;
+    padding: 8px 12px;
     border-radius: $layout-border-radius;
   }
 
   & .sidebar-libary {
     border-radius: $layout-border-radius;
     overflow: auto;
+    height: 100%;
   }
 
   & .nav-button {
-    padding: 5px 16px;
+    padding: 4px 12px;
     display: flex;
+    gap: 20px;
+    height: 40px;
     flex-direction: row;
     align-items: center;
-    // margin: 5px 0;
+    color: $secondary-font-color;
     font-size: 1rem;
-    gap: 10px;
-    // grid-template-columns: auto 1fr auto;
+
+    &:hover {
+      color: white;
+    }
 
     & .nav-button-svg {
-      width: 36px;
-      height: 36px;
+      width: 24px;
+      height: 24px;
       display: grid;
+      fill: $secondary-font-color;
     }
 
     & .nav-button-text {
       font-size: medium;
       font-weight: bold;
+    }
+  }
+
+  .sidebar-libary-header {
+    display: flex;
+    gap: 8px;
+    height: 40px;
+    padding: 8px 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    & .your-libary {
+      display: flex;
+      margin-right: 25px;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 4px 8px;
+    }
+
+    & .your-libary-txt {
+      color: $secondary-font-color;
+    }
+
+    & .libary-svg {
+      width: 24px;
+      height: 24px;
+      margin-right: 12px;
+      fill: $secondary-font-color;
+    }
+
+    & .new-playlist {
+      background-color: transparent;
+    }
+
+    & .plus-svg {
+      width: 16px;
+      height: 16px;
+      fill: $secondary-font-color;
     }
   }
 }

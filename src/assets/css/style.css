@@ -69,6 +69,16 @@ svg {
   color: rgb(179, 179, 179);
 }
 
+* .page {
+  scrollbar-width: thin;
+  overflow-y: auto;
+  scrollbar-gutter: auto;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
 .main-app {
   display: grid;
   box-sizing: border-box;
@@ -85,15 +95,14 @@ svg {
   background-color: black;
   gap: 8px;
 }
-.main-app -webkit-scrollbar {
-  display: none;
-}
 
 .page {
   grid-area: main-view;
   border-radius: 8px;
   overflow: hidden;
   background-color: rgb(18, 18, 18);
+  overflow: auto;
+  scroll-behavior: smooth;
 }
 
 .station-index {
@@ -219,43 +228,82 @@ svg {
 
 .sidebar {
   grid-area: nav-bar;
-  width: var(--vertical-nav-width);
+  width: 280px;
   height: 100%;
   background-color: #000;
-  padding-bottom: var(--now-playing-bar-height);
   border-color: rgb(179, 179, 179);
   display: flex;
   flex-direction: column;
   gap: 8px;
+  font-weight: 100;
 }
 .sidebar > * {
   background-color: rgb(18, 18, 18);
 }
 .sidebar .navigation {
   color: #c4c4c4;
-  padding: 18px 12px;
+  padding: 8px 12px;
   border-radius: 8px;
 }
 .sidebar .sidebar-libary {
   border-radius: 8px;
   overflow: auto;
+  height: 100%;
 }
 .sidebar .nav-button {
-  padding: 5px 16px;
+  padding: 4px 12px;
   display: flex;
+  gap: 20px;
+  height: 40px;
   flex-direction: row;
   align-items: center;
+  color: rgb(179, 179, 179);
   font-size: 1rem;
-  gap: 10px;
+}
+.sidebar .nav-button:hover {
+  color: white;
 }
 .sidebar .nav-button .nav-button-svg {
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
   display: grid;
+  fill: rgb(179, 179, 179);
 }
 .sidebar .nav-button .nav-button-text {
   font-size: medium;
   font-weight: bold;
+}
+.sidebar .sidebar-libary-header {
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  padding: 8px 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+.sidebar .sidebar-libary-header .your-libary {
+  display: flex;
+  margin-right: 25px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4px 8px;
+}
+.sidebar .sidebar-libary-header .your-libary-txt {
+  color: rgb(179, 179, 179);
+}
+.sidebar .sidebar-libary-header .libary-svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  fill: rgb(179, 179, 179);
+}
+.sidebar .sidebar-libary-header .new-playlist {
+  background-color: transparent;
+}
+.sidebar .sidebar-libary-header .plus-svg {
+  width: 16px;
+  height: 16px;
+  fill: rgb(179, 179, 179);
 }
 
 .nav-header {
@@ -289,6 +337,22 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.song-list .preview-play-svg-container {
+  fill: white;
+}
+.song-list .length-svg-container {
+  width: 16px;
+  height: 16px;
+  padding-right: 8px;
+  fill: rgb(179, 179, 179);
+}
+.song-list .add-to-liked-svg-container {
+  width: 16px;
+  height: 16px;
+  padding-right: 24px;
+  fill: rgb(179, 179, 179);
+  background-color: transparent;
 }
 .song-list .svg-container {
   height: 20px;

@@ -14,19 +14,11 @@ export function StationDetailsHeader({station}){
                             <div className="additional-info-line">
                                 <span className="created-by">{station.createdBy.username}</span>
                                 <span className="devider">•</span>
-
-                                {/* TODO - on albums - release year, on playlists - how many likes */}
-                                {/* <span className="year-released">{station.releaseYear}</span> */}
-                                {/* <span className="devider">•</span> */}
-                                <span className="number-of-songs">{station.songs.length} Songs</span>
+                                <span className="number-of-likes">{station.likedByUsers.length} Likes</span>
+                                <span className="devider">•</span>
+                                <span className="number-of-songs">{station.songs.length} Song{station.songs.length!==1? 's' : ''}</span>
                                 <span className="devider">•</span>
                                 <span className="station-length">{utilService.formatStationLength(station.songs)}</span>
-
-                            <span className="year-released">{station.releaseYear}</span>
-                                <span className="devider">•</span>
-                                <span className="number-of-songs">{station.
-                                    songs.length} Songs</span>
-                                {/* <span className="station-length"> Create Convertion Util Function </span> */}
                             </div>
                         </div>
                     </div>

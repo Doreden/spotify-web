@@ -1,10 +1,5 @@
 // TODO : Do not repeat code
 // TODO : Remove padding right from songLength.
-$playlist-columns: 16px minmax(120px, 6fr) minmax(120px, 4fr) minmax(120px, 3fr) minmax(120px, 1fr);
-$no-date-columns: 16px minmax(120px, 4fr) minmax(120px, 2fr) minmax(120px, 1fr);
-$no-date-and-album-columns: 16px minmax(120px, 4fr) minmax(120px, 1fr);
-
-
 
 @mixin flex-start-center {
     display: flex;
@@ -34,6 +29,25 @@ $no-date-and-album-columns: 16px minmax(120px, 4fr) minmax(120px, 1fr);
     // Columns - Preview and Header in match
     & .song-index {
         @include flex-center-cetner();
+    }
+
+    .preview-play-svg-container {
+        fill: white;
+    }
+
+    .length-svg-container {
+        width: 16px;
+        height: 16px;
+        padding-right: 8px;
+        fill: $secondary-font-color;
+    }
+
+    .add-to-liked-svg-container {
+        width: 16px;
+        height: 16px;
+        padding-right: 24px;
+        fill: $secondary-font-color;
+        background-color: transparent;
     }
 
     & .svg-container {

@@ -4,5 +4,9 @@ $secondary-font-color: rgb(179, 179, 179);
 
 // Layout:
 $layout-border-radius: 8px;
-$vertical-nav-width: 72px;
+$vertical-nav-width: 280px;
 $now-playing-bar-height: 11vh;
+
+$playlist-columns: 16px minmax(120px, 6fr) minmax(120px, 4fr) minmax(120px, 3fr) minmax(120px, 1fr);
+$no-date-columns: 16px minmax(120px, 4fr) minmax(120px, 2fr) minmax(120px, 1fr);
+$no-date-and-album-columns: 16px minmax(120px, 4fr) minmax(120px, 1fr);

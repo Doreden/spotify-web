@@ -1,4 +1,14 @@
 import { PlaylistSongPreview } from "./PlaylistSongPreview";
+import { ReactSVG } from "react-svg";
+import Length from '../../../assets/imgs/length.svg'
+
+function LengthSvg(){
+  return (
+    <div className="length-svg-container">
+      {<ReactSVG src={Length}/>}
+    </div>
+  )
+}
 
 export function PlaylistSongList({ songs }) {
   return (
@@ -8,7 +18,7 @@ export function PlaylistSongList({ songs }) {
         <div className="song-details">Title</div>
         <div className="song-album">Album</div>
         <div className="date-added">Date Added</div>
-        <div className="song-length">Len</div>
+        <div className="song-length">{LengthSvg()}</div>
       </div>
 
       {songs.map((song, index) => (

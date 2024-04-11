@@ -122,6 +122,7 @@ function createStations(){
                     username: 'Or Doga',
                     imgUrl: 'http://some-photo/"'
                 },
+                likedByUsers: ["{minimal-user}", "{minimal-user}"],
                 createdAt: 162521763962,
                 songs: [
                     {
@@ -133,6 +134,71 @@ function createStations(){
                         url: "youtube/song.mp4",
                         tags: ["Electronic", "House"],
                         dateAdded: 'Feb 4, 2024'
+                    },
+                    {
+                        id: "s1003",
+                        title: "Out Of The Black",
+                        artist: "Royal Blood",
+                        album: "Royal Blood",
+                        lengthInSeconds: 250,
+                        url: "youtube/song.mp4",
+                        tags: ["Rock"],
+                        dateAdded: 'Jan 29, 2022'
+                    },
+                    {
+                        id: "s1004",
+                        title: "Little Monster",
+                        artist: "Royal Blood",
+                        album: "Royal Blood",
+                        lengthInSeconds: 195,
+                        url: "youtube/song.mp4",
+                        tags: ["Bass", "Rock"],
+                        dateAdded: 'Jan 25, 2022'
+
+                    },
+                    {
+                        id: "s1005",
+                        title: "Come On Over",
+                        artist: "Royal Blood",
+                        album: "Royal Blood",
+                        lengthInSeconds: 221,
+                        url: "youtube/song.mp4",
+                        tags: ["Bass", "Rock"],
+                        dateAdded: 'Jan 10, 2022'
+
+                    },
+                    {
+                        id: "s1005",
+                        title: "Come On Over",
+                        artist: "Royal Blood",
+                        album: "Royal Blood",
+                        lengthInSeconds: 221,
+                        url: "youtube/song.mp4",
+                        tags: ["Bass", "Rock"],
+                        dateAdded: 'Jan 10, 2022'
+
+                    },
+                    {
+                        id: "s1005",
+                        title: "Come On Over",
+                        artist: "Royal Blood",
+                        album: "Royal Blood",
+                        lengthInSeconds: 221,
+                        url: "youtube/song.mp4",
+                        tags: ["Bass", "Rock"],
+                        dateAdded: 'Jan 10, 2022'
+
+                    },
+                    {
+                        id: "s1005",
+                        title: "Come On Over",
+                        artist: "Royal Blood",
+                        album: "Royal Blood",
+                        lengthInSeconds: 221,
+                        url: "youtube/song.mp4",
+                        tags: ["Bass", "Rock"],
+                        dateAdded: 'Jan 10, 2022'
+
                     }
                 ]   
             },
