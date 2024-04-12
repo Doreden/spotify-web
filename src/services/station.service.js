@@ -7,6 +7,7 @@ export const stationService = {
     query,
     getById,
     removeById,
+    createNewStation,
     createStations
 }
 
@@ -33,6 +34,33 @@ async function removeById(id) {
     }
 }
 
+// TODO : change to get user from store
+async function createNewStation(user = {}){
+    const emptyStation = _makeEmptyStation(user)
+    return save(emptyStation)
+}
+
+function save(stationToSave) {
+    if (stationToSave.id) {
+        return storageService.put(STORAGE_KEY, stationToSave)
+    } else {
+        return storageService.post(STORAGE_KEY, stationToSave)
+    }
+}
+
+function _makeEmptyStation(user){
+    return {
+        name: 'New Playlist',
+        albumCoverUrl: null,
+        createdBy: user,
+        likedByUsers: [],
+        createdAt: Date.now(),
+        songs: []
+    }
+}
+
+
+
 
 
 
@@ -55,7 +83,6 @@ function createStations(){
                 },                
                 likedByUsers: ["{minimal-user}", "{minimal-user}"],
                 createdAt: 162521762362,
-                artist: 'Royal Blood',
                 songs: [
                     {
                         id: "s1003",
@@ -100,7 +127,6 @@ function createStations(){
                 },                
                 likedByUsers: ["{minimal-user}", "{minimal-user}"],
                 createdAt: 162521763928,
-                artist: 'Adam Ten',
                 songs: [
                     {
                         id: "s1007",
@@ -207,5 +233,6 @@ function createStations(){
         ]
         utilService.saveToStorage(STORAGE_KEY,stations)
     }
+
 }
 

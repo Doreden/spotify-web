@@ -1,3 +1,5 @@
+import { addStation } from '../../../store/actions/station.action'
+
 import { ReactSVG } from "react-svg"
 import Libary from '../../../assets/imgs/libary.svg'
 import Plus from '../../../assets/imgs/plus.svg'
@@ -5,8 +7,8 @@ import Plus from '../../../assets/imgs/plus.svg'
 export function SidebarLibaryHeader(){
 
 
-    function handleAddPlaylist(){
-        
+    function handleAddStation(){
+        addStation()
     }
 
     return (
@@ -19,7 +21,7 @@ export function SidebarLibaryHeader(){
                     <div className="your-libary-txt">Your Libary</div>
                 </div>
 
-                <button onClick={handleAddPlaylist} className="new-playlist">
+                <button onClick={handleAddStation} className="new-playlist">
                     <div className="plus-svg">
                         <ReactSVG src={Plus}/>
                     </div>

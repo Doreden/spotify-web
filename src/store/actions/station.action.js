@@ -1,6 +1,7 @@
-import { LOAD_STATIONS } from "../reducers/station.reducer";
+import { ADD_STATION, LOAD_STATIONS, REMOVE_STATION } from "../reducers/station.reducer";
 import { store } from "../store";
 import { stationService } from "../../services/station.service";
+
 
 
 export async function loadStations() {
@@ -13,8 +14,23 @@ export async function loadStations() {
     }
   }
 
-//   export async function addStation() {
-//     try {
-//         const 
-//     }
-//   }
+export async function addStation() {
+  try {
+
+    const newStation = await stationService.createNewStation()
+    store.dispatch({type: ADD_STATION, newStation })
+  } catch (error) {
+    console.log(error)
+    console.log('Could Not add Station')
+  }
+}
+
+export async function removeStation(stationId){
+  try{
+    const idx = stationService.removeById(stationId)
+    store.dispatch({type: REMOVE_STATION, stationId})
+  }catch(error){
+    console.log(error)
+    console.log('Could not remove Station')
+  }
+}
