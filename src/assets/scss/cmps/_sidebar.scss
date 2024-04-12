@@ -88,5 +88,40 @@
       height: 16px;
       fill: $secondary-font-color;
     }
+
   }
+
+  & .libary-station-list {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+
+
+    & .station-preview {
+      height: 48px;
+      padding: 8px;
+      display: flex;
+      gap: 12px;
+
+      & .station-preview-text {
+        display: flex;
+        flex-direction: column;
+
+        & .station-name {}
+
+        & .created-by {
+          color: $secondary-font-color;
+          font-size: 14px;
+        }
+      }
+
+      & img {
+        width: 48px;
+        height: 48px;
+        border-radius: 4px;
+      }
+    }
+
+  }
+
 }

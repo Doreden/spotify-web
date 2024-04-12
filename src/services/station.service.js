@@ -126,7 +126,7 @@ function createStations(){
                 createdAt: 162521763962,
                 songs: [
                     {
-                        id: "s1007",
+                        id: "s1009",
                         title: "Spring Girl",
                         artist: 'Adam Ten',
                         album: "Spring Girl",
@@ -168,7 +168,7 @@ function createStations(){
 
                     },
                     {
-                        id: "s1005",
+                        id: "s1006",
                         title: "Come On Over",
                         artist: "Royal Blood",
                         album: "Royal Blood",
@@ -179,7 +179,7 @@ function createStations(){
 
                     },
                     {
-                        id: "s1005",
+                        id: "s1007",
                         title: "Come On Over",
                         artist: "Royal Blood",
                         album: "Royal Blood",
@@ -190,7 +190,7 @@ function createStations(){
 
                     },
                     {
-                        id: "s1005",
+                        id: "s1008",
                         title: "Come On Over",
                         artist: "Royal Blood",
                         album: "Royal Blood",

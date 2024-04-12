@@ -5,9 +5,7 @@ import { loadStations } from "../store/actions/station.action";
 
 
 export function StationIndex() {
-  useEffect(() => {
-    loadStations();
-  }, []);
+
 
 
   const stations = useSelector((storeState) => {

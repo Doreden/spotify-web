@@ -5,6 +5,10 @@ import Plus from '../../../assets/imgs/plus.svg'
 export function SidebarLibaryHeader(){
 
 
+    function handleAddPlaylist(){
+        
+    }
+
     return (
         <>
             <div className="sidebar-libary-header">
@@ -15,7 +19,7 @@ export function SidebarLibaryHeader(){
                     <div className="your-libary-txt">Your Libary</div>
                 </div>
 
-                <button className="new-playlist">
+                <button onClick={handleAddPlaylist} className="new-playlist">
                     <div className="plus-svg">
                         <ReactSVG src={Plus}/>
                     </div>

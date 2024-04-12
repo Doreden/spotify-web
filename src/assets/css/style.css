@@ -305,6 +305,30 @@ svg {
   height: 16px;
   fill: rgb(179, 179, 179);
 }
+.sidebar .libary-station-list {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+}
+.sidebar .libary-station-list .station-preview {
+  height: 48px;
+  padding: 8px;
+  display: flex;
+  gap: 12px;
+}
+.sidebar .libary-station-list .station-preview .station-preview-text {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar .libary-station-list .station-preview .station-preview-text .created-by {
+  color: rgb(179, 179, 179);
+  font-size: 14px;
+}
+.sidebar .libary-station-list .station-preview img {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+}
 
 .nav-header {
   height: 32px;
