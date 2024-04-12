@@ -1,6 +1,7 @@
 import { ADD_STATION, LOAD_STATIONS, REMOVE_STATION } from "../reducers/station.reducer";
 import { store } from "../store";
 import { stationService } from "../../services/station.service";
+import { Navigate } from "react-router";
 
 
 
@@ -27,8 +28,10 @@ export async function addStation() {
 
 export async function removeStation(stationId){
   try{
-    const idx = stationService.removeById(stationId)
+    stationService.removeById(stationId)
     store.dispatch({type: REMOVE_STATION, stationId})
+    // TODO check if works:
+    Navigate('/')
   }catch(error){
     console.log(error)
     console.log('Could not remove Station')
