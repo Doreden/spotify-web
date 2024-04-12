@@ -7,8 +7,8 @@ import { StationDetails } from "./pages/StationDetails.jsx";
 import { Search } from "./pages/Search.jsx";
 
 // Components
-import { Sidebar } from "./cmps/aside/Sidebar.jsx";
-import { Playline } from "./cmps//footer/playline/Playline.jsx";
+import { Sidebar } from "./cmps/sidebar/Sidebar.jsx";
+import { Playline } from "./cmps/playline/Playline.jsx";
 
 // Store
 import { store } from "./store/store.js";

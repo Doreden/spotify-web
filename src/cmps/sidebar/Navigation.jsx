@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 
-import homeIcon from "../../../assets/imgs/home1.svg";
-import Search from "../../../assets/imgs/search.svg";
+import homeIcon from "../../assets/imgs/home1.svg";
+import Search from "../../assets/imgs/search.svg";
 
 export function Navigation() {
   return (

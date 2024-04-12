@@ -1,5 +1,5 @@
-import { Navigation } from "./sidebar/Navigation"
-import { SidebarLibary } from "./sidebar/SidebarLibary"
+import { Navigation } from "./Navigation"
+import { SidebarLibary } from "./SidebarLibary"
 export function Sidebar() {
 
 

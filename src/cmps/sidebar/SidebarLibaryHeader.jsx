@@ -1,8 +1,9 @@
-import { addStation } from '../../../store/actions/station.action'
+import { addStation } from '../../store/actions/station.action'
 
 import { ReactSVG } from "react-svg"
-import Libary from '../../../assets/imgs/libary.svg'
-import Plus from '../../../assets/imgs/plus.svg'
+
+import Libary from '../../assets/imgs/libary.svg'
+import Plus from '../../assets/imgs/plus.svg'
 
 export function SidebarLibaryHeader(){
 
