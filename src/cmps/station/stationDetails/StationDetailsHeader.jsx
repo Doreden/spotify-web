@@ -14,7 +14,7 @@ export function StationDetailsHeader({station}){
                             <div className="additional-info-line">
                                 <span className="created-by">{station.createdBy.username}</span>
                                 <span className="devider">•</span>
-                                <span className="number-of-likes">{station.likedByUsers.length} Likes</span>
+                                {/* <span className="number-of-likes">{station.likedByUsers.length} Likes</span> */}
                                 <span className="devider">•</span>
                                 <span className="number-of-songs">{station.songs.length} Song{station.songs.length!==1? 's' : ''}</span>
                                 <span className="devider">•</span>

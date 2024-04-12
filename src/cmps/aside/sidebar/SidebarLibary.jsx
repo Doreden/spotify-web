@@ -19,6 +19,7 @@ export function SidebarLibary(){
                     {stations.map((station) => (
                         <StationPreview station={station}/>
                     ))}
+
                 </div>
 
             </div>

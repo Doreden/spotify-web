@@ -53,6 +53,7 @@ function createStations(){
                     username: 'Or Doga',
                     imgUrl: 'http://some-photo/"'
                 },                
+                likedByUsers: ["{minimal-user}", "{minimal-user}"],
                 createdAt: 162521762362,
                 artist: 'Royal Blood',
                 songs: [
@@ -97,6 +98,7 @@ function createStations(){
                     username: 'Or Doga',
                     imgUrl: 'http://some-photo/"'
                 },                
+                likedByUsers: ["{minimal-user}", "{minimal-user}"],
                 createdAt: 162521763928,
                 artist: 'Adam Ten',
                 songs: [

@@ -12,7 +12,7 @@ export function StationDetails() {
 
   useEffect(() => {
     loadStation();
-  }, []);
+  }, [params]);
 
   async function loadStation() {
     try {
