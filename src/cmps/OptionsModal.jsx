@@ -30,23 +30,20 @@ export function OptionsModal({modalType, entity}){
         </div>
     )
 
-    
+
     function SongOptions({song}){
         return (
             <>
-                <div>Song</div>
-                <div>{song.title}</div>
-                <button>Delete Song</button>
+                <li>Delete Song</li>
+                <li>Add To Liked Songs</li>
             </>
         )
     }
     function StationOptions({station}){
         return (
             <>
-                <div>Station</div>
-                <div>{station.name}</div>
-                <button onClick={() => handleDeleteStation(station.id)}>Delete Station</button>
-    
+                <li>Delete Station</li>
+                <li>Edit Details</li>
             </>
         )
     }

@@ -17,12 +17,9 @@ export function SidebarLibary(){
                         <div className="preview-item">
                             <StationPreview key={station.id} station={station}/>
                             <OptionsModal modalType={'station'} entity={station} />
-                        </div>
-                        
+                        </div>  
                     ))}
-
                 </div>
-
             </div>
         </>
     )
