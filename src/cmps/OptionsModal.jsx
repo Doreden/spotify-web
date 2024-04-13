@@ -1,20 +1,51 @@
-import { useState } from "react"
+import { useEffect, useState, useRef } from "react"
+import { stationService } from "../services/station.service";
 import { removeStation } from '../store/actions/station.action'
+import { useNavigate } from "react-router";
 
-export function OptionsModal({modalType, entity}){
+export function OptionsModal({modalType, entity, isOpen, onClose, buttonPosition, station}){
 
-    const [isOpen,setIsOpen] = useState(false)
+    const modalRef = useRef()
+    const navigate = useNavigate()
 
-    function handleDeleteSong(){
+    useEffect(() => {
+      if (isOpen) {
+        document.addEventListener("mousedown", handleClickOutside);
+      } else {
+        document.removeEventListener("mousedown", handleClickOutside);
+      }
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [isOpen, onClose]);
 
+
+    const modalPosition ={
+        // position: 'fixed',
+        // top: `calc(${buttonPosition.top}px + 10px)`,
+        // left: `${buttonPosition.left}px`
+        buttonPosition: 'fixed',
+        top: buttonPosition.top - 130,
+        left: buttonPosition.left-80
+    }
+
+  function handleClickOutside(event){
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      onClose();
+    }
+  };
+
+    function handleDeleteSong(stationId,songId){
+        stationService.removeSongFromStation(stationId, songId)
     }
 
     function handleDeleteStation(stationId){
         removeStation(stationId)
+        navigate("/")
     }
 
     return (
-        <div className="options-modal">
+        <div className="options-modal" ref={modalRef} style={modalPosition}>
             <ul className="options-list">
                 {(() => {
                     switch(modalType){
@@ -34,7 +65,7 @@ export function OptionsModal({modalType, entity}){
     function SongOptions({song}){
         return (
             <>
-                <li>Delete Song</li>
+                <li onClick={() => handleDeleteSong(station.id, song.id)}>Delete Song</li>
                 <li>Add To Liked Songs</li>
             </>
         )
@@ -42,7 +73,7 @@ export function OptionsModal({modalType, entity}){
     function StationOptions({station}){
         return (
             <>
-                <li>Delete Station</li>
+                <li onClick={() => handleDeleteStation(station.id)}>Delete Station</li>
                 <li>Edit Details</li>
             </>
         )

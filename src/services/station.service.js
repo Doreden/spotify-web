@@ -4,11 +4,20 @@ import { utilService } from './util.service.js'
 const STORAGE_KEY = 'stations'
 
 export const stationService = {
+    removeSongFromStation,
     query,
     getById,
     removeById,
     createNewStation,
     createStations
+}
+
+async function removeSongFromStation(stationId,songId){
+    let station = await getById(stationId)
+    console.log(station)
+    station = {...station, songs: station.songs.filter(song => song.id !== songId)}
+    console.log(station)
+    save(station)
 }
 
 async function query() {

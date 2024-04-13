@@ -78,7 +78,10 @@
   }
 
   & .more-actions {
+    color: rgb(167, 167, 167);
     background-color: transparent;
+    // TODO convert to svg instead:
+    font-size: 24px;
   }
 
   & .more-actions-svg-container {

@@ -7,12 +7,12 @@ import { NavHeader } from "../cmps/header/NavHeader";
 import { stationService } from "../services/station.service";
 
 export function StationDetails() {
-  const [station, setStation] = useState();
+  const [station, setStation] = useState(null);
   const params = useParams();
 
   useEffect(() => {
     loadStation();
-  }, [params]);
+  }, [params, station?.songs]);
 
   async function loadStation() {
     try {
@@ -30,7 +30,7 @@ export function StationDetails() {
         <StationDetailsHeader station={station} />
         <StationDetailsActions station={station} />
         <div className="song-list-container">
-            <PlaylistSongList songs={station.songs} />
+            <PlaylistSongList station={station} />
         </div>
       </section>
     </>

@@ -1,7 +1,6 @@
 import { PlaylistSongPreview } from "./PlaylistSongPreview";
 import { ReactSVG } from "react-svg";
 import Length from '../../../assets/imgs/length.svg'
-import { OptionsModal } from "../../OptionsModal";
 
 function LengthSvg(){
   return (
@@ -11,7 +10,7 @@ function LengthSvg(){
   )
 }
 
-export function PlaylistSongList({ songs }) {
+export function PlaylistSongList({ station }) {
   return (
     <div className="song-list">
       <div className="list-header columns secondary">
@@ -22,10 +21,10 @@ export function PlaylistSongList({ songs }) {
         <div className="song-length">{LengthSvg()}</div>
       </div>
 
-      {songs.map((song, index) => (
+      {station.songs.map((song, index) => (
         <li key={song.id}>
-          <PlaylistSongPreview index={index + 1} song={song} />
-          <OptionsModal modalType={'song'} entity={song} />
+          <PlaylistSongPreview index={index + 1} song={song} station={station}/>
+          {/* <OptionsModal modalType={'song'} entity={song} style={{top:10}} /> */}
         </li>
       ))}
     </div>

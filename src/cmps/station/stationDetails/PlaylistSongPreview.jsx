@@ -1,11 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { utilService } from "../../../services/util.service";
 import { ReactSVG } from "react-svg";
+
+import { OptionsModal } from "../../OptionsModal";
 
 import Play from '../../../assets/imgs/play.svg'
 import AddToLiked from '../../../assets/imgs/addToLikes.svg'
 
-export function PlaylistSongPreview({ index, song }) {
+export function PlaylistSongPreview({ index, song, station }) {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [buttonPosition, setButtonPosition] = useState({top:0,left:0})
+  const buttonRef = useRef(null)
+
+  useEffect(() => {
+    function updateButtonPosition(){
+      const buttonRect = buttonRef.current.getBoundingClientRect();
+      setButtonPosition({
+        top: buttonRect.top + buttonRect.height,
+        left: buttonRect.left
+      });
+    }
+    updateButtonPosition(); // Initial position
+    window.addEventListener('resize', updateButtonPosition);
+
+    return () => {
+      window.removeEventListener('resize', updateButtonPosition);
+    };
+  }, []);
+
+
+
+  function handleOptionsClick(event){
+    // const buttonRect = event.target.getBoundingClientRect();
+    // setButtonPosition((prevPosition) => ({
+    //   top: buttonRect.top + buttonRect.height + window.scrollY,
+    //   left: buttonRect.left + window.scrollX
+    // }))
+    setIsModalOpen(true)
+  }
+
 
   const [isHover, setIsHover] = useState(false)
 
@@ -15,7 +49,6 @@ export function PlaylistSongPreview({ index, song }) {
   function handleHoverEnded(){
     setIsHover(() => false)
   }
-
   function displayPlayButton(){
     return(
       isHover? 
@@ -35,6 +68,10 @@ export function PlaylistSongPreview({ index, song }) {
     )
   }
 
+  function onClose(){
+    setIsModalOpen((prevState) => false)
+  }
+
   return (
     <>
       <div className="song-preview columns" onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
@@ -51,6 +88,10 @@ export function PlaylistSongPreview({ index, song }) {
         <div className="song-length secondary">
           {displayAddToLikedButton()}
           {utilService.formatSongLength(song.lengthInSeconds)}
+          <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>•••</button>
+          {isModalOpen && (
+            <OptionsModal modalType={'song'} entity={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition}/>
+          )}
         </div>
       </div>
     </>

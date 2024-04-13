@@ -14,9 +14,8 @@ export function SidebarLibary(){
                 
                 <div className="libary-station-list">
                     {stations.map((station) => (
-                        <div className="preview-item">
-                            <StationPreview key={station.id} station={station}/>
-                            <OptionsModal modalType={'station'} entity={station} />
+                        <div key={station.id} className="preview-item">
+                            <StationPreview station={station}/>
                         </div>  
                     ))}
                 </div>
