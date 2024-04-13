@@ -40,7 +40,7 @@ body > * {
 button {
   cursor: pointer;
   border: none;
-  background-color: transparent;
+  background-color: none;
 }
 
 button:focus,
@@ -184,9 +184,7 @@ svg {
   align-items: center;
 }
 .station-details .more-actions {
-  color: rgb(167, 167, 167);
   background-color: transparent;
-  font-size: 24px;
 }
 .station-details .more-actions-svg-container {
   width: 32px;
@@ -483,9 +481,6 @@ svg {
 .song-list .song-preview {
   height: 56px;
   border-radius: 4px;
-}
-.song-list .song-preview .song-options {
-  color: white;
 }
 .song-list .song-preview:hover {
   background-color: hsla(0, 0%, 100%, 0.07);
