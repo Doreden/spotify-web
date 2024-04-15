@@ -13,7 +13,7 @@ function LengthSvg(){
 export function PlaylistSongList({ station }) {
   return (
     <div className="song-list">
-      <div className="list-header columns secondary">
+      <div className="list-header playlist-columns secondary">
         <div className="song-index">#</div>
         <div className="song-details">Title</div>
         <div className="song-album">Album</div>

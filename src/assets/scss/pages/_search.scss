@@ -1,3 +1,71 @@
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+}
+
 .search {
-    background-color: cadetblue;
+    background-color: $component-bg-color;
+
+    & .search-results {
+        margin-top: 24px;
+        column-gap: 12px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        ;
+
+        & .top-result {
+            grid-column: 1/3;
+        }
+
+        & .rest-of-results {
+            display: flex;
+            flex-direction: column;
+            grid-column: 3 / -1;
+
+            & .song-details {
+                display: flex;
+            }
+
+            .add-to-liked-svg-container {
+                width: 16px;
+                height: 16px;
+                padding-right: 24px;
+                fill: $secondary-font-color;
+                background-color: transparent;
+            }
+
+            & .song-preview {
+                display: flex;
+                align-items: cen;
+                justify-content: space-between;
+                height: 56px;
+                border-radius: 4px;
+
+                & .img-container {
+                    margin-right: 12px;
+                    @include flex-center();
+                }
+
+                & .title-and-artist {
+                    @include flex-center();
+                    text-overflow: ellipsis;
+
+                }
+
+                & .song-length {
+                    @include flex-center();
+                }
+
+                & .song-options {
+                    color: white;
+                }
+
+                &:hover {
+                    background-color: hsla(0, 0%, 100%, .07)
+                }
+            }
+        }
+
+    }
+
 }

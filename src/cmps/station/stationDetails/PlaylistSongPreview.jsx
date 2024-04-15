@@ -74,17 +74,27 @@ export function PlaylistSongPreview({ index, song, station }) {
 
   return (
     <>
-      <div className="song-preview columns" onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
-        <div className="song-index">{displayPlayButton()}</div>
+      <div className={`song-preview ${station? 'playlist-columns' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
+        {station && <div className="song-index">{displayPlayButton()}</div>}
+
         <div className="song-details">
-          {/* <img></img> */}
+          {!station && 
+          <div className="img-container">
+            <img className="search-result-thumbnail" src={song.imgURL} height={40} width={40}></img>
+          </div>}
           <div className="title-and-artist">
             <div className="song-title">{song.title}</div>
             <div className={`song-artist  ${isHover? '' : 'secondary'}`}>{song.artist}</div>
           </div>
         </div>
-        <div className={`song-album ${isHover? '' : 'secondary'}`}>{song.album}</div>
-        <div className="date-added secondary">Nov 11</div>
+
+        {station && (
+        <>
+          <div className={`song-album ${isHover? '' : 'secondary'}`}>{song.album}</div>
+          <div className="date-added secondary">Nov 11</div>
+        </>
+        )}
+
         <div className="song-length secondary">
           {displayAddToLikedButton()}
           {utilService.formatSongLength(song.lengthInSeconds)}
@@ -93,6 +103,7 @@ export function PlaylistSongPreview({ index, song, station }) {
             <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition}/>
           )}
         </div>
+        
       </div>
     </>
   );

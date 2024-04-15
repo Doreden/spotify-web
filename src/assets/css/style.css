@@ -110,7 +110,58 @@ svg {
 }
 
 .search {
-  background-color: cadetblue;
+  background-color: rgb(18, 18, 18);
+}
+.search .search-results {
+  margin-top: 24px;
+  column-gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.search .search-results .top-result {
+  grid-column: 1/3;
+}
+.search .search-results .rest-of-results {
+  display: flex;
+  flex-direction: column;
+  grid-column: 3/-1;
+}
+.search .search-results .rest-of-results .song-details {
+  display: flex;
+}
+.search .search-results .rest-of-results .add-to-liked-svg-container {
+  width: 16px;
+  height: 16px;
+  padding-right: 24px;
+  fill: rgb(179, 179, 179);
+  background-color: transparent;
+}
+.search .search-results .rest-of-results .song-preview {
+  display: flex;
+  align-items: cen;
+  justify-content: space-between;
+  height: 56px;
+  border-radius: 4px;
+}
+.search .search-results .rest-of-results .song-preview .img-container {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+.search .search-results .rest-of-results .song-preview .title-and-artist {
+  display: flex;
+  align-items: center;
+  text-overflow: ellipsis;
+}
+.search .search-results .rest-of-results .song-preview .song-length {
+  display: flex;
+  align-items: center;
+}
+.search .search-results .rest-of-results .song-preview .song-options {
+  color: white;
+}
+.search .search-results .rest-of-results .song-preview:hover {
+  background-color: hsla(0, 0%, 100%, 0.07);
 }
 
 .station-details {
@@ -457,7 +508,7 @@ svg {
   justify-content: flex-end;
   align-items: center;
 }
-.song-list .columns {
+.song-list .playlist-columns {
   display: grid;
   grid-template-columns: 16px minmax(120px, 6fr) minmax(120px, 4fr) minmax(120px, 3fr) minmax(120px, 1fr);
   padding-left: 16px;
@@ -466,12 +517,12 @@ svg {
   column-gap: 16px;
 }
 @media (max-width: 700px) {
-  .song-list .columns {
+  .song-list .playlist-columns {
     grid-template-columns: 16px minmax(120px, 4fr) minmax(120px, 1fr);
   }
 }
 @media (min-width: 700.1px) and (max-width: 840px) {
-  .song-list .columns {
+  .song-list .playlist-columns {
     grid-template-columns: 16px minmax(120px, 4fr) minmax(120px, 2fr) minmax(120px, 1fr);
   }
 }

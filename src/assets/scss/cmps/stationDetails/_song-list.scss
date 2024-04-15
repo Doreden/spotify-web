@@ -95,7 +95,7 @@
         @include flex-end-center();
     }
 
-    & .columns {
+    & .playlist-columns {
         display: grid;
         grid-template-columns: $playlist-columns;
         padding-left: 16px;
