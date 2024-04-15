@@ -1,3 +1,9 @@
-export function SearchResults(){
+export function SearchResults({searchInput}){
 
+
+    return (
+        <>
+            <div>Results: {searchInput}</div>
+        </>
+    )
 }
