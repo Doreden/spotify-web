@@ -21,12 +21,9 @@ export function OptionsModal({modalType, buttonPosition, station, song, isOpen, 
 
 
     const modalPosition ={
-        // position: 'fixed',
-        // top: `calc(${buttonPosition.top}px + 10px)`,
-        // left: `${buttonPosition.left}px`
         buttonPosition: 'fixed',
         top: buttonPosition.top - 130,
-        left: buttonPosition.left-80
+        left: buttonPosition.left - 80
     }
 
     function handleClickOutside(event){
