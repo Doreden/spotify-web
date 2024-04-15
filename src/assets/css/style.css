@@ -113,6 +113,7 @@ svg {
   background-color: rgb(18, 18, 18);
 }
 .search .search-results {
+  padding: 20px;
   margin-top: 24px;
   column-gap: 12px;
   display: grid;
@@ -135,6 +136,21 @@ svg {
   padding: 20px;
   background-color: rgb(24, 24, 24);
   border-radius: 8px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.search .search-results .top-result img {
+  border-radius: 6px;
+  width: 92px;
+  height: 92px;
+}
+.search .search-results .top-result .song-details {
+  display: flex;
+  flex-direction: column;
+}
+.search .search-results .top-result .title {
+  font-size: 32px;
 }
 .search .search-results .rest-of-results {
   display: flex;
@@ -152,6 +168,17 @@ svg {
 }
 .search .search-results .rest-of-results .song-details {
   display: flex;
+}
+.search .search-results .rest-of-results .song-length {
+  flex-shrink: 0;
+  min-width: 100px;
+}
+.search .search-results .rest-of-results .title-and-artist {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  flex-shrink: 3;
 }
 .search .search-results .rest-of-results .add-to-liked-svg-container {
   width: 16px;

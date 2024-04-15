@@ -29,8 +29,6 @@ export function PlaylistSongPreview({ index, song, station }) {
     };
   }, []);
 
-
-
   function handleOptionsClick(event){
     // const buttonRect = event.target.getBoundingClientRect();
     // setButtonPosition((prevPosition) => ({
@@ -78,6 +76,7 @@ export function PlaylistSongPreview({ index, song, station }) {
         {station && <div className="song-index">{displayPlayButton()}</div>}
 
         <div className="song-details">
+          {/* Renders Image only if not in a station -- Search Result */}
           {!station && 
           <div className="img-container">
             <img className="search-result-thumbnail" src={song.imgURL} height={40} width={40}></img>
@@ -87,7 +86,7 @@ export function PlaylistSongPreview({ index, song, station }) {
             <div className={`song-artist  ${isHover? '' : 'secondary'}`}>{song.artist}</div>
           </div>
         </div>
-
+          {/* Renders Album and Date Added only if in a station */}
         {station && (
         <>
           <div className={`song-album ${isHover? '' : 'secondary'}`}>{song.album}</div>
