@@ -16,7 +16,7 @@ export function StationDetailsActions({station}){
             left: buttonRect.left
           });
         }
-        updateButtonPosition(); // Initial position
+        updateButtonPosition();
         window.addEventListener('resize', updateButtonPosition);
     
         return () => {
@@ -24,7 +24,7 @@ export function StationDetailsActions({station}){
         };
       }, []);
 
-    function handleOptionsClick(event){
+    function handleOptionsClick(){
         setIsModalOpen(true)
       }
 
@@ -47,7 +47,7 @@ export function StationDetailsActions({station}){
                     <button ref={buttonRef} onClick={() => handleOptionsClick(station)} className="more-actions">•••</button>
                     {isModalOpen && (
                         <>
-                            <OptionsModal modalType={'station'} entity={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition}/>
+                            <OptionsModal modalType={'station'} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition}/>
                         </>
                     )}
 

@@ -3,7 +3,7 @@ import { stationService } from "../services/station.service";
 import { removeStation } from '../store/actions/station.action'
 import { useNavigate } from "react-router";
 
-export function OptionsModal({modalType, entity, isOpen, onClose, buttonPosition, station}){
+export function OptionsModal({modalType, buttonPosition, station, song, isOpen, onClose}){
 
     const modalRef = useRef()
     const navigate = useNavigate()
@@ -29,11 +29,11 @@ export function OptionsModal({modalType, entity, isOpen, onClose, buttonPosition
         left: buttonPosition.left-80
     }
 
-  function handleClickOutside(event){
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
-      onClose();
-    }
-  };
+    function handleClickOutside(event){
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+        onClose();
+        }
+    };
 
     function handleDeleteSong(stationId,songId){
         stationService.removeSongFromStation(stationId, songId)
@@ -50,19 +50,19 @@ export function OptionsModal({modalType, entity, isOpen, onClose, buttonPosition
                 {(() => {
                     switch(modalType){
                         case ('song'):
-                            return <SongOptions song={entity}/>
+                            return <SongOptions/>
                         case ('station'):
-                            return <StationOptions station={entity}/>
+                            return <StationOptions/>
                         default:
                             return
-                    }
+                        }
                 })()}
             </ul>
         </div>
     )
 
 
-    function SongOptions({song}){
+    function SongOptions(){
         return (
             <>
                 <li onClick={() => handleDeleteSong(station.id, song.id)}>Delete Song</li>
@@ -70,7 +70,7 @@ export function OptionsModal({modalType, entity, isOpen, onClose, buttonPosition
             </>
         )
     }
-    function StationOptions({station}){
+    function StationOptions(){
         return (
             <>
                 <li onClick={() => handleDeleteStation(station.id)}>Delete Station</li>

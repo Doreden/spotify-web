@@ -90,7 +90,7 @@ export function PlaylistSongPreview({ index, song, station }) {
           {utilService.formatSongLength(song.lengthInSeconds)}
           <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>•••</button>
           {isModalOpen && (
-            <OptionsModal modalType={'song'} entity={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition}/>
+            <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition}/>
           )}
         </div>
       </div>
