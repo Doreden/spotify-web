@@ -117,14 +117,38 @@ svg {
   column-gap: 12px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: min-content;
+}
+@media (max-width: 970px) {
+  .search .search-results {
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+  }
+}
+@media (min-width: 970px) and (max-width: 1160px) {
+  .search .search-results {
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+  }
 }
 .search .search-results .top-result {
   grid-column: 1/3;
+  height: 174px;
+  padding: 20px;
+  background-color: rgb(24, 24, 24);
+  border-radius: 8px;
 }
 .search .search-results .rest-of-results {
   display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   flex-direction: column;
   grid-column: 3/-1;
+}
+@media (max-width: 970px) {
+  .search .search-results .rest-of-results {
+    grid-column: 1/4;
+    grid-row: 2;
+  }
 }
 .search .search-results .rest-of-results .song-details {
   display: flex;
@@ -151,7 +175,6 @@ svg {
 .search .search-results .rest-of-results .song-preview .title-and-artist {
   display: flex;
   align-items: center;
-  text-overflow: ellipsis;
 }
 .search .search-results .rest-of-results .song-preview .song-length {
   display: flex;
