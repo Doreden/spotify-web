@@ -80,8 +80,11 @@ async function getSongBySearch(searchInput) {
     `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${searchInput}&part=snippet&type=video`
   )
   const results = await response.json()
-  setSearchResults((prevResults) => results)
-  localStorage.setItem("search", JSON.stringify(results))
+  // localStorage.setItem("search", JSON.stringify(results))
+  console.log(results.items)
+  
+  return results.items
+
 }
 
 // Two regular Albums, one Single and one user generated Playlist (differs by CreatedBy)

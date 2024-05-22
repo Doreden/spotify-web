@@ -2,21 +2,23 @@ import { useEffect, useState } from "react"
 import { PlaylistSongPreview } from "../station/stationDetails/PlaylistSongPreview"
 import { utilService } from "../../services/util.service"
 
-export function SearchResults({searchResults}){
+export function SearchResults({ searchResults }) {
 
-    const [results,setResults] = useState(null)
-    
+    const [results, setResults] = useState(null)
+
     useEffect(() => {
-        if(results){
-            formatResults()
+        console.log("1")
+        if (searchResults) {
+            console.log("2")
+            formatResults(searchResults)
         }
-    },[results])
+    }, [searchResults])
 
-    function formatResults(){
-        const formattedResults = JSON.parse(localStorage.getItem('search')).items.map((item) => ({
-            id : item.id.videoId,
-            title : utilService.formatVideoTitle(item.snippet.title).title,
-            artist : utilService.formatVideoTitle(item.snippet.title).artist,
+    function formatResults(searchResults) {
+        const formattedResults = searchResults.map((item) => ({
+            id: item.id.videoId,
+            title: utilService.formatVideoTitle(item.snippet.title).title,
+            artist: utilService.formatVideoTitle(item.snippet.title).artist,
             imgURL: item.snippet.thumbnails.default.url
         }))
         setResults((prevResults) => formattedResults)
@@ -27,40 +29,40 @@ export function SearchResults({searchResults}){
 
     return (
         <div className="search-results">
-            <SongResults results={results}/>
+            <SongResults results={results} />
         </div>
     )
 }
 
 
-export function SongResults({results}){
+export function SongResults({ results }) {
 
     return (
         <>
             <div className="top-result">
                 <div className="song-details">
-                <img src={results[0].imgURL}></img>
-                <div className="title-and-artist">
-                    {results[0].title && 
-                    <>
-                            <div className="title">
-                                {results[0].title}
-                            </div>
-                    </>}
-                    {results[0].artist &&
-                        <div className="artist">
-                            {results[0].artist}
-                        </div>}        
+                    <img src={results[0].imgURL}></img>
+                    <div className="title-and-artist">
+                        {results[0].title &&
+                            <>
+                                <div className="title">
+                                    {results[0].title}
+                                </div>
+                            </>}
+                        {results[0].artist &&
+                            <div className="artist">
+                                {results[0].artist}
+                            </div>}
                     </div>
                 </div>
             </div>
-            
-        
-        
+
+
+
             <div className="rest-of-results">
                 {results?.slice(1).map((song) => (
                     <div key={song.id} className="rest-result">
-                        <PlaylistSongPreview key={song.id.videoId} song={song}/>
+                        <PlaylistSongPreview key={song.id.videoId} song={song} />
                     </div>
                 ))}
             </div>
@@ -68,6 +70,6 @@ export function SongResults({results}){
     )
 }
 
-export function StationResults(){
+export function StationResults() {
 
 }

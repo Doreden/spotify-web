@@ -1,36 +1,32 @@
-import { useEffect, useState } from "react";
-import { SearchInput } from "../cmps/search/SearchInput";
-import { SearchResults } from "../cmps/search/SearchResults";
-import { Browse } from "../cmps/search/Browse";
-import { stationService } from "../services/station.service";
+import { useEffect, useState } from "react"
+import { SearchInput } from "../cmps/search/SearchInput"
+import { SearchResults } from "../cmps/search/SearchResults"
+import { Browse } from "../cmps/search/Browse"
+import { stationService } from "../services/station.service"
 
-export function Search(){
-
-    
+export function Search() {
 
     const [searchInput, setSearchInput] = useState(null)
     const [searchResults, setSearchResults] = useState(null)
-    
-    // TODO
 
-    async function Search(){
-        const results= await stationService.getSongBySearch(searchInput)
-        setSearchResults(results)
-     
-    }
-
-    // TO ASK how to improve?
+    // TODO how to improve?
     useEffect(() => {
-        if(searchInput){
+        if (searchInput) {
             Search()
         }
-    },[searchInput])
+    }, [searchInput])
+
+    async function Search() {
+        const results = await stationService.getSongBySearch(searchInput)
+        setSearchResults(results)
+    }
+
 
     return (
         <>
             <section className="search page">
-                <SearchInput setSearchInput={setSearchInput}/>
-                {searchInput? <SearchResults searchResults={searchResults}/> : <Browse/>}
+                <SearchInput setSearchInput={setSearchInput} />
+                {searchInput ? <SearchResults searchResults={searchResults} /> : <Browse />}
             </section>
         </>
     )
