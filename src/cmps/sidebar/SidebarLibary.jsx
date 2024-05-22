@@ -1,7 +1,6 @@
 import {SidebarLibaryHeader} from './SidebarLibaryHeader.jsx'
 import { useSelector } from 'react-redux'
 import { StationPreview } from './StationPreview.jsx'
-import { OptionsModal } from '../OptionsModal.jsx'
 
 export function SidebarLibary(){
 

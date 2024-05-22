@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react"
 import { stationService } from "../services/station.service";
 import { removeStation } from '../store/actions/station.action'
 import { useNavigate } from "react-router";
+import { lazy } from "react"
 
 export function OptionsModal({modalType, buttonPosition, station, song, isOpen, onClose}){
 
@@ -53,11 +54,31 @@ export function OptionsModal({modalType, buttonPosition, station, song, isOpen, 
                         default:
                             return
                         }
-                })()}
+                })}
+            </ul>
+            <ul className="options-list">
+               <DymanicModalCmp modalType={'station'}/>
             </ul>
         </div>
     )
 
+
+    function DymanicModalCmp({modalType}){
+
+    function getCmp(modalType){
+        switch(modalType){
+            case ('song'):
+                return <StationOptions/>
+            case ('station'):
+                return <StationOptions/>
+            default:
+                return
+            }
+    }
+
+    return getCmp(modalType)
+
+    }
 
     function SongOptions(){
         return (

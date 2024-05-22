@@ -7,8 +7,10 @@ export function SearchResults({searchResults}){
     const [results,setResults] = useState(null)
     
     useEffect(() => {
-        formatResults()
-    },[])
+        if(results){
+            formatResults()
+        }
+    },[results])
 
     function formatResults(){
         const formattedResults = JSON.parse(localStorage.getItem('search')).items.map((item) => ({
@@ -25,7 +27,7 @@ export function SearchResults({searchResults}){
 
     return (
         <div className="search-results">
-                    <SongResults results={results}/>
+            <SongResults results={results}/>
         </div>
     )
 }
@@ -36,19 +38,21 @@ export function SongResults({results}){
     return (
         <>
             <div className="top-result">
-                {results[0].title && 
-                <>
-                    <img src={results[0].imgURL}></img>
-                    <div className="song-details">
-                        <div className="title">
-                            {results[0].title}
-                        </div>
+                <div className="song-details">
+                <img src={results[0].imgURL}></img>
+                <div className="title-and-artist">
+                    {results[0].title && 
+                    <>
+                            <div className="title">
+                                {results[0].title}
+                            </div>
+                    </>}
+                    {results[0].artist &&
+                        <div className="artist">
+                            {results[0].artist}
+                        </div>}        
                     </div>
-                </>}
-                {results[0].artist &&
-                    <div className="artist">
-                        {results[0].artist}
-                    </div>}        
+                </div>
             </div>
             
         

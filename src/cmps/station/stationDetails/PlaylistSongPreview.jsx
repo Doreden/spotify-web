@@ -7,7 +7,7 @@ import { OptionsModal } from "../../OptionsModal";
 import Play from '../../../assets/imgs/play.svg'
 import AddToLiked from '../../../assets/imgs/addToLikes.svg'
 
-export function PlaylistSongPreview({ index, song, station }) {
+export function PlaylistSongPreview({ index, song, station, is }) {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonPosition, setButtonPosition] = useState({top:0,left:0})
@@ -30,11 +30,6 @@ export function PlaylistSongPreview({ index, song, station }) {
   }, []);
 
   function handleOptionsClick(event){
-    // const buttonRect = event.target.getBoundingClientRect();
-    // setButtonPosition((prevPosition) => ({
-    //   top: buttonRect.top + buttonRect.height + window.scrollY,
-    //   left: buttonRect.left + window.scrollX
-    // }))
     setIsModalOpen(true)
   }
 
@@ -69,10 +64,21 @@ export function PlaylistSongPreview({ index, song, station }) {
   function onClose(){
     setIsModalOpen((prevState) => false)
   }
+  
+  // .song-preview{
+ 
+  //   // 
+  //   &.side-bar{
+        //  span.date-added{display:none}
 
+  //   }
+
+  //   &.box{}
+  //   &.top-header{}
+  // }
   return (
     <>
-      <div className={`song-preview ${station? 'playlist-columns' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
+      <div className={`song-preview ${is} ${station? 'playlist-columns' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
         {station && <div className="song-index">{displayPlayButton()}</div>}
 
         <div className="song-details">
@@ -85,8 +91,8 @@ export function PlaylistSongPreview({ index, song, station }) {
             <div className="song-title">{song.title}</div>
             <div className={`song-artist  ${isHover? '' : 'secondary'}`}>{song.artist}</div>
           </div>
-        </div>
-          {/* Renders Album and Date Added only if in a station */}
+          </div>
+            {/* Renders Album and Date Added only if in a station */}
         {station && (
         <>
           <div className={`song-album ${isHover? '' : 'secondary'}`}>{song.album}</div>

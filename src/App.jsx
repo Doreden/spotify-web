@@ -18,12 +18,13 @@ import { store } from "./store/store.js";
 import { stationService } from "./services/station.service.js";
 import { useEffect } from "react";
 import "./assets/css/style.css";
-import { NavHeader } from "./cmps/header/NavHeader.jsx";
 import { loadStations } from "./store/actions/station.action";
 
 
 function App() {
   stationService.createStations();
+
+
 
   useEffect(() => {
     loadStations();

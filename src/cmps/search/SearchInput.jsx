@@ -1,9 +1,6 @@
 export function SearchInput({setSearchInput}){
 
-
-
-
-
+    
     function handleSubmit(event){
         event.preventDefault()
         const searchInput = event.target.elements.searchInput.value

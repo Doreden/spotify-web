@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
-import { removeStation } from "../../store/actions/station.action";
 
 export function StationPreview({ station }){
-
-    function handleRemoveStation(stationId){
-        removeStation(stationId)
-    }
 
     return (
         <Link to={`/station/${station.id}`}>
