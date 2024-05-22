@@ -110,7 +110,114 @@ svg {
 }
 
 .search {
-  background-color: cadetblue;
+  background-color: rgb(18, 18, 18);
+}
+.search .search-results {
+  padding: 20px;
+  margin-top: 24px;
+  column-gap: 12px;
+  row-gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: min-content;
+}
+@media (max-width: 970px) {
+  .search .search-results {
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+  }
+}
+@media (min-width: 970px) and (max-width: 1160px) {
+  .search .search-results {
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+  }
+}
+.search .search-results .top-result {
+  grid-column: 1/3;
+  height: 174px;
+  padding: 20px;
+  background-color: rgb(24, 24, 24);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.search .search-results .top-result img {
+  border-radius: 6px;
+  width: 92px;
+  height: 92px;
+}
+.search .search-results .top-result .song-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.search .search-results .top-result .title {
+  font-size: 32px;
+}
+.search .search-results .top-result .artist {
+  font-size: 14px;
+}
+.search .search-results .rest-of-results {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-direction: column;
+  grid-column: 3/-1;
+}
+@media (max-width: 970px) {
+  .search .search-results .rest-of-results {
+    grid-column: 1/4;
+    grid-row: 2;
+  }
+}
+.search .search-results .rest-of-results .song-details {
+  display: flex;
+}
+.search .search-results .rest-of-results .song-length {
+  flex-shrink: 0;
+  min-width: 100px;
+}
+.search .search-results .rest-of-results .title-and-artist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 3;
+}
+.search .search-results .rest-of-results .add-to-liked-svg-container {
+  width: 16px;
+  height: 16px;
+  padding-right: 24px;
+  fill: rgb(179, 179, 179);
+  background-color: transparent;
+}
+.search .search-results .rest-of-results .song-preview {
+  display: flex;
+  align-items: cen;
+  justify-content: space-between;
+  height: 56px;
+  border-radius: 4px;
+  padding-left: 20px;
+  padding-right: 16px;
+}
+.search .search-results .rest-of-results .song-preview .img-container {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+.search .search-results .rest-of-results .song-preview .title-and-artist {
+  display: flex;
+  align-items: center;
+}
+.search .search-results .rest-of-results .song-preview .song-length {
+  display: flex;
+  align-items: center;
+}
+.search .search-results .rest-of-results .song-preview .song-options {
+  color: white;
+}
+.search .search-results .rest-of-results .song-preview:hover {
+  background-color: hsla(0, 0%, 100%, 0.07);
 }
 
 .station-details {
@@ -268,7 +375,6 @@ svg {
 .sidebar .nav-button .nav-button-svg {
   width: 24px;
   height: 24px;
-  display: grid;
   fill: rgb(179, 179, 179);
 }
 .sidebar .nav-button .nav-button-text {
@@ -457,7 +563,7 @@ svg {
   justify-content: flex-end;
   align-items: center;
 }
-.song-list .columns {
+.song-list .playlist-columns {
   display: grid;
   grid-template-columns: 16px minmax(120px, 6fr) minmax(120px, 4fr) minmax(120px, 3fr) minmax(120px, 1fr);
   padding-left: 16px;
@@ -466,12 +572,12 @@ svg {
   column-gap: 16px;
 }
 @media (max-width: 700px) {
-  .song-list .columns {
+  .song-list .playlist-columns {
     grid-template-columns: 16px minmax(120px, 4fr) minmax(120px, 1fr);
   }
 }
 @media (min-width: 700.1px) and (max-width: 840px) {
-  .song-list .columns {
+  .song-list .playlist-columns {
     grid-template-columns: 16px minmax(120px, 4fr) minmax(120px, 2fr) minmax(120px, 1fr);
   }
 }

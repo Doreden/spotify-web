@@ -1,33 +1,36 @@
 // Libraries
-import { Route, HashRouter as Router, Routes } from "react-router-dom";
-import { Provider } from "react-redux";
+import { Route, HashRouter as Router, Routes } from "react-router-dom"
+import { Provider } from "react-redux"
 // Pages
-import { StationIndex } from "./pages/StationIndex.jsx";
-import { StationDetails } from "./pages/StationDetails.jsx";
-import { Search } from "./pages/Search.jsx";
+import { StationIndex } from "./pages/StationIndex.jsx"
+import { StationDetails } from "./pages/StationDetails.jsx"
+import { Search } from "./pages/Search.jsx"
 
 // Components
-import { Sidebar } from "./cmps/sidebar/Sidebar.jsx";
-import { Playline } from "./cmps/playline/Playline.jsx";
-import { OptionsModal } from "./cmps/OptionsModal.jsx";
+import { Sidebar } from "./cmps/sidebar/Sidebar.jsx"
+import { Playline } from "./cmps/playline/Playline.jsx"
+import { OptionsModal } from "./cmps/OptionsModal.jsx"
 
 // Store
-import { store } from "./store/store.js";
+import { store } from "./store/store.js"
 
 // Services
-import { stationService } from "./services/station.service.js";
-import { useEffect } from "react";
-import "./assets/css/style.css";
-import { NavHeader } from "./cmps/header/NavHeader.jsx";
-import { loadStations } from "./store/actions/station.action";
+import { stationService } from "./services/station.service.js"
+import { useEffect } from "react"
+import "./assets/css/style.css"
+import { loadStations } from "./store/actions/station.action"
 
 
 function App() {
-  stationService.createStations();
 
+  // Create Mock Data - Remove Later
+  stationService.createStations()
+
+
+  // Load stations in store
   useEffect(() => {
-    loadStations();
-  }, []);
+    loadStations()
+  }, [])
 
   return (
     <>
@@ -47,7 +50,7 @@ function App() {
         </Router>
       </Provider>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -7,7 +7,7 @@ import { OptionsModal } from "../../OptionsModal";
 import Play from '../../../assets/imgs/play.svg'
 import AddToLiked from '../../../assets/imgs/addToLikes.svg'
 
-export function PlaylistSongPreview({ index, song, station }) {
+export function PlaylistSongPreview({ index, song, station, is }) {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonPosition, setButtonPosition] = useState({top:0,left:0})
@@ -29,14 +29,7 @@ export function PlaylistSongPreview({ index, song, station }) {
     };
   }, []);
 
-
-
   function handleOptionsClick(event){
-    // const buttonRect = event.target.getBoundingClientRect();
-    // setButtonPosition((prevPosition) => ({
-    //   top: buttonRect.top + buttonRect.height + window.scrollY,
-    //   left: buttonRect.left + window.scrollX
-    // }))
     setIsModalOpen(true)
   }
 
@@ -71,20 +64,42 @@ export function PlaylistSongPreview({ index, song, station }) {
   function onClose(){
     setIsModalOpen((prevState) => false)
   }
+  
+  // .song-preview{
+ 
+  //   // 
+  //   &.side-bar{
+        //  span.date-added{display:none}
 
+  //   }
+
+  //   &.box{}
+  //   &.top-header{}
+  // }
   return (
     <>
-      <div className="song-preview columns" onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
-        <div className="song-index">{displayPlayButton()}</div>
+      <div className={`song-preview ${is} ${station? 'playlist-columns' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
+        {station && <div className="song-index">{displayPlayButton()}</div>}
+
         <div className="song-details">
-          {/* <img></img> */}
+          {/* Renders Image only if not in a station -- Search Result */}
+          {!station && 
+          <div className="img-container">
+            <img className="search-result-thumbnail" src={song.imgURL} height={40} width={40}></img>
+          </div>}
           <div className="title-and-artist">
             <div className="song-title">{song.title}</div>
             <div className={`song-artist  ${isHover? '' : 'secondary'}`}>{song.artist}</div>
           </div>
-        </div>
-        <div className={`song-album ${isHover? '' : 'secondary'}`}>{song.album}</div>
-        <div className="date-added secondary">Nov 11</div>
+          </div>
+            {/* Renders Album and Date Added only if in a station */}
+        {station && (
+        <>
+          <div className={`song-album ${isHover? '' : 'secondary'}`}>{song.album}</div>
+          <div className="date-added secondary">Nov 11</div>
+        </>
+        )}
+
         <div className="song-length secondary">
           {displayAddToLikedButton()}
           {utilService.formatSongLength(song.lengthInSeconds)}
@@ -93,6 +108,7 @@ export function PlaylistSongPreview({ index, song, station }) {
             <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition}/>
           )}
         </div>
+        
       </div>
     </>
   );

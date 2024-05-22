@@ -4,11 +4,11 @@ export const utilService = {
     loadFromStorage,
     generateId,
     formatSongLength,
-    formatStationLength
+    formatStationLength,
+    formatVideoTitle
 }
 
-window.formatSongLength = formatSongLength
-window.formatStationLength = formatStationLength
+
 
 function saveToStorage(key, value) {
     localStorage[key] = JSON.stringify(value);
@@ -49,3 +49,18 @@ function formatStationLength(songs){
         )
     }
 }
+
+function formatVideoTitle(title){
+    const regex = /^(.*?)\s*-\s*(.*?)(?:\s*\((.*?)\))?$/; 
+    const matches = title.match(regex)
+      
+    if (!matches){
+        return {title}
+    }else{
+        return( {
+            artist: matches[1].trim(),
+            title: matches[2].trim()
+        })
+    }
+}
+

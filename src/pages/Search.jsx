@@ -1,36 +1,43 @@
-import { useEffect, useState } from "react";
-import { SearchInput } from "../cmps/search/SearchInput";
-import { SearchResults } from "../cmps/search/SearchResults";
-import { Browse } from "../cmps/search/Browse";
+import { useEffect, useState } from "react"
+import { SearchInput } from "../cmps/search/SearchInput"
+import { SearchResults } from "../cmps/search/SearchResults"
+import { Browse } from "../cmps/search/Browse"
+import { stationService } from "../services/station.service"
+import { utilService } from "../services/util.service"
 
-export function Search(){
-
-    const API_KEY = 'AIzaSyCho4TT_0wURSDbQ0zGNEmtyHLte3-M0Mg'
+export function Search() {
 
     const [searchInput, setSearchInput] = useState(null)
     const [searchResults, setSearchResults] = useState(null)
-    
 
+    // TODO how to improve?
+    useEffect(() => {
+        if (searchInput) {
+            Search()
+        }
+    }, [searchInput])
 
-    async function Search(){
-        // const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCho4TT_0wURSDbQ0zGNEmtyHLte3-M0Mg&q=${searchInput}&part=snippet&type=video`)
-        // const results = await response.json()
-        // setSearchResults((prevResults) => results)
-        // localStorage.setItem('search', JSON.stringify(results))
+    async function Search() {
+        const results = await stationService.getSongBySearch(searchInput)
+        const formattedResults = formatResults(results)
+        setSearchResults((prevFormattedResults) => formattedResults)
     }
 
-
-    useEffect(() => {
-        console.log(searchInput)
-        Search()
-
-    },[searchInput])
+    function formatResults(searchResults) {
+        const formattedResults = searchResults.map((item) => ({
+            id: item.id.videoId,
+            title: utilService.formatVideoTitle(item.snippet.title).title,
+            artist: utilService.formatVideoTitle(item.snippet.title).artist,
+            imgURL: item.snippet.thumbnails.default.url
+        }))
+        return formattedResults
+    }
 
     return (
         <>
             <section className="search page">
-                <SearchInput setSearchInput={setSearchInput}/>
-                {searchInput? <SearchResults searchResults={searchResults}/> : <Browse/>}
+                <SearchInput setSearchInput={setSearchInput} />
+                {searchInput ? <SearchResults searchResults={searchResults} /> : <Browse />}
             </section>
         </>
     )
