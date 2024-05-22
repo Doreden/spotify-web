@@ -9,9 +9,6 @@ export function StationDetails() {
   const [station, setStation] = useState(null)
   const params = useParams()
 
-
-  // BUG
-
   // TODO - convert to state instead of full load
   useEffect(() => {
     loadStation()
