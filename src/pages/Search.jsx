@@ -3,6 +3,7 @@ import { SearchInput } from "../cmps/search/SearchInput"
 import { SearchResults } from "../cmps/search/SearchResults"
 import { Browse } from "../cmps/search/Browse"
 import { stationService } from "../services/station.service"
+import { utilService } from "../services/util.service"
 
 export function Search() {
 
@@ -18,9 +19,19 @@ export function Search() {
 
     async function Search() {
         const results = await stationService.getSongBySearch(searchInput)
-        setSearchResults(results)
+        const formattedResults = formatResults(results)
+        setSearchResults((prevFormattedResults) => formattedResults)
     }
 
+    function formatResults(searchResults) {
+        const formattedResults = searchResults.map((item) => ({
+            id: item.id.videoId,
+            title: utilService.formatVideoTitle(item.snippet.title).title,
+            artist: utilService.formatVideoTitle(item.snippet.title).artist,
+            imgURL: item.snippet.thumbnails.default.url
+        }))
+        return formattedResults
+    }
 
     return (
         <>

@@ -1,42 +1,17 @@
-import { useEffect, useState } from "react"
 import { PlaylistSongPreview } from "../station/stationDetails/PlaylistSongPreview"
-import { utilService } from "../../services/util.service"
 
 export function SearchResults({ searchResults }) {
 
-    const [results, setResults] = useState(null)
-
-    useEffect(() => {
-        console.log("1")
-        if (searchResults) {
-            console.log("2")
-            formatResults(searchResults)
-        }
-    }, [searchResults])
-
-    function formatResults(searchResults) {
-        const formattedResults = searchResults.map((item) => ({
-            id: item.id.videoId,
-            title: utilService.formatVideoTitle(item.snippet.title).title,
-            artist: utilService.formatVideoTitle(item.snippet.title).artist,
-            imgURL: item.snippet.thumbnails.default.url
-        }))
-        setResults((prevResults) => formattedResults)
-        console.log(formattedResults)
-    }
-
-    if (!results) return
-
     return (
         <div className="search-results">
-            <SongResults results={results} />
+            <SongResults results={searchResults} />
         </div>
     )
 }
 
-
 export function SongResults({ results }) {
 
+    if (!results) return
     return (
         <>
             <div className="top-result">
