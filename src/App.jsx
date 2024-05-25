@@ -4,7 +4,7 @@ import { Provider } from "react-redux"
 // Pages
 import { StationIndex } from "./pages/StationIndex.jsx"
 import { StationDetails } from "./pages/StationDetails.jsx"
-import { Search } from "./pages/Search.jsx"
+import { SearchPage } from "./pages/Search.jsx"
 
 // Components
 import { Sidebar } from "./cmps/sidebar/Sidebar.jsx"
@@ -42,7 +42,7 @@ function App() {
             {/* <NavHeader/> */}
             <Routes>
               <Route path="/" element={<StationIndex />} />
-              <Route path="/search" element={<Search />} />
+              <Route path="/search" element={<SearchPage />} />
               <Route path="/station/:stationId" element={<StationDetails />} />
             </Routes>
             <Playline />

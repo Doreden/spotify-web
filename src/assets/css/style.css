@@ -69,7 +69,7 @@ svg {
   color: rgb(179, 179, 179);
 }
 
-* .page {
+.page {
   scrollbar-width: thin;
   overflow-y: auto;
   scrollbar-gutter: auto;

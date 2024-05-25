@@ -5,7 +5,7 @@ import { Browse } from "../cmps/search/Browse"
 import { stationService } from "../services/station.service"
 import { utilService } from "../services/util.service"
 
-export function Search() {
+export function SearchPage() {
 
     const [searchInput, setSearchInput] = useState(null)
     const [searchResults, setSearchResults] = useState(null)
@@ -13,23 +13,26 @@ export function Search() {
     // TODO how to improve?
     useEffect(() => {
         if (searchInput) {
-            Search()
+            onSearch()
         }
     }, [searchInput])
 
-    async function Search() {
+    async function onSearch() {
         const results = await stationService.getSongBySearch(searchInput)
         const formattedResults = formatResults(results)
         setSearchResults((prevFormattedResults) => formattedResults)
     }
 
     function formatResults(searchResults) {
-        const formattedResults = searchResults.map((item) => ({
-            id: item.id.videoId,
-            title: utilService.formatVideoTitle(item.snippet.title).title,
-            artist: utilService.formatVideoTitle(item.snippet.title).artist,
-            imgURL: item.snippet.thumbnails.default.url
-        }))
+        const formattedResults = searchResults.map((item) => {
+            const { title, artist } = utilService.formatVideoTitle(item.snippet.title)
+            return {
+                id: item.id.videoId,
+                title,
+                artist,
+                imgURL: item.snippet.thumbnails.default.url
+            }
+        })
         return formattedResults
     }
 
