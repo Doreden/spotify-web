@@ -1,6 +1,8 @@
 import { storageService } from "./async-storage.service.js"
 import { utilService } from "./util.service.js"
 import stationsAsJson from '../assets/data/station.json' assert { type: 'json' };
+import searchAsJson from '../assets/data/search.json' assert { type: 'json' };
+
 
 
 const STORAGE_KEY = "stations"
@@ -19,7 +21,6 @@ export const stationService = {
 
 async function removeSongFromStation(stationId, songId) {
   let station = await getById(stationId)
-  console.log(station)
   station = {
     ...station,
     songs: station.songs.filter((song) => song.id !== songId),
@@ -53,7 +54,7 @@ async function removeById(id) {
 
 // TODO : change to get user from store
 async function createNewStation(user = {}) {
-  const emptyStation = _makeEmptyStation(user)
+  const emptyStation = _getEmptyStation(user)
   return save(emptyStation)
 }
 
@@ -65,7 +66,7 @@ function save(stationToSave) {
   }
 }
 
-function _makeEmptyStation(user) {
+function _getEmptyStation(user) {
   return {
     name: "New Playlist",
     albumCoverUrl: null,
@@ -77,16 +78,17 @@ function _makeEmptyStation(user) {
 }
 
 async function getSongBySearch(searchInput) {
+  if(searchInput === 'try'){
+    const results = await JSON.parse(localStorage.getItem("search"))
+    return results
+  }
   const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY
+
   const response = await fetch(
     `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${searchInput}&part=snippet&type=video`
   )
   const results = await response.json()
-  // localStorage.setItem("search", JSON.stringify(results))
-  console.log(results.items)
-  
   return results.items
-
 }
 
 // Two regular Albums, one Single and one user generated Playlist (differs by CreatedBy)
@@ -97,3 +99,7 @@ function createStations() {
     utilService.saveToStorage(STORAGE_KEY, stations)
   }
 }
+
+(() => {
+  localStorage.setItem("search", JSON.stringify(searchAsJson))
+})();
