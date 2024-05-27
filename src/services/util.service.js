@@ -52,6 +52,10 @@ function formatStationLength(songs){
 
 function formatVideoTitle(title){
     const regex = /^(.*?)\s*-\s*(.*?)(?:\s*\((.*?)\))?$/; 
+    title = title.replace(/\(([^)]+)\)/g, '');
+    title = title.replace(/\[([^\]]+)\]/g, '');
+    title = title.replace('&#39;', '\'');
+    title = title.replace('&amp;', '&');
     const matches = title.match(regex)
       
     if (!matches){
