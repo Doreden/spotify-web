@@ -17,7 +17,7 @@ import { store } from "./store/store.js"
 // Services
 import { stationService } from "./services/station.service.js"
 import { useEffect } from "react"
-import "./assets/css/style.css"
+import "./assets/scss/style.scss"
 import { loadStations } from "./store/actions/station.action"
 
 

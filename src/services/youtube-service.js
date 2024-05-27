@@ -18,12 +18,15 @@ async function getSongBySearch(searchInput) {
         )
         results = await response.json()
     }
+    
     let resultsIdString = ''
     results.items.forEach(item => (resultsIdString += item.id.videoId + ','))
     let songLengths = await fetch(
         `https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&id=${resultsIdString}&key=${API_KEY}`
     )
     songLengths = await songLengths.json()
+
+    
     console.log(songLengths)
     results = _formatResults(results)
     return results
