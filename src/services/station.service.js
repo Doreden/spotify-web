@@ -19,6 +19,20 @@ export const stationService = {
   getSongBySearch,
 }
 
+async function getSongBySearch(searchInput) {
+  if(searchInput === 'try'){
+    const results = await JSON.parse(localStorage.getItem("search"))
+    return results
+  }
+  const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY
+
+  const response = await fetch(
+    `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${searchInput}&part=snippet&type=video`
+  )
+  const results = await response.json()
+  return results.items
+}
+
 async function removeSongFromStation(stationId, songId) {
   let station = await getById(stationId)
   station = {
@@ -77,20 +91,6 @@ function _getEmptyStation(user) {
   }
 }
 
-async function getSongBySearch(searchInput) {
-  if(searchInput === 'try'){
-    const results = await JSON.parse(localStorage.getItem("search"))
-    return results
-  }
-  const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY
-
-  const response = await fetch(
-    `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${searchInput}&part=snippet&type=video`
-  )
-  const results = await response.json()
-  return results.items
-}
-
 // Two regular Albums, one Single and one user generated Playlist (differs by CreatedBy)
 function createStations() {
   let stations = utilService.loadFromStorage(STORAGE_KEY)
@@ -100,6 +100,8 @@ function createStations() {
   }
 }
 
+
+// Creates the "Arctic Monkeys" top 5 results to call when searching "try"
 (() => {
   localStorage.setItem("search", JSON.stringify(searchAsJson))
 })();
