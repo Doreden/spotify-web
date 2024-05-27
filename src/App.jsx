@@ -4,7 +4,7 @@ import { Provider } from "react-redux"
 // Pages
 import { StationIndex } from "./pages/StationIndex.jsx"
 import { StationDetails } from "./pages/StationDetails.jsx"
-import { SearchPage } from "./pages/Search.jsx"
+import { SearchPage } from "./pages/SearchPage.jsx"
 
 // Components
 import { Sidebar } from "./cmps/sidebar/Sidebar.jsx"
@@ -17,7 +17,7 @@ import { store } from "./store/store.js"
 // Services
 import { stationService } from "./services/station.service.js"
 import { useEffect } from "react"
-import "./assets/css/style.css"
+import "./assets/scss/style.scss"
 import { loadStations } from "./store/actions/station.action"
 
 

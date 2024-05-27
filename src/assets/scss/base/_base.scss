@@ -33,6 +33,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 
   &>* {
     font-family: 'CircularSpotify', sans-serif;
@@ -84,6 +85,7 @@ svg {
 .page {
   scrollbar-width: thin;
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-gutter: auto;
 }
 
