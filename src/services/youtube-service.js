@@ -9,16 +9,22 @@ export const youtubeService = {
 
 async function getSongBySearch(searchInput) {
     let results
+    const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY
     if(searchInput === 'try'){
       results = await JSON.parse(utilService.loadFromStorage(STORAGE_KEY))
     }else{
-        const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY
         const response = await fetch(
           `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${searchInput}&part=snippet&type=video`
         )
         results = await response.json()
-
     }
+    let resultsIdString = ''
+    results.items.forEach(item => (resultsIdString += item.id.videoId + ','))
+    let songLengths = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&id=${resultsIdString}&key=${API_KEY}`
+    )
+    songLengths = await songLengths.json()
+    console.log(songLengths)
     results = _formatResults(results)
     return results
 }
@@ -36,7 +42,7 @@ async function getSongBySearch(searchInput) {
     return formattedResults
 }
 
-// Creates the "Arctic Monkeys" top 5 results to call when searching "try"
+// Creates the "Linkin Park" top 5 results to call when searching "try"
 (() => {
     utilService.saveToStorage(STORAGE_KEY, JSON.stringify(searchAsJson))
   })();

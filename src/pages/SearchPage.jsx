@@ -2,8 +2,6 @@ import { useEffect, useState } from "react"
 import { SearchInput } from "../cmps/search/SearchInput"
 import { SearchResults } from "../cmps/search/SearchResults"
 import { Browse } from "../cmps/search/Browse"
-import { stationService } from "../services/station.service"
-import { utilService } from "../services/util.service"
 import { youtubeService } from "../services/youtube-service.js"
 
 export function SearchPage() {
