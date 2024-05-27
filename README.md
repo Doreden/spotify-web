@@ -13,14 +13,13 @@
 
 > features list.. .
 
- ## Npm Libaries
- - react-router
- - react-icon
- - react-svg
+## Npm Libaries
 
+- react-router
+- react-icon
+- react-svg
 
-
- ### Plugins used:
+### Plugins used:
 
 - Git Lense
 - Prettier
