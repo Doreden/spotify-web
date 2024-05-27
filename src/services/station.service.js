@@ -1,13 +1,8 @@
 import { storageService } from "./async-storage.service.js"
 import { utilService } from "./util.service.js"
 import stationsAsJson from '../assets/data/station.json' assert { type: 'json' };
-import searchAsJson from '../assets/data/search.json' assert { type: 'json' };
-
-
 
 const STORAGE_KEY = "stations"
-
-console.log(import.meta.env.VITE_API_KEY)
 
 export const stationService = {
   removeSongFromStation,
@@ -86,7 +81,3 @@ function createStations() {
 }
 
 
-// Creates the "Arctic Monkeys" top 5 results to call when searching "try"
-(() => {
-  localStorage.setItem("search", JSON.stringify(searchAsJson))
-})();
