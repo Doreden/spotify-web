@@ -16,21 +16,6 @@ export const stationService = {
   removeById,
   createNewStation,
   createStations,
-  getSongBySearch,
-}
-
-async function getSongBySearch(searchInput) {
-  if(searchInput === 'try'){
-    const results = await JSON.parse(localStorage.getItem("search"))
-    return results
-  }
-  const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY
-
-  const response = await fetch(
-    `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${searchInput}&part=snippet&type=video`
-  )
-  const results = await response.json()
-  return results.items
 }
 
 async function removeSongFromStation(stationId, songId) {

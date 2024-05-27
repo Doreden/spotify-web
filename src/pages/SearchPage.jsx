@@ -4,6 +4,7 @@ import { SearchResults } from "../cmps/search/SearchResults"
 import { Browse } from "../cmps/search/Browse"
 import { stationService } from "../services/station.service"
 import { utilService } from "../services/util.service"
+import { youtubeService } from "../services/youtube-service.js"
 
 export function SearchPage() {
 
@@ -18,22 +19,8 @@ export function SearchPage() {
     }, [searchInput])
 
     async function onSearch() {
-        const results = await stationService.getSongBySearch(searchInput)
-        const formattedResults = formatResults(results)
-        setSearchResults((prevFormattedResults) => formattedResults)
-    }
-
-    function formatResults(searchResults) {
-        const formattedResults = searchResults.map((item) => {
-            const { title, artist } = utilService.formatVideoTitle(item.snippet.title)
-            return {
-                id: item.id.videoId,
-                title,
-                artist,
-                imgURL: item.snippet.thumbnails.default.url
-            }
-        })
-        return formattedResults
+        const results = await youtubeService.getSongBySearch(searchInput)
+        setSearchResults((prevResults) => results)
     }
 
     return (
