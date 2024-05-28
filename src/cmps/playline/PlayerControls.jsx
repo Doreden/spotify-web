@@ -3,9 +3,7 @@ import { useState } from "react"
 import previous_song from '../../assets/imgs/previous_song.svg'
 import { ReactSVG } from "react-svg"
 
-export function PlayerControls(togglePlay) {
-
-    const [isPlaying, setIsPlaying] = useState(false)
+export function PlayerControls({ togglePlay }) {
 
     return (
         <div className="player-controls">
