@@ -19,7 +19,6 @@
     "react-router": "^6.22.3",
     "react-router-dom": "^6.22.3",
     "react-svg": "^16.1.34",
-    "react-youtube": "^10.1.0",
     "redux": "^5.0.1",
     "sass": "^1.77.2"
   },

@@ -21,6 +21,14 @@
         padding-right: 8px;
         fill: $secondary-font-color;
 
+        &.active {
+            fill: #1db954;
+
+            &:hover {
+                fill: #1ed760;
+            }
+        }
+
         &:hover {
             fill: white;
         }

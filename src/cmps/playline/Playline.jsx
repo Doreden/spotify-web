@@ -2,18 +2,26 @@ import { useRef, useState } from "react"
 import { PlayerControls } from "./PlayerControls"
 import ReactPlayer from "react-player"
 import { useSelector } from "react-redux"
-import { togglePlay } from "../../store/actions/player.action"
+import { togglePlay, setPlay } from "../../store/actions/player.action"
 
 
 export function Playline() {
 
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
+    // const isPlaying = true
+    const isShuffle = useSelector(storeState => storeState.playerModule.isShuffle)
+    const isRepeat = useSelector(storeState => storeState.playerModule.isRepeat)
+    const currentSong = useSelector(storeState => storeState.playerModule.song)
+    const currentQueue = useSelector(storeState => storeState.playerModule.queue)
 
+    const storeState = useSelector(storeState => storeState.playerModule)
+
+    console.log(storeState)
     // Will be moved to store
     // const [isPlaying, setIsPlaying] = useState(false)
 
     function onTogglePlay() {
-        togglePlay(!isPlaying)
+        togglePlay(isPlaying)
     }
 
     function onNextSong() {
@@ -32,10 +40,17 @@ export function Playline() {
 
     }
 
-    const state = {
-        url: 'https://www.youtube.com/watch?v=3oK22ll4cxw',
-        playing: isPlaying
-    }
+    // const state = {
+    //     url: `https://www.youtube.com/watch?v=${currentSong.id}`,
+    //     playing: isPlaying
+    // }
+    // const state = {
+    //     url: `https://www.youtube.com/watch?v=${currentSong.id}`,
+    //     playing: isPlaying
+    // }
+
+    // console.log(state)
+    // https://www.youtube.com/watch?v=3oK22ll4cxw
 
     return (
 
@@ -44,9 +59,9 @@ export function Playline() {
             <div>Song Info</div>
 
             <div>
-                <PlayerControls togglePlay={onTogglePlay} />
-                {/* <ReactPlayer playing={isPlaying} url='https://www.youtube.com/watch?v=3oK22ll4cxw' width="0" height="0" /> */}
-                <ReactPlayer {...state} width="0" height="0" />
+                <PlayerControls togglePlay={onTogglePlay} isShuffle={isShuffle} isRepeat={isRepeat} />
+                <ReactPlayer playing={isPlaying} url={`https://www.youtube.com/watch?v=3oK22ll4cxw`} width="0" height="0" />
+                {/* <ReactPlayer {...state} width="0" height="0" /> */}
                 {/* </div> */}
             </div>
 

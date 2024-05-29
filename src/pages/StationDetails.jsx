@@ -5,12 +5,12 @@ import { StationDetailsActions } from "../cmps/station/stationDetails/StationDet
 import { PlaylistSongList } from "../cmps/station/stationDetails/PlaylistSongList"
 import { stationService } from "../services/station.service"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
+import { playStation } from "../store/actions/player.action"
 
 export function StationDetails() {
   const [station, setStation] = useState(null)
   const params = useParams()
 
-  // ToAsk - How to use the custom hook?
   useEffect(() => {
     loadStation()
   }, [params, station?.songs])
@@ -24,12 +24,16 @@ export function StationDetails() {
     }
   }
 
+  function onPlayStation() {
+    playStation(station)
+  }
+
   if (!station) return
   return (
     <>
       <section className="station-details page">
         <StationDetailsHeader station={station} />
-        <StationDetailsActions station={station} />
+        <StationDetailsActions station={station} onPlayStation={onPlayStation} />
         <div className="song-list-container">
           <PlaylistSongList station={station} />
         </div>
