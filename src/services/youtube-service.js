@@ -10,6 +10,7 @@ export const youtubeService = {
 
 async function getSongBySearch(searchInput) {
     let results
+    // TO REMOVE - FOR Development
     if(searchInput === 'try'){
       results = await JSON.parse(utilService.loadFromStorage(STORAGE_KEY))
     }else{
@@ -18,9 +19,7 @@ async function getSongBySearch(searchInput) {
         )
         results = await response.json()
     }
-    
     const songLengths = await _getResultsLengths(results)
-    
     results = results.items
     results = results.map((item,idx) => ({...item, duration : songLengths[idx]}))
     console.log(results)
