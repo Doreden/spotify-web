@@ -1,75 +1,75 @@
-import { useState, useEffect, useRef } from "react";
-import { utilService } from "../../../services/util.service";
-import { ReactSVG } from "react-svg";
+import { useState, useEffect, useRef } from "react"
+import { utilService } from "../../../services/util.service"
+import { ReactSVG } from "react-svg"
 
-import { OptionsModal } from "../../OptionsModal";
+import { OptionsModal } from "../../OptionsModal"
 
 import Play from '../../../assets/imgs/play.svg'
 import AddToLiked from '../../../assets/imgs/addToLikes.svg'
 
 export function PlaylistSongPreview({ index, song, station, is }) {
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [buttonPosition, setButtonPosition] = useState({top:0,left:0})
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 })
   const buttonRef = useRef(null)
 
   useEffect(() => {
-    function updateButtonPosition(){
-      const buttonRect = buttonRef.current.getBoundingClientRect();
+    function updateButtonPosition() {
+      const buttonRect = buttonRef.current.getBoundingClientRect()
       setButtonPosition({
         top: buttonRect.top + buttonRect.height,
         left: buttonRect.left
-      });
+      })
     }
-    updateButtonPosition(); // Initial position
-    window.addEventListener('resize', updateButtonPosition);
+    updateButtonPosition() // Initial position
+    window.addEventListener('resize', updateButtonPosition)
 
     return () => {
-      window.removeEventListener('resize', updateButtonPosition);
-    };
-  }, []);
+      window.removeEventListener('resize', updateButtonPosition)
+    }
+  }, [])
 
-  function handleOptionsClick(event){
+  function handleOptionsClick(event) {
     setIsModalOpen(true)
   }
 
 
   const [isHover, setIsHover] = useState(false)
 
-  function handleHover(){
+  function handleHover() {
     setIsHover(() => true)
   }
-  function handleHoverEnded(){
+  function handleHoverEnded() {
     setIsHover(() => false)
   }
-  function displayPlayButton(){
-    return(
-      isHover? 
-      <div className="preview-play-svg-container"><ReactSVG src={Play}/></div> : index
+  function displayPlayButton() {
+    return (
+      isHover ?
+        <div className="preview-play-svg-container"><ReactSVG src={Play} /></div> : index
     )
   }
 
-  function displayAddToLikedButton(){
-    return(
-      isHover? 
-      <button className="add-to-liked-songs-btn">
-        <div className="add-to-liked-svg-container">
-          <ReactSVG src={AddToLiked}/>
-        </div>
-      </button>
-       : ''
+  function displayAddToLikedButton() {
+    return (
+      isHover ?
+        <button className="add-to-liked-songs-btn">
+          <div className="add-to-liked-svg-container">
+            <ReactSVG src={AddToLiked} />
+          </div>
+        </button>
+        : ''
     )
   }
 
-  function onClose(){
+  function onClose() {
     setIsModalOpen((prevState) => false)
   }
-  
+
   // .song-preview{
- 
+
   //   // 
   //   &.side-bar{
-        //  span.date-added{display:none}
+  //  span.date-added{display:none}
 
   //   }
 
@@ -78,26 +78,26 @@ export function PlaylistSongPreview({ index, song, station, is }) {
   // }
   return (
     <>
-      <div className={`song-preview ${is} ${station? 'playlist-columns' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
+      <div className={`song-preview ${is} ${station ? 'playlist-columns' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
         {station && <div className="song-index">{displayPlayButton()}</div>}
 
         <div className="song-details">
           {/* Renders Image only if not in a station -- Search Result */}
-          {!station && 
-          <div className="img-container">
-            <img className="search-result-thumbnail" src={song.imgURL} height={40} width={40}></img>
-          </div>}
+          {!station &&
+            <div className="img-container">
+              <img className="search-result-thumbnail" src={song.imgURL} height={40} width={40}></img>
+            </div>}
           <div className="title-and-artist">
             <div className="song-title">{song.title}</div>
-            <div className={`song-artist  ${isHover? '' : 'secondary'}`}>{song.artist}</div>
+            <div className={`song-artist  ${isHover ? '' : 'secondary'}`}>{song.artist}</div>
           </div>
-          </div>
-            {/* Renders Album and Date Added only if in a station */}
+        </div>
+        {/* Renders Album and Date Added only if in a station */}
         {station && (
-        <>
-          <div className={`song-album ${isHover? '' : 'secondary'}`}>{song.album}</div>
-          <div className="date-added secondary">Nov 11</div>
-        </>
+          <>
+            <div className={`song-album ${isHover ? '' : 'secondary'}`}>{song.album}</div>
+            <div className="date-added secondary">Nov 11</div>
+          </>
         )}
 
         <div className="song-length secondary">
@@ -105,11 +105,11 @@ export function PlaylistSongPreview({ index, song, station, is }) {
           {utilService.formatSongLength(song.lengthInSeconds)}
           <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>•••</button>
           {isModalOpen && (
-            <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition}/>
+            <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} />
           )}
         </div>
-        
+
       </div>
     </>
-  );
+  )
 }
