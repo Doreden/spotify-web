@@ -9,6 +9,8 @@ export function Playline() {
 
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
     // const isPlaying = true
+    const isShuffle = useSelector(storeState => storeState.playerModule.isShuffle)
+    const isRepeat = useSelector(storeState => storeState.playerModule.isRepeat)
     const currentSong = useSelector(storeState => storeState.playerModule.song)
     const currentQueue = useSelector(storeState => storeState.playerModule.queue)
 
@@ -19,7 +21,7 @@ export function Playline() {
     // const [isPlaying, setIsPlaying] = useState(false)
 
     function onTogglePlay() {
-        togglePlay(!isPlaying)
+        togglePlay(isPlaying)
     }
 
     function onNextSong() {
@@ -57,8 +59,8 @@ export function Playline() {
             <div>Song Info</div>
 
             <div>
-                <PlayerControls togglePlay={onTogglePlay} />
-                <ReactPlayer playing={isPlaying} url={`https://www.youtube.com/watch?v=3oK22ll4cxw`} width="200" height="200" />
+                <PlayerControls togglePlay={onTogglePlay} isShuffle={isShuffle} isRepeat={isRepeat} />
+                <ReactPlayer playing={isPlaying} url={`https://www.youtube.com/watch?v=3oK22ll4cxw`} width="0" height="0" />
                 {/* <ReactPlayer {...state} width="0" height="0" /> */}
                 {/* </div> */}
             </div>
