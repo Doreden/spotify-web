@@ -1,12 +1,6 @@
-export const TOGGLE_PLAY = 'TOGGLE_PLAY'
+import { store } from "../store";
+import { TOGGLE_PLAY } from "../reducers/player.reducer";
 
-const initialState = { isPlaying: false, playingSongIdx: -1, queue: [] }
-
-export function playerReducer(state = initialState, cmd){
-    switch(cmd.type){
-        case TOGGLE_PLAY:
-            return {...state, isPlaying: !isPlaying}
-        default:
-            return state
-    }   
+export function togglePlay(isPlaying){
+    store.dispatch({ type : TOGGLE_PLAY, isPlaying})
 }
