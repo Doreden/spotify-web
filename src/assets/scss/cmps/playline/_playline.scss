@@ -1,0 +1,41 @@
+.playline {
+    grid-area: now-playing-bar;
+    background-color: rgb(233, 255, 190);
+    height: 72px;
+    background-color: rgb(0, 0, 0);
+    padding-left: 8px;
+    padding-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & .player-controls {
+        display: flex;
+        column-gap: 16px;
+    }
+
+    & .btn-player-control {
+        width: 32px;
+        height: 32px;
+        padding-left: 8px;
+        padding-right: 8px;
+        fill: $secondary-font-color;
+
+        &:hover {
+            fill: white;
+        }
+    }
+
+
+    & .btn-toggle-play {
+        background-color: white;
+        border-radius: 9999px;
+        fill: black;
+        padding-top: 4px;
+
+        &:hover {
+            fill: black;
+            transform: matrix(1.06, 0, 0, 1.06, 0, 0);
+        }
+    }
+}
