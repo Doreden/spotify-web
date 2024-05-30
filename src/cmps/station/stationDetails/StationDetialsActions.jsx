@@ -39,7 +39,8 @@ export function StationDetailsActions({ station, onPlayStation }) {
           {
             station.songs.length > 0 &&
             <div className="station-play-button-container">
-              <button onClick={onPlayStation} className="station-play-button">
+              {/* TOASK : Why it only works with arrow function? Does it has anything to do with default argument */}
+              <button onClick={() => onPlayStation()} className="station-play-button">
                 <div className="play-svg-container">
                   <ReactSVG src={Play} />
                 </div>

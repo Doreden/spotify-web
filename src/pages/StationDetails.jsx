@@ -24,8 +24,8 @@ export function StationDetails() {
     }
   }
 
-  function onPlayStation() {
-    playStation(station)
+  function onPlayStation(songIdx = 0) {
+    playStation(station, songIdx)
   }
 
   if (!station) return
@@ -35,7 +35,7 @@ export function StationDetails() {
         <StationDetailsHeader station={station} />
         <StationDetailsActions station={station} onPlayStation={onPlayStation} />
         <div className="song-list-container">
-          <PlaylistSongList station={station} />
+          <PlaylistSongList station={station} onPlayStation={onPlayStation} />
         </div>
       </section>
     </>

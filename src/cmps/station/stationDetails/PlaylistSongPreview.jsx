@@ -45,7 +45,7 @@ export function PlaylistSongPreview({ index, song, station }) {
   function displayPlayButton() {
     return (
       isHover ?
-        <div className="preview-play-svg-container"><ReactSVG src={Play} /></div> : index
+        <div className="preview-play-svg-container"><ReactSVG src={Play} /></div> : index + 1
     )
   }
 
