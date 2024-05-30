@@ -73,11 +73,11 @@ function _getEmptyStation(user) {
 
 // Two regular Albums, one Single and one user generated Playlist (differs by CreatedBy)
 function createStations() {
-  let stations = utilService.loadFromStorage(STORAGE_KEY)
-  if (!stations) {
-    stations = stationsAsJson
+  // let stations = utilService.loadFromStorage(STORAGE_KEY)
+  // if (!stations) {
+    const stations = stationsAsJson
     utilService.saveToStorage(STORAGE_KEY, stations)
-  }
+  // }
 }
 
 

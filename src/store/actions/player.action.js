@@ -26,11 +26,18 @@ export function toggleRepeat(isRepeat){
 }
 
 export function playStation(station, songIdx = 0){
+    // TOASK - Is it ok to dispach multiple calls and create different actions by that?
     store.dispatch({type : SET_STATION, songs : station.songs})
     store.dispatch({type: SET_SONG, song : station.songs[songIdx]})
     store.dispatch({type: SET_PLAY})
 }
 
 export function setPlay(){
+    store.dispatch({type: SET_PLAY})
+}
+
+export function playSingleSong(song){
+    store.dispatch({type:SET_STATION, queue : [song]})
+    store.dispatch({type:SET_SONG, song})
     store.dispatch({type: SET_PLAY})
 }
