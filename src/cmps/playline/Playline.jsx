@@ -34,7 +34,7 @@ export function Playline() {
 
     }
 
-
+    console.log(currentSong)
     return (
 
         <div className="playline">
