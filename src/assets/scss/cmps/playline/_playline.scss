@@ -1,6 +1,5 @@
 .playline {
     grid-area: now-playing-bar;
-    background-color: rgb(233, 255, 190);
     height: 72px;
     background-color: rgb(0, 0, 0);
     padding-left: 8px;
@@ -34,11 +33,10 @@
         }
     }
 
-
     & .btn-toggle-play {
-        background-color: white;
+        background-color: rgb(255, 255, 255);
         border-radius: 9999px;
-        fill: black;
+        fill: rgb(16, 12, 12);
         padding-top: 4px;
 
         &:hover {

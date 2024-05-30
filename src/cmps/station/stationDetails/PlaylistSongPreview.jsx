@@ -7,7 +7,7 @@ import { OptionsModal } from "../../OptionsModal"
 import Play from '../../../assets/imgs/play.svg'
 import AddToLiked from '../../../assets/imgs/addToLikes.svg'
 
-export function PlaylistSongPreview({ index, song, station, is }) {
+export function PlaylistSongPreview({ index, song, station }) {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 })
@@ -65,20 +65,9 @@ export function PlaylistSongPreview({ index, song, station, is }) {
     setIsModalOpen((prevState) => false)
   }
 
-  // .song-preview{
-
-  //   // 
-  //   &.side-bar{
-  //  span.date-added{display:none}
-
-  //   }
-
-  //   &.box{}
-  //   &.top-header{}
-  // }
   return (
     <>
-      <div className={`song-preview ${is} ${station ? 'playlist-columns' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
+      <div className={`song-preview ${station ? 'playlist-columns' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
         {station && <div className="song-index">{displayPlayButton()}</div>}
 
         <div className="song-details">

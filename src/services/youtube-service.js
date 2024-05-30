@@ -14,6 +14,8 @@ async function getSongBySearch(searchInput) {
     if(searchInput === 'try'){
       results = await JSON.parse(utilService.loadFromStorage(STORAGE_KEY))
     }else{
+
+      
         const response = await fetch(
           `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${searchInput}&part=snippet&type=video`
         )

@@ -1,12 +1,17 @@
+import { playSingleSong } from "../../store/actions/player.action"
 import { PlaylistSongPreview } from "../station/stationDetails/PlaylistSongPreview"
 
 export function SearchResults({ searchResults }) {
 
-    if (!searchResults) return
+    function onPlaySong(song) {
+        console.log(song)
+        playSingleSong(song)
+    }
 
+    if (!searchResults) return
     return (
         <div className="search-results">
-            <div className="top-result">
+            <div onDoubleClick={() => onPlaySong(searchResults[0])} className="top-result">
                 <div className="song-details">
                     <img src={searchResults[0].imgURL}></img>
                     <div className="title-and-artist">
@@ -25,8 +30,8 @@ export function SearchResults({ searchResults }) {
             </div>
 
             <div className="rest-of-results">
-                {searchResults?.slice(1).map((song) => (
-                    <div key={song.id} className="rest-result">
+                {searchResults?.slice(1).map((song, idx) => (
+                    <div onDoubleClick={() => onPlaySong(searchResults[idx + 1])} key={song.id} className="rest-result">
                         <PlaylistSongPreview key={song.id.videoId} song={song} />
                     </div>
                 ))}
