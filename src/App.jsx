@@ -1,6 +1,6 @@
 // Libraries
 import { Route, HashRouter as Router, Routes } from "react-router-dom"
-import { Provider } from "react-redux"
+import { Provider, useSelector } from "react-redux"
 // Pages
 import { StationIndex } from "./pages/StationIndex.jsx"
 import { StationDetails } from "./pages/StationDetails.jsx"
@@ -18,18 +18,20 @@ import { store } from "./store/store.js"
 import { stationService } from "./services/station.service.js"
 import { useEffect } from "react"
 import "./assets/scss/style.scss"
-import { loadStations } from "./store/actions/station.action"
+import { loadUserMiniStations, login } from "./store/actions/user.action"
 
 
 function App() {
 
   // Create Mock Data - Remove Later
-  stationService.createStations()
+  // stationService.createStations()
 
+  // const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  // console.log(loggedInUser)
 
-  // Load stations in store
+  // Load user in store 
   useEffect(() => {
-    loadStations()
+    login()
   }, [])
 
   return (

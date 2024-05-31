@@ -2,15 +2,7 @@ import { ADD_STATION, LOAD_STATIONS, REMOVE_STATION } from "../reducers/station.
 import { store } from "../store";
 import { stationService } from "../../services/station.service";
 
-export async function loadStations() {
-    try {
-      const newStations = await stationService.query();
-      store.dispatch({ type: LOAD_STATIONS, newStations });
-    } catch (error) {
-      console.log("Could not load stations");
-      throw error
-    }
-  }
+// TOASK : This is only used for rendering user liked playlists. Discuss does it need to be in store?
 
 export async function addStation() {
   try {

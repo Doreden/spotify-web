@@ -41,7 +41,7 @@ export function SidebarLibary() {
   return (
     <>
       <div className="sidebar-libary">
-        <SidebarLibaryHeader />
+        <SidebarLibaryHeader loggedInUser={loggedInUser} />
 
         <div className="libary-station-list">
           {stations.map((station) => (
@@ -63,5 +63,5 @@ export function SidebarLibary() {
       />) }
       </div>
     </>
-  );
+  )
 }
