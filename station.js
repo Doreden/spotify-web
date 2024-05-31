@@ -35,7 +35,8 @@ var station = {
 const minimalStation = {
   _id: "5cksxjas89xjsa8xjsa8jxs09",
   name: "Funky Monks",
-  imgUrl: "http://some-photo/"
+  imgUrl: "http://some-photo/",
+  createdBy: 'Or Doga'
 };
 
 const user = {

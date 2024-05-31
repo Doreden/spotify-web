@@ -10,7 +10,7 @@ export function Playline() {
     const currentSong = useSelector(storeState => storeState.playerModule.song)
     const currentQueue = useSelector(storeState => storeState.playerModule.queue)
 
-    const storeState = useSelector(storeState => storeState.playerModule)
+    const storeState = useSelector(storeState => storeState.userModule)
 
     console.log(storeState)
 

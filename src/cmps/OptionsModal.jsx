@@ -1,43 +1,43 @@
 import { useEffect, useState, useRef } from "react"
-import { stationService } from "../services/station.service";
+import { stationService } from "../services/station.service"
 import { removeStation } from '../store/actions/station.action'
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router"
 import { lazy } from "react"
 
-export function OptionsModal({modalType, buttonPosition, station, song, isOpen, onClose}){
+export function OptionsModal({ modalType, buttonPosition, station, song, isOpen, onClose }) {
 
     const modalRef = useRef()
     const navigate = useNavigate()
 
     useEffect(() => {
-      if (isOpen) {
-        document.addEventListener("mousedown", handleClickOutside);
-      } else {
-        document.removeEventListener("mousedown", handleClickOutside);
-      }
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [isOpen, onClose]);
+        if (isOpen) {
+            document.addEventListener("mousedown", handleClickOutside)
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+    }, [isOpen, onClose])
 
 
-    const modalPosition ={
+    const modalPosition = {
         buttonPosition: 'fixed',
         top: buttonPosition.top - 130,
         left: buttonPosition.left - 80
     }
 
-    function handleClickOutside(event){
+    function handleClickOutside(event) {
         if (modalRef.current && !modalRef.current.contains(event.target)) {
-        onClose();
+            onClose()
         }
     };
 
-    function handleDeleteSong(stationId,songId){
+    function handleDeleteSong(stationId, songId) {
         stationService.removeSongFromStation(stationId, songId)
     }
 
-    function handleDeleteStation(stationId){
+    function handleDeleteStation(stationId) {
         removeStation(stationId)
         navigate("/")
     }
@@ -46,41 +46,39 @@ export function OptionsModal({modalType, buttonPosition, station, song, isOpen, 
         <div className="options-modal" ref={modalRef} style={modalPosition}>
             <ul className="options-list">
                 {(() => {
-                    switch(modalType){
+                    switch (modalType) {
                         case ('song'):
-                            return <SongOptions/>
+                            return <SongOptions />
                         case ('station'):
-                            return <StationOptions/>
+                            return <StationOptions />
                         default:
                             return
-                        }
+                    }
                 })}
             </ul>
             <ul className="options-list">
-               <DymanicModalCmp modalType={'station'}/>
+                <DymanicModalCmp modalType={'station'} />
             </ul>
         </div>
     )
 
 
-    function DymanicModalCmp({modalType}){
+    function DymanicModalCmp({ modalType }) {
 
-    function getCmp(modalType){
-        switch(modalType){
-            case ('song'):
-                return <StationOptions/>
-            case ('station'):
-                return <StationOptions/>
-            default:
-                return
+        function getCmp(modalType) {
+            switch (modalType) {
+                case ('song'):
+                    return <StationOptions />
+                case ('station'):
+                    return <StationOptions />
+                default:
+                    return
             }
+        }
+        return getCmp(modalType)
     }
 
-    return getCmp(modalType)
-
-    }
-
-    function SongOptions(){
+    function SongOptions() {
         return (
             <>
                 <li onClick={() => handleDeleteSong(station.id, song.id)}>Delete Song</li>
@@ -88,7 +86,8 @@ export function OptionsModal({modalType, buttonPosition, station, song, isOpen, 
             </>
         )
     }
-    function StationOptions(){
+
+    function StationOptions() {
         return (
             <>
                 <li onClick={() => handleDeleteStation(station.id)}>Delete Station</li>

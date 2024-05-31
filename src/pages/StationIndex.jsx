@@ -1,16 +1,12 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { stationService } from "../services/station.service";
-import { loadStations } from "../store/actions/station.action";
-
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { stationService } from "../services/station.service"
 
 export function StationIndex() {
 
-
-
   const stations = useSelector((storeState) => {
-    return storeState.stationModule.stations;
-  });
+    return storeState.stationModule.stations
+  })
 
   return (
     <>
@@ -18,5 +14,5 @@ export function StationIndex() {
         {JSON.stringify(stations)}
       </section>
     </>
-  );
+  )
 }
