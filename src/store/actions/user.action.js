@@ -27,10 +27,9 @@ export async function loadUserMiniStations() {
     }
   }
 
-export async function addStation() {
+export async function addMiniStationToUser(newStation) {
   try {
-
-    const newStation = await stationService.createNewStation()
+    console.log(newStation)
     store.dispatch({type: ADD_STATION, newStation })
   } catch (error) {
     console.log(error)

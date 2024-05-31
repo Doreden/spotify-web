@@ -4,16 +4,13 @@ import stationsAsJson from '../assets/data/station.json' assert { type: 'json' }
 
 const STORAGE_KEY = "stations"
 
-// TODO - Only for development - This is all existing stations
-createStations()
-
 export const stationService = {
   removeSongFromStation,
   query,
   getById,
   removeById,
   createNewStation,
-  createStations,
+  convertToMiniStation
 }
 
 async function removeSongFromStation(stationId, songId) {
@@ -50,16 +47,22 @@ async function removeById(id) {
 }
 
 // TODO : change to get user from store
-async function createNewStation(user = {}) {
+async function createNewStation(user) {
   const emptyStation = _getEmptyStation(user)
-  return save(emptyStation)
+  const savedStation = await save(emptyStation)
+  return savedStation
 }
 
-function save(stationToSave) {
+function convertToMiniStation(station){
+  const { id, albumCoverUrl, name } = station
+  return { id, albumCoverUrl, name, createdBy : station.createdBy.fullname}
+}
+
+async function save(stationToSave) {
   if (stationToSave.id) {
-    return storageService.put(STORAGE_KEY, stationToSave)
+    return await storageService.put(STORAGE_KEY, stationToSave)
   } else {
-    return storageService.post(STORAGE_KEY, stationToSave)
+    return await storageService.post(STORAGE_KEY, stationToSave)
   }
 }
 
@@ -69,19 +72,20 @@ function _getEmptyStation(user) {
     albumCoverUrl: null,
     createdBy: user,
     likedByUsers: [],
-    createdAt: Date.now(),
     songs: [],
   }
 }
 
-// Two regular Albums, one Single and one user generated Playlist (differs by CreatedBy)
-function createStations() {
-  // let stations = utilService.loadFromStorage(STORAGE_KEY)
-  // if (!stations) {
-    const stations = stationsAsJson
-    console.log(stations)
-    utilService.saveToStorage(STORAGE_KEY, stations)
-  // }
-}
+// Load all stations to localStorage / create new from data file
+// TODO - Move to query from db
+(() => {
+  let stations
+  stations = utilService.loadFromStorage(STORAGE_KEY)
+  if(!stations){
+    stations = stationsAsJson
+  }
+  console.log(stations)
+  utilService.saveToStorage(STORAGE_KEY, stations)
+})()
 
 

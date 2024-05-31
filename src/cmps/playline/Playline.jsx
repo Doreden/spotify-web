@@ -11,7 +11,6 @@ export function Playline() {
     const currentQueue = useSelector(storeState => storeState.playerModule.queue)
 
     const storeState = useSelector(storeState => storeState.userModule)
-
     console.log(storeState)
 
     function onTogglePlay() {
@@ -34,7 +33,6 @@ export function Playline() {
 
     }
 
-    console.log(currentSong)
     return (
 
         <div className="playline">
@@ -43,9 +41,7 @@ export function Playline() {
 
             <div>
                 <PlayerControls togglePlay={onTogglePlay} isPlaying={isPlaying} isShuffle={isShuffle} isRepeat={isRepeat} />
-                <ReactPlayer playing={isPlaying} url={`https://www.youtube.com/watch?v=${currentSong.id}`} width="200" height="200" />
-                {/* <ReactPlayer {...state} width="0" height="0" /> */}
-                {/* </div> */}
+                <ReactPlayer playing={isPlaying} url={`https://www.youtube.com/watch?v=${currentSong.id}`} width="0" height="0" />
             </div>
 
             <div>Volume</div>

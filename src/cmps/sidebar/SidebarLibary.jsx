@@ -3,17 +3,21 @@ import { useSelector } from "react-redux"
 import { StationPreview } from "./StationPreview.jsx"
 
 export function SidebarLibary() {
+  // User is initiated to NULL - if there is a user, it should have likeStations
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  console.log(loggedInUser)
+  if (!loggedInUser) return "Log in to create and share playlists"
 
-  const stations = useSelector((storeState) => storeState.userModule.user?.likedStations)
-
-  if (!stations) return
+  const miniStations = loggedInUser.likedStations
+  console.log(miniStations)
+  if (!miniStations) return
   return (
     <>
       <div className="sidebar-libary">
-        <SidebarLibaryHeader />
+        <SidebarLibaryHeader loggedInUser={loggedInUser} />
 
         <div className="libary-station-list">
-          {stations.map((station) => (
+          {miniStations.map((station) => (
             <div key={station.id} className="preview-item">
               <StationPreview station={station} />
             </div>

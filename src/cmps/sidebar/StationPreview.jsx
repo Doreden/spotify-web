@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
-export function StationPreview({ station }){
+export function StationPreview({ station }) {
 
     return (
         <Link to={`/station/${station.id}`}>
@@ -8,7 +8,7 @@ export function StationPreview({ station }){
                 <img src={station.albumCoverUrl}></img>
                 <div className="station-preview-text">
                     <div className="station-name">{station.name}</div>
-                    <div className="created-by">{station.createdBy.username}</div>
+                    <div className="created-by">{station.createdBy}</div>
                 </div>
             </div>
         </Link>
