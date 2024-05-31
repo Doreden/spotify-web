@@ -16,7 +16,7 @@ export async function addStation() {
   try {
 
     const newStation = await stationService.createNewStation()
-    store.dispatch({type: ADD_STATION, newStation })
+    store.dispatch({type: ADD_STATION })
   } catch (error) {
     console.log(error)
     console.log('Could Not add Station')

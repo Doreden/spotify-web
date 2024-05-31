@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { ContextMenu } from "./ContextMenu.jsx";
 
 export function SidebarLibary() {
-  // const [station, setStation] = useState([])
   const [isActiveId, setIsActiveId] = useState(null)
   const [contextMenu, setContextMenu] = useState(null)
   const stations = useSelector(

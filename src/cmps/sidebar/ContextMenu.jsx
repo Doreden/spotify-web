@@ -17,15 +17,15 @@ export function ContextMenu({ x, y, onEdit, onRemove, onAdd }) {
         <div className="context-menu" style={contextMenuStyle} >
             <ul>
                 <div className="edit-item">
-                    {/* <ReactSVG src={Edit} /> */}
+                    <ReactSVG src={Edit} />
                     <li onClick={onEdit}>Edit details</li>
                 </div>
                 <div className="delete-item">
-                    {/* <ReactSVG src={Delete} /> */}
+                    <ReactSVG src={Delete} />
                     <li onClick={onRemove}>Delete</li>
                 </div>
                 <div className="create-item">
-                    {/* <ReactSVG src={AddStation} /> */}
+                    <ReactSVG src={AddStation} />
                     <li onClick={onAdd}>Create playlist</li>
                 </div>
             </ul>
