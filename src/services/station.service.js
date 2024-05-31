@@ -4,6 +4,9 @@ import stationsAsJson from '../assets/data/station.json' assert { type: 'json' }
 
 const STORAGE_KEY = "stations"
 
+// TODO - Only for development - This is all existing stations
+createStations()
+
 export const stationService = {
   removeSongFromStation,
   query,
@@ -23,7 +26,7 @@ async function removeSongFromStation(stationId, songId) {
   save(station)
 }
 
-async function query() {
+async function query(filterBy = {}) {
   let stations = await storageService.query(STORAGE_KEY)
   return stations
 }
@@ -76,6 +79,7 @@ function createStations() {
   // let stations = utilService.loadFromStorage(STORAGE_KEY)
   // if (!stations) {
     const stations = stationsAsJson
+    console.log(stations)
     utilService.saveToStorage(STORAGE_KEY, stations)
   // }
 }

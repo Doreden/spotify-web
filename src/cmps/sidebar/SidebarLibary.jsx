@@ -1,13 +1,12 @@
-import { SidebarLibaryHeader } from "./SidebarLibaryHeader.jsx";
-import { useSelector } from "react-redux";
-import { StationPreview } from "./StationPreview.jsx";
-import { OptionsModal } from "../OptionsModal.jsx";
+import { SidebarLibaryHeader } from "./SidebarLibaryHeader.jsx"
+import { useSelector } from "react-redux"
+import { StationPreview } from "./StationPreview.jsx"
 
 export function SidebarLibary() {
-  const stations = useSelector(
-    (storeState) => storeState.stationModule.stations
-  );
 
+  const stations = useSelector((storeState) => storeState.userModule.user?.likedStations)
+
+  if (!stations) return
   return (
     <>
       <div className="sidebar-libary">
@@ -22,5 +21,5 @@ export function SidebarLibary() {
         </div>
       </div>
     </>
-  );
+  )
 }
