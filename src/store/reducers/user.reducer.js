@@ -1,7 +1,7 @@
 import { UserService } from "../../services/user.service"
 
 
-const initialState = { user: {} }
+const initialState = { user: null }
 
 export const LOAD_USER = 'LOAD_USER'
 export const LOAD_STATIONS = 'LOAD_STATIONS'
@@ -18,7 +18,7 @@ export function userReducer(state = initialState, cmd){
         case LOAD_STATIONS:
             return {...state, stations: cmd.newStations}
         case ADD_STATION:
-            return {...state, stations: [...state.stations, cmd.newStation] }
+            return {...state, user : {...state.user, likedStations: [...state.user.likedStations, cmd.newStation] } }
         case REMOVE_STATION:
             return {...state, stations: state.stations.filter(station => station.id !== cmd.stationId)}
        

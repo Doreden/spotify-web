@@ -31,6 +31,7 @@ function App() {
 
   // Load user in store 
   useEffect(() => {
+    console.log("tryy")
     login()
   }, [])
 

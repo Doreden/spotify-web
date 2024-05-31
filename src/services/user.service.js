@@ -7,10 +7,17 @@ const STORAGE_KEY = "user"
 export const UserService = {
     login,
     createMinimalUser,
-    getLoggedInUser
+    getLoggedInUser,
+    addMiniStation
 }
 
-async function getLoggedInUser(){
+async function addMiniStation(miniStation){
+    const loggedInUser = getLoggedInUser()
+    const updatedUser = {...loggedInUser, likedStations : [...loggedInUser.likedStations, miniStation]}
+    utilService.saveToStorage(STORAGE_KEY,updatedUser)
+}
+
+function getLoggedInUser(){
     try{
         const loggedInUser = utilService.loadFromStorage(STORAGE_KEY)
         return loggedInUser
@@ -20,9 +27,13 @@ async function getLoggedInUser(){
 }
 
 function login(){
-    const defaultUser = _getDefaultUser()
-    utilService.saveToStorage(STORAGE_KEY,defaultUser)
-    return defaultUser
+    const loggedInUser = utilService.loadFromStorage(STORAGE_KEY)
+    if(!loggedInUser){
+        const defaultUser = createMinimalUser(_getDefaultUser())
+        utilService.saveToStorage(STORAGE_KEY,defaultUser)
+        return defaultUser
+    }
+    return loggedInUser
 }
 
 
@@ -30,9 +41,19 @@ function createMinimalUser(user){
     return {
         id: user.id,
         fullname: user.fullname,
-        imgUrl: user.imgUrl
+        imgUrl: user.imgUrl,
+        likedStations: user.likedStations
     }
 }
+
+// TODO - Use When implementing creation of user
+async function save(userToSave) {
+    if (userToSave.id) {
+      return await storageService.put(STORAGE_KEY, stationToSave)
+    } else {
+      return await storageService.post(STORAGE_KEY, stationToSave)
+    }
+  }
 
 function _getDefaultUser(){
     return {
