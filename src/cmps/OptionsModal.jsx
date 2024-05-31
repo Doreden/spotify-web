@@ -1,13 +1,15 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useRef } from "react"
 import { stationService } from "../services/station.service"
-import { removeStation } from '../store/actions/station.action'
+import { deleteStation } from '../store/actions/user.action'
 import { useNavigate } from "react-router"
-import { lazy } from "react"
+import { useSelector } from "react-redux"
 
 export function OptionsModal({ modalType, buttonPosition, station, song, isOpen, onClose }) {
 
     const modalRef = useRef()
     const navigate = useNavigate()
+
+    const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
     useEffect(() => {
         if (isOpen) {
@@ -38,14 +40,15 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
     }
 
     function handleDeleteStation(stationId) {
-        removeStation(stationId)
+        deleteStation(loggedInUser.id, stationId)
         navigate("/")
     }
 
     return (
         <div className="options-modal" ref={modalRef} style={modalPosition}>
             <ul className="options-list">
-                {(() => {
+                <DymanicModalCmp modalType={modalType} />
+                {/* {(() => {
                     switch (modalType) {
                         case ('song'):
                             return <SongOptions />
@@ -54,10 +57,7 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
                         default:
                             return
                     }
-                })}
-            </ul>
-            <ul className="options-list">
-                <DymanicModalCmp modalType={'station'} />
+                })} */}
             </ul>
         </div>
     )
@@ -68,7 +68,7 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
         function getCmp(modalType) {
             switch (modalType) {
                 case ('song'):
-                    return <StationOptions />
+                    return <SongOptions />
                 case ('station'):
                     return <StationOptions />
                 default:

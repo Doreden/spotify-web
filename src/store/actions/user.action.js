@@ -16,6 +16,37 @@ export async function login(cretentials = {}){
     }
 }
 
+export async function deleteStation(userId,stationId){
+  try {
+    // Delete station from db
+    await stationService.removeById(stationId)
+    // Delete station from user likesStations
+    await UserService.removeStationFromLikedByUser(userId,stationId)
+    // Delete station from store
+    const userState = store.dispatch({type:REMOVE_STATION, stationId})
+    console.log(userState)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export async function createNewStationByUser(loggedInUser){
+  try {
+    const { id, fullname, imgUrl } = loggedInUser
+    const formattedUser = { id, fullname, imgUrl }
+    // Creates new station in database
+    const newStation = await stationService.createNewStation(formattedUser)
+    const miniNewStation = stationService.convertToMiniStation(newStation)
+    // Add new station to user in database
+    UserService.addMiniStation(miniNewStation)
+    // Add new station in store to re-render
+    // addMiniStationToUser(miniNewStation)
+    store.dispatch({type: ADD_STATION, miniNewStation })
+  } catch (err) {
+      console.log(err)
+  }
+}
+
 export async function loadUserMiniStations() {
     try {
      const loggedInUser = UserService.getLoggedInUser()
@@ -26,16 +57,6 @@ export async function loadUserMiniStations() {
       throw error
     }
   }
-
-export async function addMiniStationToUser(newStation) {
-  try {
-    console.log(newStation)
-    store.dispatch({type: ADD_STATION, newStation })
-  } catch (error) {
-    console.log(error)
-    console.log('Could Not add Station')
-  }
-}
 
 export async function removeStation(stationId){
   try{

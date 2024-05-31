@@ -8,13 +8,22 @@ export const UserService = {
     login,
     createMinimalUser,
     getLoggedInUser,
-    addMiniStation
+    addMiniStation,
+    removeStationFromLikedByUser
+}
+
+async function removeStationFromLikedByUser(userId, stationId){
+    // TODO : Convert to use userId ? 
+    const loggedInUser = getLoggedInUser()
+    const updatedUser = {...loggedInUser, likedStations : loggedInUser.likedStations.filter((station) => station.id !== stationId)}
+    await utilService.saveToStorage(STORAGE_KEY, updatedUser)
+
 }
 
 async function addMiniStation(miniStation){
     const loggedInUser = getLoggedInUser()
     const updatedUser = {...loggedInUser, likedStations : [...loggedInUser.likedStations, miniStation]}
-    utilService.saveToStorage(STORAGE_KEY,updatedUser)
+    await utilService.saveToStorage(STORAGE_KEY, updatedUser)
 }
 
 function getLoggedInUser(){
@@ -49,9 +58,9 @@ function createMinimalUser(user){
 // TODO - Use When implementing creation of user
 async function save(userToSave) {
     if (userToSave.id) {
-      return await storageService.put(STORAGE_KEY, stationToSave)
+      return await storageService.put(STORAGE_KEY, userToSave)
     } else {
-      return await storageService.post(STORAGE_KEY, stationToSave)
+      return await storageService.post(STORAGE_KEY, userToSave)
     }
   }
 

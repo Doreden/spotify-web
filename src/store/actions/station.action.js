@@ -4,16 +4,6 @@ import { stationService } from "../../services/station.service";
 
 // TOASK : This is only used for rendering user liked playlists. Discuss does it need to be in store?
 
-// export async function loadUserStations() {
-//     try {
-//       const newStations = await stationService.query();
-//       store.dispatch({ type: LOAD_STATIONS, newStations });
-//     } catch (error) {
-//       console.log("Could not load stations");
-//       throw error
-//     }
-//   }
-
 export async function addStation() {
   try {
 
