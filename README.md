@@ -4,6 +4,9 @@
 
 ## Installation
 
+## Deploy:
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## GIT
 
 > git clone
@@ -19,8 +22,13 @@
 - react-icon
 - react-svg
 
+<<<<<<< HEAD
+
+ ### Plugins used:
+=======
 ### Plugins used:
 
+>>>>>>> 870ef2613fc2cc9d2541813f33818be51ce7cc30
 - Git Lense
 - Prettier
 - ESLint
