@@ -9,6 +9,8 @@ export function SearchPage() {
     const [searchInput, setSearchInput] = useState(null)
     const [searchResults, setSearchResults] = useState(null)
 
+    console.log(searchResults)
+
     // TODO how to improve?
     useEffect(() => {
         if (searchInput) {

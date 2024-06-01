@@ -7,8 +7,8 @@ import { useRef } from 'react'
 export function PlaySlider({ songProggresionData, setSongProgresionData }) {
 
     function handleOnChange(event) {
-        const played = songProggresionData.songDuration
-        setSongProgresionData((prevSongProgress) => ({ ...prevSongProgress, played: event.target }))
+        // const played = songProggresionData.songDuration
+        // setSongProgresionData((prevSongProgress) => ({ ...prevSongProgress, played: event.target }))
     }
 
     return (
@@ -16,7 +16,7 @@ export function PlaySlider({ songProggresionData, setSongProgresionData }) {
             <div className="time-elapsed">
                 {utilService.formatSongLength(Math.floor(songProggresionData.playedSeconds))}
             </div>
-            <Slider aria-label="Volume"
+            <Slider aria-label="play-slider"
                 value={songProggresionData.playedSeconds}
                 min={0}
                 max={songProggresionData.songDuration}
