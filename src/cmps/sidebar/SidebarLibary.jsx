@@ -9,11 +9,9 @@ export function SidebarLibary() {
   const [isActiveId, setIsActiveId] = useState(null)
   const [contextMenu, setContextMenu] = useState(null)
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-  console.log(loggedInUser)
 
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
 
-  console.log(miniStations)
   useEffect(() => {
     document.addEventListener('click', handleCloseContextMenu)
     return () => {
@@ -56,7 +54,8 @@ export function SidebarLibary() {
             <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)} >
               <StationPreview station={station}
                 isActiveId={station.id === isActiveId}
-                onClick={handleStationClick} />
+                onClick={handleStationClick}
+                context={'sidebar'} />
             </div>
           ))}
         </div>

@@ -1,0 +1,15 @@
+.station-list {
+    display: flex;
+}
+
+.station-list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-title {
+    align-self: flex-start;
+    font-size: 24px;
+    font-weight: 700;
+    padding-left: 12px;
+}
