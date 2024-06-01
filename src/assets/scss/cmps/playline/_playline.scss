@@ -16,51 +16,41 @@
         flex-direction: column;
     }
 
-    & .song-info {
+    & .playing-song-info {
+        padding-left: 8px;
         min-width: 200px;
+        display: flex;
+
+        & .playing-song-img {
+            width: 56px;
+            height: 56px;
+            border-radius: 4px;
+        }
+
+        & .title-and-artist {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            margin-left: 8px;
+            margin-right: 8px;
+
+            & .song-title {
+                font-size: 14px;
+            }
+
+            & .song-artist {
+                font-size: 12px;
+                color: $secondary-font-color;
+            }
+        }
     }
 
     & .volume {
-        min-width: 200px;
+        min-width: 125px;
         display: flex;
         justify-content: flex-end;
-    }
+        margin-right: 32px;
 
-    & .player-controls {
-        display: flex;
-        column-gap: 16px;
-        align-self: center;
-    }
-
-    & .btn-player-control {
-        width: 32px;
-        height: 32px;
-        padding-left: 8px;
-        padding-right: 8px;
-        fill: $secondary-font-color;
-
-        &.active {
-            fill: #1db954;
-
-            &:hover {
-                fill: #1ed760;
-            }
-        }
-
-        &:hover {
-            fill: white;
-        }
-    }
-
-    & .btn-toggle-play {
-        background-color: rgb(255, 255, 255);
-        border-radius: 9999px;
-        fill: rgb(16, 12, 12);
-        padding-top: 4px;
-
-        &:hover {
-            fill: black;
-            transform: matrix(1.06, 0, 0, 1.06, 0, 0);
-        }
     }
 }

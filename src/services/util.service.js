@@ -41,7 +41,7 @@ function convertYoutubeDurationToSeconds(durationString){
         const totalSeconds = hours * 3600 + minutes * 60 + seconds;
         return totalSeconds;
     } else {
-        throw new Error("The string does not match the expected format 'PTXMYS'");
+        return 0;
     }
 }
 

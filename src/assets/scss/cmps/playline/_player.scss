@@ -1,0 +1,64 @@
+.play-slider-container {
+
+    display: flex;
+
+    & .MuiSlider-thumb {
+        background-color: rgb(171, 171, 171);
+        box-shadow: none;
+        width: 0px;
+        height: 0px;
+
+        &:hover {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    & .MuiSlider-rail {
+        background-color: #969696;
+        border: none;
+    }
+
+    & .MuiSlider-track {
+        background-color: #969696;
+        border: none;
+    }
+}
+
+.player-controls {
+    display: flex;
+    column-gap: 16px;
+    align-self: center;
+
+    & .btn-player-control {
+        width: 32px;
+        height: 32px;
+        padding-left: 8px;
+        padding-right: 8px;
+        fill: $secondary-font-color;
+
+        &.active {
+            fill: #1db954;
+
+            &:hover {
+                fill: #1ed760;
+            }
+        }
+
+        &:hover {
+            fill: white;
+        }
+    }
+
+    & .btn-toggle-play {
+        background-color: rgb(255, 255, 255);
+        border-radius: 9999px;
+        fill: rgb(16, 12, 12);
+        padding-top: 4px;
+
+        &:hover {
+            fill: black;
+            transform: matrix(1.06, 0, 0, 1.06, 0, 0);
+        }
+    }
+}
