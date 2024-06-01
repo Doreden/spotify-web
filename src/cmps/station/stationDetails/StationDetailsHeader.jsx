@@ -13,7 +13,7 @@ export function StationDetailsHeader({ station }) {
         <>
             <div className="station-details-header">
                 <div className="content">
-                    <img onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)} className="station-cover" src={imgHover ? 'imgs/change-cover.png' : station.imgUrl ? station.imgUrl : 'imgs/defaultStationImg.png'} ></img>
+                    <img onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)} className="station-cover" src={imgHover ? 'imgs/change-cover.png' : station.imgUrl}></img>
                     <div className="station-info">
                         <h1 className="station-name">{station.name}</h1>
                         <div className="additional-info-line">
