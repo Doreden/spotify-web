@@ -14,7 +14,6 @@ export function SidebarLibary() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-  console.log(loggedInUser)
 
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
 
@@ -97,7 +96,8 @@ export function SidebarLibary() {
             <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)} >
               <StationPreview station={station}
                 isActiveId={station.id === isActiveId}
-                onClick={handleStationClick} />
+                onClick={handleStationClick}
+                context={'sidebar'} />
             </div>
           ))}
         </div>

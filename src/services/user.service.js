@@ -74,6 +74,6 @@ function _getDefaultUser(){
         gender: "male",
         birthday: 1234567890,
         imgUrl: "http://some-photo/",
-        likedStations : stationsAsJson.map((station) => ({id : station.id, name : station.name, albumCoverUrl : station.albumCoverUrl, createdBy : station.createdBy.username}))
+        likedStations : stationsAsJson.map((station) => ({id : station.id, name : station.name, imgUrl : station.imgUrl, createdBy : station.createdBy.username}))
       }
 }

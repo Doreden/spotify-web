@@ -2,7 +2,7 @@
     {
         "id": "0BFzNaeaNv4mahOzwZFGHK",
         "name": "Royal Blood",
-        "imgUrl": null,
+        "imgUrl": "imgs/defaultStationImg.png",
         "createdBy": {
             "id": "ak491k",
             "username": "Or Doga",
@@ -42,6 +42,7 @@
     {
         "id": "akdfj932JEalksdn",
         "name": "90's Hip Hop",
+        "imgUrl": "imgs/defaultStationImg.png",
         "createdBy": {
             "id": "ak491k",
             "username": "Or Doga",
