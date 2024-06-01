@@ -1,0 +1,66 @@
+.playline {
+    grid-area: now-playing-bar;
+    height: 72px;
+    background-color: rgb(0, 0, 0);
+    padding-left: 8px;
+    padding-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & .player {
+        min-width: 320px;
+        width: 600px;
+        flex-shrink: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    & .song-info {
+        min-width: 200px;
+    }
+
+    & .volume {
+        min-width: 200px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    & .player-controls {
+        display: flex;
+        column-gap: 16px;
+        align-self: center;
+    }
+
+    & .btn-player-control {
+        width: 32px;
+        height: 32px;
+        padding-left: 8px;
+        padding-right: 8px;
+        fill: $secondary-font-color;
+
+        &.active {
+            fill: #1db954;
+
+            &:hover {
+                fill: #1ed760;
+            }
+        }
+
+        &:hover {
+            fill: white;
+        }
+    }
+
+    & .btn-toggle-play {
+        background-color: rgb(255, 255, 255);
+        border-radius: 9999px;
+        fill: rgb(16, 12, 12);
+        padding-top: 4px;
+
+        &:hover {
+            fill: black;
+            transform: matrix(1.06, 0, 0, 1.06, 0, 0);
+        }
+    }
+}

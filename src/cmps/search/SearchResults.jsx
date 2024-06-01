@@ -1,24 +1,42 @@
-import { useEffect, useState } from "react"
+import { playSingleSong } from "../../store/actions/player.action"
+import { PlaylistSongPreview } from "../station/stationDetails/PlaylistSongPreview"
 
-export function SearchResults({searchResults}){
+export function SearchResults({ searchResults }) {
 
-    const [results,setResults] = useState(null)
-    
-    useEffect(() => {
-        formatResults()
-    },[])
-
-    function formatResults(){
-        const formattedResults = JSON.parse(localStorage.getItem('search')).items.map((item) => ({
-            id : item.id.videoId,
-            title : item.snippet.title
-        }))
-        setResults((prevResults) => formattedResults)
+    function onPlaySong(song) {
+        console.log(song)
+        playSingleSong(song)
     }
 
+    if (!searchResults) return
     return (
-        <>
-            <div>{results? JSON.stringify(results) : ""}</div>
-        </>
+        <div className="search-results">
+            <div onDoubleClick={() => onPlaySong(searchResults[0])} className="top-result">
+                <div className="song-details">
+                    <img src={searchResults[0].imgURL}></img>
+                    <div className="title-and-artist">
+                        {searchResults[0].title &&
+                            <>
+                                <div className="title">
+                                    {searchResults[0].title}
+                                </div>
+                            </>}
+                        {searchResults[0].artist &&
+                            <div className="artist">
+                                {searchResults[0].artist}
+                            </div>}
+                    </div>
+                </div>
+            </div>
+
+            <div className="rest-of-results">
+                {searchResults?.slice(1).map((song, idx) => (
+                    <div onDoubleClick={() => onPlaySong(searchResults[idx + 1])} key={song.id} className="rest-result">
+                        <PlaylistSongPreview key={song.id.videoId} song={song} />
+                    </div>
+                ))}
+            </div>
+        </div>
     )
 }
+

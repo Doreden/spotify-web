@@ -16,14 +16,19 @@
 
 > features list.. .
 
- ## Npm Libaries
- - react-router
- - react-icon
- - react-svg
+## Npm Libaries
 
+- react-router
+- react-icon
+- react-svg
 
+<<<<<<< HEAD
 
  ### Plugins used:
+=======
+### Plugins used:
+
+>>>>>>> 870ef2613fc2cc9d2541813f33818be51ce7cc30
 - Git Lense
 - Prettier
 - ESLint

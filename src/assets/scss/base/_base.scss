@@ -33,6 +33,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 
   &>* {
     font-family: 'CircularSpotify', sans-serif;
@@ -51,13 +52,9 @@ button {
   // transition: border-color 0.25s;
 }
 
-
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+input:focus-visible {
+  outline: none;
 }
-
 
 li {
   list-style-type: none;
@@ -81,9 +78,10 @@ svg {
 }
 
 
-* .page {
+.page {
   scrollbar-width: thin;
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-gutter: auto;
 }
 

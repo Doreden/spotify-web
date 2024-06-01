@@ -5,4 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: "/spotify-web",
   plugins: [react()],
+  build: {
+    outDir: "../backend-spotify-web/public",
+    emptyOutDir: true,
+  },
+  // optimizeDeps: {
+  //   exclude: ['@mui/material']
+  // }
 })

@@ -1,5 +1,6 @@
-export function Browse(){
-    
+
+export function Browse() {
+
     return (
         <>
             <div>Browse</div>

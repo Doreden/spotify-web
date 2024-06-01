@@ -10,10 +10,13 @@
 @import './pages/station-details';
 
 // Components SCSS
-@import './cmps/playline';
+@import './cmps/playline/playline';
+@import './cmps/playline/slider';
 @import './cmps/sidebar';
 @import './cmps/nav-header';
 @import './cmps/options-modal';
+@import './cmps/context-menu';
 
-// Station related:
+
+// Station Details:
 @import './cmps/stationDetails/song-list';

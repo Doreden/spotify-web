@@ -1,19 +1,18 @@
-import { Link } from "react-router-dom";
-import { removeStation } from "../../store/actions/station.action";
+import { Link } from "react-router-dom"
 
-export function StationPreview({ station }){
-
-    function handleRemoveStation(stationId){
-        removeStation(stationId)
-    }
+export function StationPreview({ station, isActiveId, onClick  }){
+    const handleClick = (e) => {
+        e.stopPropagation()
+        onClick(station._id)
+      }
 
     return (
-        <Link to={`/station/${station.id}`}>
-            <div className="station-preview">
+        <Link to={`/station/${station.id}`} onClick={handleClick} >
+            <div className="station-preview" onClick={() => onClick(station.id)}>
                 <img src={station.albumCoverUrl}></img>
                 <div className="station-preview-text">
                     <div className="station-name">{station.name}</div>
-                    <div className="created-by">{station.createdBy.username}</div>
+                    <div className="created-by">{station.createdBy}</div>
                 </div>
             </div>
         </Link>

@@ -1,0 +1,25 @@
+.play-slider-container {
+
+    display: flex;
+
+    & .MuiSlider-thumb {
+        background-color: rgb(171, 171, 171);
+        box-shadow: none;
+        width: 0px;
+        height: 0px;
+
+        &:hover {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    & .MuiSlider-rail:hover+.MuiSlider-thumb {
+        background-color: orange;
+    }
+
+    & .MuiSlider-rail {
+        background-color: #969696 !important;
+        border: none;
+    }
+}

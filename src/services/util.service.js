@@ -4,11 +4,12 @@ export const utilService = {
     loadFromStorage,
     generateId,
     formatSongLength,
-    formatStationLength
+    formatStationLength,
+    formatVideoTitle,
+    convertYoutubeDurationToSeconds
 }
 
-window.formatSongLength = formatSongLength
-window.formatStationLength = formatStationLength
+
 
 function saveToStorage(key, value) {
     localStorage[key] = JSON.stringify(value);
@@ -26,6 +27,22 @@ function generateId(length){
         newId += keys[Math.floor(Math.random()*keys.length)]
     }
     return newId
+}
+
+function convertYoutubeDurationToSeconds(durationString){
+    console.log(durationString)
+    const pattern = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
+    const match = durationString.match(pattern);
+
+    if (match) {
+        const hours = match[1] ? parseInt(match[1], 10) : 0;
+        const minutes = match[2] ? parseInt(match[2], 10) : 0;
+        const seconds = match[3] ? parseInt(match[3], 10) : 0;
+        const totalSeconds = hours * 3600 + minutes * 60 + seconds;
+        return totalSeconds;
+    } else {
+        throw new Error("The string does not match the expected format 'PTXMYS'");
+    }
 }
 
 function formatSongLength(songLengthInSeconds){
@@ -49,3 +66,22 @@ function formatStationLength(songs){
         )
     }
 }
+
+function formatVideoTitle(title){
+    const regex = /^(.*?)\s*-\s*(.*?)(?:\s*\((.*?)\))?$/; 
+    title = title.replace(/\(([^)]+)\)/g, '');
+    title = title.replace(/\[([^\]]+)\]/g, '');
+    title = title.replace('&#39;', '\'');
+    title = title.replace('&amp;', '&');
+    const matches = title.match(regex)
+      
+    if (!matches){
+        return {title}
+    }else{
+        return( {
+            artist: matches[1].trim(),
+            title: matches[2].trim()
+        })
+    }
+}
+
