@@ -4,6 +4,9 @@
 
 ## Installation
 
+## Deploy:
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## GIT
 
 > git clone
@@ -21,7 +24,6 @@
 
 
  ### Plugins used:
-
 - Git Lense
 - Prettier
 - ESLint
