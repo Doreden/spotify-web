@@ -10,8 +10,8 @@ export function stationReducer(state = initialState, cmd){
             return {...state, stations: cmd.newStations}
         case ADD_STATION:
             return {...state, stations: [...state.stations, cmd.newStation] }
-        case REMOVE_STATION:
-            return {...state, stations: state.stations.filter(station => station.id !== cmd.stationId)}
+        // case REMOVE_STATION:
+        //     return {...state, stations: state.stations.filter(station => station.id !== cmd.stationId)}
         default:
             return state
     }

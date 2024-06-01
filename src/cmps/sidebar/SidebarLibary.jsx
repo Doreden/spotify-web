@@ -8,11 +8,12 @@ import { ContextMenu } from "./ContextMenu.jsx";
 export function SidebarLibary() {
   const [isActiveId, setIsActiveId] = useState(null)
   const [contextMenu, setContextMenu] = useState(null)
-  const stations = useSelector(
-    (storeState) => storeState.stationModule.stations
-  );
-  const dispatch = useDispatch()
-
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  console.log(loggedInUser)
+ 
+  const miniStations = loggedInUser ? loggedInUser.likedStations : null
+  
+  console.log(miniStations)
   useEffect(() => {
     document.addEventListener('click', handleCloseContextMenu)
     return () => {
@@ -22,20 +23,27 @@ export function SidebarLibary() {
 
 
   const handleContextMenu = (event, station) => {
-    event.preventDefault()
-    setContextMenu({
-      isVisible: true,
-      x: event.clientX,
-      y: event.clientY,
-      station: station,
-    })
+    // event.preventDefault()
+    // setContextMenu({
+    //   isVisible: true,
+    //   x: event.clientX,
+    //   y: event.clientY,
+    //   station: station,
+    // })
   }
 
   const handleCloseContextMenu = () => {
-    setContextMenu(null)
+    // setContextMenu(null)
   }
   const handleStationClick = (id) => {
-    setIsActiveId(id)
+    // setIsActiveId(id)
+  }
+  if (!loggedInUser) {
+    return "Log in to create and share playlists"
+  }
+
+  if (!miniStations) {
+    return null
   }
 
   return (
@@ -44,7 +52,7 @@ export function SidebarLibary() {
         <SidebarLibaryHeader loggedInUser={loggedInUser} />
 
         <div className="libary-station-list">
-          {stations.map((station) => (
+          {miniStations.map((station) => (
             <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)} >
               <StationPreview station={station} 
               isActiveId={station.id === isActiveId}
@@ -52,7 +60,7 @@ export function SidebarLibary() {
             </div>
           ))}
         </div>
-        {contextMenu && (<ContextMenu
+        {/* {contextMenu && (<ContextMenu
           x={contextMenu.x}
           y={contextMenu.y}
           isActiveId={isActiveId}
@@ -60,7 +68,7 @@ export function SidebarLibary() {
           onRemove={() => handleRemoveStation(contextMenu.station.id)}
           onAdd={() => onAddStation()}
 
-      />) }
+      />) } */}
       </div>
     </>
   )
