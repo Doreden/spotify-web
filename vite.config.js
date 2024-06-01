@@ -8,4 +8,7 @@ export default defineConfig({
     outDir: "../backend-spotify-web/public",
     emptyOutDir: true,
   },
+  // optimizeDeps: {
+  //   exclude: ['@mui/material']
+  // }
 })
