@@ -30,6 +30,13 @@ export function SidebarLibary() {
     }
   }, [])
 
+  
+  const handleEditStation = (stationId) => {
+    const station = stations.find(st => st._id === stationId)
+    setCurrentStationToEdit(station)
+    setIsEditModalOpen(true)
+  }
+  
   async function loadStations(){
     try {
       const stations = await stationService.query()
@@ -39,13 +46,7 @@ export function SidebarLibary() {
       console.log('err',err)
     }
   }
-
-  const handleEditStation = (stationId) => {
-    const station = stations.find(st => st._id === stationId)
-    setCurrentStationToEdit(station)
-    setIsEditModalOpen(true)
-  }
-
+  
   async function handleSaveStation (updatedStation) {
     try {
       const savedStation = await stationService.save(updatedStation)

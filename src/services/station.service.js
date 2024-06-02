@@ -8,6 +8,7 @@ export const stationService = {
   removeSongFromStation,
   query,
   getById,
+  save,
   removeById,
   createNewStation,
   convertToMiniStation
@@ -27,6 +28,7 @@ async function query(filterBy = {}) {
   let stations = await storageService.query(STORAGE_KEY)
   return stations
 }
+
 
 async function getById(id) {
   try {
