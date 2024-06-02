@@ -95,7 +95,6 @@ export function SidebarLibary() {
           {miniStations.map((station) => (
             <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)} >
               <StationPreview station={station}
-                isActiveId={station.id === isActiveId}
                 onClick={handleStationClick}
                 context={'sidebar'} />
             </div>
