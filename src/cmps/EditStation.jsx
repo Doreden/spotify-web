@@ -1,5 +1,7 @@
+import { ReactSVG } from "react-svg";
 import { uploadService } from "../services/upload.service";
 import { useState, useRef } from "react";
+import Close from '../assets/imgs/close.svg'
 
 export function EditStation({ show, onClose, station, onSave, onUploaded = null }) {
     const [title, setTitle] = useState(station.name)
@@ -47,7 +49,7 @@ export function EditStation({ show, onClose, station, onSave, onUploaded = null 
             <div className="station-edit">
                 <div className="title-edit-modal">
                     <h1>Edit details</h1>
-                    <button className="close-button" onClick={onClose}> X </button>
+                    <button className="close-button" onClick={onClose}> <ReactSVG src={Close} /> </button>
                 </div>
                 <div className="body-edit-modal">
                     <div className="image-station">
