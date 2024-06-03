@@ -37,6 +37,7 @@ export async function createNewStationByUser(loggedInUser){
     const newStation = await stationService.createNewStation(formattedUser)
     const miniNewStation = stationService.convertToMiniStation(newStation)
     console.log(miniNewStation)
+    
     // Add new station to user in database
     UserService.addMiniStation(miniNewStation)
     // Add new station in store to re-render

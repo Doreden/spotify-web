@@ -51,7 +51,8 @@ function createMinimalUser(user){
         id: user.id,
         username: user.username,
         imgUrl: user.imgUrl,
-        likedStations: user.likedStations
+        likedStations: user.likedStations,
+        likedSongs : user.likedSongs
     }
 }
 
@@ -66,13 +67,37 @@ async function save(userToSave) {
 
 function _getDefaultUser(){
     return {
-        id: "abcd1234", 
+        id: "abcd12345", 
         username: "Puki Ben David",
         password: "123",
         email: "Puki@gmail.com",
         gender: "male",
         birthday: 1234567890,
         imgUrl: "http://some-photo/",
+        likedSongs : [{
+            id: "jhgVu2lsi_k",
+            title: "Figure It Out",
+            artist: "Royal Blood",
+            lengthInSeconds: 198,
+            imgUrl: "https://i.ytimg.com/vi/jhgVu2lsi_k/default.jpg",
+            dateAdded: 1717260799
+        },
+        {
+            id: "eD7NZTQ3QxY",
+            title: "Ten Tonne Skeleton",
+            artist: "Royal Blood",
+            lengthInSeconds: 200,
+            imgUrl: "https://i.ytimg.com/vi/eD7NZTQ3QxY/default.jpg",
+            dateAdded: 1717261799
+        },
+        {
+            id: "ZSznpyG9CHY",
+            title: "Royal Blood – Lights Out ",
+            artist : null,
+            lengthInSeconds : 242,
+            imgUrl: "https://i.ytimg.com/vi/jhgVu2lsi_k/default.jpg",
+            dateAdded : 1717360799
+        }],
         likedStations : stationsAsJson.map((station) => ({id : station.id, name : station.name, imgUrl : station.imgUrl, createdBy : station.createdBy}))
       }
 }

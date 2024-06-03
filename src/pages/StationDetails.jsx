@@ -4,7 +4,6 @@ import { StationDetailsHeader } from "../cmps/station/stationDetails/StationDeta
 import { StationDetailsActions } from "../cmps/station/stationDetails/StationDetialsActions"
 import { PlaylistSongList } from "../cmps/station/stationDetails/PlaylistSongList"
 import { stationService } from "../services/station.service"
-import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 import { playStation } from "../store/actions/player.action"
 
 export function StationDetails() {

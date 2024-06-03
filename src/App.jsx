@@ -19,6 +19,7 @@ import { stationService } from "./services/station.service.js"
 import { useEffect } from "react"
 import "./assets/scss/style.scss"
 import { loadUserMiniStations, login } from "./store/actions/user.action"
+import { LikedSongs } from "./cmps/station/stationDetails/LikedSongs.jsx"
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
             <Routes>
               <Route path="/" element={<StationIndex />} />
               <Route path="/search" element={<SearchPage />} />
+              <Route path='/likedsongs' element={<LikedSongs />} />
               <Route path="/station/:stationId" element={<StationDetails />} />
             </Routes>
             <Playline />
