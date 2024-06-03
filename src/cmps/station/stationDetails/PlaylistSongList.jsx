@@ -21,15 +21,12 @@ export function PlaylistSongList({ station, onPlayStation }) {
         <div className="song-length">{LengthSvg()}</div>
       </div>
 
-      {station.songs.map((song, index) =>
-      (
+      {station.songs.map((song, index) => (
         <li onDoubleClick={() => onPlayStation(index)} key={song.id}>
           <PlaylistSongPreview index={index} song={song} station={station} />
           {/* <OptionsModal modalType={'song'} entity={song} style={{top:10}} /> */}
         </li>
-
       )
-
       )}
     </div>
   )
