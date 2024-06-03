@@ -15,13 +15,25 @@ export function SidebarLibary() {
   const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-  console.log(loggedInUser)
+  
 
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
+  console.log(miniStations)
 
-  
+  useEffect(() => {
+    loadStations()
+  }, [])
+
+  useEffect(() => {
+    document.addEventListener('click', handleCloseContextMenu)
+    return () => {
+      document.removeEventListener('click', handleCloseContextMenu)
+    }
+  }, [])
+
+
   const handleEditStation = (stationId) => {
-    const station = stations.find(st => st._id === stationId)
+    const station = stations.find(st => st.id === stationId)
     setCurrentStationToEdit(station)
     setIsEditModalOpen(true)
   }
@@ -39,7 +51,12 @@ export function SidebarLibary() {
   async function handleSaveStation(updatedStation) {
     try {
       const savedStation = await stationService.save(updatedStation)
-      setStations(prevStations => prevStations.map(station => station._id === savedStation._id ? savedStation : station))
+      setStations((prevStations) =>
+        prevStations.map((station) =>
+          station.id === savedStation.id ? savedStation : station
+        )
+      )
+      loadStations()
     } catch (error) {
       console.error('Error saving station:', error)
     }
@@ -47,19 +64,6 @@ export function SidebarLibary() {
   const handleCloseContextMenu = () => {
     setContextMenu(null)
   }
-
-  useEffect(() => {
-    loadStations()
-  }, [])
-
-  useEffect(() => {
-    document.addEventListener('click', handleCloseContextMenu)
-    return () => {
-      document.removeEventListener('click', handleCloseContextMenu)
-    }
-  }, [])
-
-
 
   async function loadStations() {
     try {
@@ -77,7 +81,7 @@ export function SidebarLibary() {
 
   function onUploaded(imgUrl) {
     setStations(prevStations => prevStations.map(station =>
-      station._id === currentStationToEdit._id ? { ...station, imgUrl } : station
+      station.id === currentStationToEdit.id ? { ...station, imgUrl } : station
     ))
   }
 
@@ -113,8 +117,8 @@ export function SidebarLibary() {
           x={contextMenu.x}
           y={contextMenu.y}
           isActiveId={isActiveId}
-          onEdit={() => handleEditStation(contextMenu.station._id)}
-          onRemove={() => handleRemoveStation(contextMenu.station._id) }
+          onEdit={() => handleEditStation(contextMenu.station.id)}
+          onRemove={() => handleRemoveStation(contextMenu.station.id) }
           onAdd={() => handleAddStation()}
           
 

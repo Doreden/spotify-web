@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom"
 
-export function StationPreview({ station, isActiveId, onClick, context }) {
+export function StationPreview({ station, onClick, context }) {
     const handleClick = (e) => {
         e.stopPropagation()
         onClick(station.id)
     }
 
-    console.log(station)
     if (!station) return
     return (
         <Link to={`/station/${station.id}`} onClick={handleClick} >
