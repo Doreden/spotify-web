@@ -10,7 +10,7 @@ export function StationPreview({ station, onClick, context }) {
     return (
         <Link to={`/station/${station.id}`} onClick={handleClick} >
             <div className={`${context}-station-preview`}>
-                <img src={`spotify-web/${station.imgUrl}`}></img>
+                <img src={`${station.imgUrl}`}></img>
                 <div className="station-preview-text">
                     <div className="station-name">{station.name}</div>
                     <div className="created-by">{station.createdBy.username}</div>

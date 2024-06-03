@@ -105,7 +105,7 @@ export function SidebarLibary() {
         <SidebarLibaryHeader loggedInUser={loggedInUser} handleAddStation={handleAddStation} />
 
         <div className="libary-station-list">
-          {miniStations.map((station) => (
+          {stations.map((station) => (
             <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)} >
               <StationPreview station={station}
                 onClick={handleStationClick}

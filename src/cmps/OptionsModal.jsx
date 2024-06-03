@@ -1,15 +1,32 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { stationService } from "../services/station.service"
 import { deleteStation } from '../store/actions/user.action'
 import { useNavigate } from "react-router"
 import { useSelector } from "react-redux"
 
 export function OptionsModal({ modalType, buttonPosition, station, song, isOpen, onClose }) {
-
+    const [stations, setStations] = useState([])
+    const [optionMenu, setOptionMenu] = useState(null)
+    const [isActiveId, setIsActiveId] = useState(null)
+    const [isSecondaryModalVisible, setSecondaryModalVisible] = useState(false)
+    // console.log(stations)
     const modalRef = useRef()
     const navigate = useNavigate()
 
     const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+
+    useEffect(() => {
+        loadStations()
+      }, [])
+
+    async function loadStations() {
+        try {
+          const stations = await stationService.query()
+          setStations(stations)
+        } catch (error) {
+          console.log('err', err)
+        }
+      }
 
     useEffect(() => {
         if (isOpen) {
@@ -21,6 +38,31 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
             document.removeEventListener("mousedown", handleClickOutside)
         }
     }, [isOpen, onClose])
+
+    useEffect(() => {
+        document.addEventListener('click', handleCloseOptionMenu)
+        return () => {
+          document.removeEventListener('click', handleCloseOptionMenu)
+        }
+      }, [])
+
+      const handleContextMenu = (event, station) => {
+        event.preventDefault()
+        setContextMenu({
+          isVisible: true,
+          x: event.clientX,
+          y: event.clientY,
+          station: station,
+        })
+      }
+
+      const handleCloseOptionMenu = () => {
+        setContextMenu(null)
+      }
+
+      const handleStationClick = (id) => {
+        setIsActiveId(id)
+      }
 
 
     const modalPosition = {
@@ -83,6 +125,10 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
             <>
                 <li onClick={() => handleDeleteSong(station.id, song.id)}>Delete Song</li>
                 <li>Add To Liked Songs</li>
+                <li onMouseEnter={() => setSecondaryModalVisible(true)} onMouseLeave={() => setSecondaryModalVisible(false)}>
+                    Add to plalist
+                    {isSecondaryModalVisible && <SecondaryModal station={stations} />}
+                </li>
             </>
         )
     }
@@ -96,3 +142,23 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
         )
     }
 }
+function SecondaryModal({ stations }) {
+    return (
+        <div className="secondary-modal">
+            <input type="text" placeholder="Find a playlist" />
+            <ul>
+                {stations?.map((station) => (
+                    <li key={station.id}>{station.name}</li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+
+//   {stations.map((station) => (
+//     <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)} >
+//       <StationPreview station={station}
+//         onClick={handleStationClick}
+//         context={'sidebar'} />
+//     </div>
+//   ))}
