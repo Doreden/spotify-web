@@ -6,9 +6,13 @@ export const utilService = {
     formatSongLength,
     formatStationLength,
     formatVideoTitle,
-    convertYoutubeDurationToSeconds
+    convertYoutubeDurationToSeconds,
+    getRandomInt
 }
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
 
 function saveToStorage(key, value) {

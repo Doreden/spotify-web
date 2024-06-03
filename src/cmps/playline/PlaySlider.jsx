@@ -4,11 +4,10 @@ import { useRef } from 'react'
 
 
 
-export function PlaySlider({ songProggresionData, setSongProgresionData }) {
+export function PlaySlider({ songProggresionData, onSeek }) {
 
     function handleOnChange(event) {
-        // const played = songProggresionData.songDuration
-        // setSongProgresionData((prevSongProgress) => ({ ...prevSongProgress, played: event.target }))
+        onSeek(event.target.value)
     }
 
     return (
