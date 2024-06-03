@@ -1,11 +1,11 @@
 import { SidebarLibaryHeader } from "./SidebarLibaryHeader.jsx"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { StationPreview } from "./StationPreview.jsx"
-import { OptionsModal } from "../OptionsModal.jsx"
 import { stationService } from "../../services/station.service.js"
 import { useEffect, useState } from "react"
 import { ContextMenu } from "./ContextMenu.jsx"
 import { EditStation } from "../EditStation.jsx"
+import { createNewStationByUser } from "../../store/actions/user.action.js"
 
 export function SidebarLibary() {
   const [stations, setStations] = useState([])
@@ -13,15 +13,14 @@ export function SidebarLibary() {
   const [contextMenu, setContextMenu] = useState(null)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
+
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
 
-  console.log(miniStations)
-
   useEffect(() => {
     loadStations()
-  },[])
+  }, [])
 
   useEffect(() => {
     document.addEventListener('click', handleCloseContextMenu)
@@ -30,27 +29,26 @@ export function SidebarLibary() {
     }
   }, [])
 
-  
+
   const handleEditStation = (stationId) => {
     const station = stations.find(st => st._id === stationId)
     setCurrentStationToEdit(station)
     setIsEditModalOpen(true)
   }
-  
-  async function loadStations(){
+
+  async function loadStations() {
     try {
       const stations = await stationService.query()
       setStations(stations)
-      console.log(stations)
     } catch (error) {
-      console.log('err',err)
+      console.log('err', err)
     }
   }
-  
-  async function handleSaveStation (updatedStation) {
+
+  async function handleSaveStation(updatedStation) {
     try {
       const savedStation = await stationService.save(updatedStation)
-      setStations(prevStations => prevStations.map(station => station._id === savedStation._id ? savedStation : station));
+      setStations(prevStations => prevStations.map(station => station._id === savedStation._id ? savedStation : station))
     } catch (error) {
       console.error('Error saving station:', error)
     }
@@ -74,10 +72,10 @@ export function SidebarLibary() {
   }
 
   function onUploaded(imgUrl) {
-    setStations(prevStations => prevStations.map(station => 
-        station._id === currentStationToEdit._id ? { ...station, imgUrl } : station
+    setStations(prevStations => prevStations.map(station =>
+      station._id === currentStationToEdit._id ? { ...station, imgUrl } : station
     ))
-}
+  }
 
   if (!loggedInUser) {
     return "Log in to create and share playlists"
@@ -87,10 +85,14 @@ export function SidebarLibary() {
     return null
   }
 
+  async function handleAddStation() {
+    await createNewStationByUser(loggedInUser)
+  }
+
   return (
     <>
       <div className="sidebar-libary">
-        <SidebarLibaryHeader loggedInUser={loggedInUser} />
+        <SidebarLibaryHeader loggedInUser={loggedInUser} handleAddStation={handleAddStation} />
 
         <div className="libary-station-list">
           {miniStations.map((station) => (
@@ -107,16 +109,16 @@ export function SidebarLibary() {
           isActiveId={isActiveId}
           onEdit={() => handleEditStation(contextMenu.station._id)}
           onRemove={() => handleRemoveStation(contextMenu.station._id)}
-          onAdd={() => onAddStation()}
+          onAdd={() => handleAddStation()}
 
         />)}
         {isEditModalOpen && (
           <EditStation
-          show = {isEditModalOpen}
-          onClose={() => setIsEditModalOpen(false)}
-          station={currentStationToEdit}
-          onSave={handleSaveStation}
-          onUploaded={onUploaded}
+            show={isEditModalOpen}
+            onClose={() => setIsEditModalOpen(false)}
+            station={currentStationToEdit}
+            onSave={handleSaveStation}
+            onUploaded={onUploaded}
           />
         )}
       </div>

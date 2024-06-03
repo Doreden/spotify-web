@@ -71,7 +71,7 @@ async function save(stationToSave) {
 function _getEmptyStation(user) {
   return {
     name: "New Playlist",
-    albumCoverUrl: null,
+    imgUrl: "imgs/defaultStationImg.png",
     createdBy: user,
     likedByUsers: [],
     songs: [],

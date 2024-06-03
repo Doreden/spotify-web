@@ -1,14 +1,11 @@
-import { createNewStationByUser } from '../../store/actions/user.action'
 
 import { ReactSVG } from "react-svg"
 import Libary from '../../assets/imgs/libary.svg'
 import Plus from '../../assets/imgs/plus.svg'
 
-export function SidebarLibaryHeader({ loggedInUser }) {
+export function SidebarLibaryHeader({ loggedInUser, handleAddStation }) {
 
-    async function handleAddStation() {
-        await createNewStationByUser(loggedInUser)
-    }
+
 
     return (
         <>

@@ -68,6 +68,7 @@ export function Playline() {
                     onDuration={setSongDuration}
                     onProgress={updateSlider}
                     onReady={onReady}
+                    onEnded={handlePlayNext}
                     playing={isPlaying}
                     played={songProggresionData.played}
                     volume={volume}
@@ -78,7 +79,6 @@ export function Playline() {
             <div className="volume">
                 <VolumeSlider setVolume={setVolume} />
             </div>
-
         </div>
 
     )
