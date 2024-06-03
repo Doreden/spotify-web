@@ -18,6 +18,35 @@ export function SidebarLibary() {
 
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
 
+  
+  const handleEditStation = (stationId) => {
+    const station = stations.find(st => st._id === stationId)
+    setCurrentStationToEdit(station)
+    setIsEditModalOpen(true)
+  }
+
+  const handleContextMenu = (event, station) => {
+    event.preventDefault()
+    setContextMenu({
+      isVisible: true,
+      x: event.clientX,
+      y: event.clientY,
+      station: station,
+    })
+  }
+  
+  async function handleSaveStation(updatedStation) {
+    try {
+      const savedStation = await stationService.save(updatedStation)
+      setStations(prevStations => prevStations.map(station => station._id === savedStation._id ? savedStation : station))
+    } catch (error) {
+      console.error('Error saving station:', error)
+    }
+  }
+  const handleCloseContextMenu = () => {
+    setContextMenu(null)
+  }
+
   useEffect(() => {
     loadStations()
   }, [])
@@ -30,11 +59,6 @@ export function SidebarLibary() {
   }, [])
 
 
-  const handleEditStation = (stationId) => {
-    const station = stations.find(st => st._id === stationId)
-    setCurrentStationToEdit(station)
-    setIsEditModalOpen(true)
-  }
 
   async function loadStations() {
     try {
@@ -45,28 +69,7 @@ export function SidebarLibary() {
     }
   }
 
-  async function handleSaveStation(updatedStation) {
-    try {
-      const savedStation = await stationService.save(updatedStation)
-      setStations(prevStations => prevStations.map(station => station._id === savedStation._id ? savedStation : station))
-    } catch (error) {
-      console.error('Error saving station:', error)
-    }
-  }
-
-  const handleContextMenu = (event, station) => {
-    event.preventDefault()
-    setContextMenu({
-      isVisible: true,
-      x: event.clientX,
-      y: event.clientY,
-      station: station,
-    })
-  }
-
-  const handleCloseContextMenu = () => {
-    setContextMenu(null)
-  }
+  
   const handleStationClick = (id) => {
     setIsActiveId(id)
   }
@@ -77,6 +80,11 @@ export function SidebarLibary() {
     ))
   }
 
+  
+  async function handleAddStation() {
+    await createNewStationByUser(loggedInUser)
+  }
+  
   if (!loggedInUser) {
     return "Log in to create and share playlists"
   }
@@ -84,10 +92,7 @@ export function SidebarLibary() {
   if (!miniStations) {
     return null
   }
-
-  async function handleAddStation() {
-    await createNewStationByUser(loggedInUser)
-  }
+  
 
   return (
     <>
@@ -108,8 +113,9 @@ export function SidebarLibary() {
           y={contextMenu.y}
           isActiveId={isActiveId}
           onEdit={() => handleEditStation(contextMenu.station._id)}
-          onRemove={() => handleRemoveStation(contextMenu.station._id)}
+          onRemove={() => handleRemoveStation(contextMenu.station._id) }
           onAdd={() => handleAddStation()}
+          
 
         />)}
         {isEditModalOpen && (
