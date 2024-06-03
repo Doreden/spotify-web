@@ -17,7 +17,7 @@ export function StationDetailsHeader({ station }) {
                     <div className="station-info">
                         <h1 className="station-name">{station.name}</h1>
                         <div className="additional-info-line">
-                            <span className="created-by">{station.createdBy.username}</span>
+                            <span className="created-by">{station.createdBy.fullname}</span>
                             <span className="devider">•</span>
                             {/* <span className="number-of-likes">{station.likedByUsers.length} Likes</span>
                             <span className="devider">•</span> */}

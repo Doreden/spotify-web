@@ -6,8 +6,8 @@ export function StationPreview({ station, isActiveId, onClick, context }) {
         onClick(station.id)
     }
 
-
-    // return
+    console.log(station)
+    if (!station) return
     return (
         <Link to={`/station/${station.id}`} onClick={handleClick} >
             <div className={`${context}-station-preview`}>
@@ -19,16 +19,4 @@ export function StationPreview({ station, isActiveId, onClick, context }) {
             </div>
         </Link>
     )
-}
-
-function SideBarPreview() {
-
-}
-
-function MainPreview() {
-
-}
-
-function LastPlayedPreview() {
-
 }

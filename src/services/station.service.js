@@ -56,8 +56,8 @@ async function createNewStation(user) {
 }
 
 function convertToMiniStation(station){
-  const { id, albumCoverUrl, name } = station
-  return { id, albumCoverUrl, name, createdBy : station.createdBy.fullname}
+  const { id, imgUrl, name } = station
+  return { id, imgUrl, name, createdBy : station.createdBy}
 }
 
 async function save(stationToSave) {

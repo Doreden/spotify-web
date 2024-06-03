@@ -8,7 +8,6 @@ import { SET_USER, ADD_STATION, LOAD_STATIONS, REMOVE_STATION } from "../reducer
 export async function login(cretentials = {}){
     try{
         const loggedInUser = UserService.login()
-        console.log(loggedInUser)
         store.dispatch({type:SET_USER, user : loggedInUser})
 
     }catch(err){
@@ -32,11 +31,12 @@ export async function deleteStation(userId,stationId){
 
 export async function createNewStationByUser(loggedInUser){
   try {
-    const { id, fullname, imgUrl } = loggedInUser
-    const formattedUser = { id, fullname, imgUrl }
+    const { id, username, imgUrl } = loggedInUser
+    const formattedUser = { id, username, imgUrl }
     // Creates new station in database
     const newStation = await stationService.createNewStation(formattedUser)
     const miniNewStation = stationService.convertToMiniStation(newStation)
+    console.log(miniNewStation)
     // Add new station to user in database
     UserService.addMiniStation(miniNewStation)
     // Add new station in store to re-render
