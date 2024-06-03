@@ -49,7 +49,7 @@ function login(){
 function createMinimalUser(user){
     return {
         id: user.id,
-        fullname: user.fullname,
+        username: user.username,
         imgUrl: user.imgUrl,
         likedStations: user.likedStations
     }
@@ -66,14 +66,13 @@ async function save(userToSave) {
 
 function _getDefaultUser(){
     return {
-        id: "abcd1234",
-        fullname: "Puki Ben David",
-        username: "puki",
+        id: "abcd1234", 
+        username: "Puki Ben David",
         password: "123",
         email: "Puki@gmail.com",
         gender: "male",
         birthday: 1234567890,
         imgUrl: "http://some-photo/",
-        likedStations : stationsAsJson.map((station) => ({id : station.id, name : station.name, imgUrl : station.imgUrl, createdBy : station.createdBy.username}))
+        likedStations : stationsAsJson.map((station) => ({id : station.id, name : station.name, imgUrl : station.imgUrl, createdBy : station.createdBy}))
       }
 }

@@ -15,6 +15,7 @@ export function SidebarLibary() {
   const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  console.log(loggedInUser)
 
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
 
@@ -86,6 +87,7 @@ export function SidebarLibary() {
   }
 
   async function handleAddStation() {
+    console.log(loggedInUser)
     await createNewStationByUser(loggedInUser)
   }
 
