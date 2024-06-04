@@ -73,7 +73,7 @@
         & .title-and-artist {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: flex-start;
         }
 
@@ -140,5 +140,13 @@
         &:hover {
             background-color: hsla(0, 0%, 100%, .07)
         }
+
+        & img {
+            width: 40px;
+            height: 40px;
+            min-height: 40px;
+            min-width: 40px;
+        }
+
     }
 }

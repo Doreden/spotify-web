@@ -104,6 +104,11 @@
             flex-direction: column;
             grid-column: 3 / -1;
 
+            & img {
+                width: 40px;
+                height: 40px;
+            }
+
             @media (max-width: 970px) {
                 grid-column: 1 / 4;
                 grid-row: 2;
@@ -163,6 +168,7 @@
                 &:hover {
                     background-color: hsla(0, 0%, 100%, .07)
                 }
+
             }
         }
 

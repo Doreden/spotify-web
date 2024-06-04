@@ -1,8 +1,8 @@
 [
     {
         "id": "0BFzNaeaNv4mahOzwZFGHK",
-        "name": "Royal Blood",
-        "imgUrl": "imgs/defaultStationImg.png",
+        "name": "2000's Rock",
+        "imgUrl": "https://assetsio.gnwcdn.com/rock-band-4-review-1444044320767.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp",
         "createdBy": {
             "id": "ak491k",
             "username": "Or Doga",
@@ -14,35 +14,149 @@
         ],
         "songs": [
             {
-                "id": "jhgVu2lsi_k",
-                "title": "Figure It Out",
-                "artist": "Royal Blood",
-                "lengthInSeconds": 198,
-                "imgUrl": "https://i.ytimg.com/vi/jhgVu2lsi_k/default.jpg",
-                "dateAdded": 1717260799
+                "id": "ZpUYjpKg9KY",
+                "title": "Break Stuff",
+                "artist": "Limp Bizkit",
+                "imgURL": "https://i.ytimg.com/vi/ZpUYjpKg9KY/default.jpg",
+                "lengthInSeconds": 168
             },
             {
-                "id": "eD7NZTQ3QxY",
-                "title": "Ten Tonne Skeleton",
-                "artist": "Royal Blood",
-                "lengthInSeconds": 200,
-                "imgUrl": "https://i.ytimg.com/vi/eD7NZTQ3QxY/default.jpg",
-                "dateAdded": 1717261799
+                "id": "Dn8vzTsnPps",
+                "title": "My Way",
+                "artist": "Limp Bizkit",
+                "imgURL": "https://i.ytimg.com/vi/Dn8vzTsnPps/default.jpg",
+                "lengthInSeconds": 294
             },
             {
-                "id": "ZSznpyG9CHY",
-                "title": "Royal Blood – Lights Out ",
-                "artist": null,
-                "lengthInSeconds": 242,
-                "imgUrl": "https://i.ytimg.com/vi/jhgVu2lsi_k/default.jpg",
-                "dateAdded": 1717360799
+                "id": "BE9CXWV1alg",
+                "title": "My Generation",
+                "artist": "Limp Bizkit",
+                "imgURL": "https://i.ytimg.com/vi/BE9CXWV1alg/default.jpg",
+                "lengthInSeconds": 221
+            },
+            {
+                "id": "5anLPw0Efmo",
+                "title": "My Immortal",
+                "artist": "Evanescence",
+                "imgURL": "https://i.ytimg.com/vi/5anLPw0Efmo/default.jpg",
+                "lengthInSeconds": 271
+            },
+            {
+                "id": "CdhqVtpR2ts",
+                "title": "Going Under",
+                "artist": "Evanescence",
+                "imgURL": "https://i.ytimg.com/vi/CdhqVtpR2ts/default.jpg",
+                "lengthInSeconds": 219
+            },
+            {
+                "id": "PJGpsL_XYQI",
+                "title": "Lithium",
+                "artist": "Evanescence",
+                "imgURL": "https://i.ytimg.com/vi/PJGpsL_XYQI/default.jpg",
+                "lengthInSeconds": 229
+            },
+            {
+                "id": "vc6vs-l5dkc",
+                "title": "Panic! At The Disco: I Write Sins Not Tragedies ",
+                "imgURL": "https://i.ytimg.com/vi/vc6vs-l5dkc/default.jpg",
+                "lengthInSeconds": 186
+            },
+            {
+                "id": "mzJj5-lubeM",
+                "title": "Scar Tissue",
+                "artist": "Red Hot Chili Peppers",
+                "imgURL": "https://i.ytimg.com/vi/mzJj5-lubeM/default.jpg",
+                "lengthInSeconds": 221
+            },
+            {
+                "id": "rn_YodiJO6k",
+                "title": "Otherside",
+                "artist": "Red Hot Chili Peppers",
+                "imgURL": "https://i.ytimg.com/vi/rn_YodiJO6k/default.jpg",
+                "lengthInSeconds": 256
+            },
+            {
+                "id": "8DyziWtkfBw",
+                "title": "Can't Stop",
+                "artist": "Red Hot Chili Peppers",
+                "imgURL": "https://i.ytimg.com/vi/8DyziWtkfBw/default.jpg",
+                "lengthInSeconds": 278
+            },
+            {
+                "id": "vVXIK1xCRpY",
+                "title": "Show Me How to Live",
+                "artist": "Audioslave",
+                "imgURL": "https://i.ytimg.com/vi/vVXIK1xCRpY/default.jpg",
+                "lengthInSeconds": 298
+            },
+            {
+                "id": "WC5FdFlUcl0",
+                "title": "Be Yourself",
+                "artist": "Audioslave",
+                "imgURL": "https://i.ytimg.com/vi/WC5FdFlUcl0/default.jpg",
+                "lengthInSeconds": 283
+            },
+            {
+                "id": "9ZDAYg196x8",
+                "title": "I Am the Highway",
+                "imgURL": "https://i.ytimg.com/vi/9ZDAYg196x8/default.jpg",
+                "lengthInSeconds": 335
+            },
+            {
+                "id": "CxKWTzr-k6s",
+                "title": "Even Flow",
+                "artist": "Pearl Jam",
+                "imgURL": "https://i.ytimg.com/vi/CxKWTzr-k6s/default.jpg",
+                "lengthInSeconds": 326
+            },
+            {
+                "id": "qM0zINtulhM",
+                "title": "Alive",
+                "artist": "Pearl Jam",
+                "imgURL": "https://i.ytimg.com/vi/qM0zINtulhM/default.jpg",
+                "lengthInSeconds": 296
+            },
+            {
+                "id": "gnhXHvRoUd0",
+                "title": "Use Somebody",
+                "artist": "Kings Of Leon",
+                "imgURL": "https://i.ytimg.com/vi/gnhXHvRoUd0/default.jpg",
+                "lengthInSeconds": 231
+            },
+            {
+                "id": "NUTGr5t3MoY",
+                "title": "Basket Case",
+                "artist": "Green Day",
+                "imgURL": "https://i.ytimg.com/vi/NUTGr5t3MoY/default.jpg",
+                "lengthInSeconds": 195
+            },
+            {
+                "id": "r00ikilDxW4",
+                "title": "21 Guns",
+                "artist": "Green Day",
+                "imgURL": "https://i.ytimg.com/vi/r00ikilDxW4/default.jpg",
+                "lengthInSeconds": 326
+            },
+            {
+                "id": "Ee_uujKuJMI",
+                "title": "American Idiot",
+                "artist": "Green Day",
+                "imgURL": "https://i.ytimg.com/vi/Ee_uujKuJMI/default.jpg",
+                "lengthInSeconds": 183
+            },
+            {
+                "id": "i8dh9gDzmz8",
+                "title": "When I Come Around",
+                "artist": "Green Day",
+                "imgURL": "https://i.ytimg.com/vi/i8dh9gDzmz8/default.jpg",
+                "lengthInSeconds": 180
             }
         ]
     },
     {
-        "id": "akdfj932JEalksdn",
+        "id": "akdfj932JPalksdn",
         "name": "90's Hip Hop",
-        "imgUrl": "imgs/defaultStationImg.png",
+        "imgUrl": "https://media.npr.org/assets/img/2011/01/04/wutang-3764f5bbb1e44591ee4dd183abd1d961888c014c.jpg?s=800&c=85&f=jpeg",
         "createdBy": {
             "id": "ak491k",
             "username": "Or Doga",
@@ -54,28 +168,88 @@
         ],
         "songs": [
             {
-                "id": "jhgVu2lsi_k",
-                "title": "Figure It Out",
-                "artist": "Royal Blood",
-                "lengthInSeconds": 198,
-                "imgUrl": "https://i.ytimg.com/vi/jhgVu2lsi_k/default.jpg",
-                "dateAdded": 1717260799
+                "id": "eXvBjCO19QY",
+                "title": "Changes ft. Talent",
+                "artist": "2Pac",
+                "imgURL": "https://i.ytimg.com/vi/eXvBjCO19QY/default.jpg",
+                "lengthInSeconds": 271
             },
             {
-                "id": "eD7NZTQ3QxY",
-                "title": "Ten Tonne Skeleton",
-                "artist": "Royal Blood",
-                "lengthInSeconds": 200,
-                "imgUrl": "https://i.ytimg.com/vi/eD7NZTQ3QxY/default.jpg",
-                "dateAdded": 1717261799
+                "id": "77nB_9uIcN4",
+                "title": "Ambitionz Az a Ridah",
+                "artist": "2Pac",
+                "imgURL": "https://i.ytimg.com/vi/77nB_9uIcN4/default.jpg",
+                "lengthInSeconds": 279
             },
             {
-                "id": "ZSznpyG9CHY",
-                "title": "Royal Blood – Lights Out ",
-                "artist": null,
-                "lengthInSeconds": 242,
-                "imgUrl": "https://i.ytimg.com/vi/jhgVu2lsi_k/default.jpg",
-                "dateAdded": 1717360799
+                "id": "Ucvta7xDo_4",
+                "title": "Above The Clouds",
+                "artist": "Gangstarr",
+                "imgURL": "https://i.ytimg.com/vi/Ucvta7xDo_4/default.jpg",
+                "lengthInSeconds": 226
+            },
+            {
+                "id": "qmj1q67NDAk",
+                "title": "Full Clip",
+                "artist": "Gang Starr",
+                "imgURL": "https://i.ytimg.com/vi/qmj1q67NDAk/default.jpg",
+                "lengthInSeconds": 219
+            },
+            {
+                "id": "RvVfgvHucRY",
+                "title": "I Can",
+                "artist": "Nas",
+                "imgURL": "https://i.ytimg.com/vi/RvVfgvHucRY/default.jpg",
+                "lengthInSeconds": 266
+            },
+            {
+                "id": "rzRqEWJYwX4",
+                "title": "You Know How We Do It",
+                "artist": "Ice Cube",
+                "imgURL": "https://i.ytimg.com/vi/rzRqEWJYwX4/default.jpg",
+                "lengthInSeconds": 228
+            },
+            {
+                "id": "fwcONrTG7nk",
+                "title": "Notorious B.I.G.",
+                "artist": "The Notorious B.I.G.",
+                "imgURL": "https://i.ytimg.com/vi/fwcONrTG7nk/default.jpg",
+                "lengthInSeconds": 253
+            },
+            {
+                "id": "ufKxCclo7-c",
+                "title": "Nasty Girl",
+                "artist": "The Notorious B.I.G.",
+                "imgURL": "https://i.ytimg.com/vi/ufKxCclo7-c/default.jpg",
+                "lengthInSeconds": 300
+            },
+            {
+                "id": "bEs58fAUNZQ",
+                "title": "Heavy ft. 50 Cent | 2024",
+                "artist": "Method Man & Redman",
+                "imgURL": "https://i.ytimg.com/vi/bEs58fAUNZQ/default.jpg",
+                "lengthInSeconds": 224
+            },
+            {
+                "id": "cPRKsKwEdUQ",
+                "title": "Tang Clan - Triumph  ft. Cappadonna",
+                "artist": "Wu",
+                "imgURL": "https://i.ytimg.com/vi/cPRKsKwEdUQ/default.jpg",
+                "lengthInSeconds": 378
+            },
+            {
+                "id": "PEnwXYJcSZc",
+                "title": "Tang Clan - Method Man",
+                "artist": "Wu",
+                "imgURL": "https://i.ytimg.com/vi/PEnwXYJcSZc/default.jpg",
+                "lengthInSeconds": 268
+            },
+            {
+                "id": "R0IUR4gkPIE",
+                "title": "Tang Clan - Protect Ya Neck",
+                "artist": "Wu",
+                "imgURL": "https://i.ytimg.com/vi/R0IUR4gkPIE/default.jpg",
+                "lengthInSeconds": 290
             }
         ]
     }

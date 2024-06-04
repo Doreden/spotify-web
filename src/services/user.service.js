@@ -1,6 +1,7 @@
 import { storageService } from "./async-storage.service";
 import { utilService } from "./util.service"
 import stationsAsJson from '../assets/data/station.json' assert { type: 'json' };
+import likedSongsAsJson from '../assets/data/likedsongs.json' assert {type: 'json'}
 
 const STORAGE_KEY = "user"
 
@@ -101,30 +102,7 @@ function _getDefaultUser(){
         gender: "male",
         birthday: 1234567890,
         imgUrl: "http://some-photo/",
-        likedSongs : [{
-            id: "jhgVu2lsi_k",
-            title: "Figure It Out",
-            artist: "Royal Blood",
-            lengthInSeconds: 198,
-            imgUrl: "https://i.ytimg.com/vi/jhgVu2lsi_k/default.jpg",
-            dateAdded: 1717260799
-        },
-        {
-            id: "eD7NZTQ3QxY",
-            title: "Ten Tonne Skeleton",
-            artist: "Royal Blood",
-            lengthInSeconds: 200,
-            imgUrl: "https://i.ytimg.com/vi/eD7NZTQ3QxY/default.jpg",
-            dateAdded: 1717261799
-        },
-        {
-            id: "ZSznpyG9CHY",
-            title: "Royal Blood – Lights Out ",
-            artist : null,
-            lengthInSeconds : 242,
-            imgUrl: "https://i.ytimg.com/vi/jhgVu2lsi_k/default.jpg",
-            dateAdded : 1717360799
-        }],
+        likedSongs : [],
         likedStations : stationsAsJson.map((station) => ({id : station.id, name : station.name, imgUrl : station.imgUrl, createdBy : station.createdBy}))
       }
 }

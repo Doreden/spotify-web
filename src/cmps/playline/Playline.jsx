@@ -15,6 +15,8 @@ export function Playline() {
     const playingSongIdx = useSelector(storeState => storeState.playerModule.playingSongIdx)
     const currentQueue = useSelector(storeState => storeState.playerModule.queue)
 
+    // console.log(currentSong)
+
     const storeState = useSelector(storeState => storeState.userModule)
     // console.log(storeState)
 

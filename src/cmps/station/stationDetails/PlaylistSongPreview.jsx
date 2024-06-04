@@ -81,10 +81,11 @@ export function PlaylistSongPreview({ index, song, station }) {
 
         <div className="song-details">
           {/* Renders Image only if not in a station -- Search Result */}
-          {!station &&
-            <div className="img-container">
-              <img className="search-result-thumbnail" src={song.imgURL} height={40} width={40}></img>
-            </div>}
+
+          <div className="img-container">
+            <img className="song-thumbnail" src={song.imgURL} ></img>
+          </div>
+
           <div className="title-and-artist">
             <div className="song-title">{song.title}</div>
             <div className={`song-artist  ${isHover ? '' : 'secondary'}`}>{song.artist}</div>
