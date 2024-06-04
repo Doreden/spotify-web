@@ -1,32 +1,35 @@
 import { useEffect, useRef, useState } from "react"
+import { UserService } from "../services/user.service"
 import { stationService } from "../services/station.service"
-import { deleteStation } from '../store/actions/user.action'
+import { deleteStation, toggleLikedSong } from '../store/actions/user.action'
 import { useNavigate } from "react-router"
 import { useSelector } from "react-redux"
 
 export function OptionsModal({ modalType, buttonPosition, station, song, isOpen, onClose }) {
+    const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+
     const [stations, setStations] = useState([])
     const [optionMenu, setOptionMenu] = useState(null)
     const [isActiveId, setIsActiveId] = useState(null)
     const [isSecondaryModalVisible, setSecondaryModalVisible] = useState(false)
+    const [isSongLiked, setIsSongLiked] = useState(UserService.isSongLiked(loggedInUser, song))
     // console.log(stations)
     const modalRef = useRef()
     const navigate = useNavigate()
 
-    const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
     useEffect(() => {
         loadStations()
-      }, [])
+    }, [])
 
     async function loadStations() {
         try {
-          const stations = await stationService.query()
-          setStations(stations)
+            const stations = await stationService.query()
+            setStations(stations)
         } catch (error) {
-          console.log('err', err)
+            console.log('err', err)
         }
-      }
+    }
 
     useEffect(() => {
         if (isOpen) {
@@ -39,30 +42,30 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
         }
     }, [isOpen, onClose])
 
-    useEffect(() => {
-        document.addEventListener('click', handleCloseOptionMenu)
-        return () => {
-          document.removeEventListener('click', handleCloseOptionMenu)
-        }
-      }, [])
+    // useEffect(() => {
+    //     document.addEventListener('click', handleCloseOptionMenu)
+    //     return () => {
+    //         document.removeEventListener('click', handleCloseOptionMenu)
+    //     }
+    // }, [])
 
-      const handleContextMenu = (event, station) => {
-        event.preventDefault()
-        setContextMenu({
-          isVisible: true,
-          x: event.clientX,
-          y: event.clientY,
-          station: station,
-        })
-      }
+    // const handleContextMenu = (event, station) => {
+    //     event.preventDefault()
+    //     setContextMenu({
+    //         isVisible: true,
+    //         x: event.clientX,
+    //         y: event.clientY,
+    //         station: station,
+    //     })
+    // }
 
-      const handleCloseOptionMenu = () => {
-        setContextMenu(null)
-      }
+    // const handleCloseOptionMenu = () => {
+    //     setContextMenu(null)
+    // }
 
-      const handleStationClick = (id) => {
-        setIsActiveId(id)
-      }
+    // const handleStationClick = (id) => {
+    //     setIsActiveId(id)
+    // }
 
 
     const modalPosition = {
@@ -77,6 +80,11 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
         }
     };
 
+    function handleAddToLikedSongs(loggedInUser, song) {
+        toggleLikedSong(loggedInUser, song)
+        console.log("try")
+    }
+
     function handleDeleteSong(stationId, songId) {
         stationService.removeSongFromStation(stationId, songId)
     }
@@ -90,20 +98,9 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
         <div className="options-modal" ref={modalRef} style={modalPosition}>
             <ul className="options-list">
                 <DymanicModalCmp modalType={modalType} />
-                {/* {(() => {
-                    switch (modalType) {
-                        case ('song'):
-                            return <SongOptions />
-                        case ('station'):
-                            return <StationOptions />
-                        default:
-                            return
-                    }
-                })} */}
             </ul>
         </div>
     )
-
 
     function DymanicModalCmp({ modalType }) {
 
@@ -124,11 +121,11 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
         return (
             <>
                 <li onClick={() => handleDeleteSong(station.id, song.id)}>Delete Song</li>
-                <li>Add To Liked Songs</li>
-                <li onMouseEnter={() => setSecondaryModalVisible(true)} onMouseLeave={() => setSecondaryModalVisible(false)}>
+                <li onClick={() => handleAddToLikedSongs(loggedInUser, song)}>{`${isSongLiked ? 'Remove From' : 'Add To'} Liked Songs`}</li>
+                {/* <li onMouseEnter={() => setSecondaryModalVisible(true)} onMouseLeave={() => setSecondaryModalVisible(false)}>
                     Add to plalist
                     {isSecondaryModalVisible && <SecondaryModal station={stations} />}
-                </li>
+                </li> */}
             </>
         )
     }

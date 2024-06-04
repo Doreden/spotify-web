@@ -2,7 +2,7 @@
 import { store } from "../store";
 import { stationService } from "../../services/station.service";
 import { UserService } from "../../services/user.service";
-import { SET_USER, ADD_STATION, LOAD_STATIONS, REMOVE_STATION } from "../reducers/user.reducer"
+import { SET_USER, ADD_STATION, LOAD_STATIONS, REMOVE_STATION, REMOVE_FROM_LIKED_SONGS, LIKE_SONG } from "../reducers/user.reducer"
 // TOASK : This is only used for rendering user liked playlists. Discuss does it need to be in store?
 
 export async function login(cretentials = {}){
@@ -27,6 +27,17 @@ export async function deleteStation(userId,stationId){
   } catch (err) {
     console.log(err)
   }
+}
+
+export async function toggleLikedSong(loggedInUser,song){
+    const isSongLiked = UserService.isSongLiked(loggedInUser,song)
+    if(isSongLiked){
+      store.dispatch({type:REMOVE_FROM_LIKED_SONGS, song})
+      UserService.removeSongFromLikedSongs(loggedInUser,song)
+    }else{
+      store.dispatch({type:LIKE_SONG, song})
+      UserService.addSongToLikedSongs(loggedInUser,song)
+    }
 }
 
 export async function createNewStationByUser(loggedInUser){

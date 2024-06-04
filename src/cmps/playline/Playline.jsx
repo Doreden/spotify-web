@@ -16,7 +16,7 @@ export function Playline() {
     const currentQueue = useSelector(storeState => storeState.playerModule.queue)
 
     const storeState = useSelector(storeState => storeState.userModule)
-    console.log(storeState)
+    // console.log(storeState)
 
     const [songProggresionData, setSongProgresionData] = useState({ played: 0, playedSeconds: 0, songDuration: 0 })
     const [volume, setVolume] = useState()

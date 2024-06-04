@@ -1,17 +1,19 @@
 import { useState, useEffect, useRef } from "react"
 import { utilService } from "../../../services/util.service"
 import { ReactSVG } from "react-svg"
-
 import { OptionsModal } from "../../OptionsModal"
-
 import Play from '../../../assets/imgs/play.svg'
-import AddToLiked from '../../../assets/imgs/addToLikes.svg'
+import { useSelector } from "react-redux"
+import { toggleLikedSong } from "../../../store/actions/user.action"
+import { ToggleLikedSongButton } from "../../ToggleLikedSongButton"
 
 export function PlaylistSongPreview({ index, song, station }) {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 })
   const buttonRef = useRef(null)
+
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
   useEffect(() => {
     function updateButtonPosition() {
@@ -34,6 +36,7 @@ export function PlaylistSongPreview({ index, song, station }) {
   }
 
 
+
   const [isHover, setIsHover] = useState(false)
 
   function handleHover() {
@@ -52,14 +55,12 @@ export function PlaylistSongPreview({ index, song, station }) {
   function displayAddToLikedButton() {
     return (
       isHover ?
-        <button className="add-to-liked-songs-btn">
-          <div className="add-to-liked-svg-container">
-            <ReactSVG src={AddToLiked} />
-          </div>
-        </button>
+        <ToggleLikedSongButton loggedInUser={loggedInUser} song={song} />
         : ''
     )
   }
+
+
 
   function onClose() {
     setIsModalOpen((prevState) => false)

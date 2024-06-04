@@ -9,7 +9,10 @@ export const UserService = {
     createMinimalUser,
     getLoggedInUser,
     addMiniStation,
-    removeStationFromLikedByUser
+    removeStationFromLikedByUser,
+    isSongLiked,
+    addSongToLikedSongs,
+    removeSongFromLikedSongs
 }
 
 async function removeStationFromLikedByUser(userId, stationId){
@@ -23,6 +26,20 @@ async function removeStationFromLikedByUser(userId, stationId){
 async function addMiniStation(miniStation){
     const loggedInUser = getLoggedInUser()
     const updatedUser = {...loggedInUser, likedStations : [...loggedInUser.likedStations, miniStation]}
+    await utilService.saveToStorage(STORAGE_KEY, updatedUser)
+}
+
+async function addSongToLikedSongs(loggedInUser, song){
+    // Change after adding user support
+    const loggedInUserDev = getLoggedInUser()
+    const updatedUser = {...loggedInUserDev, likedSongs : loggedInUser.likedSongs.filter(likedSong => likedSong.id !== song.id)}
+    await utilService.saveToStorage(STORAGE_KEY, updatedUser)
+}
+
+async function removeSongFromLikedSongs(loggedInUser, song){
+    // Change after adding user support
+    const loggedInUserDev = getLoggedInUser()
+    const updatedUser = {...loggedInUserDev, likedSongs : [...loggedInUserDev.likedSongs, song]}
     await utilService.saveToStorage(STORAGE_KEY, updatedUser)
 }
 
@@ -64,6 +81,16 @@ async function save(userToSave) {
       return await storageService.post(STORAGE_KEY, userToSave)
     }
   }
+
+  function isSongLiked(loggedInUser, song){
+    const isLiked = loggedInUser.likedSongs.find(likedSong => likedSong.id === song.id)
+    if(isLiked){
+        return true
+    }
+    return false
+  }
+
+
 
 function _getDefaultUser(){
     return {

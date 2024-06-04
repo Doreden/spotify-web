@@ -1,5 +1,13 @@
-// TODO : Do not repeat code
 // TODO : Remove padding right from songLength.
+
+// The
+.song-is-liked-svg-container {
+    width: 16px;
+    height: 16px;
+    padding-right: 24px;
+    fill: rgb(30, 215, 96);
+    background-color: transparent;
+}
 
 @mixin flex-start-center {
     display: flex;
@@ -29,6 +37,7 @@
     // Columns - Preview and Header in match
     & .song-index {
         @include flex-center-cetner();
+
     }
 
     .preview-play-svg-container {
@@ -49,6 +58,8 @@
         fill: $secondary-font-color;
         background-color: transparent;
     }
+
+
 
     & .svg-container {
         height: 20px;
