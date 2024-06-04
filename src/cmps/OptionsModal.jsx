@@ -5,7 +5,7 @@ import { deleteStation, toggleLikedSong } from '../store/actions/user.action'
 import { useNavigate } from "react-router"
 import { useSelector } from "react-redux"
 
-export function OptionsModal({ modalType, buttonPosition, station, song, isOpen, onClose }) {
+export function OptionsModal({ modalType, buttonPosition, station, song, isOpen, onClose, handleToggleLikedSongs }) {
     const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
     const [stations, setStations] = useState([])
@@ -80,11 +80,6 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
         }
     };
 
-    function handleAddToLikedSongs(loggedInUser, song) {
-        toggleLikedSong(loggedInUser, song)
-        console.log("try")
-    }
-
     function handleDeleteSong(stationId, songId) {
         stationService.removeSongFromStation(stationId, songId)
     }
@@ -121,7 +116,7 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
         return (
             <>
                 <li onClick={() => handleDeleteSong(station.id, song.id)}>Delete Song</li>
-                <li onClick={() => handleAddToLikedSongs(loggedInUser, song)}>{`${isSongLiked ? 'Remove From' : 'Add To'} Liked Songs`}</li>
+                <li onClick={handleToggleLikedSongs}>{`${isSongLiked ? 'Remove From' : 'Add To'} Liked Songs`}</li>
                 {/* <li onMouseEnter={() => setSecondaryModalVisible(true)} onMouseLeave={() => setSecondaryModalVisible(false)}>
                     Add to plalist
                     {isSecondaryModalVisible && <SecondaryModal station={stations} />}

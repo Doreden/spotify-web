@@ -6,14 +6,17 @@ import Play from '../../../assets/imgs/play.svg'
 import { useSelector } from "react-redux"
 import { toggleLikedSong } from "../../../store/actions/user.action"
 import { ToggleLikedSongButton } from "../../ToggleLikedSongButton"
+import { UserService } from "../../../services/user.service"
 
 export function PlaylistSongPreview({ index, song, station }) {
 
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 })
+  const [isLikedSong, setIsLikedSong] = useState(UserService.isSongLiked(loggedInUser, song))
   const buttonRef = useRef(null)
 
-  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
   useEffect(() => {
     function updateButtonPosition() {
@@ -52,10 +55,15 @@ export function PlaylistSongPreview({ index, song, station }) {
     )
   }
 
+  function handleToggleLikedSongs() {
+    toggleLikedSong(loggedInUser, song)
+    setIsLikedSong((prevState) => !prevState)
+  }
+
   function displayAddToLikedButton() {
     return (
       isHover ?
-        <ToggleLikedSongButton loggedInUser={loggedInUser} song={song} />
+        <ToggleLikedSongButton isLikedSong={isLikedSong} handleToggleLikedSongs={handleToggleLikedSongs} />
         : ''
     )
   }
@@ -95,7 +103,7 @@ export function PlaylistSongPreview({ index, song, station }) {
           {utilService.formatSongLength(song.lengthInSeconds)}
           <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>•••</button>
           {isModalOpen && (
-            <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} />
+            <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} handleToggleLikedSongs={handleToggleLikedSongs} />
           )}
         </div>
 
