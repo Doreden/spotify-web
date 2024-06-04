@@ -2,8 +2,6 @@ import { StationPreview } from "./sidebar/StationPreview"
 
 export function StationList({ stations, listTitle }) {
 
-    listTitle = "Your Playlists:"
-
     if (!stations) return
     console.log(stations[0])
     return (

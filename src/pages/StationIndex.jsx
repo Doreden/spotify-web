@@ -19,7 +19,9 @@ export function StationIndex() {
   return (
     <>
       <section className="station-index page">
-        <StationList stations={stations} />
+        <StationList stations={stations} listTitle={'Recommended Playlists'} />
+        <StationList stations={stations} listTitle={'Hot In Israel'} />
+
       </section>
     </>
   )

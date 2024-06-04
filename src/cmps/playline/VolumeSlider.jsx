@@ -11,9 +11,11 @@ export function VolumeSlider({ setVolume }) {
     }
 
     return (
-        <Slider aria-label="volume-slider"
-            min={0} max={100} defaultValue={100}
-            onChange={handleOnChange}
-        />
+        <div className='volume-slider-container'>
+            <Slider aria-label="volume-slider"
+                min={0} max={100} defaultValue={100}
+                onChange={handleOnChange}
+            />
+        </div>
     )
 }

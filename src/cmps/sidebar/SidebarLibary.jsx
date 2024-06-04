@@ -17,13 +17,13 @@ export function SidebarLibary() {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
-  console.log(loggedInUser)
 
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
+  console.log(miniStations)
 
-  useEffect(() => {
-    loadStations()
-  }, [])
+  // useEffect(() => {
+  //   loadStations()
+  // }, [])
 
   useEffect(() => {
     document.addEventListener('click', handleCloseContextMenu)
@@ -34,24 +34,25 @@ export function SidebarLibary() {
 
 
   const handleEditStation = (stationId) => {
-    const station = stations.find(st => st._id === stationId)
+    const station = miniStations.find(st => st.id === stationId)
     setCurrentStationToEdit(station)
     setIsEditModalOpen(true)
   }
 
-  async function loadStations() {
-    try {
-      const stations = await stationService.query()
-      setStations(stations)
-    } catch (error) {
-      console.log('err', err)
-    }
-  }
+  // async function loadStations() {
+  //   try {
+  //     const stations = await stationService.query()
+  //     setStations(stations)
+  //   } catch (error) {
+  //     console.log('err', err)
+  //   }
+  // }
 
   async function handleSaveStation(updatedStation) {
     try {
       const savedStation = await stationService.save(updatedStation)
-      setStations(prevStations => prevStations.map(station => station._id === savedStation._id ? savedStation : station))
+      // TODO Convert to action
+      setStations(prevStations => prevStations.map(station => station.id === savedStation.id ? savedStation : station))
     } catch (error) {
       console.error('Error saving station:', error)
     }
