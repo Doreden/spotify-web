@@ -2,7 +2,7 @@
 import { store } from "../store";
 import { stationService } from "../../services/station.service";
 import { UserService } from "../../services/user.service";
-import { SET_USER, ADD_STATION, LOAD_STATIONS, REMOVE_STATION, REMOVE_FROM_LIKED_SONGS, LIKE_SONG } from "../reducers/user.reducer"
+import { SET_USER, ADD_STATION, LOAD_STATIONS, REMOVE_STATION, REMOVE_FROM_LIKED_SONGS, LIKE_SONG, UPDATE_STATIONS } from "../reducers/user.reducer"
 // TOASK : This is only used for rendering user liked playlists. Discuss does it need to be in store?
 
 export async function login(cretentials = {}){
@@ -13,6 +13,19 @@ export async function login(cretentials = {}){
     }catch(err){
         console.log('No logged in user')
     }
+}
+
+export async function updateStation(likedStations, updatedStation){
+  const savedStation = await stationService.save(updatedStation)
+  const miniSavedStation = stationService.convertToMiniStation(savedStation)
+
+  const stationIdx = likedStations.findIndex(miniStation => miniStation.id === miniSavedStation.id)
+  if(stationIdx !== -1){
+      likedStations[stationIdx] = miniSavedStation
+      store.dispatch({type:UPDATE_STATIONS, updatedStations : likedStations})
+  }else{
+      console.log('Error Saving Station')
+  }
 }
 
 export async function deleteStation(userId,stationId){
@@ -52,7 +65,6 @@ export async function createNewStationByUser(loggedInUser){
     // Add new station to user in database
     UserService.addMiniStation(miniNewStation)
     // Add new station in store to re-render
-    // addMiniStationToUser(miniNewStation)
     store.dispatch({type: ADD_STATION, miniNewStation })
   } catch (err) {
       console.log(err)

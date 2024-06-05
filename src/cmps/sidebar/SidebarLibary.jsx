@@ -5,7 +5,7 @@ import { stationService } from "../../services/station.service.js"
 import { useEffect, useState } from "react"
 import { ContextMenu } from "./ContextMenu.jsx"
 import { EditStation } from "../EditStation.jsx"
-import { createNewStationByUser } from "../../store/actions/user.action.js"
+import { createNewStationByUser, updateStation } from "../../store/actions/user.action.js"
 import { LikedSongsPreview } from "./LikedSongsPreview.jsx"
 
 export function SidebarLibary() {
@@ -36,9 +36,11 @@ export function SidebarLibary() {
 
   async function handleSaveStation(updatedStation) {
     try {
-      const savedStation = await stationService.save(updatedStation)
-      // TODO Convert to action
-      setStations(prevStations => prevStations.map(station => station.id === savedStation.id ? savedStation : station))
+      // Updates station in DB
+      // Updates stations in Store
+      // TODO - update user
+      updateStation(miniStations, updateStation)
+
     } catch (error) {
       console.error('Error saving station:', error)
     }
