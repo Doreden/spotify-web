@@ -1,15 +1,16 @@
-import { ReactSVG } from "react-svg";
-import { uploadService } from "../services/upload.service";
-import { useState, useRef } from "react";
+import { ReactSVG } from "react-svg"
+import { uploadService } from "../services/upload.service"
+import { useState, useRef } from "react"
 import Close from '../assets/imgs/close.svg'
 
 export function EditStation({ show, onClose, station, onSave, onUploaded = null }) {
+
     const [title, setTitle] = useState(station.name)
     const [imgUrl, setImgUrl] = useState(station.imgUrl)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const fileInputRef = useRef(null)
-    
+
     async function handleImageUpload(event) {
         const files = event.target.files
         if (files && files.length > 0) {
@@ -39,7 +40,7 @@ export function EditStation({ show, onClose, station, onSave, onUploaded = null 
             ...station,
             name: title,
             imgUrl: imgUrl
-        };
+        }
         onSave(updatedStation)
         onClose()
     }
@@ -54,13 +55,13 @@ export function EditStation({ show, onClose, station, onSave, onUploaded = null 
                 <div className="body-edit-modal">
                     <div className="image-station">
                         <button className="image-container" onClick={() => fileInputRef.current.click()}>
-                            {imgUrl ? <img src={imgUrl} alt="Station" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : null }
-                            <input 
-                                type="file" 
+                            {imgUrl ? <img src={imgUrl} alt="Station" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : null}
+                            <input
+                                type="file"
                                 ref={fileInputRef}
-                                style={{ display: 'none' }} 
-                                onChange={handleImageUpload} 
-                                accept="image/*" 
+                                style={{ display: 'none' }}
+                                onChange={handleImageUpload}
+                                accept="image/*"
                                 disabled={isLoading}
                             />
                         </button>
@@ -85,5 +86,5 @@ export function EditStation({ show, onClose, station, onSave, onUploaded = null 
                 </div>
             </div>
         </section>
-    );
+    )
 }

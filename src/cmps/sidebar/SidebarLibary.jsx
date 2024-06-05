@@ -9,21 +9,16 @@ import { createNewStationByUser } from "../../store/actions/user.action.js"
 import { LikedSongsPreview } from "./LikedSongsPreview.jsx"
 
 export function SidebarLibary() {
-  const [stations, setStations] = useState([])
+
   const [isActiveId, setIsActiveId] = useState(null)
   const [contextMenu, setContextMenu] = useState(null)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-
-
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
-  console.log(miniStations)
 
-  // useEffect(() => {
-  //   loadStations()
-  // }, [])
+  console.log(miniStations)
 
   useEffect(() => {
     document.addEventListener('click', handleCloseContextMenu)
@@ -39,15 +34,6 @@ export function SidebarLibary() {
     setIsEditModalOpen(true)
   }
 
-  // async function loadStations() {
-  //   try {
-  //     const stations = await stationService.query()
-  //     setStations(stations)
-  //   } catch (error) {
-  //     console.log('err', err)
-  //   }
-  // }
-
   async function handleSaveStation(updatedStation) {
     try {
       const savedStation = await stationService.save(updatedStation)
@@ -56,16 +42,6 @@ export function SidebarLibary() {
     } catch (error) {
       console.error('Error saving station:', error)
     }
-  }
-
-  const handleContextMenu = (event, station) => {
-    event.preventDefault()
-    setContextMenu({
-      isVisible: true,
-      x: event.clientX,
-      y: event.clientY,
-      station: station,
-    })
   }
 
   const handleCloseContextMenu = () => {
@@ -81,6 +57,23 @@ export function SidebarLibary() {
     ))
   }
 
+
+
+  async function handleAddStation() {
+    await createNewStationByUser(loggedInUser)
+  }
+
+  const handleContextMenu = (event, station) => {
+    console.log(station)
+    event.preventDefault()
+    setContextMenu({
+      isVisible: true,
+      x: event.clientX,
+      y: event.clientY,
+      station: station,
+    })
+  }
+
   if (!loggedInUser) {
     return "Log in to create and share playlists"
   }
@@ -89,9 +82,7 @@ export function SidebarLibary() {
     return null
   }
 
-  async function handleAddStation() {
-    await createNewStationByUser(loggedInUser)
-  }
+
 
   return (
     <>
