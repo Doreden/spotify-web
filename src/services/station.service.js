@@ -11,7 +11,8 @@ export const stationService = {
   save,
   removeById,
   createNewStation,
-  convertToMiniStation
+  convertToMiniStation,
+  addSongToStation
 }
 
 async function removeSongFromStation(stationId, songId) {
@@ -44,6 +45,22 @@ async function removeById(id) {
     return idx
   } catch (err) {
     console.log(`error: ${err}`)
+  }
+}
+
+async function addSongToStation(station,song){
+  try {
+    let stationUpdate  = {
+    ...station,
+    songs: [...station.songs, song],
+  }
+  console.log(stationUpdate)
+
+  save(stationUpdate)
+
+  } catch (err) {
+    console.log(`error: ${err}`)
+
   }
 }
 

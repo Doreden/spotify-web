@@ -117,10 +117,10 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
             <>
                 <li onClick={() => handleDeleteSong(station.id, song.id)}>Delete Song</li>
                 <li onClick={handleToggleLikedSongs}>{`${isSongLiked ? 'Remove From' : 'Add To'} Liked Songs`}</li>
-                {/* <li onMouseEnter={() => setSecondaryModalVisible(true)} onMouseLeave={() => setSecondaryModalVisible(false)}>
+                <li onMouseEnter={() => setSecondaryModalVisible(true)} onMouseLeave={() => setSecondaryModalVisible(false)}>
                     Add to plalist
-                    {isSecondaryModalVisible && <SecondaryModal station={stations} />}
-                </li> */}
+                    {isSecondaryModalVisible && <SecondaryModal station={stations} song={song} />}
+                </li>
             </>
         )
     }
@@ -134,23 +134,21 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
         )
     }
 }
-function SecondaryModal({ stations }) {
+function SecondaryModal({ station , song}) {
+
+    function addToStation(station,song){
+        stationService.addSongToStation(station, song)
+        // console.log(station)
+        // console.log(song)
+    }
     return (
         <div className="secondary-modal">
             <input type="text" placeholder="Find a playlist" />
             <ul>
-                {stations?.map((station) => (
-                    <li key={station.id}>{station.name}</li>
+                {station?.map((station) => (
+                    <li key={station.id} onClick={() => addToStation(station,song)} >{station.name}</li>
                 ))}
             </ul>
         </div>
     )
 }
-
-//   {stations.map((station) => (
-//     <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)} >
-//       <StationPreview station={station}
-//         onClick={handleStationClick}
-//         context={'sidebar'} />
-//     </div>
-//   ))}

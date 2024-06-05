@@ -17,10 +17,9 @@ export function LikedSongs() {
         createLikedSongsStation()
     }, [])
 
-    if (!loggedInUser) return
-
+    
     const likedSongs = loggedInUser.likedSongs
-
+    
     function createLikedSongsStation() {
         const likedSongsObject = {
             name: "Liked Songs",
@@ -30,11 +29,12 @@ export function LikedSongs() {
         }
         setLikedSongsStation((prevState) => likedSongsObject)
     }
-
+    
     function onPlayStation(songIdx = 0) {
         playStation(likedSongsStation, songIdx)
     }
-
+    
+    if (!loggedInUser) return
     if (!likedSongsStation) return
     return (
         <>
