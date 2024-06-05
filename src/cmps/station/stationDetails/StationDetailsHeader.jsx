@@ -12,11 +12,13 @@ export function StationDetailsHeader({ station, is }) {
     return (
         <div className="station-details-header">
             <div className="content">
-                {is === 'liked-songs' ?
-                    <img src={'imgs/likedsongs.png'}></img>
-                    :
-                    <img onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)} className="station-cover" src={imgHover ? '/imgs/change-cover.png' : `${station.imgUrl}`}></img>
-                }
+                <div className="img-box details-img-box">
+                    {is === 'liked-songs' ?
+                        <img src={'imgs/likedsongs.png'}></img>
+                        :
+                        <img onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)} src={imgHover ? '/imgs/change-cover.png' : `${station.imgUrl}`}></img>
+                    }
+                </div>
                 <div className="station-info">
                     <h1 className="station-name">{station.name}</h1>
                     <div className="additional-info-line">

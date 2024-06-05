@@ -8,12 +8,12 @@ import { useSelector } from "react-redux"
 export function OptionsModal({ modalType, buttonPosition, station, song, isOpen, onClose, handleToggleLikedSongs }) {
     const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
-    const [stations, setStations] = useState([])
+    // Are these needed?:
     const [optionMenu, setOptionMenu] = useState(null)
     const [isActiveId, setIsActiveId] = useState(null)
+    const [stations, setStations] = useState([])
     const [isSecondaryModalVisible, setSecondaryModalVisible] = useState(false)
     const [isSongLiked, setIsSongLiked] = useState(UserService.isSongLiked(loggedInUser, song))
-    // console.log(stations)
     const modalRef = useRef()
     const navigate = useNavigate()
 
@@ -134,9 +134,9 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
         )
     }
 }
-function SecondaryModal({ station , song}) {
+function SecondaryModal({ station, song }) {
 
-    function addToStation(station,song){
+    function addToStation(station, song) {
         stationService.addSongToStation(station, song)
         // console.log(station)
         // console.log(song)
@@ -146,7 +146,7 @@ function SecondaryModal({ station , song}) {
             <input type="text" placeholder="Find a playlist" />
             <ul>
                 {station?.map((station) => (
-                    <li key={station.id} onClick={() => addToStation(station,song)} >{station.name}</li>
+                    <li key={station.id} onClick={() => addToStation(station, song)} >{station.name}</li>
                 ))}
             </ul>
         </div>

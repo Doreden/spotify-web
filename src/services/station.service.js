@@ -48,11 +48,24 @@ async function removeById(id) {
   }
 }
 
+function _isIn(station,song){
+  return station.songs.some(stationSong => stationSong.id === song.id)
+}
+
 async function addSongToStation(station,song){
   try {
+    console.log(song)
+    let newSong = {...song}
+    console.log(newSong)
+    if(_isIn(station,song)){
+      const newId = utilService.generateId(10)
+      newSong = {...song, id:newId}
+      console.log(newSong)
+    }
+
     let stationUpdate  = {
     ...station,
-    songs: [...station.songs, song],
+    songs: [...station.songs, newSong],
   }
   console.log(stationUpdate)
 

@@ -30,6 +30,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
+    gap: 20px;
+
   }
 
   & .station-info {
@@ -114,13 +116,20 @@
     }
   }
 
+
   & img {
     height: calc(20vw);
     width: auto;
     border-radius: 4px;
     margin-right: 16px;
-    min-height: 160px;
-    max-height: 232px;
   }
 
+  & .details-img-box {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 323px;
+    height: 323px;
+  }
 }

@@ -27,7 +27,6 @@ export function SidebarLibary() {
     }
   }, [])
 
-
   const handleEditStation = (stationId) => {
     const station = miniStations.find(st => st.id === stationId)
 
@@ -55,9 +54,7 @@ export function SidebarLibary() {
   }
 
   function onUploaded(imgUrl) {
-    setStations(prevStations => prevStations.map(station =>
-      station._id === currentStationToEdit._id ? { ...station, imgUrl } : station
-    ))
+
   }
 
 
