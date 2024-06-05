@@ -24,13 +24,6 @@ import { LikedSongs } from "./cmps/station/stationDetails/LikedSongs.jsx"
 
 function App() {
 
-  // Create Mock Data - Remove Later
-  // stationService.createStations()
-
-  // const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-  // console.log(loggedInUser)
-
-  // Load user in store 
   useEffect(() => {
     login()
   }, [])

@@ -3,7 +3,6 @@ import { StationPreview } from "./sidebar/StationPreview"
 export function StationList({ stations, listTitle }) {
 
     if (!stations) return
-    console.log(stations[0])
     return (
         <div className="station-list-container">
             <div className="list-title">

@@ -14,8 +14,8 @@ export function SidebarLibary() {
   const [contextMenu, setContextMenu] = useState(null)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
-
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
 
   console.log(miniStations)
@@ -30,6 +30,7 @@ export function SidebarLibary() {
 
   const handleEditStation = (stationId) => {
     const station = miniStations.find(st => st.id === stationId)
+
     setCurrentStationToEdit(station)
     setIsEditModalOpen(true)
   }
@@ -39,7 +40,7 @@ export function SidebarLibary() {
       // Updates station in DB
       // Updates stations in Store
       // TODO - update user
-      updateStation(miniStations, updateStation)
+      updateStation(miniStations, updatedStation)
 
     } catch (error) {
       console.error('Error saving station:', error)
@@ -66,7 +67,6 @@ export function SidebarLibary() {
   }
 
   const handleContextMenu = (event, station) => {
-    console.log(station)
     event.preventDefault()
     setContextMenu({
       isVisible: true,
@@ -106,7 +106,7 @@ export function SidebarLibary() {
           x={contextMenu.x}
           y={contextMenu.y}
           isActiveId={isActiveId}
-          onEdit={() => handleEditStation(contextMenu.station._id)}
+          onEdit={() => handleEditStation(contextMenu.station.id)}
           onRemove={() => handleRemoveStation(contextMenu.station._id)}
           onAdd={() => handleAddStation()}
 

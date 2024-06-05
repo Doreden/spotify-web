@@ -16,13 +16,21 @@ export async function login(cretentials = {}){
 }
 
 export async function updateStation(likedStations, updatedStation){
-  const savedStation = await stationService.save(updatedStation)
+  const { id, name, imgUrl } = updatedStation
+  const stationToUpdate = await stationService.getById(id)
+  console.log(stationToUpdate)
+  const stationAfterUpdate = {...stationToUpdate, name, imgUrl}
+  console.log("4")
+  const savedStation = await stationService.save(stationAfterUpdate)
+  console.log("5")
   const miniSavedStation = stationService.convertToMiniStation(savedStation)
-
+  console.log("6")
   const stationIdx = likedStations.findIndex(miniStation => miniStation.id === miniSavedStation.id)
+
   if(stationIdx !== -1){
       likedStations[stationIdx] = miniSavedStation
       store.dispatch({type:UPDATE_STATIONS, updatedStations : likedStations})
+      console.log(likedStations)
   }else{
       console.log('Error Saving Station')
   }

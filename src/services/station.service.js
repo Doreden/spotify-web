@@ -20,7 +20,6 @@ async function removeSongFromStation(stationId, songId) {
     ...station,
     songs: station.songs.filter((song) => song.id !== songId),
   }
-  console.log(station)
   save(station)
 }
 
