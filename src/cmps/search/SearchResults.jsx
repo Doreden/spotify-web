@@ -4,7 +4,6 @@ import { PlaylistSongPreview } from "../station/stationDetails/PlaylistSongPrevi
 export function SearchResults({ searchResults }) {
 
     function onPlaySong(song) {
-        console.log(song)
         playSingleSong(song)
     }
 
