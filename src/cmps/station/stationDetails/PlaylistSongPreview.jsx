@@ -8,7 +8,7 @@ import { toggleLikedSong } from "../../../store/actions/user.action"
 import { ToggleLikedSongButton } from "../../ToggleLikedSongButton"
 import { UserService } from "../../../services/user.service"
 
-export function PlaylistSongPreview({ index, song, station }) {
+export function PlaylistSongPreview({ index, song, station, isActiveSongId  }) {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
@@ -38,9 +38,6 @@ export function PlaylistSongPreview({ index, song, station }) {
   function handleOptionsClick(event) {
     setIsModalOpen(true)
   }
-
-
-
 
   function handleHover() {
     setIsHover(() => true)
@@ -74,7 +71,7 @@ export function PlaylistSongPreview({ index, song, station }) {
 
   return (
     <>
-      <div className={`song-preview ${station ? 'playlist-columns' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
+      <div className={`song-preview ${station ? 'playlist-columns' : ''}  ${isActiveSongId ? 'song-preview-active' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
         {station && <div className="song-index">{displayPlayButton()}</div>}
 
         <div className="song-details">

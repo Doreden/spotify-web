@@ -10,7 +10,7 @@ function LengthSvg() {
   )
 }
 
-export function PlaylistSongList({ station, onPlayStation }) {
+export function PlaylistSongList({ station, onPlayStation, isActiveSongId, onSongClick }) {
   return (
     <div className="song-list">
       <div className="list-header playlist-columns secondary">
@@ -22,8 +22,8 @@ export function PlaylistSongList({ station, onPlayStation }) {
       </div>
 
       {station.songs.map((song, index) => (
-        <li onDoubleClick={() => onPlayStation(index)} key={song.id}>
-          <PlaylistSongPreview index={index} song={song} station={station} />
+        <li onDoubleClick={() => onPlayStation(index)} onClick={() => onSongClick(song.id)} key={song.id}>
+          <PlaylistSongPreview index={index} song={song} station={station} isActiveSongId={song.id === isActiveSongId} />
           {/* <OptionsModal modalType={'song'} entity={song} style={{top:10}} /> */}
         </li>
       )

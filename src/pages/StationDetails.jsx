@@ -8,6 +8,7 @@ import { playStation } from "../store/actions/player.action"
 
 export function StationDetails() {
   const [station, setStation] = useState(null)
+  const [isActiveSongId, setIsActiveSongId] = useState(null)
   const params = useParams()
 
   useEffect(() => {
@@ -25,6 +26,11 @@ export function StationDetails() {
 
   function onPlayStation(songIdx = 0) {
     playStation(station, songIdx)
+    setIsActiveSongId(station.songs[songIdx].id)
+  }
+
+  const handleSongClick  = (id) => {
+    setIsActiveSongId(id)
   }
 
   if (!station) return
@@ -34,7 +40,7 @@ export function StationDetails() {
         <StationDetailsHeader station={station} />
         <StationDetailsActions station={station} onPlayStation={onPlayStation} />
         <div className="song-list-container">
-          <PlaylistSongList station={station} onPlayStation={onPlayStation} />
+          <PlaylistSongList station={station} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} onSongClick={handleSongClick} />
         </div>
       </section>
     </>

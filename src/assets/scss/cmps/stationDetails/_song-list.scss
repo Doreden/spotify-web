@@ -140,6 +140,9 @@
         &:hover {
             background-color: hsla(0, 0%, 100%, .07)
         }
+        &.song-preview-active{
+            background-color: #5e5e5e;
+        }
 
         & img {
             width: 40px;

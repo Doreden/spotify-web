@@ -14,6 +14,7 @@ import { DeleteStation } from "../DeleteStation.jsx"
 export function SidebarLibary() {
 
   const [isActiveId, setIsActiveId] = useState(null)
+  const [isLikedSongsActive, setIsLikedSongsActive] = useState(false)
   const [contextMenu, setContextMenu] = useState(null)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [isDeleteModalOpen,setIsDeleteModalOpen]= useState(false)
@@ -65,6 +66,11 @@ export function SidebarLibary() {
   }
   const handleStationClick = (id) => {
     setIsActiveId(id)
+    setIsLikedSongsActive(false)
+  }
+  const handleLikedSongsClick = () => {
+    setIsActiveId(null)
+    setIsLikedSongsActive(true)
   }
 
   function onUploaded(imgUrl) {
@@ -103,42 +109,46 @@ export function SidebarLibary() {
         <SidebarLibaryHeader loggedInUser={loggedInUser} handleAddStation={handleAddStation} />
 
         <div className="libary-station-list">
-
-          <LikedSongsPreview context={'sidebar'} />
+          <div className="preview-item" onClick={handleLikedSongsClick}>
+            <LikedSongsPreview context={'sidebar'} isActive={isLikedSongsActive} />
+          </div>
           {miniStations.map((station) => (
-            <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)} >
-              <StationPreview station={station}
+            <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)}>
+              <StationPreview
+                station={station}
                 OnStationClick={handleStationClick}
-                context={'sidebar'} />
+                isActiveId={station.id === isActiveId}
+                context={'sidebar'}
+              />
             </div>
           ))}
         </div>
-        {contextMenu && (<ContextMenu
-          x={contextMenu.x}
-          y={contextMenu.y}
-          isActiveId={isActiveId}
-          onEdit={() => handleEditStation(contextMenu.station.id)}
-          onRemove={() => handleDeleteStation(contextMenu.station.id)}
-          onAdd={() => handleAddStation()}
-
-        />)}
+        {contextMenu && (
+          <ContextMenu
+            x={contextMenu.x}
+            y={contextMenu.y}
+            isActiveId={isActiveId}
+            onEdit={() => handleEditStation(contextMenu.station.id)}
+            onRemove={() => handleDeleteStation(contextMenu.station.id)}
+            onAdd={() => handleAddStation()}
+          />
+        )}
         {isEditModalOpen && (
           <EditStation
             show={isEditModalOpen}
             onClose={() => setIsEditModalOpen(false)}
             station={currentStationToEdit}
             onSave={handleSaveStation}
-            onUploaded={onUploaded}
           />
         )}
-        {isDeleteModalOpen &&
-          <DeleteStation 
-          show ={isDeleteModalOpen}
-          onClose= {() => setIsDeleteModalOpen(false)}
-          station={currentStationToDelete}
-          onDelete={handleRemoveStation}
+        {isDeleteModalOpen && (
+          <DeleteStation
+            show={isDeleteModalOpen}
+            onClose={() => setIsDeleteModalOpen(false)}
+            station={currentStationToDelete}
+            onDelete={handleRemoveStation}
           />
-        }
+        )}
       </div>
     </>
   )

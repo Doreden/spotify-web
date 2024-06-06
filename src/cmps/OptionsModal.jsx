@@ -140,13 +140,15 @@ function SecondaryModal({ station, song }) {
         stationService.addSongToStation(station, song)
     }
     return (
-        <div className="secondary-modal">
-            <input type="text" id="find-playlist" placeholder="Find a playlist" />
-            <ul>
-                {station?.map((station) => (
-                    <li key={station.id} onClick={() => addToStation(station, song)} >{station.name}</li>
-                ))}
-            </ul>
+        <div>
+            <div className="secondary-modal">
+                <input type="text" id="find-playlist" placeholder="Find a playlist" />
+                <ul>
+                    {station?.map((station) => (
+                        <li key={station.id} onClick={() => addToStation(station, song)} >{station.name}</li>
+                    ))}
+                </ul>
+            </div>
         </div>
     )
 }
