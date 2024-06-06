@@ -9,13 +9,16 @@ import { createNewStationByUser, updateStation } from "../../store/actions/user.
 import { LikedSongsPreview } from "./LikedSongsPreview.jsx"
 import { deleteStation } from '../../store/actions/user.action.js'
 import { useNavigate } from "react-router"
+import { DeleteStation } from "../DeleteStation.jsx"
 
 export function SidebarLibary() {
 
   const [isActiveId, setIsActiveId] = useState(null)
   const [contextMenu, setContextMenu] = useState(null)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+  const [isDeleteModalOpen,setIsDeleteModalOpen]= useState(false)
   const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
+  const [currentStationToDelete, setCurrentStationToDelete] = useState(null)
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
 
@@ -32,9 +35,13 @@ export function SidebarLibary() {
 
   const handleEditStation = (stationId) => {
     const station = miniStations.find(st => st.id === stationId)
-
     setCurrentStationToEdit(station)
     setIsEditModalOpen(true)
+  }
+  const handleDeleteStation = (stationId) => {
+    const station = miniStations.find(st => st.id === stationId)
+    setCurrentStationToDelete(station)
+    setIsDeleteModalOpen(true)
   }
 
   async function handleSaveStation(updatedStation) {
@@ -43,12 +50,16 @@ export function SidebarLibary() {
       // Updates stations in Store
       // TODO - update user
       updateStation(miniStations, updatedStation)
-
+      
     } catch (error) {
       console.error('Error saving station:', error)
     }
   }
-
+  
+  function handleRemoveStation(stationId) {
+    deleteStation(loggedInUser.id, stationId)
+    navigate("/")
+}
   const handleCloseContextMenu = () => {
     setContextMenu(null)
   }
@@ -60,10 +71,6 @@ export function SidebarLibary() {
 
   }
 
-  function handleRemoveStation(stationId) {
-    deleteStation(loggedInUser.id, stationId)
-    navigate("/")
-}
 
 
   async function handleAddStation() {
@@ -111,7 +118,7 @@ export function SidebarLibary() {
           y={contextMenu.y}
           isActiveId={isActiveId}
           onEdit={() => handleEditStation(contextMenu.station.id)}
-          onRemove={() => handleRemoveStation(contextMenu.station.id)}
+          onRemove={() => handleDeleteStation(contextMenu.station.id)}
           onAdd={() => handleAddStation()}
 
         />)}
@@ -124,6 +131,14 @@ export function SidebarLibary() {
             onUploaded={onUploaded}
           />
         )}
+        {isDeleteModalOpen &&
+          <DeleteStation 
+          show ={isDeleteModalOpen}
+          onClose= {() => setIsDeleteModalOpen(false)}
+          station={currentStationToDelete}
+          onDelete={handleRemoveStation}
+          />
+        }
       </div>
     </>
   )
