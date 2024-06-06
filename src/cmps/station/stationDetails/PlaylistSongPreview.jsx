@@ -15,6 +15,7 @@ export function PlaylistSongPreview({ index, song, station }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 })
   const [isLikedSong, setIsLikedSong] = useState(UserService.isSongLiked(loggedInUser, song))
+  const [isHover, setIsHover] = useState(false)
   const buttonRef = useRef(null)
 
 
@@ -40,7 +41,6 @@ export function PlaylistSongPreview({ index, song, station }) {
 
 
 
-  const [isHover, setIsHover] = useState(false)
 
   function handleHover() {
     setIsHover(() => true)
@@ -67,8 +67,6 @@ export function PlaylistSongPreview({ index, song, station }) {
         : ''
     )
   }
-
-
 
   function onClose() {
     setIsModalOpen((prevState) => false)
