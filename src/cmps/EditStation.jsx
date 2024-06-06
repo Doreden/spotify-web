@@ -65,7 +65,7 @@ export function EditStation({ show, onClose, station, onSave, onUploaded = null 
                                 disabled={isLoading}
                             />
                         </button>
-                        {isLoading && <p>Loading...</p>}
+                        {/* {isLoading && <p>Loading...</p>} */}
                         {error && <p style={{ color: 'red' }}>{error}</p>}
                     </div>
                     <div className="title-station">

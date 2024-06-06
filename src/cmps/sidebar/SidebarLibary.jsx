@@ -7,6 +7,8 @@ import { ContextMenu } from "./ContextMenu.jsx"
 import { EditStation } from "../EditStation.jsx"
 import { createNewStationByUser, updateStation } from "../../store/actions/user.action.js"
 import { LikedSongsPreview } from "./LikedSongsPreview.jsx"
+import { deleteStation } from '../../store/actions/user.action.js'
+import { useNavigate } from "react-router"
 
 export function SidebarLibary() {
 
@@ -15,6 +17,7 @@ export function SidebarLibary() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  const navigate = useNavigate()
 
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
 
@@ -57,6 +60,10 @@ export function SidebarLibary() {
 
   }
 
+  function handleRemoveStation(stationId) {
+    deleteStation(loggedInUser.id, stationId)
+    navigate("/")
+}
 
 
   async function handleAddStation() {
@@ -104,7 +111,7 @@ export function SidebarLibary() {
           y={contextMenu.y}
           isActiveId={isActiveId}
           onEdit={() => handleEditStation(contextMenu.station.id)}
-          onRemove={() => handleRemoveStation(contextMenu.station._id)}
+          onRemove={() => handleRemoveStation(contextMenu.station.id)}
           onAdd={() => handleAddStation()}
 
         />)}
