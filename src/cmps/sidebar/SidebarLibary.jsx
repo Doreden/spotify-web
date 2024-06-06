@@ -18,7 +18,7 @@ export function SidebarLibary() {
 
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
 
-  console.log(miniStations)
+  // console.log(miniStations)
 
   useEffect(() => {
     document.addEventListener('click', handleCloseContextMenu)
@@ -94,7 +94,7 @@ export function SidebarLibary() {
           {miniStations.map((station) => (
             <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)} >
               <StationPreview station={station}
-                onClick={handleStationClick}
+                OnStationClick={handleStationClick}
                 context={'sidebar'} />
             </div>
           ))}

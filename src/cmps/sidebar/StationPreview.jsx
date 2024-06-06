@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 
-export function StationPreview({ station, onClick, context }) {
+export function StationPreview({ station, OnStationClick, context }) {
     const handleClick = (e) => {
         e.stopPropagation()
-        onClick(station.id)
+        OnStationClick(station.id)
     }
 
     if (!station) return

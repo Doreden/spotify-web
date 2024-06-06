@@ -70,7 +70,7 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
 
     const modalPosition = {
         buttonPosition: 'fixed',
-        top: buttonPosition.top - 130,
+        top: buttonPosition.top - 150,
         left: buttonPosition.left - 80
     }
 
@@ -138,8 +138,6 @@ function SecondaryModal({ station, song }) {
 
     function addToStation(station, song) {
         stationService.addSongToStation(station, song)
-        // console.log(station)
-        // console.log(song)
     }
     return (
         <div className="secondary-modal">
