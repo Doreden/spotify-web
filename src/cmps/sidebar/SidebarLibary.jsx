@@ -1,7 +1,6 @@
 import { SidebarLibaryHeader } from "./SidebarLibaryHeader.jsx"
 import { useSelector } from "react-redux"
 import { StationPreview } from "./StationPreview.jsx"
-import { stationService } from "../../services/station.service.js"
 import { useEffect, useState } from "react"
 import { ContextMenu } from "./ContextMenu.jsx"
 import { EditStation } from "../EditStation.jsx"
@@ -11,21 +10,18 @@ import { deleteStation } from '../../store/actions/user.action.js'
 import { useNavigate } from "react-router"
 import { DeleteStation } from "../DeleteStation.jsx"
 
-export function SidebarLibary() {
+export function SidebarLibary({ currentLocation }) {
 
   const [isActiveId, setIsActiveId] = useState(null)
-  const [isLikedSongsActive, setIsLikedSongsActive] = useState(false)
   const [contextMenu, setContextMenu] = useState(null)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
-  const [isDeleteModalOpen,setIsDeleteModalOpen]= useState(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
   const [currentStationToDelete, setCurrentStationToDelete] = useState(null)
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
 
   const miniStations = loggedInUser ? loggedInUser.likedStations : null
-
-  // console.log(miniStations)
 
   useEffect(() => {
     document.addEventListener('click', handleCloseContextMenu)
@@ -51,33 +47,26 @@ export function SidebarLibary() {
       // Updates stations in Store
       // TODO - update user
       updateStation(miniStations, updatedStation)
-      
+
     } catch (error) {
       console.error('Error saving station:', error)
     }
   }
-  
+
   function handleRemoveStation(stationId) {
     deleteStation(loggedInUser.id, stationId)
     navigate("/")
-}
+  }
   const handleCloseContextMenu = () => {
     setContextMenu(null)
   }
   const handleStationClick = (id) => {
     setIsActiveId(id)
-    setIsLikedSongsActive(false)
   }
+
   const handleLikedSongsClick = () => {
     setIsActiveId(null)
-    setIsLikedSongsActive(true)
   }
-
-  function onUploaded(imgUrl) {
-
-  }
-
-
 
   async function handleAddStation() {
     await createNewStationByUser(loggedInUser)
@@ -101,8 +90,6 @@ export function SidebarLibary() {
     return null
   }
 
-
-
   return (
     <>
       <div className="sidebar-libary">
@@ -110,14 +97,14 @@ export function SidebarLibary() {
 
         <div className="libary-station-list">
           <div className="preview-item" onClick={handleLikedSongsClick}>
-            <LikedSongsPreview context={'sidebar'} isActive={isLikedSongsActive} />
+            <LikedSongsPreview context={'sidebar'} currentLocation={currentLocation} />
           </div>
           {miniStations.map((station) => (
             <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)}>
               <StationPreview
                 station={station}
                 OnStationClick={handleStationClick}
-                isActiveId={station.id === isActiveId}
+                currentLocation={currentLocation}
                 context={'sidebar'}
               />
             </div>
