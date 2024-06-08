@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 export function Sidebar() {
 
     const location = useLocation()
-    const [currentLocation, setCurrentLocation] = useState(location)
+    const [currentLocation, setCurrentLocation] = useState(location.pathname)
 
     console.log(currentLocation)
 
