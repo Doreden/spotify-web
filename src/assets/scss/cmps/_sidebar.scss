@@ -35,6 +35,14 @@
     color: $secondary-font-color;
     font-size: 1rem;
 
+    &.active {
+      color: white;
+
+      & .nav-button-svg {
+        fill: white;
+      }
+    }
+
     &:hover {
       color: white;
     }
