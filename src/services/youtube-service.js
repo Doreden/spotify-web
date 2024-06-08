@@ -10,40 +10,36 @@ export const youtubeService = {
 
 async function getSongBySearch(searchInput) {
     let results
-    // TO REMOVE - FOR Development
+    // TODO REMOVE - FOR Development
     if(searchInput === 'try'){
       results = await JSON.parse(utilService.loadFromStorage(STORAGE_KEY))
-    }else{
-
-      
+    }else{      
         const response = await fetch(
           `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${searchInput}&part=snippet&type=video`
         )
         results = await response.json()
     }
-    const songLengths = await _getResultsLengths(results)
-    results = results.items
-    results = results.map((item,idx) => ({...item, duration : songLengths[idx]}))
-    console.log(results)
+    const songsLength = await _getSongsLength(results)
+    results = results.items.map((item,idx) => ({...item, duration : songsLength[idx]}))
     results = _formatResults(results)
     return results
 }
 
-  async function _getResultsLengths(results){
-    const idString = _createIdString(results)
-    let songsLength = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&id=${idString}&key=${API_KEY}`
-    )
-    songsLength = await songsLength.json()
-    songsLength = songsLength.items.map((song) => (song.contentDetails.duration))
-    return songsLength
-  }
+async function _getSongsLength(results){
+	const idsAsString = _createIdsAsString(results)
+	let songsLength = await fetch(
+		`https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&id=${idsAsString}&key=${API_KEY}`
+	)
+	songsLength = await songsLength.json()
+	songsLength = songsLength.items.map((song) => (song.contentDetails.duration))
+	return songsLength
+}
 
-  function _createIdString(results){
+function _createIdsAsString(results){
     let resultsIdString = ''
     results.items.forEach(item => (resultsIdString += item.id.videoId + ','))
     return resultsIdString
-  }
+}
 
 
   function _formatResults(searchResults) {
@@ -61,7 +57,7 @@ async function getSongBySearch(searchInput) {
     return formattedResults
 }
 
-// Creates the "Linkin Park" top 5 results to call when searching "try"
+// TODO - For Development
 (() => {
     utilService.saveToStorage(STORAGE_KEY, JSON.stringify(searchAsJson))
   })();

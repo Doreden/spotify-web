@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
 import { StationList } from "../cmps/StationList"
 import { stationService } from "../services/station.service"
+
 export function StationIndex() {
 
   const [stations, setStations] = useState([])

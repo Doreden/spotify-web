@@ -26,8 +26,7 @@ export function PlaylistSongList({ station, onPlayStation, isActiveSongId, onSon
           <PlaylistSongPreview index={index} song={song} station={station} isActiveSongId={song.id === isActiveSongId} />
           {/* <OptionsModal modalType={'song'} entity={song} style={{top:10}} /> */}
         </li>
-      )
-      )}
+      ))}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 // Libraries
 import { Route, HashRouter as Router, Routes } from "react-router-dom"
-import { Provider, useSelector } from "react-redux"
+import { Provider } from "react-redux"
 // Pages
 import { StationIndex } from "./pages/StationIndex.jsx"
 import { StationDetails } from "./pages/StationDetails.jsx"
@@ -9,16 +9,14 @@ import { SearchPage } from "./pages/SearchPage.jsx"
 // Components
 import { Sidebar } from "./cmps/sidebar/Sidebar.jsx"
 import { Playline } from "./cmps/playline/Playline.jsx"
-import { OptionsModal } from "./cmps/OptionsModal.jsx"
 
 // Store
 import { store } from "./store/store.js"
 
 // Services
-import { stationService } from "./services/station.service.js"
 import { useEffect } from "react"
 import "./assets/scss/style.scss"
-import { loadUserMiniStations, login } from "./store/actions/user.action"
+import { login } from "./store/actions/user.action"
 import { LikedSongs } from "./cmps/station/stationDetails/LikedSongs.jsx"
 
 

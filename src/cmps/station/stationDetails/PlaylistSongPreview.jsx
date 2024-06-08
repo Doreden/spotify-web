@@ -8,7 +8,7 @@ import { toggleLikedSong } from "../../../store/actions/user.action"
 import { ToggleLikedSongButton } from "../../ToggleLikedSongButton"
 import { UserService } from "../../../services/user.service"
 
-export function PlaylistSongPreview({ index, song, station, isActiveSongId  }) {
+export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
@@ -17,7 +17,6 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId  }) {
   const [isLikedSong, setIsLikedSong] = useState(UserService.isSongLiked(loggedInUser, song))
   const [isHover, setIsHover] = useState(false)
   const buttonRef = useRef(null)
-
 
   useEffect(() => {
     function updateButtonPosition() {
