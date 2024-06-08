@@ -46,6 +46,14 @@
         }
     }
 
+    & .play {
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: $secondary-font-color;
+    }
+
     & .volume {
         min-width: 125px;
         display: flex;

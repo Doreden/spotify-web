@@ -53,6 +53,8 @@ export function Playline() {
         setReady((prevState) => true)
     }
 
+
+
     return (
 
         <div className="playline">
@@ -60,7 +62,7 @@ export function Playline() {
                 <PlayingSongInfo song={currentSong} />
             </div>
 
-            <div className="player">
+            <div className="player" >
                 <PlayerControls ready={ready} handlePlayNext={handlePlayNext} handlePlayPrevious={handlePlayPrevious} togglePlay={onTogglePlay} isPlaying={isPlaying} isShuffle={isShuffle} isRepeat={isRepeat} />
                 <PlaySlider onSeek={onSeek} songProggresionData={songProggresionData} setSongProgresionData={setSongProgresionData} />
                 <ReactPlayer
@@ -76,8 +78,8 @@ export function Playline() {
                     width="0" height="0" />
             </div>
 
-            <div className="volume">
-                <VolumeSlider setVolume={setVolume} />
+            <div className="volume" >
+                <VolumeSlider volume={volume} setVolume={setVolume} />
             </div>
         </div>
 

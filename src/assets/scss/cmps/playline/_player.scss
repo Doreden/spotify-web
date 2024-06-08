@@ -29,20 +29,33 @@
     }
 }
 
-.volume-slider-container {
-    width: 120px;
-    display: flex;
+.slider-container {
+
+    &.volume {
+        width: 150px;
+        display: flex;
+        align-items: center;
+    }
+
+    &.play {
+        display: flex;
+    }
+
+    & .volume-svg-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 16px;
+        height: 16px;
+        width: 16px;
+        fill: $secondary-font-color;
+    }
 
     & .MuiSlider-thumb {
         background-color: rgb(171, 171, 171);
         box-shadow: none;
         width: 0px;
         height: 0px;
-
-        &:hover {
-            width: 15px;
-            height: 15px;
-        }
     }
 
     & .MuiSlider-rail {
@@ -53,9 +66,16 @@
     & .MuiSlider-track {
         background-color: #969696;
         border: none;
+    }
 
-        &:hover {
-            background-color: rgb(30, 215, 96)
+    &.active {
+        & .MuiSlider-track {
+            background-color: rgb(30, 215, 96);
+        }
+
+        & .MuiSlider-thumb {
+            width: 15px;
+            height: 15px;
         }
     }
 }
@@ -64,6 +84,7 @@
     display: flex;
     column-gap: 16px;
     align-self: center;
+
 
     & .btn-player-control {
         width: 32px;
@@ -83,17 +104,18 @@
         &:hover {
             fill: white;
         }
-    }
 
-    & .btn-toggle-play {
-        background-color: rgb(255, 255, 255);
-        border-radius: 9999px;
-        fill: rgb(16, 12, 12);
-        padding-top: 4px;
+        &.btn-toggle-play {
 
-        &:hover {
-            fill: black;
-            transform: matrix(1.06, 0, 0, 1.06, 0, 0);
+            background-color: #ffffff;
+            border-radius: 9999px;
+            fill: rgb(16, 12, 12);
+            padding-top: 4px;
+
+            &:hover {
+                transform: matrix(1.06, 0, 0, 1.06, 0, 0);
+            }
         }
+
     }
 }
