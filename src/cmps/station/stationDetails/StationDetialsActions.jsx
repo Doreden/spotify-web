@@ -1,5 +1,7 @@
 import { ReactSVG } from "react-svg"
 import Play from '../../../assets/imgs/play2.svg'
+import dots from '../../../assets/imgs/dots.svg'
+
 import { OptionsModal } from "../../OptionsModal"
 import { useEffect, useRef, useState } from "react"
 export function StationDetailsActions({ station, onPlayStation }) {
@@ -48,7 +50,9 @@ export function StationDetailsActions({ station, onPlayStation }) {
             </div>
           }
 
-          <button ref={buttonRef} onClick={() => handleOptionsClick(station)} className="more-actions">•••</button>
+          <button ref={buttonRef} onClick={() => handleOptionsClick(station)} className="more-actions">
+            <ReactSVG src={dots} />
+          </button>
           {isModalOpen &&
             <OptionsModal modalType={'station'} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} />
           }

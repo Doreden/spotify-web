@@ -4,14 +4,17 @@ export const TOGGLE_PLAY = 'TOGGLE_PLAY'
 export const SET_STATION = 'SET_STATION'
 export const SET_SONG = 'SET_SONG'
 export const SET_SONG_IDX = 'SET_SONG_IDX'
+export const SET_STATION_ID = 'SET_STATION_ID'
 
 export const TOGGLE_SHUFFLE = 'TOGGLE_SHUFFLE'
 export const TOGGLE_REPEAT = 'TOGGLE_REPEAT'
 
-const initialState = { isPlaying: false, playingSongIdx: 0, queue: [], song: {}, isShuffle:false, isRepeat:false}
+const initialState = { playingStationId : "", isPlaying: false, playingSongIdx: 0, queue: [], song: {}, isShuffle:false, isRepeat:false}
 
 export function playerReducer(state = initialState, cmd){
     switch(cmd.type){
+        case SET_STATION_ID:
+            return {...state, playingStationId : cmd.playingStationId}
         case SET_PLAY:
             return {...state, isPlaying : true}
         case SET_PAUSE:
