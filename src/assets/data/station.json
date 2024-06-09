@@ -9,8 +9,11 @@
             "imgUrl": "http://some-photo/\""
         },
         "likedByUsers": [
-            "{minimal-user}",
-            "{minimal-user}"
+            {
+                "id": "abcd12345",
+                "username": "Puki Ben David",
+                "imgUrl": "http://some-photo/"
+            }
         ],
         "songs": [
             {
@@ -163,8 +166,11 @@
             "imgUrl": "http://some-photo/\""
         },
         "likedByUsers": [
-            "{minimal-user}",
-            "{minimal-user}"
+            {
+                "id": "abcd12345",
+                "username": "Puki Ben David",
+                "imgUrl": "http://some-photo/"
+            }
         ],
         "songs": [
             {

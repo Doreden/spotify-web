@@ -5,6 +5,8 @@ import stationsAsJson from '../assets/data/station.json' assert { type: 'json' }
 const STORAGE_KEY = "stations"
 
 export const stationService = {
+  addUserToLikedByUsers,
+  removeUserFromLikedByUsers,
   removeSongFromStation,
   query,
   getById,
@@ -15,19 +17,25 @@ export const stationService = {
   addSongToStation
 }
 
-async function removeSongFromStation(stationId, songId) {
-  let station = await getById(stationId)
-  station = {
-    ...station,
-    songs: station.songs.filter((song) => song.id !== songId),
-  }
-  save(station)
+async function addUserToLikedByUsers(station,miniUser){
+  const stationToUpdate = await getById(station.id)
+  const updatedStation = {...stationToUpdate, likedByUsers : [...stationToUpdate.likedByUsers, miniUser]}
+  return await save(updatedStation)
+}
+
+async function removeUserFromLikedByUsers(station,miniUser){
+  const stationToUpdate = await getById(station.id)
+  console.log(stationToUpdate)
+  const updatedStation = {...stationToUpdate, likedByUsers : stationToUpdate.likedByUsers.filter((user) => user.id !== miniUser.id)}
+  return await save(updatedStation)
 }
 
 async function query(filterBy = {}) {
   let stations = await storageService.query(STORAGE_KEY)
   return stations
 }
+
+
 
 
 async function getById(id) {
@@ -48,33 +56,38 @@ async function removeById(id) {
   }
 }
 
-function _isIn(station,song){
-  return station.songs.some(stationSong => stationSong.id === song.id)
+async function save(stationToSave) {
+  if (stationToSave.id) {
+    return await storageService.put(STORAGE_KEY, stationToSave)
+  } else {
+    return await storageService.post(STORAGE_KEY, stationToSave)
+  }
 }
 
 async function addSongToStation(station,song){
   try {
-    console.log(song)
     let newSong = {...song}
-    console.log(newSong)
     if(_isIn(station,song)){
       const newId = utilService.generateId(10)
       newSong = {...song, id:newId}
-      console.log(newSong)
     }
-
     let stationUpdate  = {
     ...station,
     songs: [...station.songs, newSong],
   }
-  console.log(stationUpdate)
-
   save(stationUpdate)
-
   } catch (err) {
     console.log(`error: ${err}`)
-
   }
+}
+
+async function removeSongFromStation(stationId, songId) {
+  let station = await getById(stationId)
+  station = {
+    ...station,
+    songs: station.songs.filter((song) => song.id !== songId),
+  }
+  save(station)
 }
 
 // TODO : change to get user from store
@@ -89,12 +102,10 @@ function convertToMiniStation(station){
   return { id, imgUrl, name, createdBy : station.createdBy}
 }
 
-async function save(stationToSave) {
-  if (stationToSave.id) {
-    return await storageService.put(STORAGE_KEY, stationToSave)
-  } else {
-    return await storageService.post(STORAGE_KEY, stationToSave)
-  }
+
+
+function _isIn(station,song){
+  return station.songs.some(stationSong => stationSong.id === song.id)
 }
 
 function _getEmptyStation(user) {
@@ -107,6 +118,14 @@ function _getEmptyStation(user) {
   }
 }
 
+
+
+
+
+
+
+
+
 // Load all stations to localStorage / create new from data file
 // TODO - Move to query from db
 (() => {
@@ -115,7 +134,6 @@ function _getEmptyStation(user) {
   if(!stations){
     stations = stationsAsJson
   }
-  console.log(stations)
   utilService.saveToStorage(STORAGE_KEY, stations)
 })()
 

@@ -21,10 +21,8 @@ export function userReducer(state = initialState, cmd){
             return {...state, user : {...state.user, likedSongs : state.user.likedSongs.filter(song => song.id !== cmd.song.id)}}
         case ADD_STATION:
             return {...state, user : {...state.user, likedStations: [...state.user.likedStations, cmd.miniNewStation] } }
-        
         case UPDATE_STATIONS:
             return {...state, user : {...state.user, likedStations: cmd.updatedStations } }
-        
         case REMOVE_STATION:
             return {...state, user : {...state.user, likedStations : state.user.likedStations.filter(station => station.id !== cmd.stationId)} }
        

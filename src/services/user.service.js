@@ -12,6 +12,7 @@ export const UserService = {
     addMiniStation,
     removeStationFromLikedByUser,
     isSongLiked,
+    isStationLiked,
     addSongToLikedSongs,
     removeSongFromLikedSongs
 }
@@ -38,8 +39,7 @@ async function addSongToLikedSongs(loggedInUser, song){
 
 async function removeSongFromLikedSongs(loggedInUser, song){
     // Change after adding user support
-    const loggedInUserDev = getLoggedInUser()
-    const updatedUser = {...loggedInUserDev, likedSongs : [...loggedInUserDev.likedSongs, song]}
+    const updatedUser = {...loggedInUser, likedSongs : [...loggedInUserDev.likedSongs, song]}
     await utilService.saveToStorage(STORAGE_KEY, updatedUser)
 }
 
@@ -77,6 +77,15 @@ function isSongLiked(loggedInUser, song){
         return true
     }
     return false
+}
+
+function isStationLiked(loggedInUser, station){
+    const isLiked = station.likedByUsers.find(likedUser => likedUser.id === loggedInUser.id)
+    if(isLiked){
+        return true
+    }else{
+        return false
+    }
 }
 
 function createMinimalUser(user){

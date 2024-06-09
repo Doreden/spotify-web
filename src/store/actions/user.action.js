@@ -74,24 +74,52 @@ export async function createNewStationByUser(loggedInUser){
   }
 }
 
-export async function loadUserMiniStations() {
-    try {
-     const loggedInUser = UserService.getLoggedInUser()
-      
-      store.dispatch({ type: LOAD_STATIONS, newStations : loggedInUser.likedStations });
-    } catch (error) {
-      console.log("Could not load stations");
-      throw error
-    }
-  }
-
-export async function removeStation(stationId){
+export async function toggleLikedStation(loggedInUser,station){
   try{
-    stationService.removeById(stationId)
-    store.dispatch({type: REMOVE_STATION, stationId})
-    // TODO check if works:
+    const isStationLiked = UserService.isStationLiked(loggedInUser,station)
+    console.log(isStationLiked)
+    if(isStationLiked){
+      await removeStationFromLiked(loggedInUser,station)
+    } else{
+      await addStationToLiked(loggedInUser,station)
+    }
+
+  }catch(err){
+    console.log(err)
+    }
+}
+
+
+export async function addStationToLiked(loggedInUser, station){
+  try{
+    const updatedStation = await stationService.addUserToLikedByUsers(station,loggedInUser)
+    const miniNewStation = stationService.convertToMiniStation(updatedStation)
+    store.dispatch({type: ADD_STATION, miniNewStation })
+  }catch(err){
+    console.log(err)
+  }
+}
+
+export async function removeStationFromLiked(loggedInUser, station){
+  try{
+    await stationService.removeUserFromLikedByUsers(station,loggedInUser)
+    await UserService.removeStationFromLikedByUser(loggedInUser.id , station.id)
+    store.dispatch({type: REMOVE_STATION, stationId : station.id})
+
   }catch(error){
     console.log(error)
     console.log('Could not remove Station')
+  }
+}
+
+
+export async function loadUserMiniStations() {
+  try {
+   const loggedInUser = UserService.getLoggedInUser()
+    
+    store.dispatch({ type: LOAD_STATIONS, newStations : loggedInUser.likedStations });
+  } catch (error) {
+    console.log("Could not load stations");
+    throw error
   }
 }
