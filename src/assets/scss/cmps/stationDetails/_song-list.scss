@@ -38,6 +38,9 @@
     & .song-index {
         @include flex-center-cetner();
 
+        &.playing {
+            color: rgb(30, 215, 96);
+        }
     }
 
     .preview-play-svg-container {
@@ -79,6 +82,10 @@
 
         & .song-title {
             font-size: 1rem;
+
+            &.playing {
+                color: rgb(30, 215, 96);
+            }
         }
 
         & .song-artist {
@@ -140,7 +147,8 @@
         &:hover {
             background-color: hsla(0, 0%, 100%, .07)
         }
-        &.song-preview-active{
+
+        &.song-preview-active {
             background-color: #5e5e5e;
         }
 

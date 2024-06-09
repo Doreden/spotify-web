@@ -17,6 +17,7 @@ export function LikedSongs() {
 
     function createLikedSongsStation() {
         const likedSongsObject = {
+            id: "likedsongs",
             name: "Liked Songs",
             imgUrl: "imgs/likedsongs.png",
             songs: likedSongs,

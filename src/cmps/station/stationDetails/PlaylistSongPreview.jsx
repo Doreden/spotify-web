@@ -3,6 +3,7 @@ import { utilService } from "../../../services/util.service"
 import { ReactSVG } from "react-svg"
 import { OptionsModal } from "../../OptionsModal"
 import Play from '../../../assets/imgs/play.svg'
+import dots from '../../../assets/imgs/dots.svg'
 import { useSelector } from "react-redux"
 import { toggleLikedSong } from "../../../store/actions/user.action"
 import { ToggleLikedSongButton } from "../../ToggleLikedSongButton"
@@ -17,6 +18,12 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
   const [isLikedSong, setIsLikedSong] = useState(UserService.isSongLiked(loggedInUser, song))
   const [isHover, setIsHover] = useState(false)
   const buttonRef = useRef(null)
+
+  const playingStationId = useSelector((storeState) => storeState.playerModule.playingStationId)
+  const playingSongId = useSelector((storeState) => storeState.playerModule.song.id)
+
+  console.log("Station: " + playingStationId + " Song: " + playingSongId)
+
 
   useEffect(() => {
     function updateButtonPosition() {
@@ -68,41 +75,42 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
     setIsModalOpen((prevState) => false)
   }
 
+  function isSongPlaying(station, song) {
+    return station.id === playingStationId && song.id === playingSongId
+  }
+
   return (
-    <>
-      <div className={`song-preview ${station ? 'playlist-columns' : ''}  ${isActiveSongId ? 'song-preview-active' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
-        {station && <div className="song-index">{displayPlayButton()}</div>}
+    <div className={`song-preview ${station ? 'playlist-columns' : ''}  ${isActiveSongId ? 'song-preview-active' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
+      {station && <div className={`song-index ${isSongPlaying(station, song) ? "playing" : ""}`}>{displayPlayButton()}</div>}
 
-        <div className="song-details">
-          {/* Renders Image only if not in a station -- Search Result */}
+      <div className="song-details">
+        {/* Renders Image only if not in a station -- Search Result */}
 
-          <div className="img-container">
-            <img className="song-thumbnail" src={song.imgURL} ></img>
-          </div>
-
-          <div className="title-and-artist">
-            <div className="song-title">{song.title}</div>
-            <div className={`song-artist  ${isHover ? '' : 'secondary'}`}>{song.artist}</div>
-          </div>
-        </div>
-        {/* Renders Album and Date Added only if in a station */}
-        {station && (
-          <>
-            <div className={`song-album ${isHover ? '' : 'secondary'}`}>{song.album}</div>
-            <div className="date-added secondary">Nov 11</div>
-          </>
-        )}
-
-        <div className="song-length secondary">
-          {displayAddToLikedButton()}
-          {utilService.formatSongLength(song.lengthInSeconds)}
-          <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>•••</button>
-          {isModalOpen && (
-            <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} handleToggleLikedSongs={handleToggleLikedSongs} />
-          )}
+        <div className="img-container">
+          <img className="song-thumbnail" src={song.imgURL} ></img>
         </div>
 
+        <div className="title-and-artist">
+          <div className={`song-title ${isSongPlaying(station, song) ? "playing" : ""}`}>{song.title}</div>
+          <div className={`song-artist  ${isHover ? '' : 'secondary'}`}>{song.artist}</div>
+        </div>
       </div>
-    </>
+      {/* Renders Album and Date Added only if in a station */}
+      {station && (
+        <>
+          <div className={`song-album ${isHover ? '' : 'secondary'}`}>{song.album}</div>
+          <div className="date-added secondary">Nov 11</div>
+        </>
+      )}
+
+      <div className="song-length secondary">
+        {displayAddToLikedButton()}
+        {utilService.formatSongLength(song.lengthInSeconds)}
+        <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>...</button>
+        {isModalOpen && (
+          <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} handleToggleLikedSongs={handleToggleLikedSongs} />
+        )}
+      </div>
+    </div>
   )
 }

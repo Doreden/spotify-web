@@ -1,6 +1,6 @@
 import { store } from "../store"
 import { utilService } from "../../services/util.service"
-import { SET_PLAY, TOGGLE_PLAY, SET_STATION, SET_SONG, TOGGLE_SHUFFLE, TOGGLE_REPEAT, SET_SONG_IDX, SET_PAUSE } from "../reducers/player.reducer";
+import { SET_PLAY, TOGGLE_PLAY, SET_STATION, SET_SONG, TOGGLE_SHUFFLE, TOGGLE_REPEAT, SET_SONG_IDX, SET_PAUSE, SET_STATION_ID } from "../reducers/player.reducer";
 
 export function togglePlay(isPlaying){
     try{
@@ -27,6 +27,7 @@ export function toggleRepeat(isRepeat){
 }
 
 export function playStation(station, songIdx = 0){
+    store.dispatch({type : SET_STATION_ID, playingStationId : station.id})
     store.dispatch({type : SET_STATION, songs : station.songs})
     store.dispatch({type: SET_SONG, song : station.songs[songIdx]})
     store.dispatch({type: SET_PLAY})

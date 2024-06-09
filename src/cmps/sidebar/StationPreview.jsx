@@ -7,7 +7,6 @@ export function StationPreview({ station, OnStationClick, context, currentLocati
     }
 
     let isActive
-    console.log(currentLocation)
     if (currentLocation) {
         const pathAsArray = currentLocation.split("/")
 
