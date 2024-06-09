@@ -61,15 +61,28 @@
     padding: 20px;
   }
 
+  & .add-to-liked-stations-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0px;
+    margin-right: 12px;
+
+    & .station-is-liked-svg-container {
+      fill: rgb(30, 215, 96);
+    }
+
+    & .add-to-liked-stations-svg-container {
+      fill: $secondary-font-color;
+    }
+  }
+
   & .station-details-actions {
     display: flex;
     align-items: center;
     height: 100%;
   }
 
-  & .station-play-button-container {
-    margin-right: 24px;
-  }
+  & .station-play-button-container {}
 
   & .play-svg-container {
     height: 24px;

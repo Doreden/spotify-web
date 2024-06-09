@@ -36,7 +36,7 @@ export function LikedSongs() {
     return (
         <section className="station-details page">
             <StationDetailsHeader station={likedSongsStation} is={'liked-songs'} />
-            <StationDetailsActions station={likedSongsStation} onPlayStation={onPlayStation} />
+            <StationDetailsActions station={likedSongsStation} onPlayStation={onPlayStation} is={'liked-songs'} />
             <PlaylistSongList station={likedSongsStation} onPlayStation={onPlayStation} />
         </section>
     )

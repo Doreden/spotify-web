@@ -4,11 +4,32 @@ import dots from '../../../assets/imgs/dots.svg'
 
 import { OptionsModal } from "../../OptionsModal"
 import { useEffect, useRef, useState } from "react"
-export function StationDetailsActions({ station, onPlayStation }) {
+import { ToggleLikedStationButton } from "../../ToggleLikedStationButton"
+import { stationService } from "../../../services/station.service"
+import { useSelector } from "react-redux"
+import { UserService } from "../../../services/user.service"
+import { toggleLikedStation } from "../../../store/actions/user.action"
+
+export function StationDetailsActions({ station, onPlayStation, is }) {
+
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 })
+  const [isLikedStation, setIsLikedStation] = useState(false)
   const buttonRef = useRef(null)
+
+  useEffect(() => {
+    loadIsLikedStationState()
+  }, [])
+
+  function loadIsLikedStationState() {
+    if (is !== 'liked-songs') {
+      const isLiked = UserService.isStationLiked(loggedInUser, station)
+      console.log(isLiked)
+      setIsLikedStation((prevState) => isLiked)
+    }
+  }
 
   useEffect(() => {
     function updateButtonPosition() {
@@ -34,6 +55,12 @@ export function StationDetailsActions({ station, onPlayStation }) {
     setIsModalOpen((prevState) => false)
   }
 
+  async function handleLikeStation() {
+    toggleLikedStation(loggedInUser, station)
+    setIsLikedStation((prevState) => !prevState)
+
+  }
+
   return (
     <>
       <div className="station-details-actions-container">
@@ -48,6 +75,10 @@ export function StationDetailsActions({ station, onPlayStation }) {
                 </div>
               </button>
             </div>
+          }
+
+          {!(is === 'liked-songs') &&
+            <ToggleLikedStationButton isLikedStation={isLikedStation} handleLikeStation={handleLikeStation} />
           }
 
           <button ref={buttonRef} onClick={() => handleOptionsClick(station)} className="more-actions">

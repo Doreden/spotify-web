@@ -22,7 +22,7 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
   const playingStationId = useSelector((storeState) => storeState.playerModule.playingStationId)
   const playingSongId = useSelector((storeState) => storeState.playerModule.song.id)
 
-  console.log("Station: " + playingStationId + " Song: " + playingSongId)
+  // console.log("Station: " + playingStationId + " Song: " + playingSongId)
 
 
   useEffect(() => {
