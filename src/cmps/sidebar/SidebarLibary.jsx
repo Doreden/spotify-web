@@ -44,12 +44,12 @@ export function SidebarLibary({ currentLocation }) {
   }
 
   const handleEditStation = (stationId) => {
-    const station = miniStations.find(st => st.id === stationId)
+    const station = userStations.find(st => st._id === stationId)
     setCurrentStationToEdit(station)
     setIsEditModalOpen(true)
   }
   const handleDeleteStation = (stationId) => {
-    const station = miniStations.find(st => st.id === stationId)
+    const station = userStations.find(st => st._id === stationId)
     setCurrentStationToDelete(station)
     setIsDeleteModalOpen(true)
   }
@@ -59,7 +59,7 @@ export function SidebarLibary({ currentLocation }) {
       // Updates station in DB
       // Updates stations in Store
       // TODO - update user
-      updateStation(miniStations, updatedStation)
+      updateStation(userStations, updatedStation)
 
     } catch (error) {
       console.error('Error saving station:', error)
@@ -128,8 +128,8 @@ export function SidebarLibary({ currentLocation }) {
             x={contextMenu.x}
             y={contextMenu.y}
             isActiveId={isActiveId}
-            onEdit={() => handleEditStation(contextMenu.station.id)}
-            onRemove={() => handleDeleteStation(contextMenu.station.id)}
+            onEdit={() => handleEditStation(contextMenu.station._id)}
+            onRemove={() => handleDeleteStation(contextMenu.station._id)}
             onAdd={() => handleAddStation()}
           />
         )}

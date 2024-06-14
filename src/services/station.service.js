@@ -67,7 +67,7 @@ async function addUserToLikedByUsers(station,miniUser){
 }
 
 async function removeUserFromLikedByUsers(station,miniUser){
-  const stationToUpdate = await getById(station.id)
+  const stationToUpdate = await getById(station._id)
   console.log(stationToUpdate)
   const updatedStation = {...stationToUpdate, likedByUsers : stationToUpdate.likedByUsers.filter((user) => user.id !== miniUser.id)}
   return await save(updatedStation)
@@ -116,8 +116,8 @@ async function createNewStation(user) {
 }
 
 function convertToMiniStation(station){
-  const { id, imgUrl, name } = station
-  return { id, imgUrl, name, createdBy : station.createdBy}
+  const { _id, imgUrl, name } = station
+  return { _id, imgUrl, name, createdBy : station.createdBy}
 }
 
 
