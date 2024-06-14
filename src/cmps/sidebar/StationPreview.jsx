@@ -11,14 +11,14 @@ export function StationPreview({ station, OnStationClick, context, currentLocati
         const pathAsArray = currentLocation.split("/")
 
         if (pathAsArray[1] === "station") {
-            isActive = pathAsArray[2] === station.id
+            isActive = pathAsArray[2] === station._id
         }
     }
 
 
     if (!station) return
     return (
-        <Link to={`/station/${station.id}`} onClick={handleClick} >
+        <Link to={`/station/${station._id}`} onClick={handleClick} >
             <div className={`${context}-station-preview ${isActive ? 'station-active' : ''} `}>
                 <img src={`${station.imgUrl}`}></img>
                 <div className="station-preview-text">

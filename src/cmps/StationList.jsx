@@ -9,7 +9,7 @@ export function StationList({ stations, listTitle }) {
                 {listTitle}
             </div>
             <div className="station-list">
-                {stations.map((station) => (<StationPreview station={station} context={'main'} key={station.id} />))}
+                {stations.map((station) => (<StationPreview station={station} context={'main'} key={station._id} />))}
             </div>
         </div>
     )

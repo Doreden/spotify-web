@@ -13,7 +13,7 @@ export function StationDetails() {
 
   useEffect(() => {
     loadStation()
-  }, [params, station?.songs])
+  }, [params])
 
   async function loadStation() {
     try {
@@ -29,7 +29,7 @@ export function StationDetails() {
     setIsActiveSongId(station.songs[songIdx].id)
   }
 
-  const handleSongClick  = (id) => {
+  const handleSongClick = (id) => {
     setIsActiveSongId(id)
   }
 

@@ -2,8 +2,6 @@ import { storageService } from "./async-storage.service.js"
 import { utilService } from "./util.service.js"
 import stationsAsJson from '../assets/data/station.json' assert { type: 'json' };
 
-import { httpService } from "./http.service.js";
-
 const STORAGE_KEY = "stations"
 
 export const stationService = {
@@ -19,47 +17,6 @@ export const stationService = {
   addSongToStation
 }
 
-async function query(filterBy = {}) {
-  const stations = await httpService.get('station', filterBy)
-  return stations
-}
-
-async function getById(stationId) {
-  try {
-    const station = await httpService.get(`station/${stationId}`)
-    console.log(station)
-    return station
-  } catch (err) {
-    console.log(`error: ${err}`)
-  }
-}
-
-async function save(stationToSave) {
-  if (stationToSave.id) {
-    return await storageService.put(STORAGE_KEY, stationToSave)
-  } else {
-    return await storageService.post(STORAGE_KEY, stationToSave)
-  }
-}
-
-async function removeById(id) {
-  try {
-    var idx = await storageService.remove(STORAGE_KEY, id)
-    return idx
-  } catch (err) {
-    console.log(`error: ${err}`)
-  }
-}
-
-
-
-
-
-
-
-
-
-
 async function addUserToLikedByUsers(station,miniUser){
   const stationToUpdate = await getById(station.id)
   const updatedStation = {...stationToUpdate, likedByUsers : [...stationToUpdate.likedByUsers, miniUser]}
@@ -73,14 +30,39 @@ async function removeUserFromLikedByUsers(station,miniUser){
   return await save(updatedStation)
 }
 
+async function query(filterBy = {}) {
+  let stations = await storageService.query(STORAGE_KEY)
+  return stations
+}
 
 
 
 
+async function getById(id) {
+  try {
+    var station = await storageService.get(STORAGE_KEY, id)
+    return station
+  } catch (err) {
+    console.log(`error: ${err}`)
+  }
+}
 
+async function removeById(id) {
+  try {
+    var idx = await storageService.remove(STORAGE_KEY, id)
+    return idx
+  } catch (err) {
+    console.log(`error: ${err}`)
+  }
+}
 
-
-
+async function save(stationToSave) {
+  if (stationToSave.id) {
+    return await storageService.put(STORAGE_KEY, stationToSave)
+  } else {
+    return await storageService.post(STORAGE_KEY, stationToSave)
+  }
+}
 
 async function addSongToStation(station,song){
   try {
