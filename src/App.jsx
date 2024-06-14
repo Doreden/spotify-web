@@ -18,6 +18,7 @@ import { useEffect, useState } from "react"
 import "./assets/scss/style.scss"
 import { login } from "./store/actions/user.action"
 import { LikedSongs } from "./cmps/station/stationDetails/LikedSongs.jsx"
+import { LoginSignup } from "./pages/LoginSignup.jsx"
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
               <Route path="/" element={<StationIndex />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path='/likedsongs' element={<LikedSongs />} />
+              <Route path='/login' element={<LoginSignup />} />
               <Route path="/station/:stationId" element={<StationDetails />} />
             </Routes>
             <Playline />

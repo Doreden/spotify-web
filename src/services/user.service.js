@@ -14,7 +14,8 @@ export const UserService = {
     isSongLiked,
     isStationLiked,
     addSongToLikedSongs,
-    removeSongFromLikedSongs
+    removeSongFromLikedSongs,
+    getEmptyCredentials
 }
 
 async function removeStationFromLikedByUser(userId, stationId){
@@ -60,6 +61,15 @@ function login(){
         return defaultUser
     }
     return loggedInUser
+}
+
+function getEmptyCredentials() {
+    return {
+        username: '',
+        password: '',
+        fullname: '',
+        imgUrl: '',
+        }
 }
 
 // TODO - Use When implementing creation of user
