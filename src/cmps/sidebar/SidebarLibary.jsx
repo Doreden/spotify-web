@@ -4,7 +4,7 @@ import { StationPreview } from "./StationPreview.jsx"
 import { useEffect, useState } from "react"
 import { ContextMenu } from "./ContextMenu.jsx"
 import { EditStation } from "../EditStation.jsx"
-import { createNewStationByUser, updateStation } from "../../store/actions/user.action.js"
+import { createNewStationByUser, updateStation, loadUserStations } from "../../store/actions/user.action.js"
 import { LikedSongsPreview } from "./LikedSongsPreview.jsx"
 import { deleteStation } from '../../store/actions/user.action.js'
 import { useNavigate } from "react-router"
@@ -20,10 +20,12 @@ export function SidebarLibary({ currentLocation }) {
   const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
   const [currentStationToDelete, setCurrentStationToDelete] = useState(null)
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-  const [userStations, setUserStations] = useState([])
+  const userStations = useSelector((storeState) => storeState.userModule.stations)
   const navigate = useNavigate()
 
   // const miniStations = loggedInUser ? loggedInUser.likedStations : null
+
+  console.log(userStations)
 
   useEffect(() => {
     loadUserLibary()
@@ -38,9 +40,13 @@ export function SidebarLibary({ currentLocation }) {
 
   async function loadUserLibary() {
     if (!loggedInUser) return
-    const stations = await stationService.query({ txt: '', userId: loggedInUser.id })
-    console.log(stations)
-    setUserStations((prevStations) => stations)
+
+    loadUserStations(loggedInUser)
+
+    // if (!loggedInUser) return
+    // console.log(loggedInUser)
+    // const stations = await stationService.query({ txt: '', userId: loggedInUser._id })
+
   }
 
   const handleEditStation = (stationId) => {

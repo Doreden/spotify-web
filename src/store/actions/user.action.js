@@ -7,12 +7,20 @@ import { SET_USER, ADD_STATION, LOAD_STATIONS, REMOVE_STATION, REMOVE_FROM_LIKED
 
 export async function login(cretentials = {}){
     try{
-        const loggedInUser = UserService.login()
+        const loggedInUser = UserService.getLoggedInUser()
+        console.log(loggedInUser)
         store.dispatch({type:SET_USER, user : loggedInUser})
 
     }catch(err){
         console.log('No logged in user')
     }
+}
+
+export async function loadUserStations(loggedInUser){
+  console.log(loggedInUser)
+  const userStations = await stationService.query({ txt: '', userId: loggedInUser._id })
+  console.log(userStations)
+  store.dispatch({type:LOAD_STATIONS, newStations : userStations})
 }
 
 export async function updateStation(likedStations, updatedStation){
@@ -24,8 +32,6 @@ export async function updateStation(likedStations, updatedStation){
 
   const stationIdx = likedStations.findIndex(miniStation => miniStation._id === miniSavedStation._id)
 
-  console.log(miniSavedStation)
-  console.log(stationIdx)
   console.log(likedStations)
 
   if(stationIdx !== -1){
@@ -63,16 +69,13 @@ export async function toggleLikedSong(loggedInUser,song){
 
 export async function createNewStationByUser(loggedInUser){
   try {
-    const { id, username, imgUrl } = loggedInUser
-    const formattedUser = { id, username, imgUrl }
+    const { _id, username, imgUrl } = loggedInUser
+    const formattedUser = { _id, username, imgUrl }
     // Creates new station in database
     const newStation = await stationService.createNewStation(formattedUser)
+
     const miniNewStation = stationService.convertToMiniStation(newStation)
-    console.log(miniNewStation)
     
-    // Add new station to user in database
-    UserService.addMiniStation(miniNewStation)
-    // Add new station in store to re-render
     store.dispatch({type: ADD_STATION, miniNewStation })
   } catch (err) {
       console.log(err)
@@ -82,6 +85,8 @@ export async function createNewStationByUser(loggedInUser){
 export async function toggleLikedStation(loggedInUser,station){
   try{
     const isStationLiked = UserService.isStationLiked(loggedInUser,station)
+    console.log(loggedInUser)
+    console.log(station)
     console.log(isStationLiked)
     if(isStationLiked){
       await removeStationFromLiked(loggedInUser,station)
@@ -98,7 +103,9 @@ export async function toggleLikedStation(loggedInUser,station){
 export async function addStationToLiked(loggedInUser, station){
   try{
     const updatedStation = await stationService.addUserToLikedByUsers(station,loggedInUser)
+    console.log(updatedStation)
     const miniNewStation = stationService.convertToMiniStation(updatedStation)
+    console.log(miniNewStation)
     store.dispatch({type: ADD_STATION, miniNewStation })
   }catch(err){
     console.log(err)
@@ -108,8 +115,8 @@ export async function addStationToLiked(loggedInUser, station){
 export async function removeStationFromLiked(loggedInUser, station){
   try{
     await stationService.removeUserFromLikedByUsers(station,loggedInUser)
-    await UserService.removeStationFromLikedByUser(loggedInUser.id , station.id)
-    store.dispatch({type: REMOVE_STATION, stationId : station.id})
+    // await UserService.removeStationFromLikedByUser(loggedInUser._id , station._id)
+    store.dispatch({type: REMOVE_STATION, stationId : station._id})
 
   }catch(error){
     console.log(error)

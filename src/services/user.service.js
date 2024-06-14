@@ -10,9 +10,9 @@ const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const UserService = {
     login,
+    signup,
     createMinimalUser,
     getLoggedInUser,
-    addMiniStation,
     removeStationFromLikedByUser,
     isSongLiked,
     isStationLiked,
@@ -50,12 +50,6 @@ async function removeStationFromLikedByUser(userId, stationId){
     await utilService.saveToStorage(STORAGE_KEY, updatedUser)
 }
 
-async function addMiniStation(miniStation){
-    const loggedInUser = getLoggedInUser()
-    const updatedUser = {...loggedInUser, likedStations : [...loggedInUser.likedStations, miniStation]}
-    await utilService.saveToStorage(STORAGE_KEY, updatedUser)
-}
-
 async function addSongToLikedSongs(loggedInUser, song){
     // Change after adding user support
     const loggedInUserDev = getLoggedInUser()
@@ -71,7 +65,8 @@ async function removeSongFromLikedSongs(loggedInUser, song){
 
 function getLoggedInUser(){
     try{
-        const loggedInUser = utilService.loadFromStorage(STORAGE_KEY)
+        const loggedInUser = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+        console.log(loggedInUser)
         return loggedInUser
     }catch(err){
         console.log('No logged in user')
@@ -99,6 +94,7 @@ async function save(userToSave) {
 }
 
 function isSongLiked(loggedInUser, song){
+    if(!loggedInUser) return false
     const isLiked = loggedInUser.likedSongs.find(likedSong => likedSong.id === song.id)
     if(isLiked){
         return true
@@ -107,7 +103,8 @@ function isSongLiked(loggedInUser, song){
 }
 
 function isStationLiked(loggedInUser, station){
-    const isLiked = station.likedByUsers.find(likedUser => likedUser.id === loggedInUser.id)
+    if(!loggedInUser) return false
+    const isLiked = station.likedByUsers.find(likedUser => likedUser._id === loggedInUser._id)
     if(isLiked){
         return true
     }else{

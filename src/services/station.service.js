@@ -58,13 +58,18 @@ async function removeById(stationId) {
 
 async function addUserToLikedByUsers(station,miniUser){
   const stationToUpdate = await getById(station._id)
+  console.log(stationToUpdate)
   const updatedStation = {...stationToUpdate, likedByUsers : [...stationToUpdate.likedByUsers, miniUser]}
-  return await save(updatedStation)
+  await save(updatedStation)
+  return updatedStation
 }
+
+
 
 async function removeUserFromLikedByUsers(station,miniUser){
   const stationToUpdate = await getById(station._id)
-  const updatedStation = {...stationToUpdate, likedByUsers : stationToUpdate.likedByUsers.filter((user) => user.id !== miniUser.id)}
+  console.log(stationToUpdate)
+  const updatedStation = {...stationToUpdate, likedByUsers : stationToUpdate.likedByUsers.filter((user) => user._id !== miniUser._id)}
   return await save(updatedStation)
 }
 
@@ -103,11 +108,10 @@ async function removeSongFromStation(stationId, songId) {
   save(station)
 }
 
-// TODO : change to get user from store
 async function createNewStation(user) {
   const emptyStation = _getEmptyStation(user)
-  const savedStation = await save(emptyStation)
-  return savedStation
+  await save(emptyStation)
+  return emptyStation
 }
 
 function convertToMiniStation(station){

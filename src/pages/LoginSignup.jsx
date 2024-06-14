@@ -12,16 +12,6 @@ export function LoginSignup() {
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
 
-    async function _signup(credentials) {
-        try {
-            await UserService.signup(credentials)
-            console.log('Signed in successfully')
-            return navigate('/')
-        } catch (err) {
-
-            console.log('Oops try again')
-        }
-    }
 
     async function login(credentials) {
         try {

@@ -24,9 +24,9 @@ import { SignupForm } from "./cmps/SignupForm.jsx"
 
 function App() {
 
-  // useEffect(() => {
-  //   login()
-  // }, [])
+  useEffect(() => {
+    login()
+  }, [])
 
   return (
     <>
