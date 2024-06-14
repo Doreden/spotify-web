@@ -2,14 +2,15 @@ import { useState } from "react"
 import { UserService } from "../services/user.service.js"
 import spotifyPng from '../assets/imgs/spotify3D.png'
 import { useNavigate } from "react-router"
+import { signup } from "../store/actions/user.action.js"
 
 export function SignupForm() {
     const [credentials, setCredentials] = useState(UserService.getEmptyCredentials())
     const navigate = useNavigate()
 
-    async function signup(credentials) {
+    async function onSignup(credentials) {
         try {
-            await UserService.signup(credentials)
+            await signup(credentials)
             navigate('/')
         } catch (err) {
             console.log('Oops try again')
@@ -24,7 +25,7 @@ export function SignupForm() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        signup(credentials)
+        onSignup(credentials)
     }
 
     return (

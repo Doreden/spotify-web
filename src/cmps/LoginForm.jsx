@@ -2,7 +2,7 @@ import { useState } from "react"
 import { UserService } from "../services/user.service.js"
 import spotifyPng from '../assets/imgs/spotify3D.png'
 
-export function LoginForm({ onLogin, isSignup }) {
+export function LoginForm({ onLogin, isErrorMsg }) {
 
     const [credentials, setCredentials] = useState(UserService.getEmptyCredentials())
 
@@ -22,8 +22,9 @@ export function LoginForm({ onLogin, isSignup }) {
             <div className="login-container">
                 <img src={spotifyPng} alt="My Image" />
                 <h1 className="login-title">Log in to Spotify</h1>
-                <label className="input-label">Enter your username
+                <label className='input-label'>Enter your username
                     <input
+                        className={`${isErrorMsg ? 'wrong-input' : ""}`}
                         type="text"
                         name="username"
                         value={credentials.username}
@@ -35,6 +36,7 @@ export function LoginForm({ onLogin, isSignup }) {
                 </label>
                 <label className="input-label">Password
                     <input
+                        className={`${isErrorMsg ? 'wrong-input' : ""}`}
                         type="password"
                         name="password"
                         value={credentials.password}
@@ -44,16 +46,12 @@ export function LoginForm({ onLogin, isSignup }) {
                         autoComplete="off"
                     />
                 </label>
-                {isSignup && <input
-                    type="text"
-                    name="fullname"
-                    value={credentials.fullname}
-                    placeholder="Full name"
-                    onChange={handleChange}
-                    required
-                />}
-                <button className="login-btn">{isSignup ? 'Signup' : 'Log In'}</button>
+                {isErrorMsg &&
+                    <div className="wrong-credentials-msg">Wrong Credentials</div>
+                }
+                <button className="login-btn">{'Log In'}</button>
             </div>
         </form>
     )
 }
+

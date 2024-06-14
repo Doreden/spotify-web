@@ -9,7 +9,6 @@ import { LikedSongsPreview } from "./LikedSongsPreview.jsx"
 import { deleteStation } from '../../store/actions/user.action.js'
 import { useNavigate } from "react-router"
 import { DeleteStation } from "../DeleteStation.jsx"
-import { stationService } from "../../services/station.service.js"
 
 export function SidebarLibary({ currentLocation }) {
 
@@ -64,7 +63,7 @@ export function SidebarLibary({ currentLocation }) {
 
   function handleRemoveStation(stationId) {
     deleteStation(loggedInUser.id, stationId)
-    navigate("/")
+    // navigate("/")
   }
   const handleCloseContextMenu = () => {
     setContextMenu(null)

@@ -37,6 +37,7 @@ async function signup(credentials){
     const user = await httpService.post('auth/signup', credentials)
     if(user){
         saveLocalUser(user)
+        return user
     }
 }
 

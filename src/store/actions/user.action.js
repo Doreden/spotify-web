@@ -17,12 +17,16 @@ export async function login(cretentials = {}){
             store.dispatch({type:SET_USER, user : loggedInUser})
             return loggedInUser
           }
-
         }
-
     }catch(err){
         console.log('No logged in user')
     }
+}
+
+export async function signup(credentials = {}){
+  const newUser = await UserService.signup(credentials)
+  console.log(newUser)
+  store.dispatch({type:SET_USER, user : newUser})
 }
 
 export async function logout(){
@@ -100,7 +104,6 @@ export async function toggleLikedStation(loggedInUser,station){
     } else{
       await addStationToLiked(loggedInUser,station)
     }
-
   }catch(err){
     console.log(err)
     }
