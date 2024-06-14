@@ -1,10 +1,6 @@
-import { storageService } from "./async-storage.service.js"
 import { utilService } from "./util.service.js"
-import stationsAsJson from '../assets/data/station.json' assert { type: 'json' };
 
 import { httpService } from "./http.service.js";
-
-const STORAGE_KEY = "stations"
 
 export const stationService = {
   addUserToLikedByUsers,

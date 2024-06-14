@@ -13,7 +13,8 @@ export function LoginForm({ onLogin, isSignup }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        onLogin(credentials)
+        const { username, password } = credentials
+        onLogin({ username, password })
     }
 
     return (

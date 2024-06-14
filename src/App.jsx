@@ -23,9 +23,9 @@ import { LoginSignup } from "./pages/LoginSignup.jsx"
 
 function App() {
 
-  useEffect(() => {
-    login()
-  }, [])
+  // useEffect(() => {
+  //   login()
+  // }, [])
 
   return (
     <>

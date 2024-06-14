@@ -7,10 +7,11 @@ import { UserService } from '../services/user.service'
 
 export function LoginSignup() {
     const navigate = useNavigate()
-    const [isSignUp,setIsSignUp] = useState(false)
+
+    const [isSignUp, setIsSignUp] = useState(false)
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
-   
+
     async function _signup(credentials) {
         try {
             await UserService.signup(credentials)
@@ -22,22 +23,24 @@ export function LoginSignup() {
         }
     }
 
-    async function _login(credentials) {
+    async function login(credentials) {
         try {
-            await UserService.login(credentials)
-            showSuccessMsg('Logged in successfully')
-            return navigate('/')
+            const user = await UserService.login(credentials)
+            if (user) {
+                showSuccessMsg('Logged in successfully')
+                return navigate('/')
+            }
         } catch (err) {
             showErrorMsg('Oops try again')
         }
     }
-  
-  
-  
-  
+
+
+
+
     return (
-    <div className='login-page'>
-        <LoginForm />
-    </div>
-  )
+        <div className='login-page'>
+            <LoginForm onLogin={login} />
+        </div>
+    )
 }
