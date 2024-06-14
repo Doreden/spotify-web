@@ -1,5 +1,6 @@
 import { ReactSVG } from "react-svg"
 import Search from "../../assets/imgs/search.svg"
+import { StationIndexHeader } from "../header/StationIndexHeader"
 
 export function SearchInput({ setSearchInput }) {
 
@@ -19,6 +20,9 @@ export function SearchInput({ setSearchInput }) {
                     <input id="searchInput" name="searchInput" className="search-input" placeholder="What do you want to play?" >
                     </input>
                 </form>
+            </div>
+            <div className="station-header">
+                <StationIndexHeader />
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { StationList } from "../cmps/StationList"
 import { stationService } from "../services/station.service"
+import { StationIndexHeader } from "../cmps/header/StationIndexHeader"
 
 export function StationIndex() {
 
@@ -18,6 +19,9 @@ export function StationIndex() {
   return (
     <>
       <section className="station-index page">
+        <div className="station-header">
+          <StationIndexHeader />
+        </div>
         <StationList stations={stations} listTitle={'Recommended Playlists'} />
         <StationList stations={stations} listTitle={'Hot In Israel'} />
 

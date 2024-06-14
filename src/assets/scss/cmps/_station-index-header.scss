@@ -1,0 +1,32 @@
+.station-index-header{
+    display: flex;
+    position: sticky;
+    margin-left: auto;
+    border-radius: 0;
+    padding: 14px;
+    top: 0;
+    z-index: 1;
+    align-items: center;
+    justify-content: end;
+
+    .sign-up-btn {
+        color: #a7a7a7;
+        font-size: rem(14px);
+        font-weight:500;
+        background-color: transparent;
+        
+        &:hover {
+          color: white;
+        }
+      }
+  
+      .login-btn {
+        color: black;
+        background-color: white;
+        font-weight:500;
+        margin-left: 20px;
+        font-size: rem(14px);
+        padding: 12px 32px;
+        border-radius: 32px;
+      }
+}
