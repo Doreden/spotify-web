@@ -19,6 +19,7 @@ import "./assets/scss/style.scss"
 import { login } from "./store/actions/user.action"
 import { LikedSongs } from "./cmps/station/stationDetails/LikedSongs.jsx"
 import { LoginSignup } from "./pages/LoginSignup.jsx"
+import { SignupForm } from "./cmps/SignupForm.jsx"
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
               <Route path="/search" element={<SearchPage />} />
               <Route path='/likedsongs' element={<LikedSongs />} />
               <Route path='/login' element={<LoginSignup />} />
+              <Route path='/signup' element={<SignupForm />} />
               <Route path="/station/:stationId" element={<StationDetails />} />
             </Routes>
             <Playline />
