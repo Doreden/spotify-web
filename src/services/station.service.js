@@ -42,10 +42,10 @@ async function save(stationToSave) {
   }
 }
 
-async function removeById(id) {
+async function removeById(stationId) {
   try {
-    var idx = await storageService.remove(STORAGE_KEY, id)
-    return idx
+    const response = await httpService.delete(`station/${stationId}`, stationId)
+    return response
   } catch (err) {
     console.log(`error: ${err}`)
   }
@@ -61,14 +61,13 @@ async function removeById(id) {
 
 
 async function addUserToLikedByUsers(station,miniUser){
-  const stationToUpdate = await getById(station.id)
+  const stationToUpdate = await getById(station._id)
   const updatedStation = {...stationToUpdate, likedByUsers : [...stationToUpdate.likedByUsers, miniUser]}
   return await save(updatedStation)
 }
 
 async function removeUserFromLikedByUsers(station,miniUser){
   const stationToUpdate = await getById(station._id)
-  console.log(stationToUpdate)
   const updatedStation = {...stationToUpdate, likedByUsers : stationToUpdate.likedByUsers.filter((user) => user.id !== miniUser.id)}
   return await save(updatedStation)
 }
@@ -146,13 +145,13 @@ function _getEmptyStation(user) {
 
 // Load all stations to localStorage / create new from data file
 // TODO - Move to query from db
-(() => {
-  let stations
-  stations = utilService.loadFromStorage(STORAGE_KEY)
-  if(!stations){
-    stations = stationsAsJson
-  }
-  utilService.saveToStorage(STORAGE_KEY, stations)
-})()
+// (() => {
+//   let stations
+//   stations = utilService.loadFromStorage(STORAGE_KEY)
+//   if(!stations){
+//     stations = stationsAsJson
+//   }
+//   utilService.saveToStorage(STORAGE_KEY, stations)
+// })()
 
 

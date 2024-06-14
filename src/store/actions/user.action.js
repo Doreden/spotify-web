@@ -43,8 +43,8 @@ export async function deleteStation(userId,stationId){
     // Delete station from user likesStations
     await UserService.removeStationFromLikedByUser(userId,stationId)
     // Delete station from store
-    const userState = store.dispatch({type:REMOVE_STATION, stationId})
-    console.log(userState)
+    store.dispatch({type:REMOVE_STATION, stationId})
+    
   } catch (err) {
     console.log(err)
   }
