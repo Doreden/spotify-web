@@ -5,9 +5,9 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    background-color: #121212; 
-    
-    .signup-container{
+    background-color: #121212;
+
+    & .signup-container {
         background-color: #000;
         padding: 2rem;
         border-radius: 10px;
@@ -17,37 +17,44 @@
         width: 100%;
         color: #fff;
     }
-    .signup-title {
+
+    & .signup-title {
         font-size: 1.5rem;
         margin-bottom: 2rem;
     }
-    
-    .input-label {
+
+    & .input-label {
         display: block;
         width: 90%;
         margin-bottom: 1rem;
         text-align: left;
 
-        input {
-            width: 100%;
-            padding: 0.75rem;
-            margin-top: 0.5rem;
-            background-color: #121212;
-            border: 1px solid #444;
-            border-radius: 5px;
-            color: #fff;
-            font-size: 1rem;
+    }
 
-            &::placeholder {
-                color: #888;
-            }
+    & input {
+        width: 100%;
+        padding: 0.75rem;
+        margin-top: 0.5rem;
+        background-color: #121212;
+        border: 1px solid #444;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1rem;
 
-            &:focus {
-                border-color: #888;
-                outline: none;
-            }
+        &::placeholder {
+            color: #888;
+        }
+
+        &:focus {
+            border-color: #888;
+            outline: none;
+        }
+
+        &.username-taken {
+            border-color: #1DB954;
         }
     }
+
     .signup-btn {
         margin-top: 0.5rem;
         width: 100%;
@@ -63,5 +70,11 @@
         &:hover {
             background-color: #1ed760;
         }
+    }
+
+    & .username-taken-msg {
+        color: #1ed760;
+        font-weight: 600;
+        margin-bottom: 4px;
     }
 }

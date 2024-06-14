@@ -6,13 +6,18 @@ import { signup } from "../store/actions/user.action.js"
 
 export function SignupForm() {
     const [credentials, setCredentials] = useState(UserService.getEmptyCredentials())
+    const [isUsernameTaken, setIsUsernameTaken] = useState(false)
+
     const navigate = useNavigate()
+
+
 
     async function onSignup(credentials) {
         try {
             await signup(credentials)
             navigate('/')
         } catch (err) {
+            setIsUsernameTaken((prevState) => true)
             console.log('Oops try again')
         }
     }
@@ -46,6 +51,7 @@ export function SignupForm() {
                 </label>
                 <label className="input-label">Enter your username
                     <input
+                        className={`${isUsernameTaken ? 'username-taken' : ""}`}
                         type="text"
                         name="username"
                         value={credentials.username}
@@ -55,6 +61,9 @@ export function SignupForm() {
                         autoFocus
                     />
                 </label>
+                {isUsernameTaken &&
+                    <div className="username-taken-msg">Username Unavailable</div>
+                }
                 <label className="input-label">Password
                     <input
                         type="password"

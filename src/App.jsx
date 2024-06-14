@@ -23,9 +23,9 @@ import { login } from "./store/actions/user.action.js"
 
 function App() {
 
-  // useEffect(() => {
-  //   login()
-  // }, [])
+  useEffect(() => {
+    login()
+  }, [])
 
   return (
     <>
