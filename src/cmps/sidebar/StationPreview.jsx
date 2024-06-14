@@ -23,7 +23,7 @@ export function StationPreview({ station, OnStationClick, context, currentLocati
                 <img src={`${station.imgUrl}`}></img>
                 <div className="station-preview-text">
                     <div className="station-name">{station.name}</div>
-                    <div className="created-by">{station.createdBy.username}</div>
+                    {/* <div className="created-by">{station.createdBy.username}</div> */}
                 </div>
             </div>
         </Link>

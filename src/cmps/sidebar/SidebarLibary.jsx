@@ -9,6 +9,7 @@ import { LikedSongsPreview } from "./LikedSongsPreview.jsx"
 import { deleteStation } from '../../store/actions/user.action.js'
 import { useNavigate } from "react-router"
 import { DeleteStation } from "../DeleteStation.jsx"
+import { stationService } from "../../services/station.service.js"
 
 export function SidebarLibary({ currentLocation }) {
 
@@ -19,9 +20,14 @@ export function SidebarLibary({ currentLocation }) {
   const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
   const [currentStationToDelete, setCurrentStationToDelete] = useState(null)
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  const [userStations, setUserStations] = useState([])
   const navigate = useNavigate()
 
-  const miniStations = loggedInUser ? loggedInUser.likedStations : null
+  // const miniStations = loggedInUser ? loggedInUser.likedStations : null
+
+  useEffect(() => {
+    loadUserLibary()
+  }, [loggedInUser])
 
   useEffect(() => {
     document.addEventListener('click', handleCloseContextMenu)
@@ -29,6 +35,13 @@ export function SidebarLibary({ currentLocation }) {
       document.removeEventListener('click', handleCloseContextMenu)
     }
   }, [])
+
+  async function loadUserLibary() {
+    if (!loggedInUser) return
+    const stations = await stationService.query({ txt: '', userId: loggedInUser.id })
+    console.log(stations)
+    setUserStations((prevStations) => stations)
+  }
 
   const handleEditStation = (stationId) => {
     const station = miniStations.find(st => st.id === stationId)
@@ -86,7 +99,7 @@ export function SidebarLibary({ currentLocation }) {
     return "Log in to create and share playlists"
   }
 
-  if (!miniStations) {
+  if (!userStations) {
     return null
   }
 
@@ -99,8 +112,8 @@ export function SidebarLibary({ currentLocation }) {
           <div className="preview-item" onClick={handleLikedSongsClick}>
             <LikedSongsPreview context={'sidebar'} currentLocation={currentLocation} />
           </div>
-          {miniStations.map((station) => (
-            <div key={station.id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)}>
+          {userStations.map((station) => (
+            <div key={station._id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)}>
               <StationPreview
                 station={station}
                 OnStationClick={handleStationClick}

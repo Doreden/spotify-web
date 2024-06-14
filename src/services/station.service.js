@@ -35,10 +35,10 @@ async function getById(stationId) {
 }
 
 async function save(stationToSave) {
-  if (stationToSave.id) {
-    return await storageService.put(STORAGE_KEY, stationToSave)
+  if (stationToSave._id) {
+    return await httpService.put(`station/${stationToSave._id}`, stationToSave)
   } else {
-    return await storageService.post(STORAGE_KEY, stationToSave)
+    return await httpService.post(`station`, stationToSave)
   }
 }
 
