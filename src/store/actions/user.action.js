@@ -7,13 +7,18 @@ import { SET_USER, ADD_STATION, LOAD_STATIONS, REMOVE_STATION, REMOVE_FROM_LIKED
 
 export async function login(cretentials = {}){
     try{
-        const loggedInUser = await UserService.login(cretentials)
-        if(loggedInUser){
-          store.dispatch({type:SET_USER, user : loggedInUser})
-          return loggedInUser
+        const userInSessionStorage = UserService.getLoggedInUser()
+        if(userInSessionStorage){
+          store.dispatch({type:SET_USER, user : userInSessionStorage})
+          return userInSessionStorage
+        }else{
+          const loggedInUser = await UserService.login(cretentials)
+          if(loggedInUser){
+            store.dispatch({type:SET_USER, user : loggedInUser})
+            return loggedInUser
+          }
+
         }
-        // const loggedInUser = UserService.getLoggedInUser()
-        // console.log(loggedInUser)
 
     }catch(err){
         console.log('No logged in user')
@@ -26,9 +31,7 @@ export async function logout(){
 }
 
 export async function loadUserStations(loggedInUser){
-  console.log(loggedInUser)
   const userStations = await stationService.query({ txt: '', userId: loggedInUser._id })
-  console.log(userStations)
   store.dispatch({type:LOAD_STATIONS, newStations : userStations})
 }
 
@@ -40,8 +43,6 @@ export async function updateStation(likedStations, updatedStation){
   const miniSavedStation = stationService.convertToMiniStation(stationAfterUpdate)
 
   const stationIdx = likedStations.findIndex(miniStation => miniStation._id === miniSavedStation._id)
-
-  console.log(likedStations)
 
   if(stationIdx !== -1){
       likedStations[stationIdx] = miniSavedStation
@@ -94,9 +95,6 @@ export async function createNewStationByUser(loggedInUser){
 export async function toggleLikedStation(loggedInUser,station){
   try{
     const isStationLiked = UserService.isStationLiked(loggedInUser,station)
-    console.log(loggedInUser)
-    console.log(station)
-    console.log(isStationLiked)
     if(isStationLiked){
       await removeStationFromLiked(loggedInUser,station)
     } else{
@@ -112,9 +110,7 @@ export async function toggleLikedStation(loggedInUser,station){
 export async function addStationToLiked(loggedInUser, station){
   try{
     const updatedStation = await stationService.addUserToLikedByUsers(station,loggedInUser)
-    console.log(updatedStation)
     const miniNewStation = stationService.convertToMiniStation(updatedStation)
-    console.log(miniNewStation)
     store.dispatch({type: ADD_STATION, miniNewStation })
   }catch(err){
     console.log(err)

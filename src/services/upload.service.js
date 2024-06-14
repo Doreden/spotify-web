@@ -19,7 +19,6 @@ async function uploadImg(file) {
         if (!response.ok) throw new Error('Network response was not ok.');
 
         const imgData = await response.json();
-        console.log('imgData', imgData);
         return imgData;
     } catch (err) {
         console.error('Failed to upload', err);

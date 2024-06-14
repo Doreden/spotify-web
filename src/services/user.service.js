@@ -74,7 +74,6 @@ async function removeSongFromLikedSongs(loggedInUser, song){
 function getLoggedInUser(){
     try{
         const loggedInUser = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-        console.log(loggedInUser)
         return loggedInUser
     }catch(err){
         console.log('No logged in user')

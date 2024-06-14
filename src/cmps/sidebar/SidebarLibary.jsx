@@ -23,10 +23,6 @@ export function SidebarLibary({ currentLocation }) {
   const userStations = useSelector((storeState) => storeState.userModule.stations)
   const navigate = useNavigate()
 
-  // const miniStations = loggedInUser ? loggedInUser.likedStations : null
-
-  console.log(userStations)
-
   useEffect(() => {
     loadUserLibary()
   }, [loggedInUser])
@@ -40,13 +36,7 @@ export function SidebarLibary({ currentLocation }) {
 
   async function loadUserLibary() {
     if (!loggedInUser) return
-
     loadUserStations(loggedInUser)
-
-    // if (!loggedInUser) return
-    // console.log(loggedInUser)
-    // const stations = await stationService.query({ txt: '', userId: loggedInUser._id })
-
   }
 
   const handleEditStation = (stationId) => {

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { logout } from "../../store/actions/user.action"
 import { useNavigate } from "react-router-dom"
-import { useEffect } from "react"
 
 export function StationIndexHeader() {
 

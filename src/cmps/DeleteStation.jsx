@@ -5,7 +5,6 @@ export function DeleteStation({ show, station, onClose, onDelete }) {
     function handleDelete() {
         onDelete(station._id)
         onClose()
-        // console.log(station)
     }
 
     if (!show) return null

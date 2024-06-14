@@ -23,7 +23,6 @@ async function query(filterBy = {}) {
 async function getById(stationId) {
   try {
     const station = await httpService.get(`station/${stationId}`)
-    console.log(station)
     return station
   } catch (err) {
     console.log(`error: ${err}`)
@@ -58,7 +57,6 @@ async function removeById(stationId) {
 
 async function addUserToLikedByUsers(station,miniUser){
   const stationToUpdate = await getById(station._id)
-  console.log(stationToUpdate)
   const updatedStation = {...stationToUpdate, likedByUsers : [...stationToUpdate.likedByUsers, miniUser]}
   await save(updatedStation)
   return updatedStation
@@ -68,7 +66,6 @@ async function addUserToLikedByUsers(station,miniUser){
 
 async function removeUserFromLikedByUsers(station,miniUser){
   const stationToUpdate = await getById(station._id)
-  console.log(stationToUpdate)
   const updatedStation = {...stationToUpdate, likedByUsers : stationToUpdate.likedByUsers.filter((user) => user._id !== miniUser._id)}
   return await save(updatedStation)
 }

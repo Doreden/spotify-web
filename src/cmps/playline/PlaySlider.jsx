@@ -14,7 +14,6 @@ export function PlaySlider({ songProggresionData, onSeek }) {
     }
 
     function handleHover() {
-        console.log("hover")
         setIsHovered(() => true)
     }
 

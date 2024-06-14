@@ -18,9 +18,14 @@ import "./assets/scss/style.scss"
 import { LikedSongs } from "./cmps/station/stationDetails/LikedSongs.jsx"
 import { LoginPage } from "./pages/LoginPage.jsx"
 import { SignupForm } from "./cmps/SignupForm.jsx"
-
+import { useEffect } from "react"
+import { login } from "./store/actions/user.action.js"
 
 function App() {
+
+  useEffect(() => {
+    login()
+  }, [])
 
   return (
     <>

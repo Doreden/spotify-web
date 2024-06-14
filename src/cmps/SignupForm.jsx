@@ -10,7 +10,6 @@ export function SignupForm() {
     async function signup(credentials) {
         try {
             await UserService.signup(credentials)
-            console.log('Signed in successfully')
             navigate('/')
         } catch (err) {
             console.log('Oops try again')

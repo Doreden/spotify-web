@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 export function StationPreview({ station, OnStationClick, context, currentLocation }) {
     const handleClick = (e) => {
         e.stopPropagation()
-        OnStationClick(station.id)
+        OnStationClick(station._id)
     }
 
     let isActive

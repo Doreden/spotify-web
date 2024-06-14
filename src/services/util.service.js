@@ -34,7 +34,6 @@ function generateId(length){
 }
 
 function convertYoutubeDurationToSeconds(durationString){
-    console.log(durationString)
     const pattern = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
     const match = durationString.match(pattern);
 
