@@ -7,8 +7,6 @@ export function Sidebar() {
     const location = useLocation()
     const [currentLocation, setCurrentLocation] = useState(location.pathname)
 
-    console.log(currentLocation)
-
     useEffect(() => {
         setCurrentLocation((prevPath) => location.pathname)
     }, [location])

@@ -27,7 +27,7 @@ export function toggleRepeat(isRepeat){
 }
 
 export function playStation(station, songIdx = 0){
-    store.dispatch({type : SET_STATION_ID, playingStationId : station.id})
+    store.dispatch({type : SET_STATION_ID, playingStationId : station._id})
     store.dispatch({type : SET_STATION, songs : station.songs})
     store.dispatch({type: SET_SONG, song : station.songs[songIdx]})
     store.dispatch({type: SET_PLAY})

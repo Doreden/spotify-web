@@ -12,7 +12,6 @@ export function StationIndex() {
 
   async function loadStations() {
     const stations = await stationService.query()
-    console.log(stations)
     setStations((prevStations) => stations)
   }
 

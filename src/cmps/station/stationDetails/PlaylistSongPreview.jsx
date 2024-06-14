@@ -76,7 +76,9 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
   }
 
   function isSongPlaying(station, song) {
-    return station.id === playingStationId && song.id === playingSongId
+    // Only allow when it is not in search
+    if (!station) return
+    return station._id === playingStationId && song.id === playingSongId
   }
 
   return (

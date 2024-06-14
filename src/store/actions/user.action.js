@@ -16,12 +16,17 @@ export async function login(cretentials = {}){
 }
 
 export async function updateStation(likedStations, updatedStation){
-  const { id, name, imgUrl } = updatedStation
-  const stationToUpdate = await stationService.getById(id)
+  const { _id, name, imgUrl } = updatedStation
+  const stationToUpdate = await stationService.getById(_id)
   const stationAfterUpdate = {...stationToUpdate, name, imgUrl}
-  const savedStation = await stationService.save(stationAfterUpdate)
-  const miniSavedStation = stationService.convertToMiniStation(savedStation)
-  const stationIdx = likedStations.findIndex(miniStation => miniStation.id === miniSavedStation.id)
+  await stationService.save(stationAfterUpdate)
+  const miniSavedStation = stationService.convertToMiniStation(stationAfterUpdate)
+
+  const stationIdx = likedStations.findIndex(miniStation => miniStation._id === miniSavedStation._id)
+
+  console.log(miniSavedStation)
+  console.log(stationIdx)
+  console.log(likedStations)
 
   if(stationIdx !== -1){
       likedStations[stationIdx] = miniSavedStation
@@ -38,8 +43,8 @@ export async function deleteStation(userId,stationId){
     // Delete station from user likesStations
     await UserService.removeStationFromLikedByUser(userId,stationId)
     // Delete station from store
-    const userState = store.dispatch({type:REMOVE_STATION, stationId})
-    console.log(userState)
+    store.dispatch({type:REMOVE_STATION, stationId})
+    
   } catch (err) {
     console.log(err)
   }

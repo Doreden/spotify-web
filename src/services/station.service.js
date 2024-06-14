@@ -35,17 +35,17 @@ async function getById(stationId) {
 }
 
 async function save(stationToSave) {
-  if (stationToSave.id) {
-    return await storageService.put(STORAGE_KEY, stationToSave)
+  if (stationToSave._id) {
+    return await httpService.put(`station/${stationToSave._id}`, stationToSave)
   } else {
-    return await storageService.post(STORAGE_KEY, stationToSave)
+    return await httpService.post(`station`, stationToSave)
   }
 }
 
-async function removeById(id) {
+async function removeById(stationId) {
   try {
-    var idx = await storageService.remove(STORAGE_KEY, id)
-    return idx
+    const response = await httpService.delete(`station/${stationId}`, stationId)
+    return response
   } catch (err) {
     console.log(`error: ${err}`)
   }
@@ -61,14 +61,13 @@ async function removeById(id) {
 
 
 async function addUserToLikedByUsers(station,miniUser){
-  const stationToUpdate = await getById(station.id)
+  const stationToUpdate = await getById(station._id)
   const updatedStation = {...stationToUpdate, likedByUsers : [...stationToUpdate.likedByUsers, miniUser]}
   return await save(updatedStation)
 }
 
 async function removeUserFromLikedByUsers(station,miniUser){
-  const stationToUpdate = await getById(station.id)
-  console.log(stationToUpdate)
+  const stationToUpdate = await getById(station._id)
   const updatedStation = {...stationToUpdate, likedByUsers : stationToUpdate.likedByUsers.filter((user) => user.id !== miniUser.id)}
   return await save(updatedStation)
 }
@@ -116,8 +115,8 @@ async function createNewStation(user) {
 }
 
 function convertToMiniStation(station){
-  const { id, imgUrl, name } = station
-  return { id, imgUrl, name, createdBy : station.createdBy}
+  const { _id, imgUrl, name } = station
+  return { _id, imgUrl, name, createdBy : station.createdBy}
 }
 
 
@@ -146,13 +145,13 @@ function _getEmptyStation(user) {
 
 // Load all stations to localStorage / create new from data file
 // TODO - Move to query from db
-(() => {
-  let stations
-  stations = utilService.loadFromStorage(STORAGE_KEY)
-  if(!stations){
-    stations = stationsAsJson
-  }
-  utilService.saveToStorage(STORAGE_KEY, stations)
-})()
+// (() => {
+//   let stations
+//   stations = utilService.loadFromStorage(STORAGE_KEY)
+//   if(!stations){
+//     stations = stationsAsJson
+//   }
+//   utilService.saveToStorage(STORAGE_KEY, stations)
+// })()
 
 
