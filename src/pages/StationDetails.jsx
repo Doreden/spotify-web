@@ -7,6 +7,7 @@ import { stationService } from "../services/station.service"
 import { playStation } from "../store/actions/player.action"
 
 export function StationDetails() {
+
   const [station, setStation] = useState(null)
   const [isActiveSongId, setIsActiveSongId] = useState(null)
   const params = useParams()

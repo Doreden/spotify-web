@@ -105,13 +105,13 @@ export function SidebarLibary({ currentLocation }) {
 
         <div className="libary-station-list">
           <div className="preview-item" onClick={handleLikedSongsClick}>
-            <LikedSongsPreview context={'sidebar'} currentLocation={currentLocation} />
+            <LikedSongsPreview context={'sidebar'} currentLocation={currentLocation} key={'liked-songs'} />
           </div>
           {userStations.map((station) => (
             <div key={station._id} className="preview-item" onContextMenu={(event) => handleContextMenu(event, station)}>
               <StationPreview
                 station={station}
-                OnStationClick={handleStationClick}
+                handleStationClick={handleStationClick}
                 currentLocation={currentLocation}
                 context={'sidebar'}
               />

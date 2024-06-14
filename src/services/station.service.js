@@ -15,6 +15,8 @@ export const stationService = {
   addSongToStation
 }
 
+// CRUD
+
 async function query(filterBy = {}) {
   const stations = await httpService.get('station', filterBy)
   return stations
@@ -23,6 +25,7 @@ async function query(filterBy = {}) {
 async function getById(stationId) {
   try {
     const station = await httpService.get(`station/${stationId}`)
+    console.log(station)
     return station
   } catch (err) {
     console.log(`error: ${err}`)
@@ -33,7 +36,8 @@ async function save(stationToSave) {
   if (stationToSave._id) {
     return await httpService.put(`station/${stationToSave._id}`, stationToSave)
   } else {
-    return await httpService.post(`station`, stationToSave)
+    const response =  await httpService.post(`station`, stationToSave)
+    return response
   }
 }
 
@@ -46,14 +50,7 @@ async function removeById(stationId) {
   }
 }
 
-
-
-
-
-
-
-
-
+// User Likes Related Functions
 
 async function addUserToLikedByUsers(station,miniUser){
   const stationToUpdate = await getById(station._id)
@@ -62,23 +59,36 @@ async function addUserToLikedByUsers(station,miniUser){
   return updatedStation
 }
 
-
-
 async function removeUserFromLikedByUsers(station,miniUser){
   const stationToUpdate = await getById(station._id)
   const updatedStation = {...stationToUpdate, likedByUsers : stationToUpdate.likedByUsers.filter((user) => user._id !== miniUser._id)}
   return await save(updatedStation)
 }
 
+async function createNewStation(user) {
+  const emptyStation = _getEmptyStation(user)
+  const { insertedId } = await save(emptyStation)
+  const stationWithId = {...emptyStation, _id: insertedId}
+  return stationWithId
+}
+
+function convertToMiniStation(station){
+  const { _id, imgUrl, name } = station
+  return { _id, imgUrl, name, createdBy : station.createdBy}
+}
+
+function _getEmptyStation(user) {
+  return {
+    name: "New Playlist",
+    imgUrl: "imgs/defaultStationImg.png",
+    createdBy: user,
+    likedByUsers: [],
+    songs: [],
+  }
+}
 
 
-
-
-
-
-
-
-
+// Songs Related Functions
 async function addSongToStation(station,song){
   try {
     let newSong = {...song}
@@ -105,50 +115,7 @@ async function removeSongFromStation(stationId, songId) {
   save(station)
 }
 
-async function createNewStation(user) {
-  const emptyStation = _getEmptyStation(user)
-  await save(emptyStation)
-  return emptyStation
-}
-
-function convertToMiniStation(station){
-  const { _id, imgUrl, name } = station
-  return { _id, imgUrl, name, createdBy : station.createdBy}
-}
-
-
-
 function _isIn(station,song){
   return station.songs.some(stationSong => stationSong.id === song.id)
 }
-
-function _getEmptyStation(user) {
-  return {
-    name: "New Playlist",
-    imgUrl: "imgs/defaultStationImg.png",
-    createdBy: user,
-    likedByUsers: [],
-    songs: [],
-  }
-}
-
-
-
-
-
-
-
-
-
-// Load all stations to localStorage / create new from data file
-// TODO - Move to query from db
-// (() => {
-//   let stations
-//   stations = utilService.loadFromStorage(STORAGE_KEY)
-//   if(!stations){
-//     stations = stationsAsJson
-//   }
-//   utilService.saveToStorage(STORAGE_KEY, stations)
-// })()
-
 
