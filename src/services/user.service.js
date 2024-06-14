@@ -11,6 +11,7 @@ const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 export const UserService = {
     login,
     signup,
+    logout,
     createMinimalUser,
     getLoggedInUser,
     removeStationFromLikedByUser,
@@ -28,6 +29,7 @@ async function login(credentials){
     const user = await httpService.post('auth/login', credentials)
     if(user){
         saveLocalUser(user)
+        return user
     }
 }
 
@@ -36,6 +38,12 @@ async function signup(credentials){
     if(user){
         saveLocalUser(user)
     }
+}
+
+async function logout(){
+    await httpService.post('auth/logout')
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+
 }
 
 function saveLocalUser(user){

@@ -25,10 +25,7 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
 
   function loadIsLikedStationState() {
     if (is !== 'liked-songs') {
-      console.log(loggedInUser)
-      console.log(station)
       const isLiked = UserService.isStationLiked(loggedInUser, station)
-      console.log(isLiked)
       setIsLikedStation((prevState) => isLiked)
     }
   }
@@ -79,7 +76,7 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
             </div>
           }
 
-          {!(is === 'liked-songs') && (station.createdBy._id !== loggedInUser._id) &&
+          {!(is === 'liked-songs') && (station.createdBy._id !== loggedInUser?._id) &&
             <ToggleLikedStationButton isLikedStation={isLikedStation} handleLikeStation={handleLikeStation} />
           }
 
@@ -89,7 +86,6 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
           {isModalOpen &&
             <OptionsModal modalType={'station'} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} />
           }
-
         </div>
       </div>
     </>

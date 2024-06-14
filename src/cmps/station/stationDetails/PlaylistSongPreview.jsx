@@ -65,7 +65,7 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
 
   function displayAddToLikedButton() {
     return (
-      isHover ?
+      isHover && loggedInUser ?
         <ToggleLikedSongButton isLikedSong={isLikedSong} handleToggleLikedSongs={handleToggleLikedSongs} />
         : ''
     )
@@ -108,6 +108,7 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
       <div className="song-length secondary">
         {displayAddToLikedButton()}
         {utilService.formatSongLength(song.lengthInSeconds)}
+
         <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>...</button>
         {isModalOpen && (
           <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} handleToggleLikedSongs={handleToggleLikedSongs} />

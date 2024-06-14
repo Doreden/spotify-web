@@ -7,13 +7,22 @@ import { SET_USER, ADD_STATION, LOAD_STATIONS, REMOVE_STATION, REMOVE_FROM_LIKED
 
 export async function login(cretentials = {}){
     try{
-        const loggedInUser = UserService.getLoggedInUser()
-        console.log(loggedInUser)
-        store.dispatch({type:SET_USER, user : loggedInUser})
+        const loggedInUser = await UserService.login(cretentials)
+        if(loggedInUser){
+          store.dispatch({type:SET_USER, user : loggedInUser})
+          return loggedInUser
+        }
+        // const loggedInUser = UserService.getLoggedInUser()
+        // console.log(loggedInUser)
 
     }catch(err){
         console.log('No logged in user')
     }
+}
+
+export async function logout(){
+  await UserService.logout()
+  store.dispatch({type:SET_USER, user: null})
 }
 
 export async function loadUserStations(loggedInUser){
