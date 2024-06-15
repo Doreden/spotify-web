@@ -10,6 +10,10 @@ export function StationDetails() {
 
   const [station, setStation] = useState(null)
   const [isActiveSongId, setIsActiveSongId] = useState(null)
+  const [bgColor, setBgColor] = useState("#333333")
+  const [darkerColor, setDarkerColor] = useState()
+  const [mainSectionColor, setMainSectionColor] = useState("#333333")
+
   const params = useParams()
 
   useEffect(() => {
@@ -25,6 +29,9 @@ export function StationDetails() {
     }
   }
 
+
+
+
   function onPlayStation(songIdx = 0) {
     playStation(station, songIdx)
     setIsActiveSongId(station.songs[songIdx].id)
@@ -36,14 +43,14 @@ export function StationDetails() {
 
   if (!station) return
   return (
-    <>
-      <section className="station-details page">
-        <StationDetailsHeader station={station} />
+    <section className="station-details page">
+      <StationDetailsHeader station={station} bgColor={bgColor} setBgColor={setBgColor} darkerColor={darkerColor} setDarkerColor={setDarkerColor} setMainSectionColor={setMainSectionColor} />
+      <div className='main-station-details' style={{ background: `linear-gradient(${mainSectionColor}1) 0%, rgba(18,18,18,1) 100%)` }}>
         <StationDetailsActions station={station} onPlayStation={onPlayStation} />
         <div className="song-list-container">
           <PlaylistSongList station={station} handleSongClick={handleSongClick} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} />
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }

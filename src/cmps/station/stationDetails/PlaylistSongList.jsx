@@ -6,8 +6,6 @@ import Length from '../../../assets/imgs/length.svg'
 
 export function PlaylistSongList({ station, onPlayStation, isActiveSongId, handleSongClick }) {
 
-  console.log(handleSongClick)
-
   function LengthSvg() {
     return (
       <div className="length-svg-container">

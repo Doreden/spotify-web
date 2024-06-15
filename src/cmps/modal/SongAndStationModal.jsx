@@ -9,7 +9,6 @@ import Trash from '../../assets/imgs/trash.svg'
 
 export function SongAndStationModal({ modalType, station }) {
 
-
   return (
     <div className="wrapper-modal">
       <ul className="menu">
@@ -17,7 +16,6 @@ export function SongAndStationModal({ modalType, station }) {
       </ul>
     </div>
   )
-
 
   function DymanicModal({ modalType, station }) {
     switch (modalType) {
