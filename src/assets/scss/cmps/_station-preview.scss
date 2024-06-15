@@ -7,17 +7,21 @@
 
     &:hover {
         background-color: #1A1A1A;
+
         &.station-active {
-            background-color: #393939; 
-          }
+            background-color: #393939;
+        }
     }
+
     &.station-active {
         background-color: #232323;
-      }
+    }
 
     & .station-preview-text {
         display: flex;
         flex-direction: column;
+        font-weight: 400;
+
 
         & .created-by {
             color: $secondary-font-color;
@@ -47,6 +51,7 @@
         flex-direction: column;
         align-self: flex-start;
         gap: 4px;
+        font-weight: bold;
 
         & .created-by {
             color: $secondary-font-color;

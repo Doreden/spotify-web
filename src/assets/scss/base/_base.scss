@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'CircularSpotify';
   font-style: bold;
-  font-weight: 700;
+  font-weight: 900;
   src: local("../../fonts/CircularSpotifyText-Black.otf");
 }
 
@@ -9,13 +9,13 @@
   line-height: 1.5;
   font-weight: 400;
   color: white;
+  font-weight: normal;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  font-weight: 500;
   color: #fafafa;
   text-decoration: inherit;
 }
@@ -32,10 +32,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
-
-  &>* {
-    font-family: 'CircularSpotify', sans-serif;
-  }
 }
 
 button {
