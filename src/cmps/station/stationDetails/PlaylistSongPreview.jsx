@@ -15,14 +15,12 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 })
   const [isLikedSong, setIsLikedSong] = useState(UserService.isSongLiked(loggedInUser, song))
   const [isHover, setIsHover] = useState(false)
   const buttonRef = useRef(null)
 
   const playingStationId = useSelector((storeState) => storeState.playerModule.playingStationId)
   const playingSongId = useSelector((storeState) => storeState.playerModule.song.id)
-
   // useEffect(() => {
   //   function updateButtonPosition() {
   //     const buttonRect = buttonRef.current.getBoundingClientRect()
@@ -116,6 +114,7 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
           <SongAndStationModal 
             modalType={'song'}
             onClose={onClose}
+            station={loggedInUser.likedStations}
           />
         )}
 

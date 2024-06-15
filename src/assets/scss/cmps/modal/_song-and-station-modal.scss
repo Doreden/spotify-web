@@ -9,11 +9,14 @@
     max-height: calc(100vh - 24px);
     z-index: 1000;
     position: absolute;
+    width: 250px;
+    overflow: auto;
 
     .menu {
         list-style: none;
         padding: 0;
         margin: 0;
+
       }
 
     .menu-list{
@@ -27,7 +30,26 @@
         white-space: nowrap; 
         overflow: hidden;  
         text-overflow: ellipsis; 
+        
+        .share-menu{
+            display: flex;
+            flex-direction: column;
+            column-gap: 12px;
+            box-sizing: border-box;
+            padding: 12px;
+            position: absolute;
+            background: red;
+            width: 200px;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
 
+            &:hover{
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
         &:hover {
             background-color: rgba(255, 255, 255, 0.1);
             cursor: pointer;
@@ -44,6 +66,7 @@
 
 .modal{
     width: 250px;
+    // position: relative;
     li{
         padding: 0;
         margin: 0;

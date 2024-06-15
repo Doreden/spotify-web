@@ -14,7 +14,6 @@ import { SongAndStationModal } from "../../modal/SongAndStationModal"
 export function StationDetailsActions({ station, onPlayStation, is }) {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 })
   const [isLikedStation, setIsLikedStation] = useState(false)
@@ -98,6 +97,7 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
           <SongAndStationModal 
             modalType={'station'}
             onClose={onClose}
+            station={loggedInUser.likedStations}
           />
         )}
           {/* {isModalOpen &&
