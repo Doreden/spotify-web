@@ -13,6 +13,7 @@ import { SongAndStationModal } from "../../modal/SongAndStationModal"
 export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  const userLibary = useSelector((storeState) => storeState.userModule.stations)
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLikedSong, setIsLikedSong] = useState(UserService.isSongLiked(loggedInUser, song))
@@ -99,7 +100,7 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
           <SongAndStationModal
             modalType={'song'}
             onClose={onClose}
-            station={loggedInUser.likedStations}
+            station={userLibary.filter((station) => station.createdBy._id === loggedInUser._id)}
           />
         )}
       </div>
