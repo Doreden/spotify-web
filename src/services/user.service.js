@@ -1,11 +1,5 @@
-import { storageService } from "./async-storage.service";
-import { utilService } from "./util.service"
-import stationsAsJson from '../assets/data/station.json' assert { type: 'json' };
-
 import { httpService } from "./http.service";
-import likedSongsAsJson from '../assets/data/likedsongs.json' assert {type: 'json'}
 
-const STORAGE_KEY = "user"
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const UserService = {
@@ -20,8 +14,6 @@ export const UserService = {
     removeSongFromLikedSongs,
     getEmptyCredentials
 }
-
-
 
 async function login(credentials){
 
@@ -46,6 +38,14 @@ async function logout(){
 
 }
 
+async function save(userToSave) {
+    if (userToSave._id) {
+        return await httpService.put(`user/${userToSave._id}`, userToSave)
+    } else {
+        return await httpService.port('user', userToSave)
+    }
+}
+
 function saveLocalUser(user){
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
@@ -54,15 +54,19 @@ function saveLocalUser(user){
 async function addSongToLikedSongs(loggedInUser, song){
     const songWithDate = {...song, addedAt: Date.now()}
     const updatedUser = {...loggedInUser, likedSongs : [...loggedInUser.likedSongs, songWithDate]}
+    // Updates user in sessionStorage
     saveLocalUser(updatedUser)
+    // Updates user in database
     await save(updatedUser)
 }
 
 async function removeSongFromLikedSongs(loggedInUser, song){
     const updatedUser = {...loggedInUser, likedSongs : loggedInUser.likedSongs.filter(likedSong => likedSong.id !== song.id)}
+    // Updates user in sessionStorage
     saveLocalUser(updatedUser)
-    await save(updatedUser)}
-
+    // Updates user in database
+    await save(updatedUser)
+}
 
 function getLoggedInUser(){
     try{
@@ -70,27 +74,6 @@ function getLoggedInUser(){
         return loggedInUser
     }catch(err){
         console.log('No logged in user')
-    }
-}
-
-
-
-function getEmptyCredentials() {
-    return {
-        username: '',
-        password: '',
-        fullname: '',
-        imgUrl: '',
-        }
-}
-
-// TODO - Use When implementing creation of user
-async function save(userToSave) {
-    if (userToSave._id) {
-        // return await storageService.put(STORAGE_KEY, userToSave)
-        return await httpService.put(`user/${userToSave._id}`, userToSave)
-    } else {
-        return await httpService.port('user', userToSave)
     }
 }
 
@@ -122,3 +105,12 @@ function createMinimalUser(user){
     }
 }
 
+
+function getEmptyCredentials() {
+    return {
+        username: '',
+        password: '',
+        fullname: '',
+        imgUrl: '',
+    }
+}

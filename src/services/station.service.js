@@ -1,5 +1,4 @@
 import { utilService } from "./util.service.js"
-
 import { httpService } from "./http.service.js";
 
 export const stationService = {
@@ -103,15 +102,15 @@ async function addSongToStation(station,song){
 }
 
 async function removeSongFromStation(stationId, songId) {
-  let station = await getById(stationId)
-  station = {
-    ...station,
-    songs: station.songs.filter((song) => song.id !== songId),
+  try {
+    let station = await getById(stationId)
+    station = {
+      ...station,
+      songs: station.songs.filter((song) => song.id !== songId),
+    }
+    save(station)
+  } catch (err) {
+    console.log(err)
   }
-  save(station)
-}
-
-function _isIn(station,song){
-  return station.songs.some(stationSong => stationSong.id === song.id)
 }
 

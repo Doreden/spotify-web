@@ -2,15 +2,21 @@ import { PlaylistSongPreview } from "./PlaylistSongPreview"
 import { ReactSVG } from "react-svg"
 import Length from '../../../assets/imgs/length.svg'
 
-function LengthSvg() {
-  return (
-    <div className="length-svg-container">
-      {<ReactSVG src={Length} />}
-    </div>
-  )
-}
 
-export function PlaylistSongList({ station, onPlayStation, isActiveSongId, onSongClick }) {
+
+export function PlaylistSongList({ station, onPlayStation, isActiveSongId, handleSongClick }) {
+
+  console.log(handleSongClick)
+
+  function LengthSvg() {
+    return (
+      <div className="length-svg-container">
+        {<ReactSVG src={Length} />}
+      </div>
+    )
+  }
+
+
   return (
     <div className="song-list">
       <div className="list-header playlist-columns secondary">
@@ -21,8 +27,12 @@ export function PlaylistSongList({ station, onPlayStation, isActiveSongId, onSon
         <div className="song-length">{LengthSvg()}</div>
       </div>
 
+
+
+
+
       {station.songs.map((song, index) => (
-        <li onDoubleClick={() => onPlayStation(index)} onClick={() => onSongClick(song.id)} key={song.objectId}>
+        <li onDoubleClick={() => onPlayStation(index)} onClick={() => handleSongClick(song.id)} key={song.objectId}>
           <PlaylistSongPreview index={index} song={song} station={station} isActiveSongId={song.id === isActiveSongId} />
           {/* <OptionsModal modalType={'song'} entity={song} style={{top:10}} /> */}
         </li>

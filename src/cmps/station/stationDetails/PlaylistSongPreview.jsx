@@ -48,24 +48,10 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
   function handleHoverEnded() {
     setIsHover(() => false)
   }
-  function displayPlayButton() {
-    return (
-      isHover ?
-        <div className="preview-play-svg-container"><ReactSVG src={Play} /></div> : index + 1
-    )
-  }
 
   function handleToggleLikedSongs() {
     toggleLikedSong(loggedInUser, song)
     setIsLikedSong((prevState) => !prevState)
-  }
-
-  function displayAddToLikedButton() {
-    return (
-      isHover && loggedInUser ?
-        <ToggleLikedSongButton isLikedSong={isLikedSong} handleToggleLikedSongs={handleToggleLikedSongs} />
-        : ''
-    )
   }
 
   function onClose() {
@@ -78,9 +64,14 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
     return station._id === playingStationId && song.id === playingSongId
   }
 
+
+
   return (
     <div className={`song-preview ${station ? 'playlist-columns' : ''}  ${isActiveSongId ? 'song-preview-active' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
-      {station && <div className={`song-index ${isSongPlaying(station, song) ? "playing" : ""}`}>{displayPlayButton()}</div>}
+      {station &&
+        <div className={`song-index ${isSongPlaying(station, song) ? "playing" : ""}`}>
+          {isHover ? <div className="preview-play-svg-container"><ReactSVG src={Play} /></div> : index + 1}
+        </div>}
 
       <div className="song-details">
         {/* Renders Image only if not in a station -- Search Result */}
@@ -103,7 +94,9 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
       )}
 
       <div className="song-length secondary">
-        {displayAddToLikedButton()}
+        {isHover && loggedInUser ?
+          <ToggleLikedSongButton isLikedSong={isLikedSong} handleToggleLikedSongs={handleToggleLikedSongs} />
+          : ''}
         {utilService.formatSongLength(song.lengthInSeconds)}
 
         <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>...</button>
