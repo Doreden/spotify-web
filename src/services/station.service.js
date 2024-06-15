@@ -25,7 +25,6 @@ async function query(filterBy = {}) {
 async function getById(stationId) {
   try {
     const station = await httpService.get(`station/${stationId}`)
-    console.log(station)
     return station
   } catch (err) {
     console.log(`error: ${err}`)

@@ -52,17 +52,14 @@ function saveLocalUser(user){
 }
 
 async function addSongToLikedSongs(loggedInUser, song){
-
-    const updatedUser = {...loggedInUser, likedSongs : [...loggedInUser.likedSongs, song]}
-    console.log(updatedUser)
+    const songWithDate = {...song, addedAt: Date.now()}
+    const updatedUser = {...loggedInUser, likedSongs : [...loggedInUser.likedSongs, songWithDate]}
     saveLocalUser(updatedUser)
     await save(updatedUser)
 }
 
 async function removeSongFromLikedSongs(loggedInUser, song){
-
     const updatedUser = {...loggedInUser, likedSongs : loggedInUser.likedSongs.filter(likedSong => likedSong.id !== song.id)}
-    console.log(updatedUser)
     saveLocalUser(updatedUser)
     await save(updatedUser)}
 

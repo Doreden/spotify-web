@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
 
 export function StationPreview({ station, handleStationClick, context, currentLocation }) {
-    const handleClick = (e) => {
-        e.stopPropagation()
+
+    function handleClick(ev) {
+        ev.stopPropagation()
         handleStationClick(station._id)
     }
 
