@@ -30,8 +30,8 @@ export function StationDetails() {
     setIsActiveSongId(station.songs[songIdx].id)
   }
 
-  const handleSongClick = (id) => {
-    setIsActiveSongId(id)
+  function handleSongClick(songId) {
+    setIsActiveSongId((prevState) => songId)
   }
 
   if (!station) return
@@ -41,7 +41,7 @@ export function StationDetails() {
         <StationDetailsHeader station={station} />
         <StationDetailsActions station={station} onPlayStation={onPlayStation} />
         <div className="song-list-container">
-          <PlaylistSongList station={station} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} onSongClick={handleSongClick} />
+          <PlaylistSongList station={station} handleSongClick={handleSongClick} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} />
         </div>
       </section>
     </>

@@ -34,7 +34,6 @@ export async function logout(){
   store.dispatch({type:SET_USER, user: null})
 }
 
-
 // Stations Loading and CRUD - to allow re-rendering
 
 export async function loadUserStations(loggedInUser){
@@ -61,8 +60,6 @@ export async function deleteStation(userId,stationId){
   try {
     // Delete station from db
     await stationService.removeById(stationId)
-    // Delete station from user likesStations
-    await UserService.removeStationFromLikedByUser(userId,stationId)
     // Delete station from store
     store.dispatch({type:REMOVE_STATION, stationId})
     
@@ -123,12 +120,16 @@ export async function removeStationFromLiked(loggedInUser, station){
 }
 
 export async function toggleLikedSong(loggedInUser,song){
-  const isSongLiked = UserService.isSongLiked(loggedInUser,song)
+  const userInSessionStorage = UserService.getLoggedInUser()
+  if(!userInSessionStorage) return
+
+  const isSongLiked = UserService.isSongLiked(userInSessionStorage,song)
+  
   if(isSongLiked){
     store.dispatch({type:REMOVE_FROM_LIKED_SONGS, song})
-    UserService.removeSongFromLikedSongs(loggedInUser,song)
+    UserService.removeSongFromLikedSongs(userInSessionStorage,song)
   }else{
     store.dispatch({type:LIKE_SONG, song})
-    UserService.addSongToLikedSongs(loggedInUser,song)
+    UserService.addSongToLikedSongs(userInSessionStorage,song)
   }
 }

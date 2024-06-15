@@ -1,11 +1,5 @@
-import { storageService } from "./async-storage.service";
-import { utilService } from "./util.service"
-import stationsAsJson from '../assets/data/station.json' assert { type: 'json' };
-
 import { httpService } from "./http.service";
-import likedSongsAsJson from '../assets/data/likedsongs.json' assert {type: 'json'}
 
-const STORAGE_KEY = "user"
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const UserService = {
@@ -14,15 +8,12 @@ export const UserService = {
     logout,
     createMinimalUser,
     getLoggedInUser,
-    removeStationFromLikedByUser,
     isSongLiked,
     isStationLiked,
     addSongToLikedSongs,
     removeSongFromLikedSongs,
     getEmptyCredentials
 }
-
-
 
 async function login(credentials){
 
@@ -47,29 +38,34 @@ async function logout(){
 
 }
 
+async function save(userToSave) {
+    if (userToSave._id) {
+        return await httpService.put(`user/${userToSave._id}`, userToSave)
+    } else {
+        return await httpService.port('user', userToSave)
+    }
+}
+
 function saveLocalUser(user){
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
 
-
-async function removeStationFromLikedByUser(userId, stationId){
-    const loggedInUser = getLoggedInUser()
-    const updatedUser = {...loggedInUser, likedStations : loggedInUser.likedStations.filter((station) => station.id !== stationId)}
-    await utilService.saveToStorage(STORAGE_KEY, updatedUser)
-}
-
 async function addSongToLikedSongs(loggedInUser, song){
-    // Change after adding user support
-    const loggedInUserDev = getLoggedInUser()
-    const updatedUser = {...loggedInUserDev, likedSongs : loggedInUser.likedSongs.filter(likedSong => likedSong.id !== song.id)}
-    await utilService.saveToStorage(STORAGE_KEY, updatedUser)
+    const songWithDate = {...song, addedAt: Date.now()}
+    const updatedUser = {...loggedInUser, likedSongs : [...loggedInUser.likedSongs, songWithDate]}
+    // Updates user in sessionStorage
+    saveLocalUser(updatedUser)
+    // Updates user in database
+    await save(updatedUser)
 }
 
 async function removeSongFromLikedSongs(loggedInUser, song){
-    // Change after adding user support
-    const updatedUser = {...loggedInUser, likedSongs : [...loggedInUserDev.likedSongs, song]}
-    await utilService.saveToStorage(STORAGE_KEY, updatedUser)
+    const updatedUser = {...loggedInUser, likedSongs : loggedInUser.likedSongs.filter(likedSong => likedSong.id !== song.id)}
+    // Updates user in sessionStorage
+    saveLocalUser(updatedUser)
+    // Updates user in database
+    await save(updatedUser)
 }
 
 function getLoggedInUser(){
@@ -81,28 +77,7 @@ function getLoggedInUser(){
     }
 }
 
-
-
-function getEmptyCredentials() {
-    return {
-        username: '',
-        password: '',
-        fullname: '',
-        imgUrl: '',
-        }
-}
-
-// TODO - Use When implementing creation of user
-async function save(userToSave) {
-    if (userToSave.id) {
-        return await storageService.put(STORAGE_KEY, userToSave)
-    } else {
-        return await storageService.post(STORAGE_KEY, userToSave)
-    }
-}
-
 function isSongLiked(loggedInUser, song){
-    if(!loggedInUser) return false
     const isLiked = loggedInUser.likedSongs.find(likedSong => likedSong.id === song.id)
     if(isLiked){
         return true
@@ -130,3 +105,12 @@ function createMinimalUser(user){
     }
 }
 
+
+function getEmptyCredentials() {
+    return {
+        username: '',
+        password: '',
+        fullname: '',
+        imgUrl: '',
+    }
+}

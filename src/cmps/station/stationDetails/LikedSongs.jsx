@@ -4,16 +4,25 @@ import { StationDetailsActions } from "../stationDetails/StationDetialsActions"
 import { PlaylistSongList } from "../stationDetails/PlaylistSongList"
 import { playStation } from "../../../store/actions/player.action"
 import { useSelector } from "react-redux"
+import { login } from "../../../store/actions/user.action"
 
 export function LikedSongs() {
     const [likedSongsStation, setLikedSongsStation] = useState(null)
     const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+    const likedSongs = loggedInUser?.likedSongs
+
+
+    useEffect(() => {
+        loadUser()
+    }, [])
 
     useEffect(() => {
         createLikedSongsStation()
-    }, [])
+    }, [loggedInUser])
 
-    const likedSongs = loggedInUser.likedSongs
+    async function loadUser() {
+        await login()
+    }
 
     function createLikedSongsStation() {
         const likedSongsObject = {

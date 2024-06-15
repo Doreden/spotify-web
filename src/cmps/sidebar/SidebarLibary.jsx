@@ -68,11 +68,12 @@ export function SidebarLibary({ currentLocation }) {
   const handleCloseContextMenu = () => {
     setContextMenu(null)
   }
-  const handleStationClick = (id) => {
+
+  function handleStationClick(id) {
     setIsActiveId(id)
   }
 
-  const handleLikedSongsClick = () => {
+  function handleLikedSongsClick() {
     setIsActiveId(null)
   }
 

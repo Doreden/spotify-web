@@ -16,7 +16,9 @@ export function StationDetailsHeader({ station, is }) {
                     {is === 'liked-songs' ?
                         <img src={'imgs/likedsongs.png'}></img>
                         :
-                        <img onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)} src={imgHover ? '/imgs/change-cover.png' : `${station.imgUrl}`}></img>
+                        // <img onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)} src={imgHover ? '/imgs/change-cover.png' : `${station.imgUrl}`}></img>
+                        <img src={station.imgUrl}></img>
+
                     }
                 </div>
                 <div className="station-info">

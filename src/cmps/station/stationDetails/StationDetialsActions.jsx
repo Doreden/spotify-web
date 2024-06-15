@@ -87,7 +87,7 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
             </div>
           }
 
-          {!(is === 'liked-songs') && (station.createdBy._id !== loggedInUser?._id) &&
+          {!(is === 'liked-songs') && loggedInUser && (station.createdBy._id !== loggedInUser?._id) &&
             <ToggleLikedStationButton isLikedStation={isLikedStation} handleLikeStation={handleLikeStation} />
           }
 
