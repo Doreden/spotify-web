@@ -8,6 +8,7 @@ import { useSelector } from "react-redux"
 import { toggleLikedSong } from "../../../store/actions/user.action"
 import { ToggleLikedSongButton } from "../../ToggleLikedSongButton"
 import { UserService } from "../../../services/user.service"
+import { SongAndStationModal } from "../../modal/SongAndStationModal"
 
 export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
 
@@ -22,23 +23,34 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
   const playingStationId = useSelector((storeState) => storeState.playerModule.playingStationId)
   const playingSongId = useSelector((storeState) => storeState.playerModule.song.id)
 
-  useEffect(() => {
-    function updateButtonPosition() {
-      const buttonRect = buttonRef.current.getBoundingClientRect()
-      setButtonPosition({
-        top: buttonRect.top + buttonRect.height,
-        left: buttonRect.left
-      })
-    }
-    updateButtonPosition() // Initial position
-    window.addEventListener('resize', updateButtonPosition)
+  // useEffect(() => {
+  //   function updateButtonPosition() {
+  //     const buttonRect = buttonRef.current.getBoundingClientRect()
+  //     setButtonPosition({
+  //       top: buttonRect.top + buttonRect.height,
+  //       left: buttonRect.left
+  //     })
+  //   }
+  //   updateButtonPosition() // Initial position
+  //   window.addEventListener('resize', updateButtonPosition)
 
+  //   return () => {
+  //     window.removeEventListener('resize', updateButtonPosition)
+  //   }
+  // }, [])
+
+  useEffect(() => {
+    const handleCloseModalMenu = () => setIsModalOpen(false)
+    document.addEventListener('click', handleCloseModalMenu)
     return () => {
-      window.removeEventListener('resize', updateButtonPosition)
+      document.removeEventListener('click', handleCloseModalMenu)
     }
   }, [])
 
+  
+
   function handleOptionsClick(event) {
+    event.stopPropagation()
     setIsModalOpen(true)
   }
 
@@ -69,7 +81,7 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
   }
 
   function onClose() {
-    setIsModalOpen((prevState) => false)
+    setIsModalOpen(false)
   }
 
   function isSongPlaying(station, song) {
@@ -108,8 +120,15 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
 
         <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>...</button>
         {isModalOpen && (
-          <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} handleToggleLikedSongs={handleToggleLikedSongs} />
+          <SongAndStationModal 
+            modalType={'song'}
+            onClose={onClose}
+          />
         )}
+
+        {/* {isModalOpen && (
+          <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} handleToggleLikedSongs={handleToggleLikedSongs} />
+        } */}
       </div>
     </div>
   )

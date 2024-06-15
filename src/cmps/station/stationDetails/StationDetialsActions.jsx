@@ -9,6 +9,7 @@ import { stationService } from "../../../services/station.service"
 import { useSelector } from "react-redux"
 import { UserService } from "../../../services/user.service"
 import { toggleLikedStation } from "../../../store/actions/user.action"
+import { SongAndStationModal } from "../../modal/SongAndStationModal"
 
 export function StationDetailsActions({ station, onPlayStation, is }) {
 
@@ -30,29 +31,39 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
     }
   }
 
-  useEffect(() => {
-    function updateButtonPosition() {
-      const buttonRect = buttonRef.current.getBoundingClientRect()
-      setButtonPosition({
-        top: buttonRect.top + buttonRect.height,
-        left: buttonRect.left
-      })
-    }
-    updateButtonPosition()
-    window.addEventListener('resize', updateButtonPosition)
+  // useEffect(() => {
+  //   function updateButtonPosition() {
+  //     const buttonRect = buttonRef.current.getBoundingClientRect()
+  //     setButtonPosition({
+  //       top: buttonRect.top + buttonRect.height,
+  //       left: buttonRect.left
+  //     })
+  //   }
+  //   updateButtonPosition()
+  //   window.addEventListener('resize', updateButtonPosition)
 
+  //   return () => {
+  //     window.removeEventListener('resize', updateButtonPosition)
+  //   }
+  // }, [])
+  useEffect(() => {
+    const handleCloseModalMenu = () => setIsModalOpen(false)
+    document.addEventListener('click', handleCloseModalMenu)
     return () => {
-      window.removeEventListener('resize', updateButtonPosition)
+      document.removeEventListener('click', handleCloseModalMenu)
     }
   }, [])
 
-  function handleOptionsClick() {
+
+  function handleOptionsClick(event) {
+    event.stopPropagation()
     setIsModalOpen(true)
   }
 
   function onClose() {
-    setIsModalOpen((prevState) => false)
+    setIsModalOpen(false)
   }
+
 
   async function handleLikeStation() {
     toggleLikedStation(loggedInUser, station)
@@ -80,12 +91,18 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
             <ToggleLikedStationButton isLikedStation={isLikedStation} handleLikeStation={handleLikeStation} />
           }
 
-          <button ref={buttonRef} onClick={() => handleOptionsClick(station)} className="more-actions">
+          <button ref={buttonRef} onClick={handleOptionsClick} className="more-actions">
             <ReactSVG src={dots} />
           </button>
-          {isModalOpen &&
+          {isModalOpen && (
+          <SongAndStationModal 
+            modalType={'station'}
+            onClose={onClose}
+          />
+        )}
+          {/* {isModalOpen &&
             <OptionsModal modalType={'station'} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} />
-          }
+          } */}
         </div>
       </div>
     </>

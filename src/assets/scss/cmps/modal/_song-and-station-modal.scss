@@ -1,0 +1,52 @@
+.wrapper-modal{
+    background-color: #282828;
+    border-radius: 4px;
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding: 4px;
+    font-size: 0.9rem;
+    display: flex;
+    max-height: calc(100vh - 24px);
+    z-index: 1000;
+    position: absolute;
+
+    .menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+    .menu-list{
+        height: 100%;
+        padding: 12px 8px 12px 12px;
+        box-sizing: border-box;
+        display: flex;
+        column-gap: 12px;
+        color: rgba(255, 255, 255, 0.9);
+        width: 100%;
+        white-space: nowrap; 
+        overflow: hidden;  
+        text-overflow: ellipsis; 
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+          }
+    }
+
+
+}
+.svg-modal {
+    height: 16px;
+    width: 16px;
+    fill: $secondary-font-color;
+}
+
+.modal{
+    width: 250px;
+    li{
+        padding: 0;
+        margin: 0;
+    }
+
+}
