@@ -2,10 +2,11 @@ import { useEffect, useState } from "react"
 import { utilService } from "../../../services/util.service"
 import { extractColors } from 'extract-colors'
 
-export function StationDetailsHeader({ station, is }) {
+export function StationDetailsHeader({ station, setBgColor, bgColor, darkerColor, setDarkerColor, is, setMainSectionColor }) {
 
     const [imgHover, setImgHover] = useState(false)
-    const [bgColor, setBgColor] = useState("#333333")
+
+    console.log(darkerColor)
 
     useEffect(() => {
         getColorFromImg()
@@ -18,15 +19,32 @@ export function StationDetailsHeader({ station, is }) {
         const colors = await extractColors(station.imgUrl, options)
 
         if (!colors) return
-        setBgColor(() => colors[0].hex)
+        const convertToRGBA = `rgba(${colors[0].red},${colors[0].blue},${colors[0].green},`
+        console.log(convertToRGBA)
+        setDarkerColor(() => darkenColor(colors[0], 20))
+        setMainSectionColor(() => darkenColor(colors[0], 50))
+        setBgColor(() => convertToRGBA)
     }
+
+    function darkenColor(color, amout) {
+        return `rgba(${colorReducer(color.red, amout)},${colorReducer(color.blue, amout)},${colorReducer(color.green, amout)},`
+    }
+
+    function colorReducer(RGB, amount) {
+        if ((RGB - amount) < 0) {
+            return 0
+        } else {
+            return RGB - amount
+        }
+    }
+
 
     function handleHover(isHover) {
         setImgHover((prevState) => isHover)
     }
     // 
     return (
-        <div className="station-details-header" style={{ backgroundColor: bgColor }}>
+        <div className="station-details-header" style={{ background: `linear-gradient(${bgColor}1) 40%, ${darkerColor}1) 100%)` }}>
             <div className="content">
                 <div className="img-box details-img-box">
                     {is === 'liked-songs' ?
