@@ -1,5 +1,6 @@
 
 export const utilService = {
+    formatDate,
     saveToStorage,
     loadFromStorage,
     generateId,
@@ -8,6 +9,20 @@ export const utilService = {
     formatVideoTitle,
     convertYoutubeDurationToSeconds,
     getRandomInt
+}
+
+function formatDate(timestamp) {
+    const date = new Date(timestamp);
+
+    const months = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+    const day = date.getDate();
+    const month = date.getMonth();
+    const year = date.getFullYear();
+
+    return `${months[month]} ${day}, ${year}`;
 }
 
 function getRandomInt(max) {

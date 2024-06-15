@@ -98,7 +98,7 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
       {station && (
         <>
           <div className={`song-album ${isHover ? '' : 'secondary'}`}>{song.album}</div>
-          <div className="date-added secondary">Nov 11</div>
+          <div className="date-added secondary">{utilService.formatDate(song.addedAt)}</div>
         </>
       )}
 

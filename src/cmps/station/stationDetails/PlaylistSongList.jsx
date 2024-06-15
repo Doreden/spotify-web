@@ -22,7 +22,7 @@ export function PlaylistSongList({ station, onPlayStation, isActiveSongId, onSon
       </div>
 
       {station.songs.map((song, index) => (
-        <li onDoubleClick={() => onPlayStation(index)} onClick={() => onSongClick(song.id)} key={song.id}>
+        <li onDoubleClick={() => onPlayStation(index)} onClick={() => onSongClick(song.id)} key={song.objectId}>
           <PlaylistSongPreview index={index} song={song} station={station} isActiveSongId={song.id === isActiveSongId} />
           {/* <OptionsModal modalType={'song'} entity={song} style={{top:10}} /> */}
         </li>

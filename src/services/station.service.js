@@ -36,8 +36,9 @@ async function save(stationToSave) {
   if (stationToSave._id) {
     return await httpService.put(`station/${stationToSave._id}`, stationToSave)
   } else {
-    const response =  await httpService.post(`station`, stationToSave)
-    return response
+    // returns a response item with insertedId
+    return await httpService.post(`station`, stationToSave)
+    
   }
 }
 
@@ -72,11 +73,6 @@ async function createNewStation(user) {
   return stationWithId
 }
 
-function convertToMiniStation(station){
-  const { _id, imgUrl, name } = station
-  return { _id, imgUrl, name, createdBy : station.createdBy}
-}
-
 function _getEmptyStation(user) {
   return {
     name: "New Playlist",
@@ -87,20 +83,21 @@ function _getEmptyStation(user) {
   }
 }
 
+function convertToMiniStation(station){
+  const { _id, imgUrl, name } = station
+  return { _id, imgUrl, name, createdBy : station.createdBy}
+}
 
 // Songs Related Functions
 async function addSongToStation(station,song){
   try {
     let newSong = {...song}
-    if(_isIn(station,song)){
-      const newId = utilService.generateId(10)
-      newSong = {...song, id:newId}
-    }
-    let stationUpdate  = {
+    newSong = {...song, objectId:utilService.generateId(10), addedAt: Date.now()}
+    let updatedStation  = {
     ...station,
     songs: [...station.songs, newSong],
   }
-  save(stationUpdate)
+  save(updatedStation)
   } catch (err) {
     console.log(`error: ${err}`)
   }
