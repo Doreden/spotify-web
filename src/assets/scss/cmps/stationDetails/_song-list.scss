@@ -4,7 +4,7 @@
 .song-is-liked-svg-container {
     width: 16px;
     height: 16px;
-    padding-right: 24px;
+    // padding-right: 24px;
     fill: rgb(30, 215, 96);
     background-color: transparent;
 }
@@ -15,7 +15,7 @@
     align-items: center;
 }
 
-@mixin flex-center-cetner {
+@mixin flex-center-center {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,7 +36,7 @@
 
     // Columns - Preview and Header in match
     & .song-index {
-        @include flex-center-cetner();
+        @include flex-center-center();
 
         &.playing {
             color: rgb(30, 215, 96);
@@ -57,7 +57,7 @@
     .add-to-liked-svg-container {
         width: 16px;
         height: 16px;
-        padding-right: 24px;
+        // padding-right: 24px;
         fill: $secondary-font-color;
         background-color: transparent;
     }
@@ -67,7 +67,7 @@
     & .svg-container {
         height: 20px;
         width: 20px;
-        @include flex-center-cetner()
+        @include flex-center-center()
     }
 
     & .song-details {
@@ -110,7 +110,8 @@
     }
 
     & .song-length {
-        @include flex-end-center();
+        @include flex-center-center();
+        gap: 20px;
     }
 
     & .playlist-columns {
@@ -141,7 +142,11 @@
         border-radius: 4px;
 
         & .song-options {
-            color: white;
+            fill: white;
+            height: 30px;
+            width: 30px;
+            padding: 0px;
+            padding-top: 2px;
         }
 
         &:hover {

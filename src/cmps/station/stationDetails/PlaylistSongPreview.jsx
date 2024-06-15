@@ -21,21 +21,6 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
 
   const playingStationId = useSelector((storeState) => storeState.playerModule.playingStationId)
   const playingSongId = useSelector((storeState) => storeState.playerModule.song.id)
-  // useEffect(() => {
-  //   function updateButtonPosition() {
-  //     const buttonRect = buttonRef.current.getBoundingClientRect()
-  //     setButtonPosition({
-  //       top: buttonRect.top + buttonRect.height,
-  //       left: buttonRect.left
-  //     })
-  //   }
-  //   updateButtonPosition() // Initial position
-  //   window.addEventListener('resize', updateButtonPosition)
-
-  //   return () => {
-  //     window.removeEventListener('resize', updateButtonPosition)
-  //   }
-  // }, [])
 
   useEffect(() => {
     const handleCloseModalMenu = () => setIsModalOpen(false)
@@ -44,8 +29,6 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
       document.removeEventListener('click', handleCloseModalMenu)
     }
   }, [])
-
-  
 
   function handleOptionsClick(event) {
     event.stopPropagation()
@@ -73,8 +56,6 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
     if (!station) return
     return station._id === playingStationId && song.id === playingSongId
   }
-
-
 
   return (
     <div className={`song-preview ${station ? 'playlist-columns' : ''}  ${isActiveSongId ? 'song-preview-active' : ''}`} onMouseEnter={handleHover} onMouseLeave={handleHoverEnded}>
@@ -109,18 +90,18 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
           : ''}
         {utilService.formatSongLength(song.lengthInSeconds)}
 
-        <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>...</button>
+        {isHover &&
+          <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>
+            <ReactSVG src={dots} />
+          </button>
+        }
         {isModalOpen && (
-          <SongAndStationModal 
+          <SongAndStationModal
             modalType={'song'}
             onClose={onClose}
             station={loggedInUser.likedStations}
           />
         )}
-
-        {/* {isModalOpen && (
-          <OptionsModal modalType={'song'} song={song} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} handleToggleLikedSongs={handleToggleLikedSongs} />
-        } */}
       </div>
     </div>
   )

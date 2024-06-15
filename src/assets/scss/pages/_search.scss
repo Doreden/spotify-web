@@ -120,6 +120,9 @@
             }
 
             & .song-length {
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 flex-shrink: 0;
                 min-width: 100px;
             }
@@ -135,7 +138,7 @@
             .add-to-liked-svg-container {
                 width: 16px;
                 height: 16px;
-                padding-right: 24px;
+                // padding-right: 24px;
                 fill: $secondary-font-color;
                 background-color: transparent;
             }
@@ -159,11 +162,19 @@
                 }
 
                 & .song-length {
-                    @include flex-center();
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 20px;
+                    min-width: 150px;
                 }
 
                 & .song-options {
-                    color: white;
+                    fill: white;
+                    height: 30px;
+                    width: 30px;
+                    padding: 0px;
+                    padding-top: 2px;
                 }
 
                 &:hover {
