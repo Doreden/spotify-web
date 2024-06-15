@@ -6,6 +6,8 @@ import AddStation from "../../assets/imgs/addStation.svg"
 
 export function ContextMenu({ x, y, onEdit, onRemove, onAdd }) {
 
+
+
     const contextMenuStyle = {
         position: 'absolute',
         top: `${y}px`,

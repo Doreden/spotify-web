@@ -82,8 +82,8 @@ function _getEmptyStation(user) {
 }
 
 function convertToMiniStation(station){
-  const { _id, imgUrl, name } = station
-  return { _id, imgUrl, name, createdBy : station.createdBy}
+  const { _id, imgUrl, name, createdBy } = station
+  return { _id, imgUrl, name, createdBy }
 }
 
 // Songs Related Functions
