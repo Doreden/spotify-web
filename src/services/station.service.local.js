@@ -128,13 +128,13 @@ function _getEmptyStation(user) {
 
 // Load all stations to localStorage / create new from data file
 // TODO - Move to query from db
-(() => {
-  let stations
-  stations = utilService.loadFromStorage(STORAGE_KEY)
-  if(!stations){
-    stations = stationsAsJson
-  }
-  utilService.saveToStorage(STORAGE_KEY, stations)
-})()
+// (() => {
+//   let stations
+//   stations = utilService.loadFromStorage(STORAGE_KEY)
+//   if(!stations){
+//     stations = stationsAsJson
+//   }
+//   utilService.saveToStorage(STORAGE_KEY, stations)
+// })()
 
 

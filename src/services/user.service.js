@@ -14,7 +14,6 @@ export const UserService = {
     logout,
     createMinimalUser,
     getLoggedInUser,
-    removeStationFromLikedByUser,
     isSongLiked,
     isStationLiked,
     addSongToLikedSongs,
@@ -52,25 +51,21 @@ function saveLocalUser(user){
     return user
 }
 
-
-async function removeStationFromLikedByUser(userId, stationId){
-    const loggedInUser = getLoggedInUser()
-    const updatedUser = {...loggedInUser, likedStations : loggedInUser.likedStations.filter((station) => station.id !== stationId)}
-    await utilService.saveToStorage(STORAGE_KEY, updatedUser)
-}
-
 async function addSongToLikedSongs(loggedInUser, song){
-    // Change after adding user support
-    const loggedInUserDev = getLoggedInUser()
-    const updatedUser = {...loggedInUserDev, likedSongs : loggedInUser.likedSongs.filter(likedSong => likedSong.id !== song.id)}
-    await utilService.saveToStorage(STORAGE_KEY, updatedUser)
+
+    const updatedUser = {...loggedInUser, likedSongs : [...loggedInUser.likedSongs, song]}
+    console.log(updatedUser)
+    saveLocalUser(updatedUser)
+    await save(updatedUser)
 }
 
 async function removeSongFromLikedSongs(loggedInUser, song){
-    // Change after adding user support
-    const updatedUser = {...loggedInUser, likedSongs : [...loggedInUserDev.likedSongs, song]}
-    await utilService.saveToStorage(STORAGE_KEY, updatedUser)
-}
+
+    const updatedUser = {...loggedInUser, likedSongs : loggedInUser.likedSongs.filter(likedSong => likedSong.id !== song.id)}
+    console.log(updatedUser)
+    saveLocalUser(updatedUser)
+    await save(updatedUser)}
+
 
 function getLoggedInUser(){
     try{
@@ -94,15 +89,15 @@ function getEmptyCredentials() {
 
 // TODO - Use When implementing creation of user
 async function save(userToSave) {
-    if (userToSave.id) {
-        return await storageService.put(STORAGE_KEY, userToSave)
+    if (userToSave._id) {
+        // return await storageService.put(STORAGE_KEY, userToSave)
+        return await httpService.put(`user/${userToSave._id}`, userToSave)
     } else {
-        return await storageService.post(STORAGE_KEY, userToSave)
+        return await httpService.port('user', userToSave)
     }
 }
 
 function isSongLiked(loggedInUser, song){
-    if(!loggedInUser) return false
     const isLiked = loggedInUser.likedSongs.find(likedSong => likedSong.id === song.id)
     if(isLiked){
         return true
