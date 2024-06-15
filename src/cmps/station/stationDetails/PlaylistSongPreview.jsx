@@ -5,7 +5,7 @@ import { OptionsModal } from "../../OptionsModal"
 import Play from '../../../assets/imgs/play.svg'
 import dots from '../../../assets/imgs/dots.svg'
 import { useSelector } from "react-redux"
-import { toggleLikedSong } from "../../../store/actions/user.action"
+import { toggleLikedSong,loadUserStations } from "../../../store/actions/user.action"
 import { ToggleLikedSongButton } from "../../ToggleLikedSongButton"
 import { UserService } from "../../../services/user.service"
 import { SongAndStationModal } from "../../modal/SongAndStationModal"
@@ -14,7 +14,7 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const userLibary = useSelector((storeState) => storeState.userModule.stations)
-
+console.log(userLibary)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLikedSong, setIsLikedSong] = useState(UserService.isSongLiked(loggedInUser, song))
   const [isHover, setIsHover] = useState(false)
@@ -30,6 +30,15 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId }) {
       document.removeEventListener('click', handleCloseModalMenu)
     }
   }, [])
+
+  useEffect(() => {
+    loadUserLibary()
+  }, [loggedInUser])
+
+  async function loadUserLibary() {
+    if (!loggedInUser) return
+    loadUserStations(loggedInUser)
+  }
 
   function handleOptionsClick(event) {
     event.stopPropagation()

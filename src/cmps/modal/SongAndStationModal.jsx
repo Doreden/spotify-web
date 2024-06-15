@@ -1,13 +1,14 @@
 import { ReactSVG } from "react-svg"
-
+import { deleteStation } from "../../store/actions/user.action.js"
 import Edit from "../../assets/imgs/edit.svg"
 import Delete from "../../assets/imgs/delete.svg"
 import Add from "../../assets/imgs/addToPlaylist.svg"
 import Arrow from "../../assets/imgs/rightFullArrow.svg"
 import AddToLiked from '../../assets/imgs/addToLikes.svg'
 import Trash from '../../assets/imgs/trash.svg'
+import { useSelector } from "react-redux"
 
-export function SongAndStationModal({ modalType, station }) {
+export function SongAndStationModal({ modalType, station, onEdit, onRemove,onAdd }) {
 
 
   return (
@@ -19,28 +20,28 @@ export function SongAndStationModal({ modalType, station }) {
   )
 
 
-  function DymanicModal({ modalType, station }) {
+  function DymanicModal({ modalType, station, onEdit, onRemove,onAdd }) {
     switch (modalType) {
       case 'song':
         return <SongModal station={station} />
       case 'station':
-        return <StationModal />
+        return <StationModal onEdit={onEdit} onRemove={onRemove} />
       default:
         return null
     }
   }
 }
 
-function StationModal() {
+function StationModal({onEdit, onRemove}) {
   return (
     <div className="modal">
-      <li className="menu-list edit-item">
+      <li onClick={onEdit} className="menu-list edit-item">
         <div className="svg-modal">
           <ReactSVG src={Edit} />
         </div>
         <div className="text-menu">Edit details</div>
       </li>
-      <li className="menu-list delete-item">
+      <li onClick={onRemove} className="menu-list delete-item">
         <div className="svg-modal">
           <ReactSVG src={Delete} />
         </div>
@@ -51,6 +52,13 @@ function StationModal() {
 }
 
 function SongModal({ station = [] }) {
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  console.log(station)
+  function handleDeleteStation(stationId) {
+    deleteStation(loggedInUser._id, stationId)
+    navigate("/")
+}
+
   return (
     <div className="modal">
       <li className="menu-list add-playlist-item">
@@ -64,7 +72,7 @@ function SongModal({ station = [] }) {
           ))}
         </ul>
       </li>
-      <li className="menu-list delete-item">
+      <li onClick={handleDeleteStation()} className="menu-list delete-item">
         <div className="svg-modal">
           <ReactSVG src={Trash} />
         </div>

@@ -10,13 +10,23 @@ import { useSelector } from "react-redux"
 import { UserService } from "../../../services/user.service"
 import { toggleLikedStation } from "../../../store/actions/user.action"
 import { SongAndStationModal } from "../../modal/SongAndStationModal"
+import { EditStation } from "../../EditStation"
+import { DeleteStation } from "../../DeleteStation"
+import { createNewStationByUser, updateStation,deleteStation, loadUserStations } from "../../../store/actions/user.action.js"
+
 
 export function StationDetailsActions({ station, onPlayStation, is }) {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  const userStations = useSelector((storeState) => storeState.userModule.stations)
+
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 })
+  // const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 })
   const [isLikedStation, setIsLikedStation] = useState(false)
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+  const [currentStationToEdit, setCurrentStationToEdit] = useState(null)
+  const [currentStationToDelete, setCurrentStationToDelete] = useState(null)
   const buttonRef = useRef(null)
 
   useEffect(() => {
@@ -29,6 +39,35 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
       setIsLikedStation((prevState) => isLiked)
     }
   }
+  const handleEditStation = (stationId) => {
+    const station = userStations.find(st => st._id === stationId)
+    setCurrentStationToEdit(station)
+    setIsEditModalOpen(true)
+  }
+  const handleDeleteStation = (stationId) => {
+    const station = userStations.find(st => st._id === stationId)
+    setCurrentStationToDelete(station)
+    setIsDeleteModalOpen(true)
+  }
+  async function handleSaveStation(updatedStation) {
+    try {
+      // Updates station in DB
+      // Updates stations in Store
+      // TODO - update user
+      updateStation(userStations, updatedStation)
+
+    } catch (error) {
+      console.error('Error saving station:', error)
+    }
+
+    function handleRemoveStation(stationId) {
+      deleteStation(loggedInUser.id, stationId)
+      // navigate("/")
+    }
+
+    async function handleAddStation() {
+      await createNewStationByUser(loggedInUser)
+    }
 
   // useEffect(() => {
   //   function updateButtonPosition() {
@@ -100,11 +139,9 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
             station={loggedInUser.likedStations}
           />
         )}
-          {/* {isModalOpen &&
-            <OptionsModal modalType={'station'} station={station} isOpen={isModalOpen} onClose={onClose} buttonPosition={buttonPosition} />
-          } */}
+          
         </div>
       </div>
     </>
-  )
+  )}
 }
