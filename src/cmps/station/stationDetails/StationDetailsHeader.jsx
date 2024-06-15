@@ -1,16 +1,32 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { utilService } from "../../../services/util.service"
+import { extractColors } from 'extract-colors'
 
 export function StationDetailsHeader({ station, is }) {
 
     const [imgHover, setImgHover] = useState(false)
+    const [bgColor, setBgColor] = useState("#333333")
+
+    useEffect(() => {
+        getColorFromImg()
+    }, [])
+
+    async function getColorFromImg() {
+        const options = {
+            crossOrigin: 'Anonymous'
+        }
+        const colors = await extractColors(station.imgUrl, options)
+
+        if (!colors) return
+        setBgColor(() => colors[0].hex)
+    }
 
     function handleHover(isHover) {
         setImgHover((prevState) => isHover)
     }
-
+    // 
     return (
-        <div className="station-details-header">
+        <div className="station-details-header" style={{ backgroundColor: bgColor }}>
             <div className="content">
                 <div className="img-box details-img-box">
                     {is === 'liked-songs' ?

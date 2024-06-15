@@ -36,14 +36,12 @@ export function StationDetails() {
 
   if (!station) return
   return (
-    <>
-      <section className="station-details page">
-        <StationDetailsHeader station={station} />
-        <StationDetailsActions station={station} onPlayStation={onPlayStation} />
-        <div className="song-list-container">
-          <PlaylistSongList station={station} handleSongClick={handleSongClick} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} />
-        </div>
-      </section>
-    </>
+    <section className="station-details page">
+      <StationDetailsHeader station={station} />
+      <StationDetailsActions station={station} onPlayStation={onPlayStation} />
+      <div className="song-list-container">
+        <PlaylistSongList station={station} handleSongClick={handleSongClick} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} />
+      </div>
+    </section>
   )
 }

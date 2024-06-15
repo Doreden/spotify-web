@@ -9,11 +9,9 @@
   line-height: 1.5;
   font-weight: 400;
   color: white;
-  background-color: #242424;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
 }
 
 a {
@@ -99,19 +97,3 @@ svg {
 a:hover {
   color: white;
 }
-
-// ::-webkit-scrollbar {
-//   width: 10px;
-// }
-
-// ::-webkit-scrollbar-track {
-//   background: rgba(0, 0, 0, 0);
-// }
-
-// ::-webkit-scrollbar-thumb {
-//   background: $secondary-font-color;
-// }
-
-// ::-webkit-scrollbar-button {
-//   background-color: #00000000;
-// }
