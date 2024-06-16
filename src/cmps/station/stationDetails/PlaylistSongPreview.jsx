@@ -10,7 +10,7 @@ import { ToggleLikedSongButton } from "../../ToggleLikedSongButton"
 import { UserService } from "../../../services/user.service"
 import { SongAndStationModal } from "../../modal/SongAndStationModal"
 
-export function PlaylistSongPreview({ index, song, station, setStation, isActiveSongId, createdByUser }) {
+export function PlaylistSongPreview({ index, song, station, setStation, isActiveSongId }) {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -21,9 +21,13 @@ export function PlaylistSongPreview({ index, song, station, setStation, isActive
   const playingStationId = useSelector((storeState) => storeState.playerModule.playingStationId)
   const playingSongId = useSelector((storeState) => storeState.playerModule.song.id)
 
+  const userLibary = useSelector((storeState) => storeState.userModule.stations)
+  const createdByUser = userLibary.filter((station) => station.createdBy._id === loggedInUser._id)
+
   useEffect(() => {
     const handleCloseModalMenu = () => setIsModalOpen(false)
     document.addEventListener('click', handleCloseModalMenu)
+
     return () => {
       document.removeEventListener('click', handleCloseModalMenu)
     }
@@ -35,6 +39,12 @@ export function PlaylistSongPreview({ index, song, station, setStation, isActive
     setIsModalOpen(true)
   }
 
+  function onClose() {
+    setIsModalOpen(false)
+  }
+
+
+  // For hovering effect only
   function handleHover() {
     setIsHover(() => true)
   }
@@ -45,10 +55,6 @@ export function PlaylistSongPreview({ index, song, station, setStation, isActive
   function handleToggleLikedSongs() {
     toggleLikedSong(loggedInUser, song)
     setIsLikedSong((prevState) => !prevState)
-  }
-
-  function onClose() {
-    setIsModalOpen(false)
   }
 
   function isSongPlaying(station, song) {

@@ -5,57 +5,96 @@
     color: #fff;
     padding: 4px;
     font-size: 0.9rem;
-    display: flex;
-    max-height: calc(100vh - 24px);
     z-index: 1000;
+
+    // max-height: calc(100vh - 24px);
+
+    display: flex;
     position: absolute;
     width: 250px;
-    overflow: auto;
+    // overflow: auto;
 
     .menu {
         list-style: none;
         padding: 0;
         margin: 0;
-
     }
 
-    .menu-list {
-        height: 100%;
-        padding: 12px 8px 12px 12px;
+    .menu-item {
+        height: 45px;
+        padding: 12px 12px 12px 12px;
         box-sizing: border-box;
         display: flex;
+        align-items: center;
         column-gap: 12px;
-        color: rgba(255, 255, 255, 0.9);
+        // color: rgba(255, 255, 255, 0.9);
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        border-bottom: 1px solid rgba(146, 146, 146, 0.1);
+        background-color: #282828;
 
-        .share-menu {
+        &:hover {
+            background-color: #363636;
+        }
+
+    }
+
+    .share-menu {
+        position: absolute;
+
+        display: flex;
+        flex-direction: column;
+        column-gap: 12px;
+        box-sizing: border-box;
+        background-color: #282828;
+        width: 200px;
+        min-height: 0px;
+        max-height: 250px;
+        overflow: auto;
+        // opacity: 0;
+        // pointer-events: none;
+        box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        right: 258px;
+        bottom: 90px;
+
+
+        & .add-to-playlist-preview {
+            height: 50px;
             display: flex;
-            flex-direction: column;
-            column-gap: 12px;
-            box-sizing: border-box;
-            padding: 12px;
-            position: absolute;
-            background: red;
-            width: 200px;
-            opacity: 0;
-            pointer-events: none;
-            box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
+            align-items: center;
+            border-bottom: 1px solid rgba(146, 146, 146, 0.1);
+            font-weight: 600;
+
 
             &:hover {
-                opacity: 1;
-                pointer-events: auto;
-                right: 200px;
+                background-color: #363636;
+                cursor: pointer;
+            }
+
+            & .img-container {
+                height: 47px;
+                width: 47px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 6px;
+
             }
         }
 
-        &:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-        }
+
+        // &:hover {
+        //     opacity: 1;
+        //     pointer-events: auto;
+        // }
+    }
+
+    &:hover {
+        // background-color: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
     }
 
 
