@@ -6,7 +6,6 @@ import { PlaylistSongList } from "../cmps/station/stationDetails/PlaylistSongLis
 import { stationService } from "../services/station.service"
 import { playStation } from "../store/actions/player.action"
 import { useSelector } from "react-redux"
-import { store } from "../store/store"
 
 export function StationDetails() {
 
@@ -14,9 +13,10 @@ export function StationDetails() {
 
   const [station, setStation] = useState(null)
   const [isActiveSongId, setIsActiveSongId] = useState(null)
-  const [bgColor, setBgColor] = useState("#333333")
-  const [mainSectionColor, setMainSectionColor] = useState("#333333")
-  const [darkerColor, setDarkerColor] = useState()
+  // const [bgColor, setBgColor] = useState("#333333")
+  // const [mainSectionColor, setMainSectionColor] = useState("#333333")
+  // const [darkerColor, setDarkerColor] = useState()
+  const [colors, setColors] = useState({ bgColor: "rgba(18,18,18,", darkerColor: "rgba(18,18,18,", mainSectionColor: "rgba(18,18,18," })
 
   const params = useParams()
 
@@ -45,8 +45,8 @@ export function StationDetails() {
   if (!station) return
   return (
     <section className="station-details page">
-      <StationDetailsHeader station={station} bgColor={bgColor} setBgColor={setBgColor} darkerColor={darkerColor} setDarkerColor={setDarkerColor} setMainSectionColor={setMainSectionColor} />
-      <div className='main-station-details' style={{ background: `linear-gradient(${mainSectionColor}1) 0%, rgba(18,18,18,1) 100%)` }}>
+      <StationDetailsHeader station={station} colors={colors} setColors={setColors} />
+      <div className='main-station-details' style={{ background: `linear-gradient(${colors.mainSectionColor}1) 0%, rgba(18,18,18,1) 100%)` }}>
         <StationDetailsActions station={station} onPlayStation={onPlayStation} />
         <div className="song-list-container">
           <PlaylistSongList station={station} setStation={setStation} handleSongClick={handleSongClick} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} />

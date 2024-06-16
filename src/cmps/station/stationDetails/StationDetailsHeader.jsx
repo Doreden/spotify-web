@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { utilService } from "../../../services/util.service"
 import { extractColors } from 'extract-colors'
 
-export function StationDetailsHeader({ station, bgColor, setBgColor, darkerColor, setDarkerColor, setMainSectionColor, is }) {
+export function StationDetailsHeader({ station, colors, setColors, bgColor, setBgColor, darkerColor, setDarkerColor, setMainSectionColor, is }) {
 
     useEffect(() => {
         getColorFromImg()
@@ -12,18 +12,15 @@ export function StationDetailsHeader({ station, bgColor, setBgColor, darkerColor
         const options = {
             crossOrigin: 'Anonymous'
         }
-        const colors = await extractColors(station.imgUrl, options)
-
-        if (!colors) return
-        const convertToRGBA = `rgba(${colors[0].red},${colors[0].blue},${colors[0].green},`
-        console.log(convertToRGBA)
-        setDarkerColor((prevState) => darkenColor(colors[0], 20))
-        setMainSectionColor((prevState) => darkenColor(colors[0], 50))
-        setBgColor(() => convertToRGBA)
+        const extractedColors = await extractColors(station.imgUrl, options)
+        console.log(extractedColors)
+        const chosenColor = extractedColors[0]
+        if (!extractedColors) return
+        setColors(() => ({ bgColor: darkenColor(chosenColor, 0), darkerColor: darkenColor(chosenColor, 20), mainSectionColor: darkenColor(chosenColor, 50) }))
     }
 
     function darkenColor(color, amout) {
-        return `rgba(${colorReducer(color.red, amout)},${colorReducer(color.blue, amout)},${colorReducer(color.green, amout)},`
+        return `rgba(${colorReducer(color.red, amout)},${colorReducer(color.green, amout)},${colorReducer(color.blue, amout)},`
     }
 
     function colorReducer(RGB, amount) {
@@ -34,9 +31,8 @@ export function StationDetailsHeader({ station, bgColor, setBgColor, darkerColor
         }
     }
 
-    // 
     return (
-        <div className="station-details-header" style={{ background: `linear-gradient(${bgColor}1) 40%, ${darkerColor}1) 100%)` }}>
+        <div className="station-details-header" style={{ background: `linear-gradient(${colors.bgColor}1) 40%, ${colors.darkerColor}1) 100%)` }}>
             <div className="content">
                 <div className="img-box details-img-box">
                     {is === 'liked-songs' ?
