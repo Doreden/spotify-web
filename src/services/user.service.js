@@ -16,7 +16,6 @@ export const UserService = {
 }
 
 async function login(credentials){
-
     const user = await httpService.post('auth/login', credentials)
     if(user){
         saveLocalUser(user)
@@ -35,7 +34,6 @@ async function signup(credentials){
 async function logout(){
     await httpService.post('auth/logout')
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-
 }
 
 async function save(userToSave) {

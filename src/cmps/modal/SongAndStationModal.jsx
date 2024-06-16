@@ -8,10 +8,21 @@ import AddToLiked from '../../assets/imgs/addToLikes.svg'
 import Trash from '../../assets/imgs/trash.svg'
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router"
+import { stationService } from "../../services/station.service.js"
 
-export function SongAndStationModal({ modalType, station, onEdit, onRemove, onAdd }) {
+export function SongAndStationModal({ modalType, station, setStation, song, createdByUser, onEdit, onRemove, onAdd }) {
+
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
   const navigate = useNavigate()
+
+  async function removeSongFromPlaylist(stationId, songId) {
+    console.log('hii')
+    const updatedStation = await stationService.removeSongFromStation(stationId, songId)
+
+    setStation((prevStation) => updatedStation)
+    // navigate('/')
+  }
 
   function DymanicModal({ modalType, station, onEdit, onRemove, onAdd }) {
     switch (modalType) {
@@ -23,7 +34,6 @@ export function SongAndStationModal({ modalType, station, onEdit, onRemove, onAd
         return null
     }
   }
-
 
   function StationModal({ onEdit, onRemove }) {
     return (
@@ -45,13 +55,6 @@ export function SongAndStationModal({ modalType, station, onEdit, onRemove, onAd
   }
 
   function SongModal({ station = [] }) {
-    const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-    console.log(station)
-    function handleDeleteStation(stationId) {
-      deleteStation(loggedInUser._id, stationId)
-      navigate('/')
-    }
-
     return (
       <div className="modal">
         <li className="menu-list add-playlist-item">
@@ -60,12 +63,12 @@ export function SongAndStationModal({ modalType, station, onEdit, onRemove, onAd
           </div>
           <div className="text-menu">Add to playlist</div>
           <ul className="share-menu">
-            {station?.map((station) => (
+            {createdByUser?.map((station) => (
               <li className="item" key={station._id} >{station.name}</li>
             ))}
           </ul>
         </li>
-        <li onClick={handleDeleteStation()} className="menu-list delete-item">
+        <li onClick={() => removeSongFromPlaylist(station._id, song.id)} className="menu-list delete-item">
           <div className="svg-modal">
             <ReactSVG src={Trash} />
           </div>
@@ -88,24 +91,5 @@ export function SongAndStationModal({ modalType, station, onEdit, onRemove, onAd
       </ul>
     </div>
   )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 

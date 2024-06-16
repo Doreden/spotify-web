@@ -6,7 +6,7 @@ import { loadUserStations } from "../../../store/actions/user.action"
 import { useSelector } from "react-redux"
 
 
-export function PlaylistSongList({ station, onPlayStation, isActiveSongId, handleSongClick }) {
+export function PlaylistSongList({ station, setStation, onPlayStation, isActiveSongId, handleSongClick }) {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const userLibary = useSelector((storeState) => storeState.userModule.stations)
@@ -30,11 +30,6 @@ export function PlaylistSongList({ station, onPlayStation, isActiveSongId, handl
     )
   }
 
-
-
-
-
-
   return (
     <div className="song-list">
       <div className="list-header playlist-columns secondary">
@@ -47,7 +42,7 @@ export function PlaylistSongList({ station, onPlayStation, isActiveSongId, handl
 
       {station.songs.map((song, index) => (
         <li onDoubleClick={() => onPlayStation(index)} onClick={() => handleSongClick(song.id)} key={song.objectId}>
-          <PlaylistSongPreview createdByUser={createdByUser} index={index} song={song} station={station} isActiveSongId={song.id === isActiveSongId} />
+          <PlaylistSongPreview createdByUser={createdByUser} index={index} song={song} station={station} setStation={setStation} isActiveSongId={song.id === isActiveSongId} />
           {/* <OptionsModal modalType={'song'} entity={song} style={{top:10}} /> */}
         </li>
       ))}

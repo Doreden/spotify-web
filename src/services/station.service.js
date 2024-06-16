@@ -104,11 +104,12 @@ async function addSongToStation(station,song){
 async function removeSongFromStation(stationId, songId) {
   try {
     let station = await getById(stationId)
-    station = {
+    const updatedStation = {
       ...station,
       songs: station.songs.filter((song) => song.id !== songId),
     }
-    save(station)
+    save(updatedStation)
+    return updatedStation
   } catch (err) {
     console.log(err)
   }

@@ -10,10 +10,9 @@ import { ToggleLikedSongButton } from "../../ToggleLikedSongButton"
 import { UserService } from "../../../services/user.service"
 import { SongAndStationModal } from "../../modal/SongAndStationModal"
 
-export function PlaylistSongPreview({ index, song, station, isActiveSongId, createdByUser }) {
+export function PlaylistSongPreview({ index, song, station, setStation, isActiveSongId, createdByUser }) {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-  console.log(loggedInUser)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLikedSong, setIsLikedSong] = useState(UserService.isSongLiked(loggedInUser, song))
   const [isHover, setIsHover] = useState(false)
@@ -100,7 +99,10 @@ export function PlaylistSongPreview({ index, song, station, isActiveSongId, crea
           <SongAndStationModal
             modalType={'song'}
             onClose={onClose}
-            station={createdByUser.filter((station) => station.createdBy._id === loggedInUser._id)}
+            createdByUser={createdByUser}
+            song={song}
+            station={station}
+            setStation={setStation}
           />
         )}
       </div>
