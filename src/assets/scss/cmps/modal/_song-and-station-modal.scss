@@ -1,4 +1,4 @@
-.wrapper-modal{
+.wrapper-modal {
     background-color: #282828;
     border-radius: 4px;
     box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);
@@ -17,9 +17,9 @@
         padding: 0;
         margin: 0;
 
-      }
+    }
 
-    .menu-list{
+    .menu-list {
         height: 100%;
         padding: 12px 8px 12px 12px;
         box-sizing: border-box;
@@ -27,11 +27,11 @@
         column-gap: 12px;
         color: rgba(255, 255, 255, 0.9);
         width: 100%;
-        white-space: nowrap; 
-        overflow: hidden;  
-        text-overflow: ellipsis; 
-        
-        .share-menu{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        .share-menu {
             display: flex;
             flex-direction: column;
             column-gap: 12px;
@@ -45,29 +45,33 @@
             box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);
             border-radius: 4px;
 
-            &:hover{
+            &:hover {
                 opacity: 1;
                 pointer-events: auto;
+                right: 200px;
             }
         }
+
         &:hover {
             background-color: rgba(255, 255, 255, 0.1);
             cursor: pointer;
-          }
+        }
     }
 
 
 }
+
 .svg-modal {
     height: 16px;
     width: 16px;
     fill: $secondary-font-color;
 }
 
-.modal{
+.modal {
     width: 250px;
+
     // position: relative;
-    li{
+    li {
         padding: 0;
         margin: 0;
     }

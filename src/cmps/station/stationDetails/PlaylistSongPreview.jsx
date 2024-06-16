@@ -103,6 +103,8 @@ export function PlaylistSongPreview({ index, song, station, setStation, isActive
             song={song}
             station={station}
             setStation={setStation}
+            isLikedSong={isLikedSong}
+            setIsLikedSong={setIsLikedSong}
           />
         )}
       </div>
