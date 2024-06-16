@@ -9,11 +9,15 @@ import Trash from '../../assets/imgs/trash.svg'
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { stationService } from "../../services/station.service.js"
+import { useRef, useState } from "react"
 
 
-export function SongAndStationModal({ modalType, station, setStation, song, createdByUser, onEdit, onRemove, onAdd, isLikedSong, setIsLikedSong, isLikedStation, setIsLikedStation, handleLikeStation }) {
+export function SongAndStationModal({ modalType, station, setStation, song, createdByUser, onRemove, isLikedSong, setIsLikedSong, isLikedStation, setIsLikedStation }) {
 
 	const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+	const [isSecondModalOpen, setIsSecondModalOpen] = useState(false)
+	const closeModalTimeoutRef = useRef(null)
+
 	const navigate = useNavigate()
 
 	function handleToggleLikedSong() {
@@ -35,15 +39,71 @@ export function SongAndStationModal({ modalType, station, setStation, song, crea
 		setStation((prevStation) => updatedStation)
 	}
 
-	function DymanicModal() {
-		switch (modalType) {
-			case 'song':
-				return <SongModal />
-			case 'station':
-				return <StationModal />
-			default:
-				return null
+	console.log(createdByUser)
+
+	function handleMouseEnter() {
+		if (closeModalTimeoutRef.current) {
+			clearTimeout(closeModalTimeoutRef.current)
 		}
+		setIsSecondModalOpen(true)
+	}
+
+	function handleMouseLeave() {
+		closeModalTimeoutRef.current = setTimeout(() => {
+			setIsSecondModalOpen(false)
+		}, 300)
+	}
+
+	async function handleAddSongToChosenStation(chosenStation) {
+		console.log("try!!")
+		const updatedStation = stationService.addSongToStation(chosenStation, song)
+		// Maybe cause re-render?
+	}
+
+	function SongModal() {
+		return (
+			<div className="modal">
+
+				<li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="menu-item add-playlist-item">
+					<div className="svg-modal">
+						<ReactSVG src={Add} />
+					</div>
+					<div className="text-menu">Add to playlist</div>
+
+
+
+					{isSecondModalOpen &&
+						<div className="second-modal-container">
+
+							<ul className="share-menu">
+								{createdByUser.map((userCreatedStation) =>
+									<li onClick={() => handleAddSongToChosenStation(userCreatedStation)} className="add-to-playlist-preview" key={userCreatedStation._id} >
+										<div className="img-container">
+											<img className="add-to-playlist-img" src={userCreatedStation.imgUrl} ></img>
+										</div>
+										{userCreatedStation.name}
+									</li>
+								)}
+							</ul>
+						</div>
+
+					}
+				</li>
+
+				<li className="menu-item delete-item" onClick={() => removeSongFromPlaylist(station._id, song.id)}>
+					<div className="svg-modal">
+						<ReactSVG src={Trash} />
+					</div>
+					<div className="text-menu">Remove from this playlist</div>
+				</li>
+				<li className="menu-item liked-item">
+					<div className="svg-modal">
+						<ReactSVG src={AddToLiked} />
+					</div>
+					<div onClick={handleToggleLikedSong} className="text-menu">{isLikedSong ? 'Remove From Liked Songs' : 'Save to your Liked Songs'}</div>
+				</li>
+			</div>
+		)
 	}
 
 
@@ -65,34 +125,17 @@ export function SongAndStationModal({ modalType, station, setStation, song, crea
 		)
 	}
 
-	function SongModal({ createdByUser }) {
-		return (
-			<div className="modal">
-				<li className="menu-list add-playlist-item">
-					<div className="svg-modal">
-						<ReactSVG src={Add} />
-					</div>
-					<div className="text-menu">Add to playlist</div>
-					<ul className="share-menu">
-						{createdByUser?.map((userCreatedStation) => (
-							<li className="item" key={userCreatedStation._id} >{userCreatedStation.name}</li>
-						))}
-					</ul>
-				</li>
-				<li onClick={() => removeSongFromPlaylist(station._id, song.id)} className="menu-list delete-item">
-					<div className="svg-modal">
-						<ReactSVG src={Trash} />
-					</div>
-					<div className="text-menu">Remove from this playlist</div>
-				</li>
-				<li className="menu-list liked-item">
-					<div className="svg-modal">
-						<ReactSVG src={AddToLiked} />
-					</div>
-					<div onClick={handleToggleLikedSong} className="text-menu">{isLikedSong ? 'Remove From Liked Songs' : 'Save to your Liked Songs'}</div>
-				</li>
-			</div>
-		)
+
+
+	function DymanicModal() {
+		switch (modalType) {
+			case 'song':
+				return <SongModal />
+			case 'station':
+				return <StationModal />
+			default:
+				return null
+		}
 	}
 
 	return (

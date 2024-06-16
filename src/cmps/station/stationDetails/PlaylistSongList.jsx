@@ -9,9 +9,6 @@ import { useSelector } from "react-redux"
 export function PlaylistSongList({ station, setStation, onPlayStation, isActiveSongId, handleSongClick }) {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-  const userLibary = useSelector((storeState) => storeState.userModule.stations)
-  const createdByUser = userLibary.filter((station) => station.createdBy._id === loggedInUser._id)
-  console.log(userLibary)
 
   useEffect(() => {
     loadUserLibary()
@@ -42,7 +39,7 @@ export function PlaylistSongList({ station, setStation, onPlayStation, isActiveS
 
       {station.songs.map((song, index) => (
         <li onDoubleClick={() => onPlayStation(index)} onClick={() => handleSongClick(song.id)} key={song.objectId}>
-          <PlaylistSongPreview createdByUser={createdByUser} index={index} song={song} station={station} setStation={setStation} isActiveSongId={song.id === isActiveSongId} />
+          <PlaylistSongPreview index={index} song={song} station={station} setStation={setStation} isActiveSongId={song.id === isActiveSongId} />
           {/* <OptionsModal modalType={'song'} entity={song} style={{top:10}} /> */}
         </li>
       ))}

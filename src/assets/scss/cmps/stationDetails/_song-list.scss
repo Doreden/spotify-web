@@ -157,7 +157,7 @@
         }
 
         &.song-preview-active {
-            background-color: #5e5e5e;
+            background: linear-gradient(rgba(65, 65, 65, 0.1) 40%, rgba(65, 65, 65, 0.2) 100%);
         }
 
         & img {

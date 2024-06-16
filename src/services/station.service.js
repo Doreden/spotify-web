@@ -95,7 +95,8 @@ async function addSongToStation(station,song){
     ...station,
     songs: [...station.songs, newSong],
   }
-  save(updatedStation)
+    save(updatedStation)
+    return updatedStation
   } catch (err) {
     console.log(`error: ${err}`)
   }
