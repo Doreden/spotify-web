@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { utilService } from "../../../services/util.service"
 import { extractColors } from 'extract-colors'
 
-export function StationDetailsHeader({ station, colors, setColors, bgColor, setBgColor, darkerColor, setDarkerColor, setMainSectionColor, is }) {
+export function StationDetailsHeader({ station, colors, setColors, is }) {
 
     useEffect(() => {
         getColorFromImg()

@@ -9,8 +9,8 @@
     padding-left: 16px;
     padding-bottom: 16px;
     padding-right: 16px;
-    min-height: 300px;
-    height: calc((30vw + 250px) / 2);
+    min-height: 340px;
+    height: calc((30vw + 200px) / 2);
     max-height: 400px;
     justify-content: flex-start;
     align-items: flex-end;
@@ -137,18 +137,11 @@
 
 
   & img {
-    height: calc(20vw);
-    width: auto;
+    aspect-ratio: 1 / 1;
     border-radius: 4px;
     margin-right: 16px;
-  }
-
-  & .details-img-box {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 200px;
+    object-fit: cover;
+    height: calc(16vw);
+    min-height: 140px;
   }
 }
