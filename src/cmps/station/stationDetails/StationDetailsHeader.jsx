@@ -2,9 +2,8 @@ import { useEffect, useState } from "react"
 import { utilService } from "../../../services/util.service"
 import { extractColors } from 'extract-colors'
 
-export function StationDetailsHeader({ station, setBgColor, bgColor, darkerColor, setDarkerColor, is, setMainSectionColor }) {
+export function StationDetailsHeader({ station, bgColor, setBgColor, darkerColor, setDarkerColor, setMainSectionColor, is }) {
 
-    const [imgHover, setImgHover] = useState(false)
 
     console.log(darkerColor)
 
@@ -21,8 +20,8 @@ export function StationDetailsHeader({ station, setBgColor, bgColor, darkerColor
         if (!colors) return
         const convertToRGBA = `rgba(${colors[0].red},${colors[0].blue},${colors[0].green},`
         console.log(convertToRGBA)
-        setDarkerColor(() => darkenColor(colors[0], 20))
-        setMainSectionColor(() => darkenColor(colors[0], 50))
+        setDarkerColor((prevState) => darkenColor(colors[0], 20))
+        setMainSectionColor((prevState) => darkenColor(colors[0], 50))
         setBgColor(() => convertToRGBA)
     }
 
@@ -38,10 +37,6 @@ export function StationDetailsHeader({ station, setBgColor, bgColor, darkerColor
         }
     }
 
-
-    function handleHover(isHover) {
-        setImgHover((prevState) => isHover)
-    }
     // 
     return (
         <div className="station-details-header" style={{ background: `linear-gradient(${bgColor}1) 40%, ${darkerColor}1) 100%)` }}>
@@ -50,9 +45,7 @@ export function StationDetailsHeader({ station, setBgColor, bgColor, darkerColor
                     {is === 'liked-songs' ?
                         <img src={'imgs/likedsongs.png'}></img>
                         :
-                        // <img onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)} src={imgHover ? '/imgs/change-cover.png' : `${station.imgUrl}`}></img>
                         <img src={station.imgUrl}></img>
-
                     }
                 </div>
                 <div className="station-info">

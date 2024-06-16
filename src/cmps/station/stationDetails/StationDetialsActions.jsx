@@ -12,10 +12,11 @@ import { toggleLikedStation } from "../../../store/actions/user.action"
 import { SongAndStationModal } from "../../modal/SongAndStationModal"
 import { EditStation } from "../../EditStation"
 import { DeleteStation } from "../../DeleteStation"
-import { createNewStationByUser, updateStation,deleteStation, loadUserStations } from "../../../store/actions/user.action.js"
+import { createNewStationByUser, updateStation, deleteStation, loadUserStations } from "../../../store/actions/user.action.js"
 
 
 export function StationDetailsActions({ station, onPlayStation, is }) {
+
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const userStations = useSelector((storeState) => storeState.userModule.stations)
@@ -33,12 +34,25 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
     loadIsLikedStationState()
   }, [])
 
+  useEffect(() => {
+    const handleCloseModalMenu = () => setIsModalOpen(false)
+    document.addEventListener('click', handleCloseModalMenu)
+    return () => {
+      document.removeEventListener('click', handleCloseModalMenu)
+    }
+  }, [])
+
+
+
   function loadIsLikedStationState() {
     if (is !== 'liked-songs') {
       const isLiked = UserService.isStationLiked(loggedInUser, station)
       setIsLikedStation((prevState) => isLiked)
     }
   }
+
+
+
   const handleEditStation = (stationId) => {
     const station = userStations.find(st => st._id === stationId)
     setCurrentStationToEdit(station)
@@ -49,6 +63,8 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
     setCurrentStationToDelete(station)
     setIsDeleteModalOpen(true)
   }
+
+
   async function handleSaveStation(updatedStation) {
     try {
       // Updates station in DB
@@ -59,15 +75,21 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
     } catch (error) {
       console.error('Error saving station:', error)
     }
+  }
 
-    function handleRemoveStation(stationId) {
-      deleteStation(loggedInUser.id, stationId)
-      // navigate("/")
-    }
+  async function handleLikeStation() {
+    toggleLikedStation(loggedInUser, station)
+    setIsLikedStation((prevState) => !prevState)
+  }
 
-    async function handleAddStation() {
-      await createNewStationByUser(loggedInUser)
-    }
+  function handleRemoveStation(stationId) {
+    deleteStation(loggedInUser.id, stationId)
+    // navigate("/")
+  }
+
+  async function handleAddStation() {
+    await createNewStationByUser(loggedInUser)
+  }
 
   // useEffect(() => {
   //   function updateButtonPosition() {
@@ -84,14 +106,6 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
   //     window.removeEventListener('resize', updateButtonPosition)
   //   }
   // }, [])
-  useEffect(() => {
-    const handleCloseModalMenu = () => setIsModalOpen(false)
-    document.addEventListener('click', handleCloseModalMenu)
-    return () => {
-      document.removeEventListener('click', handleCloseModalMenu)
-    }
-  }, [])
-
 
   function handleOptionsClick(event) {
     event.stopPropagation()
@@ -100,13 +114,6 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
 
   function onClose() {
     setIsModalOpen(false)
-  }
-
-
-  async function handleLikeStation() {
-    toggleLikedStation(loggedInUser, station)
-    setIsLikedStation((prevState) => !prevState)
-
   }
 
   return (
@@ -133,15 +140,14 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
             <ReactSVG src={dots} />
           </button>
           {isModalOpen && (
-          <SongAndStationModal 
-            modalType={'station'}
-            onClose={onClose}
-            station={loggedInUser.likedStations}
-          />
-        )}
-          
+            <SongAndStationModal
+              modalType={'station'}
+              onClose={onClose}
+              station={loggedInUser.likedStations}
+            />
+          )}
         </div>
       </div>
     </>
-  )}
+  )
 }

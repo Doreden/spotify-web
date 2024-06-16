@@ -1,10 +1,26 @@
 import { PlaylistSongPreview } from "./PlaylistSongPreview"
 import { ReactSVG } from "react-svg"
 import Length from '../../../assets/imgs/length.svg'
-
+import { useEffect } from "react"
+import { loadUserStations } from "../../../store/actions/user.action"
+import { useSelector } from "react-redux"
 
 
 export function PlaylistSongList({ station, onPlayStation, isActiveSongId, handleSongClick }) {
+
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  const userLibary = useSelector((storeState) => storeState.userModule.stations)
+  const createdByUser = userLibary.filter((station) => station.createdBy._id === loggedInUser._id)
+  console.log(userLibary)
+
+  useEffect(() => {
+    loadUserLibary()
+  }, [])
+
+  async function loadUserLibary() {
+    if (!loggedInUser) return
+    loadUserStations(loggedInUser)
+  }
 
   function LengthSvg() {
     return (
@@ -13,6 +29,10 @@ export function PlaylistSongList({ station, onPlayStation, isActiveSongId, handl
       </div>
     )
   }
+
+
+
+
 
 
   return (
@@ -25,13 +45,9 @@ export function PlaylistSongList({ station, onPlayStation, isActiveSongId, handl
         <div className="song-length">{LengthSvg()}</div>
       </div>
 
-
-
-
-
       {station.songs.map((song, index) => (
         <li onDoubleClick={() => onPlayStation(index)} onClick={() => handleSongClick(song.id)} key={song.objectId}>
-          <PlaylistSongPreview index={index} song={song} station={station} isActiveSongId={song.id === isActiveSongId} />
+          <PlaylistSongPreview createdByUser={createdByUser} index={index} song={song} station={station} isActiveSongId={song.id === isActiveSongId} />
           {/* <OptionsModal modalType={'song'} entity={song} style={{top:10}} /> */}
         </li>
       ))}
