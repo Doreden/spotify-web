@@ -15,8 +15,6 @@ export function Playline() {
     const playingSongIdx = useSelector(storeState => storeState.playerModule.playingSongIdx)
     const currentQueue = useSelector(storeState => storeState.playerModule.queue)
 
-    const storeState = useSelector(storeState => storeState.userModule)
-
     const [songProggresionData, setSongProgresionData] = useState({ played: 0, playedSeconds: 0, songDuration: 0 })
     const [volume, setVolume] = useState()
     const [ready, setReady] = useState(false)
@@ -53,10 +51,7 @@ export function Playline() {
         setReady((prevState) => true)
     }
 
-
-
     return (
-
         <div className="playline">
             <div className="song-info">
                 <PlayingSongInfo song={currentSong} />

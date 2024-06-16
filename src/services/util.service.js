@@ -63,11 +63,11 @@ function convertYoutubeDurationToSeconds(durationString){
     }
 }
 
-function formatSongLength(songLengthInSeconds){
-    return (
-        `${Math.floor(songLengthInSeconds/60)}:${(songLengthInSeconds%60).toString().padStart(2, '0')}`
-    )
-}
+// function formatSongLength(songLengthInSeconds){
+//     return (
+//         `${Math.floor(songLengthInSeconds/60)}:${(songLengthInSeconds%60).toString().padStart(2, '0')}`
+//     )
+// }
 
 function formatStationLength(songs){
     let totalLength = 0;
@@ -82,6 +82,19 @@ function formatStationLength(songs){
         return(
             `${Math.floor(totalLength/60)} min ${Math.floor(totalLength%60)} sec`
         )
+    }
+}
+
+
+function formatSongLength(songLengthInSeconds) {
+    const hours = Math.floor(songLengthInSeconds / 3600);
+    const minutes = Math.floor((songLengthInSeconds % 3600) / 60);
+    const seconds = songLengthInSeconds % 60;
+
+    if (hours > 0) {
+        return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    } else {
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     }
 }
 

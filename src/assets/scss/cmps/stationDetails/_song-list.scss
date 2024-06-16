@@ -73,6 +73,9 @@
     & .song-details {
         @include flex-start-center();
 
+        white-space: nowrap;
+        overflow: hidden;
+
         & .title-and-artist {
             display: flex;
             flex-direction: column;
@@ -102,7 +105,7 @@
     }
 
     & .date-added {
-        @include flex-start-center();
+        @include flex-end-center();
 
         @media (max-width: 700.1px) {
             display: none;
@@ -122,11 +125,11 @@
         grid-template-rows: 100%;
         column-gap: 16px;
 
-        @media (max-width: 700px) {
+        @media (max-width: 850px) {
             grid-template-columns: $no-date-and-album-columns;
         }
 
-        @media (min-width: 700.1px) and (max-width: 840px) {
+        @media (min-width: 850.01px) and (max-width: 1000px) {
             grid-template-columns: $no-date-columns;
         }
     }
