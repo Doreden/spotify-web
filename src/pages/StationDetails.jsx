@@ -46,7 +46,7 @@ export function StationDetails() {
   return (
     <section className="station-details page">
       <StationDetailsHeader station={station} colors={colors} setColors={setColors} />
-      <div className='main-station-details' style={{ background: `linear-gradient(${colors.mainSectionColor}1) 0%, rgba(18,18,18,1) 100%)` }}>
+      <div className='main-station-details' style={{ background: `linear-gradient(${colors.mainSectionColor}1) 0%, rgba(18,18,18,1) 45%)` }}>
         <StationDetailsActions station={station} onPlayStation={onPlayStation} />
         <div className="song-list-container">
           <PlaylistSongList station={station} setStation={setStation} handleSongClick={handleSongClick} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} />
