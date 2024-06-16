@@ -4,12 +4,9 @@ import { extractColors } from 'extract-colors'
 
 export function StationDetailsHeader({ station, bgColor, setBgColor, darkerColor, setDarkerColor, setMainSectionColor, is }) {
 
-
-    console.log(darkerColor)
-
     useEffect(() => {
         getColorFromImg()
-    }, [])
+    }, [station])
 
     async function getColorFromImg() {
         const options = {

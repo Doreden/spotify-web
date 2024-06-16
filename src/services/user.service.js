@@ -84,8 +84,9 @@ function isSongLiked(loggedInUser, song){
 }
 
 function isStationLiked(loggedInUser, station){
-    if(!loggedInUser) return false
+    // if(!loggedInUser) return false
     const isLiked = station.likedByUsers.find(likedUser => likedUser._id === loggedInUser._id)
+    console.log(isLiked)
     if(isLiked){
         return true
     }else{

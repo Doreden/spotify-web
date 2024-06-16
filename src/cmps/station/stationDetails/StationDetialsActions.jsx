@@ -143,7 +143,10 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
             <SongAndStationModal
               modalType={'station'}
               onClose={onClose}
-              station={loggedInUser.likedStations}
+              station={station}
+              isLikedStation={isLikedStation}
+              setIsLikedStation={setIsLikedStation}
+              handleLikeStation={handleLikeStation}
             />
           )}
         </div>

@@ -56,7 +56,7 @@ export async function updateStation(likedStations, updatedStation){
   }
 }
 
-export async function deleteStation(userId,stationId){
+export async function deleteStation(stationId){
   try {
     // Delete station from db
     await stationService.removeById(stationId)
@@ -86,6 +86,7 @@ export async function createNewStationByUser(loggedInUser){
 export async function toggleLikedStation(loggedInUser,station){
   try{
     const isStationLiked = UserService.isStationLiked(loggedInUser,station)
+    console.log(isStationLiked)
     if(isStationLiked){
       await removeStationFromLiked(loggedInUser,station)
     } else{
@@ -110,7 +111,6 @@ export async function addStationToLiked(loggedInUser, station){
 export async function removeStationFromLiked(loggedInUser, station){
   try{
     await stationService.removeUserFromLikedByUsers(station,loggedInUser)
-    // await UserService.removeStationFromLikedByUser(loggedInUser._id , station._id)
     store.dispatch({type: REMOVE_STATION, stationId : station._id})
 
   }catch(error){

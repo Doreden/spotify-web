@@ -20,9 +20,6 @@ export function EditStation({ show, onClose, station, onSave, onUploaded = null 
             try {
                 const uploadResponse = await uploadService.uploadImg(file)
                 setImgUrl(uploadResponse.secure_url)
-                // if (onUploaded) {
-                //     onUploaded(uploadResponse.secure_url)
-                // }
             } catch (error) {
                 console.error('Error uploading image:', error)
                 setError('Error uploading image')

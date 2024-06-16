@@ -5,20 +5,24 @@ import { StationDetailsActions } from "../cmps/station/stationDetails/StationDet
 import { PlaylistSongList } from "../cmps/station/stationDetails/PlaylistSongList"
 import { stationService } from "../services/station.service"
 import { playStation } from "../store/actions/player.action"
+import { useSelector } from "react-redux"
+import { store } from "../store/store"
 
 export function StationDetails() {
+
+  const userStations = useSelector((storeState) => storeState.userModule.stations)
 
   const [station, setStation] = useState(null)
   const [isActiveSongId, setIsActiveSongId] = useState(null)
   const [bgColor, setBgColor] = useState("#333333")
-  const [darkerColor, setDarkerColor] = useState()
   const [mainSectionColor, setMainSectionColor] = useState("#333333")
+  const [darkerColor, setDarkerColor] = useState()
 
   const params = useParams()
 
   useEffect(() => {
     loadStation()
-  }, [params])
+  }, [params, userStations])
 
   async function loadStation() {
     try {
@@ -28,9 +32,6 @@ export function StationDetails() {
       console.log(err)
     }
   }
-
-
-
 
   function onPlayStation(songIdx = 0) {
     playStation(station, songIdx)
