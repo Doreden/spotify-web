@@ -51,8 +51,8 @@
         background-color: #282828;
         width: 200px;
         min-height: 0px;
-        max-height: 250px;
-        overflow: auto;
+        max-height: 200px;
+        overflow-y: scroll;
         // opacity: 0;
         // pointer-events: none;
         box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);

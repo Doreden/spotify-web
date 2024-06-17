@@ -1,260 +1,410 @@
 [
     {
-        "name": "2000's Rock",
-        "imgUrl": "https://assetsio.gnwcdn.com/rock-band-4-review-1444044320767.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp",
+        "_id": "666ff42747ec0af5a028c690",
+        "name": "Clubbing",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718613106/vrokz1fhtpn7js4z6ymc.jpg",
         "createdBy": {
-            "id": "ak491k",
-            "username": "Or Doga",
-            "imgUrl": "http://some-photo/\""
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
         },
-        "likedByUsers": [
-            {
-                "id": "abcd12345",
-                "username": "Puki Ben David",
-                "imgUrl": "http://some-photo/"
-            }
-        ],
-        "songs": [
-            {
-                "id": "ZpUYjpKg9KY",
-                "title": "Break Stuff",
-                "artist": "Limp Bizkit",
-                "imgURL": "https://i.ytimg.com/vi/ZpUYjpKg9KY/default.jpg",
-                "lengthInSeconds": 168
-            },
-            {
-                "id": "Dn8vzTsnPps",
-                "title": "My Way",
-                "artist": "Limp Bizkit",
-                "imgURL": "https://i.ytimg.com/vi/Dn8vzTsnPps/default.jpg",
-                "lengthInSeconds": 294
-            },
-            {
-                "id": "BE9CXWV1alg",
-                "title": "My Generation",
-                "artist": "Limp Bizkit",
-                "imgURL": "https://i.ytimg.com/vi/BE9CXWV1alg/default.jpg",
-                "lengthInSeconds": 221
-            },
-            {
-                "id": "5anLPw0Efmo",
-                "title": "My Immortal",
-                "artist": "Evanescence",
-                "imgURL": "https://i.ytimg.com/vi/5anLPw0Efmo/default.jpg",
-                "lengthInSeconds": 271
-            },
-            {
-                "id": "CdhqVtpR2ts",
-                "title": "Going Under",
-                "artist": "Evanescence",
-                "imgURL": "https://i.ytimg.com/vi/CdhqVtpR2ts/default.jpg",
-                "lengthInSeconds": 219
-            },
-            {
-                "id": "PJGpsL_XYQI",
-                "title": "Lithium",
-                "artist": "Evanescence",
-                "imgURL": "https://i.ytimg.com/vi/PJGpsL_XYQI/default.jpg",
-                "lengthInSeconds": 229
-            },
-            {
-                "id": "vc6vs-l5dkc",
-                "title": "Panic! At The Disco: I Write Sins Not Tragedies ",
-                "imgURL": "https://i.ytimg.com/vi/vc6vs-l5dkc/default.jpg",
-                "lengthInSeconds": 186
-            },
-            {
-                "id": "mzJj5-lubeM",
-                "title": "Scar Tissue",
-                "artist": "Red Hot Chili Peppers",
-                "imgURL": "https://i.ytimg.com/vi/mzJj5-lubeM/default.jpg",
-                "lengthInSeconds": 221
-            },
-            {
-                "id": "rn_YodiJO6k",
-                "title": "Otherside",
-                "artist": "Red Hot Chili Peppers",
-                "imgURL": "https://i.ytimg.com/vi/rn_YodiJO6k/default.jpg",
-                "lengthInSeconds": 256
-            },
-            {
-                "id": "8DyziWtkfBw",
-                "title": "Can't Stop",
-                "artist": "Red Hot Chili Peppers",
-                "imgURL": "https://i.ytimg.com/vi/8DyziWtkfBw/default.jpg",
-                "lengthInSeconds": 278
-            },
-            {
-                "id": "vVXIK1xCRpY",
-                "title": "Show Me How to Live",
-                "artist": "Audioslave",
-                "imgURL": "https://i.ytimg.com/vi/vVXIK1xCRpY/default.jpg",
-                "lengthInSeconds": 298
-            },
-            {
-                "id": "WC5FdFlUcl0",
-                "title": "Be Yourself",
-                "artist": "Audioslave",
-                "imgURL": "https://i.ytimg.com/vi/WC5FdFlUcl0/default.jpg",
-                "lengthInSeconds": 283
-            },
-            {
-                "id": "9ZDAYg196x8",
-                "title": "I Am the Highway",
-                "imgURL": "https://i.ytimg.com/vi/9ZDAYg196x8/default.jpg",
-                "lengthInSeconds": 335
-            },
-            {
-                "id": "CxKWTzr-k6s",
-                "title": "Even Flow",
-                "artist": "Pearl Jam",
-                "imgURL": "https://i.ytimg.com/vi/CxKWTzr-k6s/default.jpg",
-                "lengthInSeconds": 326
-            },
-            {
-                "id": "qM0zINtulhM",
-                "title": "Alive",
-                "artist": "Pearl Jam",
-                "imgURL": "https://i.ytimg.com/vi/qM0zINtulhM/default.jpg",
-                "lengthInSeconds": 296
-            },
-            {
-                "id": "gnhXHvRoUd0",
-                "title": "Use Somebody",
-                "artist": "Kings Of Leon",
-                "imgURL": "https://i.ytimg.com/vi/gnhXHvRoUd0/default.jpg",
-                "lengthInSeconds": 231
-            },
-            {
-                "id": "NUTGr5t3MoY",
-                "title": "Basket Case",
-                "artist": "Green Day",
-                "imgURL": "https://i.ytimg.com/vi/NUTGr5t3MoY/default.jpg",
-                "lengthInSeconds": 195
-            },
-            {
-                "id": "r00ikilDxW4",
-                "title": "21 Guns",
-                "artist": "Green Day",
-                "imgURL": "https://i.ytimg.com/vi/r00ikilDxW4/default.jpg",
-                "lengthInSeconds": 326
-            },
-            {
-                "id": "Ee_uujKuJMI",
-                "title": "American Idiot",
-                "artist": "Green Day",
-                "imgURL": "https://i.ytimg.com/vi/Ee_uujKuJMI/default.jpg",
-                "lengthInSeconds": 183
-            },
-            {
-                "id": "i8dh9gDzmz8",
-                "title": "When I Come Around",
-                "artist": "Green Day",
-                "imgURL": "https://i.ytimg.com/vi/i8dh9gDzmz8/default.jpg",
-                "lengthInSeconds": 180
-            }
-        ]
+        "likedByUsers": [],
+        "songs": []
     },
     {
-        "name": "90's Hip Hop",
-        "imgUrl": "https://media.npr.org/assets/img/2011/01/04/wutang-3764f5bbb1e44591ee4dd183abd1d961888c014c.jpg?s=800&c=85&f=jpeg",
+        "_id": "666ff48f47ec0af5a028c691",
+        "name": "להיטים ים תיכוניים",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718613196/ykzparnvdgvkpngjlo89.jpg",
         "createdBy": {
-            "id": "ak491k",
-            "username": "Or Doga",
-            "imgUrl": "http://some-photo/\""
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
         },
-        "likedByUsers": [
-            {
-                "id": "abcd12345",
-                "username": "Puki Ben David",
-                "imgUrl": "http://some-photo/"
-            }
-        ],
-        "songs": [
-            {
-                "id": "eXvBjCO19QY",
-                "title": "Changes ft. Talent",
-                "artist": "2Pac",
-                "imgURL": "https://i.ytimg.com/vi/eXvBjCO19QY/default.jpg",
-                "lengthInSeconds": 271
-            },
-            {
-                "id": "77nB_9uIcN4",
-                "title": "Ambitionz Az a Ridah",
-                "artist": "2Pac",
-                "imgURL": "https://i.ytimg.com/vi/77nB_9uIcN4/default.jpg",
-                "lengthInSeconds": 279
-            },
-            {
-                "id": "Ucvta7xDo_4",
-                "title": "Above The Clouds",
-                "artist": "Gangstarr",
-                "imgURL": "https://i.ytimg.com/vi/Ucvta7xDo_4/default.jpg",
-                "lengthInSeconds": 226
-            },
-            {
-                "id": "qmj1q67NDAk",
-                "title": "Full Clip",
-                "artist": "Gang Starr",
-                "imgURL": "https://i.ytimg.com/vi/qmj1q67NDAk/default.jpg",
-                "lengthInSeconds": 219
-            },
-            {
-                "id": "RvVfgvHucRY",
-                "title": "I Can",
-                "artist": "Nas",
-                "imgURL": "https://i.ytimg.com/vi/RvVfgvHucRY/default.jpg",
-                "lengthInSeconds": 266
-            },
-            {
-                "id": "rzRqEWJYwX4",
-                "title": "You Know How We Do It",
-                "artist": "Ice Cube",
-                "imgURL": "https://i.ytimg.com/vi/rzRqEWJYwX4/default.jpg",
-                "lengthInSeconds": 228
-            },
-            {
-                "id": "fwcONrTG7nk",
-                "title": "Notorious B.I.G.",
-                "artist": "The Notorious B.I.G.",
-                "imgURL": "https://i.ytimg.com/vi/fwcONrTG7nk/default.jpg",
-                "lengthInSeconds": 253
-            },
-            {
-                "id": "ufKxCclo7-c",
-                "title": "Nasty Girl",
-                "artist": "The Notorious B.I.G.",
-                "imgURL": "https://i.ytimg.com/vi/ufKxCclo7-c/default.jpg",
-                "lengthInSeconds": 300
-            },
-            {
-                "id": "bEs58fAUNZQ",
-                "title": "Heavy ft. 50 Cent | 2024",
-                "artist": "Method Man & Redman",
-                "imgURL": "https://i.ytimg.com/vi/bEs58fAUNZQ/default.jpg",
-                "lengthInSeconds": 224
-            },
-            {
-                "id": "cPRKsKwEdUQ",
-                "title": "Tang Clan - Triumph  ft. Cappadonna",
-                "artist": "Wu",
-                "imgURL": "https://i.ytimg.com/vi/cPRKsKwEdUQ/default.jpg",
-                "lengthInSeconds": 378
-            },
-            {
-                "id": "PEnwXYJcSZc",
-                "title": "Tang Clan - Method Man",
-                "artist": "Wu",
-                "imgURL": "https://i.ytimg.com/vi/PEnwXYJcSZc/default.jpg",
-                "lengthInSeconds": 268
-            },
-            {
-                "id": "R0IUR4gkPIE",
-                "title": "Tang Clan - Protect Ya Neck",
-                "artist": "Wu",
-                "imgURL": "https://i.ytimg.com/vi/R0IUR4gkPIE/default.jpg",
-                "lengthInSeconds": 290
-            }
-        ]
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff4d147ec0af5a028c692",
+        "name": "טונה",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718613244/qo1qbbdoezjs5vcxsdby.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff55847ec0af5a028c693",
+        "name": "InDnegev 2025",
+        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/93033502_2651721945046808_7231066850044411904_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=jfb1fWn8ZxkQ7kNvgFFcGpX&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYBjMMBkENAp5ufOkt--gnQReTxiVX6EmdXE2bArehiOQA&oe=669771C2",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff69847ec0af5a028c694",
+        "name": "90's Hip Hop",
+        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/93110306_2651724648379871_2654066145685929984_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=hTwsxRwzylIQ7kNvgE1q1FQ&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYB2X4H7YJz1MH9HGlnFQl79SJqvXhfXLVT1NxBkc1ONow&oe=66976BCE",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff71547ec0af5a028c695",
+        "name": "Friend's Dinner",
+        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/93013512_2651723158380020_3724686237131341824_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=kVetY0JAn_QQ7kNvgFtTG7T&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYAZpXnkSnHUHtNtw5qt3BPi4eJyATCjpx1PPeBIdYZyjA&oe=66975997",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff7cf47ec0af5a028c696",
+        "name": "Roof Vibing",
+        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/176454282_2971012589784407_6432507648433736866_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=J83dWMjIPLkQ7kNvgEJ1zAd&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYBZ3Y_4nVQUbhvBl-_7N47l4UoDt6uqbZbfxUGhQhCpnQ&oe=66976419",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff86247ec0af5a028c697",
+        "name": "Breakdance Music",
+        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t31.18172-8/12138607_1707898656095813_2637486649713887776_o.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=qnGXfUz5sQcQ7kNvgGtrIQF&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYCESxaREB6pThTxxUdzLU-qO4NMPQrjzAkrDOTdPAQ6lA&oe=669756CC",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff93447ec0af5a028c698",
+        "name": "Camping In The Woods",
+        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t31.18172-8/11900102_1696791427206536_851238865747335136_o.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Upo0RVIsN_sQ7kNvgGsedUx&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYAoUWQpI041bKRWBFknNrUFzpzJuOVQ40XVP62gawUXqA&oe=669771B4",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff93647ec0af5a028c699",
+        "name": "Your Yoga Routine",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718617760/dnwksovk1sriwfbcgso0.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff95b47ec0af5a028c69a",
+        "name": "להיטים ישראליים",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718617910/k6lexbodvscfrazfyevf.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "6670073e47ec0af5a028c69b",
+        "name": "הלהיטים החמים של השנה",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618037/n1d9cdyr7pw58i4jmext.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "667007d247ec0af5a028c69c",
+        "name": "Underground Rave",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618192/tzd2zohnjx6vpajtupcb.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "6670085347ec0af5a028c69d",
+        "name": "Neo-Disco",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618261/w4yovgf91tfdl3rdv2ho.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "6670085347ec0af5a028c69e",
+        "name": "Europe Festival Season",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618475/cukocvuctkjymm8fardv.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "6670097247ec0af5a028c69f",
+        "name": "Pop Kings",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618509/mqqrjvsup3jn34xfcctl.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "667009a347ec0af5a028c6a0",
+        "name": "Pride Month Dance Hits",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618556/en6ncdxnentlu8vinlsw.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "667009dd47ec0af5a028c6a1",
+        "name": "Wine n Dine",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618712/pvvq8ha9ygs15qrdf6dg.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700a5e47ec0af5a028c6a2",
+        "name": "Friday Noon Drink",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618801/b85ln3zp26a5bxzezxbi.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700ab847ec0af5a028c6a3",
+        "name": "The Sound Lab",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618852/peegsngrilj6ew0ijdq7.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700ae747ec0af5a028c6a4",
+        "name": "Magical Sunrise",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619057/kzbqzro113nginpqq7ot.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700c0547ec0af5a028c6a5",
+        "name": "Gettin Wild",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619209/cbeaac9qfuvunpvxz82b.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700c5047ec0af5a028c6a6",
+        "name": "Israeli Pop",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619265/jiyat6fu1wi7p4gwkmdk.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700cae47ec0af5a028c6a7",
+        "name": "Engagement Party",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619416/pnvqcaxjrhuaawpf9syw.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700d2f47ec0af5a028c6a8",
+        "name": "Sound Circus",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619493/ftbk4ogvkd5rmimdkko5.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700d7f47ec0af5a028c6a9",
+        "name": "Midnight Jam",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619579/pgh0fzhnntl20fwdsczm.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700dc247ec0af5a028c6aa",
+        "name": "Country Sides",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619669/uwbe67jih3evoavwvwts.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700e2147ec0af5a028c6ab",
+        "name": "MASSIVE",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619860/nultxoxx3xw9vjxu1qz4.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700ef347ec0af5a028c6ac",
+        "name": "Daylight Wedding",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619975/aspswga7ucqmwkfdwhaf.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700f4a47ec0af5a028c6ad",
+        "name": "Neon Gathering",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718620040/iftnzj2geylawgouler9.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700fbe47ec0af5a028c6ae",
+        "name": "Romantic Sunrise",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718620126/bgxmbyc8kxkfrqkj1pvy.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700fc247ec0af5a028c6af",
+        "name": "Dance Forever",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718620225/lmzngh20gv08pzuhvihx.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700fc347ec0af5a028c6b0",
+        "name": "New Playlist",
+        "imgUrl": "imgs/defaultStationImg.png",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700fc447ec0af5a028c6b1",
+        "name": "New Playlist",
+        "imgUrl": "imgs/defaultStationImg.png",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
     }
 ]

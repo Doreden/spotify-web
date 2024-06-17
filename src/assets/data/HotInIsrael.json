@@ -1,0 +1,74 @@
+[
+    {
+        "_id": "666ff48f47ec0af5a028c691",
+        "name": "להיטים ים תיכוניים",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718613196/ykzparnvdgvkpngjlo89.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff4d147ec0af5a028c692",
+        "name": "טונה",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718613244/qo1qbbdoezjs5vcxsdby.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff55847ec0af5a028c693",
+        "name": "InDnegev 2025",
+        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/93033502_2651721945046808_7231066850044411904_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=jfb1fWn8ZxkQ7kNvgFFcGpX&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYBjMMBkENAp5ufOkt--gnQReTxiVX6EmdXE2bArehiOQA&oe=669771C2",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff95b47ec0af5a028c69a",
+        "name": "להיטים ישראליים",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718617910/k6lexbodvscfrazfyevf.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "6670073e47ec0af5a028c69b",
+        "name": "הלהיטים החמים של השנה",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618037/n1d9cdyr7pw58i4jmext.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700c5047ec0af5a028c6a6",
+        "name": "Israeli Pop",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619265/jiyat6fu1wi7p4gwkmdk.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    }
+]

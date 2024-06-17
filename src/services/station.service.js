@@ -1,7 +1,15 @@
 import { utilService } from "./util.service.js"
 import { httpService } from "./http.service.js";
 
+
+import moodsList from '../assets/data/Moods.json' assert { type: 'json' }
+import recommendedList from '../assets/data/Recommended.json' assert { type: 'json' }
+import israelList from '../assets/data/HotInIsrael.json' assert { type: 'json' }
+import eleconicList from '../assets/data/Electronic.json' assert { type: 'json' }
+
+
 export const stationService = {
+  getIndexStations,
   addUserToLikedByUsers,
   removeUserFromLikedByUsers,
   removeSongFromStation,
@@ -12,6 +20,16 @@ export const stationService = {
   createNewStation,
   convertToMiniStation,
   addSongToStation
+}
+
+function getIndexStations(){
+  const stationsObj = {
+    moodsList,
+    recommendedList,
+    israelList,
+    eleconicList
+  }
+  return stationsObj
 }
 
 // CRUD

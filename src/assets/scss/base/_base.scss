@@ -31,7 +31,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: auto;
+  // scrollbar-width: thin;
 }
 
 button {
@@ -74,9 +75,11 @@ svg {
 
 .page {
   scrollbar-width: thin;
+  background: #000000;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-gutter: auto;
+  // scrollbar-gutter: auto;
+
 }
 
 ::-webkit-scrollbar-button {

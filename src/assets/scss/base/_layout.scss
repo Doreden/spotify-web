@@ -24,6 +24,10 @@
     border-radius: $layout-border-radius;
     overflow: hidden;
     background-color: $component-bg-color;
-    overflow: auto;
-    scroll-behavior: smooth;
+    overflow-y: scroll;
+    // scroll-behavior: smooth;
+}
+
+.page::-webkit-scrollbar-track {
+    background: #ff1111;
 }

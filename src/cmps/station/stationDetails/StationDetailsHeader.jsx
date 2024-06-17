@@ -13,7 +13,6 @@ export function StationDetailsHeader({ station, colors, setColors, is }) {
             crossOrigin: 'Anonymous'
         }
         const extractedColors = await extractColors(station.imgUrl, options)
-        console.log(extractedColors)
         const chosenColor = extractedColors[0]
         if (!extractedColors) return
         setColors(() => ({ bgColor: darkenColor(chosenColor, 0), darkerColor: darkenColor(chosenColor, 20), mainSectionColor: darkenColor(chosenColor, 50) }))

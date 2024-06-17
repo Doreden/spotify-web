@@ -1,0 +1,170 @@
+[
+    {
+        "_id": "666ff71547ec0af5a028c695",
+        "name": "Friend's Dinner",
+        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/93013512_2651723158380020_3724686237131341824_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=kVetY0JAn_QQ7kNvgFtTG7T&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYAZpXnkSnHUHtNtw5qt3BPi4eJyATCjpx1PPeBIdYZyjA&oe=66975997",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff7cf47ec0af5a028c696",
+        "name": "Roof Vibing",
+        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/176454282_2971012589784407_6432507648433736866_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=J83dWMjIPLkQ7kNvgEJ1zAd&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYBZ3Y_4nVQUbhvBl-_7N47l4UoDt6uqbZbfxUGhQhCpnQ&oe=66976419",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff93447ec0af5a028c698",
+        "name": "Camping In The Woods",
+        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t31.18172-8/11900102_1696791427206536_851238865747335136_o.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Upo0RVIsN_sQ7kNvgGsedUx&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYAoUWQpI041bKRWBFknNrUFzpzJuOVQ40XVP62gawUXqA&oe=669771B4",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff93647ec0af5a028c699",
+        "name": "Your Yoga Routine",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718617760/dnwksovk1sriwfbcgso0.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "667009dd47ec0af5a028c6a1",
+        "name": "Wine n Dine",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618712/pvvq8ha9ygs15qrdf6dg.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700a5e47ec0af5a028c6a2",
+        "name": "Friday Noon Drink",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618801/b85ln3zp26a5bxzezxbi.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700ae747ec0af5a028c6a4",
+        "name": "Magical Sunrise",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619057/kzbqzro113nginpqq7ot.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700c0547ec0af5a028c6a5",
+        "name": "Gettin Wild",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619209/cbeaac9qfuvunpvxz82b.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700cae47ec0af5a028c6a7",
+        "name": "Engagement Party",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619416/pnvqcaxjrhuaawpf9syw.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700d7f47ec0af5a028c6a9",
+        "name": "Midnight Jam",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619579/pgh0fzhnntl20fwdsczm.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700dc247ec0af5a028c6aa",
+        "name": "Country Sides",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619669/uwbe67jih3evoavwvwts.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700ef347ec0af5a028c6ac",
+        "name": "Daylight Wedding",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619975/aspswga7ucqmwkfdwhaf.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700f4a47ec0af5a028c6ad",
+        "name": "Neon Gathering",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718620040/iftnzj2geylawgouler9.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700fbe47ec0af5a028c6ae",
+        "name": "Romantic Sunrise",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718620126/bgxmbyc8kxkfrqkj1pvy.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    }
+]

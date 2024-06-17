@@ -55,8 +55,8 @@ export function SongAndStationModal({ modalType, station, setStation, song, crea
 	}
 
 	async function handleAddSongToChosenStation(chosenStation) {
-		console.log("try!!")
-		const updatedStation = stationService.addSongToStation(chosenStation, song)
+		const updatedStation = await stationService.addSongToStation(chosenStation, song)
+		console.log(updatedStation)
 		// Maybe cause re-render?
 	}
 
