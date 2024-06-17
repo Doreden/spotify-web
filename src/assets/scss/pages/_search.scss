@@ -74,7 +74,7 @@
             background-color: rgb(24, 24, 24);
             border-radius: 8px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
 
             & img {
                 border-radius: 6px;
@@ -95,6 +95,28 @@
 
             & .artist {
                 font-size: 14px;
+            }
+
+            & .top-result-like-btn {
+                display: flex;
+                align-self: flex-end;
+                padding: 12px;
+            }
+
+            & .song-is-liked-svg-container {
+                width: 24px;
+                height: 24px;
+                // padding-right: 24px;
+                fill: rgb(30, 215, 96);
+                background-color: transparent;
+            }
+
+            & .add-to-liked-svg-container {
+                width: 24px;
+                height: 24px;
+                // padding-right: 24px;
+                fill: $secondary-font-color;
+                background-color: transparent;
             }
         }
 

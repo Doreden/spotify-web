@@ -86,13 +86,14 @@ export function SongAndStationModal({ modalType, station, setStation, song, crea
 
 					}
 				</li>
-
-				<li className="menu-item delete-item" onClick={() => removeSongFromPlaylist(station._id, song.id)}>
-					<div className="svg-modal">
-						<ReactSVG src={Trash} />
-					</div>
-					<div className="text-menu">Remove from this playlist</div>
-				</li>
+				{station !== undefined &&
+					<li className="menu-item delete-item" onClick={() => removeSongFromPlaylist(station._id, song.id)}>
+						<div className="svg-modal">
+							<ReactSVG src={Trash} />
+						</div>
+						<div className="text-menu">Remove from this playlist</div>
+					</li>
+				}
 				<li className="menu-item liked-item">
 					<div className="svg-modal">
 						<ReactSVG src={AddToLiked} />
@@ -105,7 +106,7 @@ export function SongAndStationModal({ modalType, station, setStation, song, crea
 
 	function StationModal() {
 		return (
-			<div className="modal">
+			<div className="modal station-modal">
 				<li onClick={onRemove} className="menu-item delete-item">
 					<div className="svg-modal"><ReactSVG src={Delete} /></div>
 					{/* Either toggle like or delete the station perminantely */}
