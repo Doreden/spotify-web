@@ -69,9 +69,6 @@ export function SongAndStationModal({ modalType, station, setStation, song, crea
 						<ReactSVG src={Add} />
 					</div>
 					<div className="text-menu">Add to playlist</div>
-
-
-
 					{isSecondModalOpen &&
 						<div className="second-modal-container">
 
@@ -106,14 +103,12 @@ export function SongAndStationModal({ modalType, station, setStation, song, crea
 		)
 	}
 
-
 	function StationModal() {
 		return (
 			<div className="modal">
-				<li onClick={onRemove} className="menu-list delete-item">
-					<div className="svg-modal">
-						<ReactSVG src={Delete} />
-					</div>
+				<li onClick={onRemove} className="menu-item delete-item">
+					<div className="svg-modal"><ReactSVG src={Delete} /></div>
+					{/* Either toggle like or delete the station perminantely */}
 					{station.createdBy._id === loggedInUser._id ?
 						<div onClick={handleDeleteStation} className="text-menu">Delete Station</div>
 						:
