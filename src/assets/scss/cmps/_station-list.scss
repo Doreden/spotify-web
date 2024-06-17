@@ -1,5 +1,17 @@
 .station-list {
     display: flex;
+    overflow-x: scroll;
+}
+
+.station-list::-webkit-scrollbar {
+    display: none;
+}
+
+.station-list {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .station-list-container {

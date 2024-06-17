@@ -1,0 +1,86 @@
+[
+    {
+        "_id": "667007d247ec0af5a028c69c",
+        "name": "Underground Rave",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618192/tzd2zohnjx6vpajtupcb.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "6670085347ec0af5a028c69d",
+        "name": "Neo-Disco",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618261/w4yovgf91tfdl3rdv2ho.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "6670085347ec0af5a028c69e",
+        "name": "Europe Festival Season",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618475/cukocvuctkjymm8fardv.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "666ff42747ec0af5a028c690",
+        "name": "Clubbing",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718613106/vrokz1fhtpn7js4z6ymc.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "667009a347ec0af5a028c6a0",
+        "name": "Pride Month Dance Hits",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618556/en6ncdxnentlu8vinlsw.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700d2f47ec0af5a028c6a8",
+        "name": "Sound Circus",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619493/ftbk4ogvkd5rmimdkko5.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700e2147ec0af5a028c6ab",
+        "name": "MASSIVE",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619860/nultxoxx3xw9vjxu1qz4.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    }
+]
