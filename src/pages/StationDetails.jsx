@@ -35,10 +35,6 @@ export function StationDetails() {
     setIsActiveSongId(station.songs[songIdx].objectId)
   }
 
-  // function handleSongClick(songId) {
-  //   setIsActiveSongId((prevState) => songId)
-  // }
-
   if (!station) return
   return (
     <section className="station-details page">

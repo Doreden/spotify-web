@@ -50,7 +50,7 @@ export function LikedSongs() {
             <StationDetailsHeader station={likedSongsStation} is={'liked-songs'} colors={colors} setColors={setColors} />
             <div className='main-station-details' style={{ background: `linear-gradient(${colors.mainSectionColor}1) 0%, rgba(18,18,18,1) 100%)` }}>
                 <StationDetailsActions station={likedSongsStation} onPlayStation={onPlayStation} is={'liked-songs'} />
-                <PlaylistSongList station={likedSongsStation} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} setIsActiveSongId={setIsActiveSongId} />
+                <PlaylistSongList station={likedSongsStation} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} setIsActiveSongId={setIsActiveSongId} is={'liked-songs'} />
             </div>
         </section>
     )
