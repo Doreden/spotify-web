@@ -60,13 +60,17 @@
         right: 258px;
         bottom: 90px;
 
+        scrollbar-width: thin;
+        overflow-x: hidden;
+
 
         & .add-to-playlist-preview {
             height: 50px;
             display: flex;
             align-items: center;
             border-bottom: 1px solid rgba(146, 146, 146, 0.1);
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 14px;
 
 
             &:hover {
