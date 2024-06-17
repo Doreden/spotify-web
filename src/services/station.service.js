@@ -105,15 +105,12 @@ function convertToMiniStation(station){
 }
 
 // Songs Related Functions
-async function addSongToStation(station,song){
+async function addSongToStation(stationId,song){
   try {
-    let newSong = {...song}
-    newSong = {...song, objectId:utilService.generateId(10), addedAt: Date.now()}
-    let updatedStation  = {
-    ...station,
-    songs: [...station.songs, newSong],
-  }
-    save(updatedStation)
+    let station = await getById(stationId)
+    const newSong = {...song, objectId:utilService.generateId(10), addedAt: Date.now()}
+    let updatedStation  = {...station, songs: [...station.songs, newSong]}
+    await save(updatedStation)
     return updatedStation
   } catch (err) {
     console.log(`error: ${err}`)
@@ -127,7 +124,7 @@ async function removeSongFromStation(stationId, songId) {
       ...station,
       songs: station.songs.filter((song) => song.id !== songId),
     }
-    save(updatedStation)
+    const response = await save(updatedStation)
     return updatedStation
   } catch (err) {
     console.log(err)

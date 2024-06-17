@@ -32,12 +32,12 @@ export function StationDetails() {
 
   function onPlayStation(songIdx = 0) {
     playStation(station, songIdx)
-    setIsActiveSongId(station.songs[songIdx].id)
+    setIsActiveSongId(station.songs[songIdx].objectId)
   }
 
-  function handleSongClick(songId) {
-    setIsActiveSongId((prevState) => songId)
-  }
+  // function handleSongClick(songId) {
+  //   setIsActiveSongId((prevState) => songId)
+  // }
 
   if (!station) return
   return (
@@ -46,7 +46,7 @@ export function StationDetails() {
       <div className='main-station-details' style={{ background: `linear-gradient(${colors.mainSectionColor}1) 0%, rgba(18,18,18,1) 45%)` }}>
         <StationDetailsActions station={station} onPlayStation={onPlayStation} />
         <div className="song-list-container">
-          <PlaylistSongList station={station} setStation={setStation} handleSongClick={handleSongClick} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} />
+          <PlaylistSongList station={station} setStation={setStation} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} setIsActiveSongId={setIsActiveSongId} />
         </div>
       </div>
     </section>

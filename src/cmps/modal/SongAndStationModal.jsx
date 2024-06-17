@@ -12,7 +12,7 @@ import { stationService } from "../../services/station.service.js"
 import { useRef, useState } from "react"
 
 
-export function SongAndStationModal({ modalType, station, setStation, song, createdByUser, onRemove, isLikedSong, setIsLikedSong, isLikedStation, setIsLikedStation }) {
+export function SongAndStationModal({ modalType, station, setStation, song, createdByUser, onRemove, isLikedSong, setIsLikedSong, handleSongClick, setIsLikedStation }) {
 
 	const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 	const [isSecondModalOpen, setIsSecondModalOpen] = useState(false)
@@ -39,8 +39,6 @@ export function SongAndStationModal({ modalType, station, setStation, song, crea
 		setStation((prevStation) => updatedStation)
 	}
 
-	console.log(createdByUser)
-
 	function handleMouseEnter() {
 		if (closeModalTimeoutRef.current) {
 			clearTimeout(closeModalTimeoutRef.current)
@@ -55,9 +53,9 @@ export function SongAndStationModal({ modalType, station, setStation, song, crea
 	}
 
 	async function handleAddSongToChosenStation(chosenStation) {
-		const updatedStation = await stationService.addSongToStation(chosenStation, song)
+		const updatedStation = await stationService.addSongToStation(chosenStation._id, song)
+		handleSongClick(song.id)
 		console.log(updatedStation)
-		// Maybe cause re-render?
 	}
 
 	function SongModal() {
