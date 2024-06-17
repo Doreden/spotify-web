@@ -6,7 +6,7 @@ import next_song from '../../assets/imgs/next_song.svg'
 import rewind from '../../assets/imgs/rewind.svg'
 import pause from '../../assets/imgs/pause.svg'
 import { ReactSVG } from "react-svg"
-import { playNext, toggleRepeat, toggleShuffle } from '../../store/actions/player.action'
+import { toggleRepeat, toggleShuffle } from '../../store/actions/player.action'
 
 export function PlayerControls({ ready, togglePlay, isShuffle, isRepeat, isPlaying, handlePlayNext, handlePlayPrevious }) {
 
@@ -17,7 +17,6 @@ export function PlayerControls({ ready, togglePlay, isShuffle, isRepeat, isPlayi
     function onToggleRepeat() {
         toggleRepeat(isRepeat)
     }
-
 
     return (
         <div className="player-controls">

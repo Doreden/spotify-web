@@ -1,8 +1,9 @@
 import { playSingleSong } from "../../store/actions/player.action"
 import { PlaylistSongPreview } from "../station/stationDetails/PlaylistSongPreview"
 import { TopResult } from "./TopResult"
+import { StationList } from "../StationList"
 
-export function SearchResults({ searchResults }) {
+export function SearchResults({ searchResults, resultsStations }) {
 
     function onPlaySong(song) {
         playSingleSong(song)
@@ -19,6 +20,7 @@ export function SearchResults({ searchResults }) {
                     </div>
                 ))}
             </div>
+            <StationList stations={resultsStations} listTitle={'Related Playlists'} />
         </div>
     )
 }

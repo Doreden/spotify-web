@@ -1,11 +1,10 @@
-import { ReactSVG } from 'react-svg'
 import mute from "../../assets/imgs/Volume0.svg"
 import volumeUntil25 from "../../assets/imgs/Volume1.svg"
 import volumeUntil75 from "../../assets/imgs/Volume2.svg"
 import volumeUntil100 from "../../assets/imgs/Volume3.svg"
-
-
 import Slider from '@mui/material/Slider'
+
+import { ReactSVG } from 'react-svg'
 import { useEffect, useState } from 'react'
 
 export function VolumeSlider({ setVolume, volume }) {
@@ -13,24 +12,25 @@ export function VolumeSlider({ setVolume, volume }) {
     const [svgSource, setSvgSource] = useState(volumeUntil100)
     const [isHovered, setIsHovered] = useState(false)
 
-    function handleHover() {
-        setIsHovered(() => true)
-    }
-
-    function handleHoverEnd() {
-        setIsHovered(() => false)
-
-    }
 
     useEffect(() => {
         const svgSource = getVolumeIcon(volume)
         setSvgSource((prevIdx) => svgSource)
     }, [volume])
 
+    function handleHover() {
+        setIsHovered(() => true)
+    }
+
+    function handleHoverEnd() {
+        setIsHovered(() => false)
+    }
+
     function handleOnChange(event) {
         const volume = _convertIntegerToDecimal(event.target.value)
         setVolume(volume)
     }
+
     function _convertIntegerToDecimal(integer) {
         return parseFloat((integer / 100).toFixed(2))
     }

@@ -5,7 +5,7 @@ import { OptionsModal } from "../../OptionsModal"
 import Play from '../../../assets/imgs/play.svg'
 import dots from '../../../assets/imgs/dots.svg'
 import { useSelector } from "react-redux"
-import { toggleLikedSong, loadUserStations } from "../../../store/actions/user.action"
+import { toggleLikedSong } from "../../../store/actions/user.action"
 import { ToggleLikedSongButton } from "../../ToggleLikedSongButton"
 import { UserService } from "../../../services/user.service"
 import { SongAndStationModal } from "../../modal/SongAndStationModal"
@@ -14,7 +14,7 @@ export function PlaylistSongPreview({ index, song, station, setStation, isActive
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isLikedSong, setIsLikedSong] = useState(UserService.isSongLiked(loggedInUser, song))
+  const [isLikedSong, setIsLikedSong] = useState(false)
   const [isHover, setIsHover] = useState(false)
   const buttonRef = useRef(null)
 
@@ -22,9 +22,10 @@ export function PlaylistSongPreview({ index, song, station, setStation, isActive
   const playingSongId = useSelector((storeState) => storeState.playerModule.song.id)
 
   const userLibary = useSelector((storeState) => storeState.userModule.stations)
-  const createdByUser = userLibary.filter((station) => station.createdBy._id === loggedInUser._id)
+  const createdByUser = userLibary?.filter((station) => station.createdBy._id === loggedInUser._id)
 
   useEffect(() => {
+    loadIsSongLiked()
     const handleCloseModalMenu = () => setIsModalOpen(false)
     document.addEventListener('click', handleCloseModalMenu)
 
@@ -32,6 +33,12 @@ export function PlaylistSongPreview({ index, song, station, setStation, isActive
       document.removeEventListener('click', handleCloseModalMenu)
     }
   }, [])
+
+
+  function loadIsSongLiked() {
+    if (!loggedInUser) return
+    setIsLikedSong(() => UserService.isSongLiked(loggedInUser, song))
+  }
 
 
   function handleOptionsClick(event) {
@@ -94,25 +101,28 @@ export function PlaylistSongPreview({ index, song, station, setStation, isActive
         {isHover && loggedInUser ?
           <ToggleLikedSongButton isLikedSong={isLikedSong} handleToggleLikedSongs={handleToggleLikedSongs} />
           : ''}
-        {utilService.formatSongLength(song.lengthInSeconds)}
 
-        {isHover &&
+        <div className="song-duration-text">
+          {utilService.formatSongLength(song.lengthInSeconds)}
+          {isModalOpen && (
+            <SongAndStationModal
+              modalType={'song'}
+              onClose={onClose}
+              createdByUser={createdByUser}
+              song={song}
+              station={station}
+              setStation={setStation}
+              isLikedSong={isLikedSong}
+              setIsLikedSong={setIsLikedSong}
+            />
+          )}
+        </div>
+
+        {isHover && loggedInUser &&
           <button className="song-options" ref={buttonRef} onClick={handleOptionsClick}>
             <ReactSVG src={dots} />
           </button>
         }
-        {isModalOpen && (
-          <SongAndStationModal
-            modalType={'song'}
-            onClose={onClose}
-            createdByUser={createdByUser}
-            song={song}
-            station={station}
-            setStation={setStation}
-            isLikedSong={isLikedSong}
-            setIsLikedSong={setIsLikedSong}
-          />
-        )}
       </div>
     </div>
   )

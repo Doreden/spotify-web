@@ -1,7 +1,7 @@
 import { PlayerControls } from "./PlayerControls"
 import ReactPlayer from "react-player"
 import { useSelector } from "react-redux"
-import { togglePlay, toggleShuffle, toggleRepeat, playNext, playPrevious } from "../../store/actions/player.action"
+import { togglePlay, playNext, playPrevious } from "../../store/actions/player.action"
 import { PlaySlider } from "./PlaySlider"
 import { useRef, useState } from "react"
 import { PlayingSongInfo } from "./PlayingSongInfo"

@@ -1,13 +1,12 @@
 import Slider from '@mui/material/Slider'
 import { utilService } from '../../services/util.service'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 
 
 export function PlaySlider({ songProggresionData, onSeek }) {
 
     const [isHovered, setIsHovered] = useState(false)
-
 
     function handleOnChange(event) {
         onSeek(event.target.value)
