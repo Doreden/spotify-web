@@ -12,6 +12,8 @@ export function LikedSongs() {
     const likedSongs = loggedInUser?.likedSongs
     const [colors, setColors] = useState({ bgColor: "rgba(18,18,18,", darkerColor: "rgba(18,18,18,", mainSectionColor: "rgba(18,18,18," })
 
+    const [isActiveSongId, setIsActiveSongId] = useState(null)
+
 
     useEffect(() => {
         loadUser()
@@ -48,7 +50,7 @@ export function LikedSongs() {
             <StationDetailsHeader station={likedSongsStation} is={'liked-songs'} colors={colors} setColors={setColors} />
             <div className='main-station-details' style={{ background: `linear-gradient(${colors.mainSectionColor}1) 0%, rgba(18,18,18,1) 100%)` }}>
                 <StationDetailsActions station={likedSongsStation} onPlayStation={onPlayStation} is={'liked-songs'} />
-                <PlaylistSongList station={likedSongsStation} onPlayStation={onPlayStation} />
+                <PlaylistSongList station={likedSongsStation} onPlayStation={onPlayStation} isActiveSongId={isActiveSongId} setIsActiveSongId={setIsActiveSongId} />
             </div>
         </section>
     )

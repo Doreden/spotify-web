@@ -12,7 +12,7 @@ export function TopResult({ song, onPlaySong }) {
 
     useEffect(() => {
         loadIsSongLiked()
-    }, [])
+    }, [song])
 
     function loadIsSongLiked() {
         if (!loggedInUser) return

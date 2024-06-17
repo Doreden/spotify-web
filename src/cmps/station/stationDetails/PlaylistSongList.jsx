@@ -6,7 +6,7 @@ import { loadUserStations } from "../../../store/actions/user.action"
 import { useSelector } from "react-redux"
 
 
-export function PlaylistSongList({ station, setStation, onPlayStation, isActiveSongId, handleSongClick }) {
+export function PlaylistSongList({ station, setStation, onPlayStation, isActiveSongId, setIsActiveSongId, is }) {
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
@@ -27,6 +27,10 @@ export function PlaylistSongList({ station, setStation, onPlayStation, isActiveS
     )
   }
 
+  function handleSongClick(songId) {
+    setIsActiveSongId((prevState) => songId)
+  }
+
   return (
     <div className="song-list">
       <div className="list-header playlist-columns secondary">
@@ -38,8 +42,8 @@ export function PlaylistSongList({ station, setStation, onPlayStation, isActiveS
       </div>
 
       {station.songs.map((song, index) => (
-        <li onDoubleClick={() => onPlayStation(index)} onClick={() => handleSongClick(song.id)} key={song.objectId}>
-          <PlaylistSongPreview index={index} song={song} station={station} setStation={setStation} isActiveSongId={song.id === isActiveSongId} />
+        <li onClick={() => handleSongClick(song.id)} onDoubleClick={() => onPlayStation(index)} key={is === 'liked-songs' ? song.id : song.objectId}>
+          <PlaylistSongPreview index={index} song={song} station={station} setStation={setStation} isActiveSongId={song.id === isActiveSongId} handleSongClick={handleSongClick} />
           {/* <OptionsModal modalType={'song'} entity={song} style={{top:10}} /> */}
         </li>
       ))}
