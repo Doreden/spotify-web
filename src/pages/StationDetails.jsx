@@ -35,7 +35,7 @@ export function StationDetails() {
 
   function onPlayStation(songIdx = 0) {
     playStation(station, songIdx)
-    setIsActiveSongId(station.songs[songIdx].id)
+    // setIsActiveSongId(station.songs[songIdx].id)
   }
 
   function handleSongClick(songId) {
