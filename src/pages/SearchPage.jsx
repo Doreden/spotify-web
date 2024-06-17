@@ -3,15 +3,18 @@ import { youtubeService } from "../services/youtube-service.js"
 import { SearchInput } from "../cmps/search/SearchInput"
 import { SearchResults } from "../cmps/search/SearchResults"
 import { Browse } from "../cmps/search/Browse"
+import { stationService } from "../services/station.service.js"
 
 export function SearchPage() {
 
     const [searchInput, setSearchInput] = useState(null)
     const [searchResults, setSearchResults] = useState(null)
+    const [resultsStations, setResultsStations] = useState(null)
 
     useEffect(() => {
         if (searchInput) {
             onSearch()
+            searchStations(searchInput)
         }
     }, [searchInput])
 
@@ -20,10 +23,16 @@ export function SearchPage() {
         setSearchResults((prevResults) => results)
     }
 
+    async function searchStations(txt) {
+        const stations = await stationService.query({ txt })
+        console.log(resultsStations)
+        setResultsStations((prevStations) => stations)
+    }
+
     return (
         <section className="search page">
             <SearchInput setSearchInput={setSearchInput} />
-            {searchInput ? <SearchResults searchResults={searchResults} /> : <Browse />}
+            {searchInput ? <SearchResults resultsStations={resultsStations} searchResults={searchResults} /> : <Browse />}
         </section>
     )
 }

@@ -13,9 +13,6 @@ export function StationDetails() {
 
   const [station, setStation] = useState(null)
   const [isActiveSongId, setIsActiveSongId] = useState(null)
-  // const [bgColor, setBgColor] = useState("#333333")
-  // const [mainSectionColor, setMainSectionColor] = useState("#333333")
-  // const [darkerColor, setDarkerColor] = useState()
   const [colors, setColors] = useState({ bgColor: "rgba(18,18,18,", darkerColor: "rgba(18,18,18,", mainSectionColor: "rgba(18,18,18," })
 
   const params = useParams()
@@ -35,7 +32,7 @@ export function StationDetails() {
 
   function onPlayStation(songIdx = 0) {
     playStation(station, songIdx)
-    // setIsActiveSongId(station.songs[songIdx].id)
+    setIsActiveSongId(station.songs[songIdx].id)
   }
 
   function handleSongClick(songId) {

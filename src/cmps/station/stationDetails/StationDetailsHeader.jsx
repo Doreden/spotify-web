@@ -18,8 +18,8 @@ export function StationDetailsHeader({ station, colors, setColors, is }) {
         setColors(() => ({ bgColor: darkenColor(chosenColor, 0), darkerColor: darkenColor(chosenColor, 20), mainSectionColor: darkenColor(chosenColor, 50) }))
     }
 
-    function darkenColor(color, amout) {
-        return `rgba(${colorReducer(color.red, amout)},${colorReducer(color.green, amout)},${colorReducer(color.blue, amout)},`
+    function darkenColor(color, amount) {
+        return `rgba(${colorReducer(color.red, amount)},${colorReducer(color.green, amount)},${colorReducer(color.blue, amount)},`
     }
 
     function colorReducer(RGB, amount) {
