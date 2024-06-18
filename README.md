@@ -1,6 +1,7 @@
 # Rythmix
 
-![Ryhtmix](./public/imgs//likedsongs.png)
+![](./public/imgs/Rythmix1.jpeg)
+![](./public/imgs/Rythmix2.jpeg)
 
 Rythmix is a web application based on Spotify that allows users to access music, create and share playlists, and manage their music preferences. The app utilizes the YouTube Data API for accessing music content and features a React frontend with a Node.js backend. Data is stored using MongoDB Atlas.
 

@@ -9,12 +9,13 @@ export const youtubeService = {
 }
 
 async function getSongBySearch(searchInput) {
-     
-      const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${searchInput}&part=snippet&type=video`
-      )
-      results = await response.json()
+    let results
   
+    const response = await fetch(
+      `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${searchInput}&part=snippet&type=video`
+    )
+    results = await response.json()
+    
     const songsLength = await _getSongsLength(results)
     results = results.items.map((item,idx) => ({...item, duration : songsLength[idx]}))
     results = _formatResults(results)
