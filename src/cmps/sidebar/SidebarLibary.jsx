@@ -62,7 +62,7 @@ export function SidebarLibary({ currentLocation }) {
   }
 
   function handleRemoveStation(stationId) {
-    deleteStation(loggedInUser.id, stationId)
+    deleteStation(loggedInUser._id, stationId)
     // navigate("/")
   }
   const handleCloseContextMenu = () => {

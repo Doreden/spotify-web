@@ -103,7 +103,6 @@ function createMinimalUser(user){
     }
 }
 
-
 function getEmptyCredentials() {
     return {
         username: '',

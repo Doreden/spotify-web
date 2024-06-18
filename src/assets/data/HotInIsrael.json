@@ -1,5 +1,17 @@
 [
     {
+        "_id": "6670073e47ec0af5a028c69b",
+        "name": "הלהיטים החמים של השנה",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618037/n1d9cdyr7pw58i4jmext.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
         "_id": "666ff48f47ec0af5a028c691",
         "name": "להיטים ים תיכוניים",
         "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718613196/ykzparnvdgvkpngjlo89.jpg",
@@ -39,18 +51,6 @@
         "_id": "666ff95b47ec0af5a028c69a",
         "name": "להיטים ישראליים",
         "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718617910/k6lexbodvscfrazfyevf.jpg",
-        "createdBy": {
-            "_id": "666ff12547ec0af5a028c68a",
-            "username": "Spotify",
-            "imgUrl": "http://some-photo/"
-        },
-        "likedByUsers": [],
-        "songs": []
-    },
-    {
-        "_id": "6670073e47ec0af5a028c69b",
-        "name": "הלהיטים החמים של השנה",
-        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718618037/n1d9cdyr7pw58i4jmext.jpg",
         "createdBy": {
             "_id": "666ff12547ec0af5a028c68a",
             "username": "Spotify",
