@@ -1,6 +1,6 @@
 {
     "kind": "youtube#searchListResponse",
-    "etag": "wr_QS4prvVP3R25f5PDXaHnZ4Tg",
+    "etag": "SyJybxERdamge8nKd82ox7t1bIE",
     "nextPageToken": "CAUQAA",
     "regionCode": "IL",
     "pageInfo": {
@@ -10,172 +10,172 @@
     "items": [
         {
             "kind": "youtube#searchResult",
-            "etag": "lgjT-yRhKWs1zrH1bGPhnn4OxxM",
+            "etag": "JQNW6SYyHhRJYq_9xucArtwCkic",
             "id": {
                 "kind": "youtube#video",
-                "videoId": "eVTXPUF4Oz4"
+                "videoId": "YykjpeuMNEk"
             },
             "snippet": {
-                "publishedAt": "2009-10-26T18:31:10Z",
-                "channelId": "UCZU9T1ceaOgwfLRq7OKFU4Q",
-                "title": "In The End [Official HD Music Video] - Linkin Park",
-                "description": "In The End [Official HD Music Video] - Linkin Park ---------- Papercuts - Singles Collection (2000-2023) | Available Now ...",
+                "publishedAt": "2016-01-29T15:00:38Z",
+                "channelId": "UCDPM_n1atn2ijUwHd0NNRQw",
+                "title": "Coldplay - Hymn For The Weekend (Official Video)",
+                "description": "Coldplay - Hymn For The Weekend is taken from the album A Head Full of Dreams released in 2015 Subscribe for more content ...",
                 "thumbnails": {
                     "default": {
-                        "url": "https://i.ytimg.com/vi/eVTXPUF4Oz4/default.jpg",
+                        "url": "https://i.ytimg.com/vi/YykjpeuMNEk/default.jpg",
                         "width": 120,
                         "height": 90
                     },
                     "medium": {
-                        "url": "https://i.ytimg.com/vi/eVTXPUF4Oz4/mqdefault.jpg",
+                        "url": "https://i.ytimg.com/vi/YykjpeuMNEk/mqdefault.jpg",
                         "width": 320,
                         "height": 180
                     },
                     "high": {
-                        "url": "https://i.ytimg.com/vi/eVTXPUF4Oz4/hqdefault.jpg",
+                        "url": "https://i.ytimg.com/vi/YykjpeuMNEk/hqdefault.jpg",
                         "width": 480,
                         "height": 360
                     }
                 },
-                "channelTitle": "Linkin Park",
+                "channelTitle": "Coldplay",
                 "liveBroadcastContent": "none",
-                "publishTime": "2009-10-26T18:31:10Z"
+                "publishTime": "2016-01-29T15:00:38Z"
             }
         },
         {
             "kind": "youtube#searchResult",
-            "etag": "FBeT5CayRpushoT9QDVQ0kEoFhQ",
+            "etag": "BJm2imZ3HCUrq8zqYiPxyXc_V9A",
             "id": {
                 "kind": "youtube#video",
-                "videoId": "kXYiU_JCYtU"
+                "videoId": "1As2xAHBh4k"
             },
             "snippet": {
-                "publishedAt": "2007-03-05T08:12:00Z",
-                "channelId": "UCZU9T1ceaOgwfLRq7OKFU4Q",
-                "title": "Numb (Official Music Video) [4K UPGRADE] – Linkin Park",
-                "description": "Numb (Official Music Video) [4K UPGRADE] – Linkin Park ---------- Papercuts - Singles Collection (2000-2023) | Available Now ...",
+                "publishedAt": "2022-02-19T19:30:14Z",
+                "channelId": "UC5CUUVkIoHCUvefwYk-wwBw",
+                "title": "Coldplay - Hymn for the Weekend (Legendado) (Feat. Beyoncé)",
+                "description": "Apoie o canal! Você pode fazer uma contribuição através do PIX: kawandanylo@gmail.com. Sua ajuda é muito valorizada e ...",
                 "thumbnails": {
                     "default": {
-                        "url": "https://i.ytimg.com/vi/kXYiU_JCYtU/default.jpg",
+                        "url": "https://i.ytimg.com/vi/1As2xAHBh4k/default.jpg",
                         "width": 120,
                         "height": 90
                     },
                     "medium": {
-                        "url": "https://i.ytimg.com/vi/kXYiU_JCYtU/mqdefault.jpg",
+                        "url": "https://i.ytimg.com/vi/1As2xAHBh4k/mqdefault.jpg",
                         "width": 320,
                         "height": 180
                     },
                     "high": {
-                        "url": "https://i.ytimg.com/vi/kXYiU_JCYtU/hqdefault.jpg",
+                        "url": "https://i.ytimg.com/vi/1As2xAHBh4k/hqdefault.jpg",
                         "width": 480,
                         "height": 360
                     }
                 },
-                "channelTitle": "Linkin Park",
+                "channelTitle": "Beyoncé Legendas",
                 "liveBroadcastContent": "none",
-                "publishTime": "2007-03-05T08:12:00Z"
+                "publishTime": "2022-02-19T19:30:14Z"
             }
         },
         {
             "kind": "youtube#searchResult",
-            "etag": "9lnmNZVu9gzlRf-DyYuJo6QRwRM",
+            "etag": "FkrDZOEp6JsiQALY_KXacwq38kc",
             "id": {
                 "kind": "youtube#video",
-                "videoId": "L_PSnBsQihM"
+                "videoId": "c9cUytejf1k"
             },
             "snippet": {
-                "publishedAt": "2024-02-16T12:15:57Z",
-                "channelId": "UCVPytE6y2B-whg7TEKvo0ug",
-                "title": "Linkin Park - Best Music | Full Album",
-                "description": "linkinpark #rock #rockmusic #album #nostalgic Follow Them On Out Now. Meteora 20 linkinpark.com/meteora20 Instagram ...",
+                "publishedAt": "2016-02-11T23:25:23Z",
+                "channelId": "UCDVYQ4Zhbm3S2dlz7P1GBDg",
+                "title": "Coldplay&#39;s FULL Pepsi Super Bowl 50 Halftime Show feat. Beyoncé &amp; Bruno Mars! | NFL",
+                "description": "Check out the entire Super Bowl 50 Halftime Show, starring Coldplay, Beyonce and Bruno Mars, ending with an amazing homage ...",
                 "thumbnails": {
                     "default": {
-                        "url": "https://i.ytimg.com/vi/L_PSnBsQihM/default.jpg",
+                        "url": "https://i.ytimg.com/vi/c9cUytejf1k/default.jpg",
                         "width": 120,
                         "height": 90
                     },
                     "medium": {
-                        "url": "https://i.ytimg.com/vi/L_PSnBsQihM/mqdefault.jpg",
+                        "url": "https://i.ytimg.com/vi/c9cUytejf1k/mqdefault.jpg",
                         "width": 320,
                         "height": 180
                     },
                     "high": {
-                        "url": "https://i.ytimg.com/vi/L_PSnBsQihM/hqdefault.jpg",
+                        "url": "https://i.ytimg.com/vi/c9cUytejf1k/hqdefault.jpg",
                         "width": 480,
                         "height": 360
                     }
                 },
-                "channelTitle": "Just Music",
+                "channelTitle": "NFL",
                 "liveBroadcastContent": "none",
-                "publishTime": "2024-02-16T12:15:57Z"
+                "publishTime": "2016-02-11T23:25:23Z"
             }
         },
         {
             "kind": "youtube#searchResult",
-            "etag": "eOu9em2bZbfmnvXV-scNHW36Ms4",
+            "etag": "bCKPZIg__pRH_8D90Cw9rZr8BZM",
             "id": {
                 "kind": "youtube#video",
-                "videoId": "LYU-8IFcDPw"
+                "videoId": "XHflE7pAEc8"
             },
             "snippet": {
-                "publishedAt": "2009-10-24T01:13:40Z",
-                "channelId": "UCZU9T1ceaOgwfLRq7OKFU4Q",
-                "title": "Faint (Official Music Video) [4K UPGRADE] – Linkin Park",
-                "description": "Faint (Official Music Video) [4K UPGRADE] – Linkin Park ---------- Papercuts - Singles Collection (2000-2023) | Available Now ...",
+                "publishedAt": "2016-09-20T12:30:12Z",
+                "channelId": "UC8Wk7-FpR5If0Eg8mtHZ_Sg",
+                "title": "Coldplay - Hymn For The Weekend (Audio)",
+                "description": "",
                 "thumbnails": {
                     "default": {
-                        "url": "https://i.ytimg.com/vi/LYU-8IFcDPw/default.jpg",
+                        "url": "https://i.ytimg.com/vi/XHflE7pAEc8/default.jpg",
                         "width": 120,
                         "height": 90
                     },
                     "medium": {
-                        "url": "https://i.ytimg.com/vi/LYU-8IFcDPw/mqdefault.jpg",
+                        "url": "https://i.ytimg.com/vi/XHflE7pAEc8/mqdefault.jpg",
                         "width": 320,
                         "height": 180
                     },
                     "high": {
-                        "url": "https://i.ytimg.com/vi/LYU-8IFcDPw/hqdefault.jpg",
+                        "url": "https://i.ytimg.com/vi/XHflE7pAEc8/hqdefault.jpg",
                         "width": 480,
                         "height": 360
                     }
                 },
-                "channelTitle": "Linkin Park",
+                "channelTitle": "Cherie Life",
                 "liveBroadcastContent": "none",
-                "publishTime": "2009-10-24T01:13:40Z"
+                "publishTime": "2016-09-20T12:30:12Z"
             }
         },
         {
             "kind": "youtube#searchResult",
-            "etag": "NlPx-wZXkKCL-QFGMOrlO99Xn3E",
+            "etag": "KwqO3XGmp24odrYAsjk9DMaKsKo",
             "id": {
                 "kind": "youtube#video",
-                "videoId": "v2H4l9RpkwM"
+                "videoId": "PnUhHqTnYjY"
             },
             "snippet": {
-                "publishedAt": "2009-10-23T20:17:54Z",
-                "channelId": "UCZU9T1ceaOgwfLRq7OKFU4Q",
-                "title": "Breaking the Habit (Official Music Video) [HD UPGRADE] – Linkin Park",
-                "description": "Breaking the Habit (Official Music Video) [HD UPGRADE] – Linkin Park ---------- Papercuts - Singles Collection (2000-2023) ...",
+                "publishedAt": "2016-03-30T21:22:28Z",
+                "channelId": "UC_neEtEFiuuazmEh3E_Iodg",
+                "title": "Coldplay - Hymn For The Weekend",
+                "description": "Hymn for the Weekend es una canción de la banda de rock británica Coldplay con la voz sin acreditar de la cantante ...",
                 "thumbnails": {
                     "default": {
-                        "url": "https://i.ytimg.com/vi/v2H4l9RpkwM/default.jpg",
+                        "url": "https://i.ytimg.com/vi/PnUhHqTnYjY/default.jpg",
                         "width": 120,
                         "height": 90
                     },
                     "medium": {
-                        "url": "https://i.ytimg.com/vi/v2H4l9RpkwM/mqdefault.jpg",
+                        "url": "https://i.ytimg.com/vi/PnUhHqTnYjY/mqdefault.jpg",
                         "width": 320,
                         "height": 180
                     },
                     "high": {
-                        "url": "https://i.ytimg.com/vi/v2H4l9RpkwM/hqdefault.jpg",
+                        "url": "https://i.ytimg.com/vi/PnUhHqTnYjY/hqdefault.jpg",
                         "width": 480,
                         "height": 360
                     }
                 },
-                "channelTitle": "Linkin Park",
+                "channelTitle": "Rolando Ramos",
                 "liveBroadcastContent": "none",
-                "publishTime": "2009-10-23T20:17:54Z"
+                "publishTime": "2016-03-30T21:22:28Z"
             }
         }
     ]

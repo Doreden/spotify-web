@@ -67,7 +67,7 @@ async function removeById(stationId) {
   }
 }
 
-// User Likes Related Functions
+// User Likes Related Function
 
 async function addUserToLikedByUsers(station,miniUser){
   const stationToUpdate = await getById(station._id)

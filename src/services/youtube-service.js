@@ -10,8 +10,7 @@ export const youtubeService = {
 
 async function getSongBySearch(searchInput) {
     let results
-    // TODO REMOVE - FOR Development
-    if(searchInput === 'try'){
+    if(searchInput === 'coldplay beyonce'){
       results = await JSON.parse(utilService.loadFromStorage(STORAGE_KEY))
     }else{      
         const response = await fetch(

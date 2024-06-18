@@ -1,9 +1,11 @@
+// Hooks
 import { useEffect, useState } from "react"
+// Services
 import { youtubeService } from "../services/youtube-service.js"
-import { SearchInput } from "../cmps/search/SearchInput"
-import { SearchResults } from "../cmps/search/SearchResults"
-import { Browse } from "../cmps/search/Browse"
 import { stationService } from "../services/station.service.js"
+// Components
+import { SearchResults } from "../cmps/search/SearchResults"
+import { SearchInput } from "../cmps/search/SearchInput"
 
 export function SearchPage() {
 
@@ -14,25 +16,26 @@ export function SearchPage() {
     useEffect(() => {
         if (searchInput) {
             onSearch()
-            searchStations(searchInput)
+            searchStations()
         }
     }, [searchInput])
 
     async function onSearch() {
-        const results = await youtubeService.getSongBySearch(searchInput)
-        setSearchResults((prevResults) => results)
+        const songResults = await youtubeService.getSongBySearch(searchInput)
+        setSearchResults((prevResults) => songResults)
     }
 
-    async function searchStations(txt) {
-        const stations = await stationService.query({ txt })
-        console.log(resultsStations)
-        setResultsStations((prevStations) => stations)
+    async function searchStations() {
+        const stationResults = await stationService.query({ txt: searchInput })
+        setResultsStations((prevStations) => stationResults)
     }
 
     return (
         <section className="search page">
             <SearchInput setSearchInput={setSearchInput} />
-            {searchInput ? <SearchResults resultsStations={resultsStations} searchResults={searchResults} /> : <Browse />}
+            {searchInput &&
+                <SearchResults resultsStations={resultsStations} searchResults={searchResults} />
+            }
         </section>
     )
 }

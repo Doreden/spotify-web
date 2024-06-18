@@ -14,7 +14,6 @@ export function StationDetails() {
   const [station, setStation] = useState(null)
   const [isActiveSongId, setIsActiveSongId] = useState(null)
   const [colors, setColors] = useState({ bgColor: "rgba(18,18,18,", darkerColor: "rgba(18,18,18,", mainSectionColor: "rgba(18,18,18," })
-
   const params = useParams()
 
   useEffect(() => {

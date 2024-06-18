@@ -19,7 +19,7 @@ export function StationDetailsActions({ station, onPlayStation, is }) {
 
   useEffect(() => {
     loadIsLikedStationState()
-  }, [])
+  }, [station])
 
   useEffect(() => {
     const handleCloseModalMenu = () => setIsModalOpen(false)
