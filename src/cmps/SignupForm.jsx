@@ -1,16 +1,13 @@
-import { useState } from "react"
-import { UserService } from "../services/user.service.js"
 import spotifyPng from '../assets/imgs/spotify3D.png'
+import { useState } from "react"
 import { useNavigate } from "react-router"
+import { UserService } from "../services/user.service.js"
 import { signup } from "../store/actions/user.action.js"
 
 export function SignupForm() {
     const [credentials, setCredentials] = useState(UserService.getEmptyCredentials())
     const [isUsernameTaken, setIsUsernameTaken] = useState(false)
-
     const navigate = useNavigate()
-
-
 
     async function onSignup(credentials) {
         try {
@@ -21,7 +18,6 @@ export function SignupForm() {
             console.log('Oops try again')
         }
     }
-
 
     function handleChange({ target }) {
         const { name: field, value } = target

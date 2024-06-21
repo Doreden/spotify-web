@@ -23,12 +23,12 @@ export function StationIndex() {
         <StationIndexHeader />
       </div>
       {stations &&
-        <>
+        <div className='main-station-index'>
           <StationList stations={stations.israelList} listTitle={'Hot In Israel'} />
           <StationList stations={stations.moodsList} listTitle={'Moods'} />
           <StationList stations={stations.eleconicList} listTitle={'Electronic Music'} />
           <StationList stations={stations.recommendedList} listTitle={'Recommended For You'} />
-        </>
+        </div>
       }
     </section>
 

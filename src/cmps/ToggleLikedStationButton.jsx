@@ -6,9 +6,6 @@ import SongLiked from '../assets/imgs/LikedSong.svg'
 
 export function ToggleLikedStationButton({ isLikedStation, handleLikeStation }) {
 
-
-
-
   return (
     <button onClick={handleLikeStation} className="add-to-liked-stations-btn">
       {isLikedStation ?
