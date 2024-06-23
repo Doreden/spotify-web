@@ -4,8 +4,6 @@ import spotifyPng from '../assets/imgs/spotify3D.png'
 
 export function LoginForm({ onLogin, isErrorMsg }) {
 
-
-
     const [credentials, setCredentials] = useState(UserService.getEmptyCredentials())
 
     function handleChange({ target }) {
