@@ -21,6 +21,9 @@ import { SignupForm } from "./cmps/SignupForm.jsx"
 import { useEffect } from "react"
 import { login } from "./store/actions/user.action.js"
 
+// App Components
+import { UserMsg } from "./cmps/UserMsg.jsx"
+
 function App() {
 
   useEffect(() => {
@@ -46,6 +49,7 @@ function App() {
             <Playline />
           </section>
         </Router>
+        <UserMsg />
       </Provider>
     </>
   )
