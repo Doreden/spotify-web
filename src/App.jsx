@@ -27,8 +27,12 @@ import { UserMsg } from "./cmps/UserMsg.jsx"
 function App() {
 
   useEffect(() => {
-    login()
+    loginDefaultUser()
   }, [])
+
+  async function loginDefaultUser() {
+    const user = await login({ username: "DefaultUser", password: "DefaultUser" })
+  }
 
   return (
     <>
