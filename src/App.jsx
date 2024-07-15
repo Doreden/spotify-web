@@ -23,6 +23,7 @@ import { login } from "./store/actions/user.action.js"
 
 // App Components
 import { UserMsg } from "./cmps/UserMsg.jsx"
+import { UserService } from "./services/user.service.js"
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
   }, [])
 
   async function loginDefaultUser() {
-    const user = await login({ username: "DefaultUser", password: "DefaultUser" })
+    await login({ username: "DefaultUser", password: "DefaultUser" })
   }
 
   return (
@@ -53,7 +54,7 @@ function App() {
             <Playline />
           </section>
         </Router>
-        <UserMsg />
+        {/* <UserMsg /> */}
       </Provider>
     </>
   )
