@@ -13,7 +13,7 @@
     z-index: 1000;
 
     right: -18px;
-    bottom: 140px;
+    bottom: 105px;
 
     display: flex;
     width: 250px;
@@ -46,11 +46,11 @@
             background-color: #363636;
         }
 
+
     }
 
     .share-menu {
         position: absolute;
-
         display: flex;
         flex-direction: column;
         column-gap: 12px;
@@ -60,15 +60,15 @@
         min-height: 0px;
         max-height: 200px;
         overflow-y: scroll;
-        // opacity: 0;
-        // pointer-events: none;
         box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);
         border-radius: 4px;
         right: 258px;
-        bottom: 90px;
+        bottom: -108px;
 
         scrollbar-width: thin;
-        overflow-x: hidden;
+        // overflow-x: hidden;
+
+        z-index: 1000;
 
 
         & .add-to-playlist-preview {
@@ -78,6 +78,8 @@
             border-bottom: 1px solid rgba(146, 146, 146, 0.1);
             font-weight: 500;
             font-size: 14px;
+            overflow: visible;
+            z-index: 1000;
 
 
             &:hover {

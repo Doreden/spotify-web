@@ -55,7 +55,6 @@ export function SongAndStationModal({ modalType, station, setStation, song, crea
 	async function handleAddSongToChosenStation(chosenStation) {
 		const updatedStation = await stationService.addSongToStation(chosenStation._id, song)
 		handleSongClick(song.id)
-		console.log(updatedStation)
 	}
 
 	function SongModal() {
@@ -68,20 +67,16 @@ export function SongAndStationModal({ modalType, station, setStation, song, crea
 					</div>
 					<div className="text-menu">Add to playlist</div>
 					{isSecondModalOpen &&
-						<div className="second-modal-container">
-
-							<ul className="share-menu">
-								{createdByUser.map((userCreatedStation) =>
-									<li onClick={() => handleAddSongToChosenStation(userCreatedStation)} className="add-to-playlist-preview" key={userCreatedStation._id} >
-										<div className="img-container">
-											<img className="add-to-playlist-img" src={userCreatedStation.imgUrl} ></img>
-										</div>
-										{userCreatedStation.name}
-									</li>
-								)}
-							</ul>
-						</div>
-
+						<ul className="share-menu">
+							{createdByUser.map((userCreatedStation) =>
+								<li onClick={() => handleAddSongToChosenStation(userCreatedStation)} className="add-to-playlist-preview" key={userCreatedStation._id} >
+									<div className="img-container">
+										<img className="add-to-playlist-img" src={userCreatedStation.imgUrl} ></img>
+									</div>
+									{userCreatedStation.name}
+								</li>
+							)}
+						</ul>
 					}
 				</li>
 				{station !== undefined &&
