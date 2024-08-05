@@ -23,11 +23,11 @@ import { login } from "./store/actions/user.action.js"
 
 // App Components
 import { UserMsg } from "./cmps/UserMsg.jsx"
-import { UserService } from "./services/user.service.js"
 
 function App() {
 
   useEffect(() => {
+    console.log("Try to log in")
     loginDefaultUser()
   }, [])
 
@@ -36,27 +36,25 @@ function App() {
   }
 
   return (
-    <>
-      <Provider store={store}>
-        <Router>
-          <section className="main-app">
-            <Sidebar />
-            {/* TODO Figure out how to layout NavHeader */}
-            {/* <NavHeader/> */}
-            <Routes>
-              <Route path="/" element={<StationIndex />} />
-              <Route path="/search" element={<SearchPage />} />
-              <Route path='/likedsongs' element={<LikedSongs />} />
-              <Route path='/login' element={<LoginPage />} />
-              <Route path='/signup' element={<SignupForm />} />
-              <Route path="/station/:stationId" element={<StationDetails />} />
-            </Routes>
-            <Playline />
-          </section>
-        </Router>
-        {/* <UserMsg /> */}
-      </Provider>
-    </>
+    <Provider store={store}>
+      <Router>
+        <section className="main-app">
+          <Sidebar />
+          {/* TODO Figure out how to layout NavHeader */}
+          {/* <NavHeader/> */}
+          <Routes>
+            <Route path="/" element={<StationIndex />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path='/likedsongs' element={<LikedSongs />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/signup' element={<SignupForm />} />
+            <Route path="/station/:stationId" element={<StationDetails />} />
+          </Routes>
+          <Playline />
+        </section>
+      </Router>
+      {/* <UserMsg /> */}
+    </Provider>
   )
 }
 
