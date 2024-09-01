@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { StationList } from "../cmps/StationList"
 import { stationService } from "../services/station.service"
 import { StationIndexHeader } from "../cmps/header/StationIndexHeader"
-import { login } from "../store/actions/user.action"
 
 export function StationIndex() {
 
@@ -15,7 +14,6 @@ export function StationIndex() {
 
   function loadStations() {
     const indexStations = stationService.getIndexStations()
-    console.log(indexStations)
     setStations(() => indexStations)
   }
 

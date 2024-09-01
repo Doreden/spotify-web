@@ -1,20 +1,8 @@
 [
     {
-        "_id": "666ff69847ec0af5a028c694",
-        "name": "90's Hip Hop",
-        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/93110306_2651724648379871_2654066145685929984_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=hTwsxRwzylIQ7kNvgE1q1FQ&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYB2X4H7YJz1MH9HGlnFQl79SJqvXhfXLVT1NxBkc1ONow&oe=66976BCE",
-        "createdBy": {
-            "_id": "666ff12547ec0af5a028c68a",
-            "username": "Spotify",
-            "imgUrl": "http://some-photo/"
-        },
-        "likedByUsers": [],
-        "songs": []
-    },
-    {
-        "_id": "666ff86247ec0af5a028c697",
-        "name": "Breakdance Music",
-        "imgUrl": "https://scontent.fsdv1-2.fna.fbcdn.net/v/t31.18172-8/12138607_1707898656095813_2637486649713887776_o.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=qnGXfUz5sQcQ7kNvgGtrIQF&_nc_ht=scontent.fsdv1-2.fna&oh=00_AYCESxaREB6pThTxxUdzLU-qO4NMPQrjzAkrDOTdPAQ6lA&oe=669756CC",
+        "_id": "66700d7f47ec0af5a028c6a9",
+        "name": "Midnight Jam",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619579/pgh0fzhnntl20fwdsczm.jpg",
         "createdBy": {
             "_id": "666ff12547ec0af5a028c68a",
             "username": "Spotify",
@@ -51,6 +39,42 @@
         "_id": "66700fc247ec0af5a028c6af",
         "name": "Dance Forever",
         "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718620225/lmzngh20gv08pzuhvihx.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700ef347ec0af5a028c6ac",
+        "name": "Daylight Wedding",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718619975/aspswga7ucqmwkfdwhaf.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700f4a47ec0af5a028c6ad",
+        "name": "Neon Gathering",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718620040/iftnzj2geylawgouler9.jpg",
+        "createdBy": {
+            "_id": "666ff12547ec0af5a028c68a",
+            "username": "Spotify",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": []
+    },
+    {
+        "_id": "66700fbe47ec0af5a028c6ae",
+        "name": "Romantic Sunrise",
+        "imgUrl": "https://res.cloudinary.com/dfptcr4ln/image/upload/v1718620126/bgxmbyc8kxkfrqkj1pvy.jpg",
         "createdBy": {
             "_id": "666ff12547ec0af5a028c68a",
             "username": "Spotify",

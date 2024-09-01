@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { UserService } from "../services/user.service.js"
-import spotifyPng from '../assets/imgs/spotify3D.png'
+import RythmixIcon from '../assets/imgs/RythmixIcon.png'
 
 export function LoginForm({ onLogin, isErrorMsg }) {
 
@@ -20,8 +20,8 @@ export function LoginForm({ onLogin, isErrorMsg }) {
     return (
         <form className="login-form" onSubmit={handleSubmit}>
             <div className="login-container">
-                <img src={spotifyPng} alt="My Image" />
-                <h1 className="login-title">Log in to Spotify</h1>
+                <img src={RythmixIcon} alt="My Image" />
+                <h1 className="login-title">Log in to Rythmix</h1>
                 <label className='input-label'>Enter your username
                     <input
                         className={`${isErrorMsg ? 'wrong-input' : ""}`}

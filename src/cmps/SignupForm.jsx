@@ -1,4 +1,4 @@
-import spotifyPng from '../assets/imgs/spotify3D.png'
+import RythmixIcon from '../assets/imgs/RythmixIcon.png'
 import { useState } from "react"
 import { useNavigate } from "react-router"
 import { UserService } from "../services/user.service.js"
@@ -32,8 +32,8 @@ export function SignupForm() {
     return (
         <form className="signup-form" onSubmit={handleSubmit}>
             <div className="signup-container">
-                <img src={spotifyPng} alt="My Image" />
-                <h1 className="signup-title">Sign Up to Spotify</h1>
+                <img src={RythmixIcon} alt="My Image" />
+                <h1 className="signup-title">Sign Up to Rythmix</h1>
                 <label className="input-label">Enter your full name
                     <input
                         type="text"
