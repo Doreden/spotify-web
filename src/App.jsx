@@ -27,7 +27,6 @@ import { UserMsg } from "./cmps/UserMsg.jsx"
 function App() {
 
   useEffect(() => {
-    console.log("Try to log in")
     loginDefaultUser()
   }, [])
 

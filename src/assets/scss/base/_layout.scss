@@ -5,8 +5,8 @@
     width: 100vw;
     height: 100vh;
 
-    grid-template-columns: auto 1fr;
     grid-template-rows: 1fr auto;
+    grid-template-columns: auto 1fr;
     grid-template-areas: "nav-bar main-view"
         "now-playing-bar now-playing-bar";
 
@@ -24,7 +24,7 @@
     border-radius: $layout-border-radius;
     overflow: hidden;
     background-color: $component-bg-color;
-    overflow-y: scroll;
+    overflow-y: auto;
     // scroll-behavior: smooth;
 }
 

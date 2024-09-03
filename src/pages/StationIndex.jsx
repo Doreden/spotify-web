@@ -11,7 +11,6 @@ export function StationIndex() {
     loadStations()
   }, [])
 
-
   function loadStations() {
     const indexStations = stationService.getIndexStations()
     setStations(() => indexStations)

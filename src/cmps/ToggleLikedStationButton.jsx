@@ -1,5 +1,3 @@
-// TODO
-
 import { ReactSVG } from 'react-svg'
 import AddToLiked from '../assets/imgs/addToLikes.svg'
 import SongLiked from '../assets/imgs/LikedSong.svg'
