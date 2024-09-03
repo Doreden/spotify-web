@@ -1,5 +1,3 @@
-
-
 export function DeleteStation({ show, station, onClose, onDelete }) {
 
     function handleDelete() {

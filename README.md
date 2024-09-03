@@ -1,79 +1,58 @@
-# Spotify Web Clone
+# Rythmix
 
-This is a Spotify web application clone built with React and Vite.
+![](./public/imgs/Rythmix1.jpeg)
+![](./public/imgs/Rythmix2.jpeg)
 
-## Table of Contents
+Rythmix is a web application based on Spotify that allows users to access music, create and share playlists, and manage their music preferences. The app utilizes the YouTube Data API for accessing music content and features a React frontend with a Node.js backend. Data is stored using MongoDB Atlas.
 
-- [Overview](#overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Scripts](#scripts)
-- [Dependencies](#dependencies)
-- [DevDependencies](#devdependencies)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+## How to use
 
-## Overview
+Follow steps in backend repository:
+https://github.com/Ordoga/Rythmix-backend
 
-This project is a clone of the Spotify web application. It is built using React for the front-end and Vite for the build tool. The application aims to mimic the look and feel of Spotify, allowing users to browse and play music.
 
 ## Features
 
-- Browse music and playlists
-- Play music
-- Responsive design
-- User authentication (to be implemented)
-- Integration with Youtube DATA API v3
-- Search Music via Youtube Search
+- **Music Access**: Utilize the YouTube Data API to search and play music.
+- **Playlists**: Create, manage, and share playlists.
+- **Database**: Store user data and playlists in MongoDB Atlas.
+- **User Authentication**
 
-## Installation
+## Technologies Used
 
-To get started with the project, follow these steps:
+- **Frontend**: React, Redux, Axios, Sass
+- **Backend**: Node.js, Express
+- **Database**: MongoDB Atlas
+- **API**: YouTube Data API v3
 
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/yourusername/spotify-web.git
-    cd spotify-web
-    ```
+## Libaries
 
-2. Install the dependencies:
-    ```sh
-    npm install
-    ```
+- **API**: YouTube Data API v3
+- **Player**: react-player
+- *MUI*: 
+- *extract-colors*: 
 
-## Scripts
+## Prerequisites
 
-Here are the available scripts for this project:
+- Node.js (v12.x or later)
+- MongoDB Atlas account
+- YouTube Data API key
 
-- `dev`: Starts the development server.
-- `predeploy`: Builds the project before deployment.
-- `deploy`: Deploys the project to GitHub Pages.
-- `build`: Builds the project for production.
-- `lint`: Lints the project files.
-- `preview`: Previews the production build.
-- `watch`: Watches for changes in SCSS files and compiles them to CSS.
 
-You can run these scripts using `npm run <script-name>`.
+## Project Structure
 
-## Dependencies
+- **client**: Contains the React frontend
+  - **src**
+    - **components**: React components
+    - **redux**: Redux actions and reducers
+    - **services**: API services
+    - **styles**: CSS files
+    - **App.js**: Main App component
+    - **index.js**: Entry point
 
-- `@emotion/react`: ^11.11.4
-- `@emotion/styled`: ^11.11.5
-- `@mui/material`: ^5.15.19
-- `react`: ^18.2.0
-- `react-dom`: ^18.2.0
-- `react-icons`: ^5.0.1
-- `react-player`: ^2.16.0
-- `react-redux`: ^9.1.0
-- `react-router`: ^6.22.3
-- `react-router-dom`: ^6.22.3
-- `react-svg`: ^16.1.34
-- `redux`: ^5.0.1
-- `sass`: ^1.77.2
-
-## Usage
-
-To start the development server, run:
-```sh
-npm run dev
+- **server**: Contains the Node.js backend
+  - **controllers**: Request handlers
+  - **routes**: Express routes
+  - **middlewares**: Custom middlewares
+  - **app.js**: Express app setup
+  - **server.js**: Server entry point

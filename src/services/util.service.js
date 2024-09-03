@@ -12,31 +12,31 @@ export const utilService = {
 }
 
 function formatDate(timestamp) {
-    const date = new Date(timestamp);
+    const date = new Date(timestamp)
 
     const months = [
         "Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
-    const day = date.getDate();
-    const month = date.getMonth();
-    const year = date.getFullYear();
+    const day = date.getDate()
+    const month = date.getMonth()
+    const year = date.getFullYear()
 
-    return `${months[month]} ${day}, ${year}`;
+    return `${months[month]} ${day}, ${year}`
 }
 
 function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+    return Math.floor(Math.random() * max)
   }
 
 
 function saveToStorage(key, value) {
-    localStorage[key] = JSON.stringify(value);
+    localStorage[key] = JSON.stringify(value)
 }
 
 function loadFromStorage(key, defaultValue = null) {
-    var value = localStorage[key] || defaultValue;
-    return JSON.parse(value);
+    var value = localStorage[key] || defaultValue
+    return JSON.parse(value)
 }
 
 function generateId(length){
@@ -49,25 +49,19 @@ function generateId(length){
 }
 
 function convertYoutubeDurationToSeconds(durationString){
-    const pattern = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
+    const pattern = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/
     const match = durationString.match(pattern);
 
     if (match) {
-        const hours = match[1] ? parseInt(match[1], 10) : 0;
-        const minutes = match[2] ? parseInt(match[2], 10) : 0;
-        const seconds = match[3] ? parseInt(match[3], 10) : 0;
-        const totalSeconds = hours * 3600 + minutes * 60 + seconds;
-        return totalSeconds;
+        const hours = match[1] ? parseInt(match[1], 10) : 0
+        const minutes = match[2] ? parseInt(match[2], 10) : 0
+        const seconds = match[3] ? parseInt(match[3], 10) : 0
+        const totalSeconds = hours * 3600 + minutes * 60 + seconds
+        return totalSeconds
     } else {
-        return 0;
+        return 0
     }
 }
-
-// function formatSongLength(songLengthInSeconds){
-//     return (
-//         `${Math.floor(songLengthInSeconds/60)}:${(songLengthInSeconds%60).toString().padStart(2, '0')}`
-//     )
-// }
 
 function formatStationLength(songs){
     let totalLength = 0;
@@ -84,7 +78,6 @@ function formatStationLength(songs){
         )
     }
 }
-
 
 function formatSongLength(songLengthInSeconds) {
     const hours = Math.floor(songLengthInSeconds / 3600);

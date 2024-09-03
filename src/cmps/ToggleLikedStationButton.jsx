@@ -1,13 +1,8 @@
-// TODO
-
 import { ReactSVG } from 'react-svg'
 import AddToLiked from '../assets/imgs/addToLikes.svg'
 import SongLiked from '../assets/imgs/LikedSong.svg'
 
 export function ToggleLikedStationButton({ isLikedStation, handleLikeStation }) {
-
-
-
 
   return (
     <button onClick={handleLikeStation} className="add-to-liked-stations-btn">

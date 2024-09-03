@@ -1,0 +1,23 @@
+.user-msg {
+    position: fixed;
+    height: 60px;
+    min-width: 150px;
+    max-width: 500px;
+    border-radius: 16px;
+    bottom: 100px;
+    right: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &.success {
+        background-color: #1DB954;
+    }
+
+    &.error {
+        background-color: rgb(185, 50, 29);
+    }
+
+}

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
+import { useSelector } from "react-redux"
 import { StationDetailsHeader } from "../cmps/station/stationDetails/StationDetailsHeader"
 import { StationDetailsActions } from "../cmps/station/stationDetails/StationDetialsActions"
 import { PlaylistSongList } from "../cmps/station/stationDetails/PlaylistSongList"
 import { stationService } from "../services/station.service"
 import { playStation } from "../store/actions/player.action"
-import { useSelector } from "react-redux"
 
 export function StationDetails() {
 

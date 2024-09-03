@@ -1,16 +1,13 @@
 import { useEffect, useRef, useState } from "react"
 import { UserService } from "../services/user.service"
 import { stationService } from "../services/station.service"
-import { deleteStation, toggleLikedSong } from '../store/actions/user.action'
+import { deleteStation } from '../store/actions/user.action'
 import { useNavigate } from "react-router"
 import { useSelector } from "react-redux"
 
 export function OptionsModal({ modalType, buttonPosition, station, song, isOpen, onClose, handleToggleLikedSongs }) {
     const loggedInUser = useSelector((storeState) => storeState.userModule.user)
 
-    // Are these needed?:
-    const [optionMenu, setOptionMenu] = useState(null)
-    const [isActiveId, setIsActiveId] = useState(null)
     const [stations, setStations] = useState([])
     const [isSecondaryModalVisible, setSecondaryModalVisible] = useState(false)
     const [isSongLiked, setIsSongLiked] = useState(UserService.isSongLiked(loggedInUser, song))
@@ -41,32 +38,6 @@ export function OptionsModal({ modalType, buttonPosition, station, song, isOpen,
             document.removeEventListener("mousedown", handleClickOutside)
         }
     }, [isOpen, onClose])
-
-    // useEffect(() => {
-    //     document.addEventListener('click', handleCloseOptionMenu)
-    //     return () => {
-    //         document.removeEventListener('click', handleCloseOptionMenu)
-    //     }
-    // }, [])
-
-    // const handleContextMenu = (event, station) => {
-    //     event.preventDefault()
-    //     setContextMenu({
-    //         isVisible: true,
-    //         x: event.clientX,
-    //         y: event.clientY,
-    //         station: station,
-    //     })
-    // }
-
-    // const handleCloseOptionMenu = () => {
-    //     setContextMenu(null)
-    // }
-
-    // const handleStationClick = (id) => {
-    //     setIsActiveId(id)
-    // }
-
 
     const modalPosition = {
         buttonPosition: 'fixed',

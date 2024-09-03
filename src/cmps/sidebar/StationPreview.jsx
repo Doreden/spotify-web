@@ -10,18 +10,18 @@ export function StationPreview({ station, handleStationClick, context, currentLo
     const [isHover, setIsHover] = useState(false)
 
     function handleClick(ev) {
-        ev.stopPropagation()
-        handleStationClick(station._id)
+        // ev.stopPropagation()
+        // handleStationClick(station._id)
     }
 
-    let isActive
-    if (currentLocation) {
-        const pathAsArray = currentLocation.split("/")
+    // let isActive
+    // if (currentLocation) {
+    //     const pathAsArray = currentLocation.split("/")
 
-        if (pathAsArray[1] === "station") {
-            isActive = pathAsArray[2] === station._id
-        }
-    }
+    //     if (pathAsArray[1] === "station") {
+    //         isActive = pathAsArray[2] === station._id
+    //     }
+    // }
 
     async function onPlayStation(ev) {
         ev.preventDefault()
@@ -43,7 +43,7 @@ export function StationPreview({ station, handleStationClick, context, currentLo
     if (!station) return
     return (
         <Link to={`/station/${station._id}`} onClick={handleClick} >
-            <div className={`${context}-station-preview ${isActive ? 'station-active' : ''} `} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <div className={`${context}-station-preview`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <img className='station-cover-img' src={`${station.imgUrl}`}></img>
                 {context === 'main' && isHover &&
                     <button onClick={onPlayStation} className="station-play-button">
